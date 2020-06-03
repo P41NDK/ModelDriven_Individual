@@ -68,7 +68,7 @@ class VoiceGenerator extends AbstractGenerator {
 		«FOR parameter: intent.question»
 		{ 
 		          "id": "«36.generateId»",
-		          "required": «if( parameter.required === null ) '''false''' else '''true'''»
+		          "required": "true",
 		          "dataType": "@«parameter.questionEntity.withEntity.getEntityType»",
 		          "name": "«parameter.questionEntity.withEntity.getEntityType»",
 		          "value": "$«parameter.questionEntity.withEntity.getEntityType»",
@@ -83,7 +83,7 @@ class VoiceGenerator extends AbstractGenerator {
 		          "noInputPromptMessages": [],
 		          "outputDialogContexts": [],
 		          "isList": false
-		        },
+		        } «if (parameter != intent.question.last) ''','''»
 		«ENDFOR»
 		],
 		      "messages": [
@@ -131,7 +131,7 @@ class VoiceGenerator extends AbstractGenerator {
 	    "synonyms": [
 	      ""
 	    ]
-	  },
+	  }«if (example != entity.example.last) ''','''»
 	«ENDFOR»
 	]
 	'''

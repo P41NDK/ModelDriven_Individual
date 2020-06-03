@@ -3,6 +3,7 @@
  */
 package org.xtext.example.mydsl.generator;
 
+import com.google.common.base.Objects;
 import com.google.common.collect.Iterators;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -10,6 +11,7 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.xtext.example.mydsl.voice.Entity;
@@ -162,21 +164,8 @@ public class VoiceGenerator extends AbstractGenerator {
         _builder.append("\",");
         _builder.newLineIfNotEmpty();
         _builder.append("          ");
-        _builder.append("\"required\": ");
-        CharSequence _xifexpression_2 = null;
-        String _required = parameter.getRequired();
-        boolean _tripleEquals = (_required == null);
-        if (_tripleEquals) {
-          StringConcatenation _builder_3 = new StringConcatenation();
-          _builder_3.append("false");
-          _xifexpression_2 = _builder_3;
-        } else {
-          StringConcatenation _builder_4 = new StringConcatenation();
-          _builder_4.append("true");
-          _xifexpression_2 = _builder_4;
-        }
-        _builder.append(_xifexpression_2, "          ");
-        _builder.newLineIfNotEmpty();
+        _builder.append("\"required\": \"true\",");
+        _builder.newLine();
         _builder.append("          ");
         _builder.append("\"dataType\": \"@");
         String _entityType = this.getEntityType(parameter.getQuestionEntity().getWithEntity());
@@ -232,8 +221,17 @@ public class VoiceGenerator extends AbstractGenerator {
         _builder.append("\"isList\": false");
         _builder.newLine();
         _builder.append("        ");
-        _builder.append("},");
-        _builder.newLine();
+        _builder.append("} ");
+        CharSequence _xifexpression_2 = null;
+        Question _last = IterableExtensions.<Question>last(intent.getQuestion());
+        boolean _notEquals = (!Objects.equal(parameter, _last));
+        if (_notEquals) {
+          StringConcatenation _builder_3 = new StringConcatenation();
+          _builder_3.append(",");
+          _xifexpression_2 = _builder_3;
+        }
+        _builder.append(_xifexpression_2, "        ");
+        _builder.newLineIfNotEmpty();
       }
     }
     _builder.append("],");
@@ -356,8 +354,17 @@ public class VoiceGenerator extends AbstractGenerator {
         _builder.append("  ");
         _builder.append("]");
         _builder.newLine();
-        _builder.append("},");
-        _builder.newLine();
+        _builder.append("}");
+        CharSequence _xifexpression = null;
+        EntityExample _last = IterableExtensions.<EntityExample>last(entity.getExample());
+        boolean _notEquals = (!Objects.equal(example, _last));
+        if (_notEquals) {
+          StringConcatenation _builder_1 = new StringConcatenation();
+          _builder_1.append(",");
+          _xifexpression = _builder_1;
+        }
+        _builder.append(_xifexpression);
+        _builder.newLineIfNotEmpty();
       }
     }
     _builder.append("]");

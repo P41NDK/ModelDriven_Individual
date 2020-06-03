@@ -19,19 +19,11 @@ Entity:
 ;
 
 Question: 
-	required=Required? questionEntity=QuestionEntity 'with' prompt=Prompt
+	questionEntity=QuestionEntity 'with' prompt=STRING
 ;
 
 QuestionEntity:
 	withEntity=Reference
-;
-
-Prompt:
-	STRING
-;
-
-Required:
-	'require'
 ;
 
 Training:
