@@ -1,0 +1,72 @@
+grammar org.xtext.example.mydsl.Voice with org.eclipse.xtext.common.Terminals
+
+generate voice "http://www.xtext.org/example/mydsl/Voice"
+
+Model:
+	agent+=Agent*
+;
+
+Agent:
+	Entity | Intent
+;
+	
+Intent:
+	'Intent' name=ID (hasFollowup=HasFollowup)? (isFollowup=IsFollowup)? question+=Question+ training=Training
+;
+
+Entity:
+	 'Entity' name=ID '[' example+=EntityExample+ ']'
+;
+
+Question: 
+	required=Required? questionEntity=QuestionEntity 'with' prompt=Prompt
+;
+
+QuestionEntity:
+	withEntity=Reference
+;
+
+Prompt:
+	STRING
+;
+
+Required:
+	'require'
+;
+
+Training:
+	{Training} 'Training:' trainingref+=TrainingRef+
+	
+;
+
+TrainingRef:
+	{TrainingRefSimple} (STRING | declarations+=Declaration)+ '.'
+;
+
+Declaration:
+	'(' trainingstring=STRING 'is' reference=Reference ')'
+;
+
+EntityExample:
+	name=ID ','?
+;
+
+HasFollowup:
+	'HasFollowup'
+;
+
+IsFollowup:
+	'IsFollowup' intent=[Intent]
+;
+
+Sysvariable:
+	value=('number' | 'date-time' | 'date' | 'duration' | 'address' | 'email' | 'phone-number' | 'date-period' 
+		| 'time-period' | 'url' | 'any' | 'color' | 'language'
+	)
+	
+;
+
+Reference:
+	entity=[Entity] | sysvar=Sysvariable
+;
+

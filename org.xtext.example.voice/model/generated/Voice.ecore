@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="voice" nsURI="http://www.xtext.org/example/mydsl/Voice" nsPrefix="voice">
+  <eClassifiers xsi:type="ecore:EClass" name="Model">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="agent" upperBound="-1"
+        eType="#//Agent" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Agent">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Intent" eSuperTypes="#//Agent">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hasFollowup" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="isFollowup" eType="#//IsFollowup"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="question" upperBound="-1"
+        eType="#//Question" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="training" eType="#//Training"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Entity" eSuperTypes="#//Agent">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="example" upperBound="-1"
+        eType="#//EntityExample" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Question">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="required" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="questionEntity" eType="#//QuestionEntity"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="prompt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="QuestionEntity">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="withEntity" eType="#//Reference"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Training">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="trainingref" upperBound="-1"
+        eType="#//TrainingRef" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TrainingRef"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Declaration">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="trainingstring" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="#//Reference"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntityExample">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IsFollowup">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="intent" eType="#//Intent"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Sysvariable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Reference">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entity" eType="#//Entity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sysvar" eType="#//Sysvariable"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TrainingRefSimple" eSuperTypes="#//TrainingRef">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="declarations" upperBound="-1"
+        eType="#//Declaration" containment="true"/>
+  </eClassifiers>
+</ecore:EPackage>
