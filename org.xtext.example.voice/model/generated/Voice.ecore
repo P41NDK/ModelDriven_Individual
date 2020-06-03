@@ -9,7 +9,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Intent" eSuperTypes="#//Agent">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hasFollowup" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="isFollowup" eType="#//IsFollowup"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="question" upperBound="-1"
@@ -22,7 +21,6 @@
         eType="#//EntityExample" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Question">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="required" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="questionEntity" eType="#//QuestionEntity"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="prompt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

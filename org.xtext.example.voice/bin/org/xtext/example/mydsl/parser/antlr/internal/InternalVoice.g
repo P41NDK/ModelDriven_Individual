@@ -173,28 +173,9 @@ ruleIntent returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getIntentAccess().getHasFollowupHasFollowupParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getIntentAccess().getIsFollowupIsFollowupParserRuleCall_2_0());
 				}
-				lv_hasFollowup_2_0=ruleHasFollowup
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getIntentRule());
-					}
-					set(
-						$current,
-						"hasFollowup",
-						lv_hasFollowup_2_0,
-						"org.xtext.example.mydsl.Voice.HasFollowup");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)?
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getIntentAccess().getIsFollowupIsFollowupParserRuleCall_3_0());
-				}
-				lv_isFollowup_3_0=ruleIsFollowup
+				lv_isFollowup_2_0=ruleIsFollowup
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getIntentRule());
@@ -202,7 +183,7 @@ ruleIntent returns [EObject current=null]
 					set(
 						$current,
 						"isFollowup",
-						lv_isFollowup_3_0,
+						lv_isFollowup_2_0,
 						"org.xtext.example.mydsl.Voice.IsFollowup");
 					afterParserOrEnumRuleCall();
 				}
@@ -211,9 +192,9 @@ ruleIntent returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getIntentAccess().getQuestionQuestionParserRuleCall_4_0());
+					newCompositeNode(grammarAccess.getIntentAccess().getQuestionQuestionParserRuleCall_3_0());
 				}
-				lv_question_4_0=ruleQuestion
+				lv_question_3_0=ruleQuestion
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getIntentRule());
@@ -221,7 +202,7 @@ ruleIntent returns [EObject current=null]
 					add(
 						$current,
 						"question",
-						lv_question_4_0,
+						lv_question_3_0,
 						"org.xtext.example.mydsl.Voice.Question");
 					afterParserOrEnumRuleCall();
 				}
@@ -230,9 +211,9 @@ ruleIntent returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getIntentAccess().getTrainingTrainingParserRuleCall_5_0());
+					newCompositeNode(grammarAccess.getIntentAccess().getTrainingTrainingParserRuleCall_4_0());
 				}
-				lv_training_5_0=ruleTraining
+				lv_training_4_0=ruleTraining
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getIntentRule());
@@ -240,7 +221,7 @@ ruleIntent returns [EObject current=null]
 					set(
 						$current,
 						"training",
-						lv_training_5_0,
+						lv_training_4_0,
 						"org.xtext.example.mydsl.Voice.Training");
 					afterParserOrEnumRuleCall();
 				}
@@ -336,28 +317,9 @@ ruleQuestion returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getQuestionAccess().getRequiredRequiredParserRuleCall_0_0());
+					newCompositeNode(grammarAccess.getQuestionAccess().getQuestionEntityQuestionEntityParserRuleCall_0_0());
 				}
-				lv_required_0_0=ruleRequired
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getQuestionRule());
-					}
-					set(
-						$current,
-						"required",
-						lv_required_0_0,
-						"org.xtext.example.mydsl.Voice.Required");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)?
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getQuestionAccess().getQuestionEntityQuestionEntityParserRuleCall_1_0());
-				}
-				lv_questionEntity_1_0=ruleQuestionEntity
+				lv_questionEntity_0_0=ruleQuestionEntity
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getQuestionRule());
@@ -365,32 +327,31 @@ ruleQuestion returns [EObject current=null]
 					set(
 						$current,
 						"questionEntity",
-						lv_questionEntity_1_0,
+						lv_questionEntity_0_0,
 						"org.xtext.example.mydsl.Voice.QuestionEntity");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_2='with'
+		otherlv_1='with'
 		{
-			newLeafNode(otherlv_2, grammarAccess.getQuestionAccess().getWithKeyword_2());
+			newLeafNode(otherlv_1, grammarAccess.getQuestionAccess().getWithKeyword_1());
 		}
 		(
 			(
+				lv_prompt_2_0=RULE_STRING
 				{
-					newCompositeNode(grammarAccess.getQuestionAccess().getPromptPromptParserRuleCall_3_0());
+					newLeafNode(lv_prompt_2_0, grammarAccess.getQuestionAccess().getPromptSTRINGTerminalRuleCall_2_0());
 				}
-				lv_prompt_3_0=rulePrompt
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getQuestionRule());
+						$current = createModelElement(grammarAccess.getQuestionRule());
 					}
-					set(
+					setWithLastConsumed(
 						$current,
 						"prompt",
-						lv_prompt_3_0,
-						"org.xtext.example.mydsl.Voice.Prompt");
-					afterParserOrEnumRuleCall();
+						lv_prompt_2_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
 				}
 			)
 		)
@@ -431,52 +392,6 @@ ruleQuestionEntity returns [EObject current=null]
 			}
 		)
 	)
-;
-
-// Entry rule entryRulePrompt
-entryRulePrompt returns [String current=null]:
-	{ newCompositeNode(grammarAccess.getPromptRule()); }
-	iv_rulePrompt=rulePrompt
-	{ $current=$iv_rulePrompt.current.getText(); }
-	EOF;
-
-// Rule Prompt
-rulePrompt returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	this_STRING_0=RULE_STRING
-	{
-		$current.merge(this_STRING_0);
-	}
-	{
-		newLeafNode(this_STRING_0, grammarAccess.getPromptAccess().getSTRINGTerminalRuleCall());
-	}
-;
-
-// Entry rule entryRuleRequired
-entryRuleRequired returns [String current=null]:
-	{ newCompositeNode(grammarAccess.getRequiredRule()); }
-	iv_ruleRequired=ruleRequired
-	{ $current=$iv_ruleRequired.current.getText(); }
-	EOF;
-
-// Rule Required
-ruleRequired returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	kw='require'
-	{
-		$current.merge(kw);
-		newLeafNode(kw, grammarAccess.getRequiredAccess().getRequireKeyword());
-	}
 ;
 
 // Entry rule entryRuleTraining
@@ -693,28 +608,6 @@ ruleEntityExample returns [EObject current=null]
 			}
 		)?
 	)
-;
-
-// Entry rule entryRuleHasFollowup
-entryRuleHasFollowup returns [String current=null]:
-	{ newCompositeNode(grammarAccess.getHasFollowupRule()); }
-	iv_ruleHasFollowup=ruleHasFollowup
-	{ $current=$iv_ruleHasFollowup.current.getText(); }
-	EOF;
-
-// Rule HasFollowup
-ruleHasFollowup returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	kw='HasFollowup'
-	{
-		$current.merge(kw);
-		newLeafNode(kw, grammarAccess.getHasFollowupAccess().getHasFollowupKeyword());
-	}
 ;
 
 // Entry rule entryRuleIsFollowup

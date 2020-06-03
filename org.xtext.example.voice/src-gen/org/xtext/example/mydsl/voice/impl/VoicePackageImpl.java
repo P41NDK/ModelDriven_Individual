@@ -257,20 +257,9 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
    * @generated
    */
   @Override
-  public EAttribute getIntent_HasFollowup()
-  {
-    return (EAttribute)intentEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EReference getIntent_IsFollowup()
   {
-    return (EReference)intentEClass.getEStructuralFeatures().get(1);
+    return (EReference)intentEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -281,7 +270,7 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
   @Override
   public EReference getIntent_Question()
   {
-    return (EReference)intentEClass.getEStructuralFeatures().get(2);
+    return (EReference)intentEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -292,7 +281,7 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
   @Override
   public EReference getIntent_Training()
   {
-    return (EReference)intentEClass.getEStructuralFeatures().get(3);
+    return (EReference)intentEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -334,20 +323,9 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
    * @generated
    */
   @Override
-  public EAttribute getQuestion_Required()
-  {
-    return (EAttribute)questionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EReference getQuestion_QuestionEntity()
   {
-    return (EReference)questionEClass.getEStructuralFeatures().get(1);
+    return (EReference)questionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -358,7 +336,7 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
   @Override
   public EAttribute getQuestion_Prompt()
   {
-    return (EAttribute)questionEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)questionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -608,7 +586,6 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
     createEAttribute(agentEClass, AGENT__NAME);
 
     intentEClass = createEClass(INTENT);
-    createEAttribute(intentEClass, INTENT__HAS_FOLLOWUP);
     createEReference(intentEClass, INTENT__IS_FOLLOWUP);
     createEReference(intentEClass, INTENT__QUESTION);
     createEReference(intentEClass, INTENT__TRAINING);
@@ -617,7 +594,6 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
     createEReference(entityEClass, ENTITY__EXAMPLE);
 
     questionEClass = createEClass(QUESTION);
-    createEAttribute(questionEClass, QUESTION__REQUIRED);
     createEReference(questionEClass, QUESTION__QUESTION_ENTITY);
     createEAttribute(questionEClass, QUESTION__PROMPT);
 
@@ -691,7 +667,6 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
     initEAttribute(getAgent_Name(), ecorePackage.getEString(), "name", null, 0, 1, Agent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(intentEClass, Intent.class, "Intent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getIntent_HasFollowup(), ecorePackage.getEString(), "hasFollowup", null, 0, 1, Intent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getIntent_IsFollowup(), this.getIsFollowup(), null, "isFollowup", null, 0, 1, Intent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getIntent_Question(), this.getQuestion(), null, "question", null, 0, -1, Intent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getIntent_Training(), this.getTraining(), null, "training", null, 0, 1, Intent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -700,7 +675,6 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
     initEReference(getEntity_Example(), this.getEntityExample(), null, "example", null, 0, -1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(questionEClass, Question.class, "Question", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getQuestion_Required(), ecorePackage.getEString(), "required", null, 0, 1, Question.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getQuestion_QuestionEntity(), this.getQuestionEntity(), null, "questionEntity", null, 0, 1, Question.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getQuestion_Prompt(), ecorePackage.getEString(), "prompt", null, 0, 1, Question.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

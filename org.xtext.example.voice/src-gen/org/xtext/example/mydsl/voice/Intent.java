@@ -14,7 +14,6 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.voice.Intent#getHasFollowup <em>Has Followup</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.voice.Intent#getIsFollowup <em>Is Followup</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.voice.Intent#getQuestion <em>Question</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.voice.Intent#getTraining <em>Training</em>}</li>
@@ -26,28 +25,6 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface Intent extends Agent
 {
-  /**
-   * Returns the value of the '<em><b>Has Followup</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Has Followup</em>' attribute.
-   * @see #setHasFollowup(String)
-   * @see org.xtext.example.mydsl.voice.VoicePackage#getIntent_HasFollowup()
-   * @model
-   * @generated
-   */
-  String getHasFollowup();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.voice.Intent#getHasFollowup <em>Has Followup</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Has Followup</em>' attribute.
-   * @see #getHasFollowup()
-   * @generated
-   */
-  void setHasFollowup(String value);
-
   /**
    * Returns the value of the '<em><b>Is Followup</b></em>' containment reference.
    * <!-- begin-user-doc -->

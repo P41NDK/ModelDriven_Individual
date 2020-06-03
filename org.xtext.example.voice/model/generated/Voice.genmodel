@@ -13,7 +13,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Voice.ecore#//Agent/name"/>
     </genClasses>
     <genClasses ecoreClass="Voice.ecore#//Intent">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Voice.ecore#//Intent/hasFollowup"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Voice.ecore#//Intent/isFollowup"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Voice.ecore#//Intent/question"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Voice.ecore#//Intent/training"/>
@@ -22,7 +21,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Voice.ecore#//Entity/example"/>
     </genClasses>
     <genClasses ecoreClass="Voice.ecore#//Question">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Voice.ecore#//Question/required"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Voice.ecore#//Question/questionEntity"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Voice.ecore#//Question/prompt"/>
     </genClasses>

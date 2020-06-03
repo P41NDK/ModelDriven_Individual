@@ -24,7 +24,6 @@ import org.xtext.example.mydsl.voice.VoicePackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.voice.impl.QuestionImpl#getRequired <em>Required</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.voice.impl.QuestionImpl#getQuestionEntity <em>Question Entity</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.voice.impl.QuestionImpl#getPrompt <em>Prompt</em>}</li>
  * </ul>
@@ -33,26 +32,6 @@ import org.xtext.example.mydsl.voice.VoicePackage;
  */
 public class QuestionImpl extends MinimalEObjectImpl.Container implements Question
 {
-  /**
-   * The default value of the '{@link #getRequired() <em>Required</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getRequired()
-   * @generated
-   * @ordered
-   */
-  protected static final String REQUIRED_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getRequired() <em>Required</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getRequired()
-   * @generated
-   * @ordered
-   */
-  protected String required = REQUIRED_EDEFAULT;
-
   /**
    * The cached value of the '{@link #getQuestionEntity() <em>Question Entity</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -102,31 +81,6 @@ public class QuestionImpl extends MinimalEObjectImpl.Container implements Questi
   protected EClass eStaticClass()
   {
     return VoicePackage.Literals.QUESTION;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String getRequired()
-  {
-    return required;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setRequired(String newRequired)
-  {
-    String oldRequired = required;
-    required = newRequired;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, VoicePackage.QUESTION__REQUIRED, oldRequired, required));
   }
 
   /**
@@ -230,8 +184,6 @@ public class QuestionImpl extends MinimalEObjectImpl.Container implements Questi
   {
     switch (featureID)
     {
-      case VoicePackage.QUESTION__REQUIRED:
-        return getRequired();
       case VoicePackage.QUESTION__QUESTION_ENTITY:
         return getQuestionEntity();
       case VoicePackage.QUESTION__PROMPT:
@@ -250,9 +202,6 @@ public class QuestionImpl extends MinimalEObjectImpl.Container implements Questi
   {
     switch (featureID)
     {
-      case VoicePackage.QUESTION__REQUIRED:
-        setRequired((String)newValue);
-        return;
       case VoicePackage.QUESTION__QUESTION_ENTITY:
         setQuestionEntity((QuestionEntity)newValue);
         return;
@@ -273,9 +222,6 @@ public class QuestionImpl extends MinimalEObjectImpl.Container implements Questi
   {
     switch (featureID)
     {
-      case VoicePackage.QUESTION__REQUIRED:
-        setRequired(REQUIRED_EDEFAULT);
-        return;
       case VoicePackage.QUESTION__QUESTION_ENTITY:
         setQuestionEntity((QuestionEntity)null);
         return;
@@ -296,8 +242,6 @@ public class QuestionImpl extends MinimalEObjectImpl.Container implements Questi
   {
     switch (featureID)
     {
-      case VoicePackage.QUESTION__REQUIRED:
-        return REQUIRED_EDEFAULT == null ? required != null : !REQUIRED_EDEFAULT.equals(required);
       case VoicePackage.QUESTION__QUESTION_ENTITY:
         return questionEntity != null;
       case VoicePackage.QUESTION__PROMPT:
@@ -317,9 +261,7 @@ public class QuestionImpl extends MinimalEObjectImpl.Container implements Questi
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (required: ");
-    result.append(required);
-    result.append(", prompt: ");
+    result.append(" (prompt: ");
     result.append(prompt);
     result.append(')');
     return result.toString();

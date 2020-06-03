@@ -10,6 +10,12 @@ import org.eclipse.xtext.generator.IGeneratorContext
 import org.xtext.example.mydsl.voice.Intent
 import org.xtext.example.mydsl.voice.Entity
 import org.xtext.example.mydsl.voice.Reference
+import java.util.Set
+import java.util.Iterator
+import java.util.HashSet
+import org.xtext.example.mydsl.voice.Question
+import java.util.List
+import org.xtext.example.mydsl.voice.Training
 
 /**
  * Generates code from your model files on save.
@@ -17,12 +23,13 @@ import org.xtext.example.mydsl.voice.Reference
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
 class VoiceGenerator extends AbstractGenerator {
+	var Set<IntentFollowUp> followUpInformation
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		//val entity = resource.allContents.filter(Entity).next
-		
-		resource.allContents.filter(Entity).forEach[generateEntityFile(fsa)]			
-		resource.allContents.filter(Intent).forEach[generateIntentFile(fsa)]	
+		followUpInformation = resource.allContents.filter(Intent).collectFollowUp
+		resource.allContents.filter(Entity).forEach[generateEntityFile(fsa)]
+		followUpInformation.forEach[generateIntentFile(fsa)]			
 	}
 	
 	def generateEntityFile(Entity entity, IFileSystemAccess2 fsa) {
@@ -30,40 +37,17 @@ class VoiceGenerator extends AbstractGenerator {
 		fsa.generateFile(entity.name + ".json", entity.generateEntity)
 	}
 	
-	def generateIntentFile(Intent intent, IFileSystemAccess2 fsa) {
+	def generateIntentFile(IntentFollowUp intent, IFileSystemAccess2 fsa) {
 		fsa.generateFile(intent.name + ".json", intent.generateIntent)
 	}
 	
-	def CharSequence generateIntent(Intent intent)
+	def CharSequence generateIntent(IntentFollowUp intent)
 		'''
 		{
 		"id": "«36.generateId»",
 		"name": "«intent.name»",
 		"auto": true,
-		«if (intent.isFollowup !== null) {
-			'''"contexts": [
-			    "«intent.isFollowup.intent.name»-followup"
-			  ],
-			  "responses": [
-			  					{
-			  					"resetContexts": false,
-			  					"action": ""
-			  					"affectedContexts":[],'''
-		} else if (intent.hasFollowup !== null) {
-			'''
-			"contexts": [],
-			"responses": [
-					{
-					"resetContexts": false,
-					"affectedContexts": [
-			        {
-			          "name": "«intent.name»-followup",
-			          "parameters": {},
-			          "lifespan": 2
-			        }
-			        ],
-			        '''     
-		}»
+		«intent.generateFollowup»
 			"parameter": [
 		«FOR parameter: intent.question»
 		{ 
@@ -114,7 +98,14 @@ class VoiceGenerator extends AbstractGenerator {
 	
 	def CharSequence generateRegularIntent(Intent intent) '''
 	'''
-		
+	
+	def Set<IntentFollowUp> collectFollowUp(Iterator<Intent> intents){
+		val result = new HashSet<IntentFollowUp>
+		intents.forEach[intent | 
+			result.add(new IntentFollowUp(intent.name, if(intent.isFollowup !== null) intent.isFollowup.intent else null, intent, intent.question, intent.training))
+		]
+		result
+	}
 	
 	def String getEntityType(Reference ref) {
 		if (ref.entity !== null)
@@ -123,6 +114,25 @@ class VoiceGenerator extends AbstractGenerator {
 			"sys." + ref.sysvar.value
 	}
 	
+	def generateFollowup(IntentFollowUp followup)
+	'''
+	"contexts": [
+	«if (followup.followupTo !== null)'''"«followup.followupTo.name»-followup"'''»
+	],
+				  "responses": [
+				  					{
+				  					"resetContexts": false,
+				  					"affectedContexts":[
+				  					«if (followup.followupTo === null)
+				  					'''{
+				  								          "name": "«followup.followupFrom.name»-followup",
+				  								          "parameters": {},
+				  								          "lifespan": 2
+				  								        }'''»        
+				  					],
+				  					"action": "",
+				  					'''
+
 	def CharSequence generateEntityEntries(Entity entity) '''
 	[
 	«FOR example: entity.example»
@@ -158,5 +168,12 @@ class VoiceGenerator extends AbstractGenerator {
     }
    		id
 	}
-	
+	@Data
+	static class IntentFollowUp{
+		String name
+		Intent followupTo
+		Intent followupFrom
+		List<Question> question
+		Training training
+	}
 }

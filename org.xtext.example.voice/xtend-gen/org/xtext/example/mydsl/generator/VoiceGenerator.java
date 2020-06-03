@@ -5,8 +5,14 @@ package org.xtext.example.mydsl.generator;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterators;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Consumer;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtend.lib.Data;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
@@ -14,6 +20,8 @@ import org.eclipse.xtext.generator.IGeneratorContext;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.eclipse.xtext.xbase.lib.Pure;
+import org.eclipse.xtext.xbase.lib.util.ToStringHelper;
 import org.xtext.example.mydsl.voice.Entity;
 import org.xtext.example.mydsl.voice.EntityExample;
 import org.xtext.example.mydsl.voice.Intent;
@@ -21,6 +29,7 @@ import org.xtext.example.mydsl.voice.IsFollowup;
 import org.xtext.example.mydsl.voice.Question;
 import org.xtext.example.mydsl.voice.Reference;
 import org.xtext.example.mydsl.voice.Sysvariable;
+import org.xtext.example.mydsl.voice.Training;
 
 /**
  * Generates code from your model files on save.
@@ -29,16 +38,123 @@ import org.xtext.example.mydsl.voice.Sysvariable;
  */
 @SuppressWarnings("all")
 public class VoiceGenerator extends AbstractGenerator {
+  @Data
+  public static class IntentFollowUp {
+    private final String _name;
+    
+    private final Intent _followupTo;
+    
+    private final Intent _followupFrom;
+    
+    private final List<Question> _question;
+    
+    private final Training _training;
+    
+    public IntentFollowUp(final String name, final Intent followupTo, final Intent followupFrom, final List<Question> question, final Training training) {
+      super();
+      this._name = name;
+      this._followupTo = followupTo;
+      this._followupFrom = followupFrom;
+      this._question = question;
+      this._training = training;
+    }
+    
+    @Override
+    @Pure
+    public int hashCode() {
+      final int prime = 31;
+      int result = 1;
+      result = prime * result + ((this._name== null) ? 0 : this._name.hashCode());
+      result = prime * result + ((this._followupTo== null) ? 0 : this._followupTo.hashCode());
+      result = prime * result + ((this._followupFrom== null) ? 0 : this._followupFrom.hashCode());
+      result = prime * result + ((this._question== null) ? 0 : this._question.hashCode());
+      return prime * result + ((this._training== null) ? 0 : this._training.hashCode());
+    }
+    
+    @Override
+    @Pure
+    public boolean equals(final Object obj) {
+      if (this == obj)
+        return true;
+      if (obj == null)
+        return false;
+      if (getClass() != obj.getClass())
+        return false;
+      VoiceGenerator.IntentFollowUp other = (VoiceGenerator.IntentFollowUp) obj;
+      if (this._name == null) {
+        if (other._name != null)
+          return false;
+      } else if (!this._name.equals(other._name))
+        return false;
+      if (this._followupTo == null) {
+        if (other._followupTo != null)
+          return false;
+      } else if (!this._followupTo.equals(other._followupTo))
+        return false;
+      if (this._followupFrom == null) {
+        if (other._followupFrom != null)
+          return false;
+      } else if (!this._followupFrom.equals(other._followupFrom))
+        return false;
+      if (this._question == null) {
+        if (other._question != null)
+          return false;
+      } else if (!this._question.equals(other._question))
+        return false;
+      if (this._training == null) {
+        if (other._training != null)
+          return false;
+      } else if (!this._training.equals(other._training))
+        return false;
+      return true;
+    }
+    
+    @Override
+    @Pure
+    public String toString() {
+      String result = new ToStringHelper().toString(this);
+      return result;
+    }
+    
+    @Pure
+    public String getName() {
+      return this._name;
+    }
+    
+    @Pure
+    public Intent getFollowupTo() {
+      return this._followupTo;
+    }
+    
+    @Pure
+    public Intent getFollowupFrom() {
+      return this._followupFrom;
+    }
+    
+    @Pure
+    public List<Question> getQuestion() {
+      return this._question;
+    }
+    
+    @Pure
+    public Training getTraining() {
+      return this._training;
+    }
+  }
+  
+  private Set<VoiceGenerator.IntentFollowUp> followUpInformation;
+  
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    this.followUpInformation = this.collectFollowUp(Iterators.<Intent>filter(resource.getAllContents(), Intent.class));
     final Procedure1<Entity> _function = (Entity it) -> {
       this.generateEntityFile(it, fsa);
     };
     IteratorExtensions.<Entity>forEach(Iterators.<Entity>filter(resource.getAllContents(), Entity.class), _function);
-    final Procedure1<Intent> _function_1 = (Intent it) -> {
+    final Consumer<VoiceGenerator.IntentFollowUp> _function_1 = (VoiceGenerator.IntentFollowUp it) -> {
       this.generateIntentFile(it, fsa);
     };
-    IteratorExtensions.<Intent>forEach(Iterators.<Intent>filter(resource.getAllContents(), Intent.class), _function_1);
+    this.followUpInformation.forEach(_function_1);
   }
   
   public void generateEntityFile(final Entity entity, final IFileSystemAccess2 fsa) {
@@ -50,13 +166,13 @@ public class VoiceGenerator extends AbstractGenerator {
     fsa.generateFile(_plus_1, this.generateEntity(entity));
   }
   
-  public void generateIntentFile(final Intent intent, final IFileSystemAccess2 fsa) {
+  public void generateIntentFile(final VoiceGenerator.IntentFollowUp intent, final IFileSystemAccess2 fsa) {
     String _name = intent.getName();
     String _plus = (_name + ".json");
     fsa.generateFile(_plus, this.generateIntent(intent));
   }
   
-  public CharSequence generateIntent(final Intent intent) {
+  public CharSequence generateIntent(final VoiceGenerator.IntentFollowUp intent) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("{");
     _builder.newLine();
@@ -72,88 +188,14 @@ public class VoiceGenerator extends AbstractGenerator {
     _builder.newLineIfNotEmpty();
     _builder.append("\"auto\": true,");
     _builder.newLine();
-    CharSequence _xifexpression = null;
-    IsFollowup _isFollowup = intent.getIsFollowup();
-    boolean _tripleNotEquals = (_isFollowup != null);
-    if (_tripleNotEquals) {
-      StringConcatenation _builder_1 = new StringConcatenation();
-      _builder_1.append("\"contexts\": [");
-      _builder_1.newLine();
-      _builder_1.append("\t\t\t    ");
-      _builder_1.append("\"");
-      String _name_1 = intent.getIsFollowup().getIntent().getName();
-      _builder_1.append(_name_1, "\t\t\t    ");
-      _builder_1.append("-followup\"");
-      _builder_1.newLineIfNotEmpty();
-      _builder_1.append("\t\t\t  ");
-      _builder_1.append("],");
-      _builder_1.newLine();
-      _builder_1.append("\t\t\t  ");
-      _builder_1.append("\"responses\": [");
-      _builder_1.newLine();
-      _builder_1.append("\t\t\t  \t\t\t\t\t");
-      _builder_1.append("{");
-      _builder_1.newLine();
-      _builder_1.append("\t\t\t  \t\t\t\t\t");
-      _builder_1.append("\"resetContexts\": false,");
-      _builder_1.newLine();
-      _builder_1.append("\t\t\t  \t\t\t\t\t");
-      _builder_1.append("\"action\": \"\"");
-      _builder_1.newLine();
-      _builder_1.append("\t\t\t  \t\t\t\t\t");
-      _builder_1.append("\"affectedContexts\":[],");
-      _xifexpression = _builder_1;
-    } else {
-      CharSequence _xifexpression_1 = null;
-      String _hasFollowup = intent.getHasFollowup();
-      boolean _tripleNotEquals_1 = (_hasFollowup != null);
-      if (_tripleNotEquals_1) {
-        StringConcatenation _builder_2 = new StringConcatenation();
-        _builder_2.append("\"contexts\": [],");
-        _builder_2.newLine();
-        _builder_2.append("\"responses\": [");
-        _builder_2.newLine();
-        _builder_2.append("\t\t");
-        _builder_2.append("{");
-        _builder_2.newLine();
-        _builder_2.append("\t\t");
-        _builder_2.append("\"resetContexts\": false,");
-        _builder_2.newLine();
-        _builder_2.append("\t\t");
-        _builder_2.append("\"affectedContexts\": [");
-        _builder_2.newLine();
-        _builder_2.append("        ");
-        _builder_2.append("{");
-        _builder_2.newLine();
-        _builder_2.append("          ");
-        _builder_2.append("\"name\": \"");
-        String _name_2 = intent.getName();
-        _builder_2.append(_name_2, "          ");
-        _builder_2.append("-followup\",");
-        _builder_2.newLineIfNotEmpty();
-        _builder_2.append("          ");
-        _builder_2.append("\"parameters\": {},");
-        _builder_2.newLine();
-        _builder_2.append("          ");
-        _builder_2.append("\"lifespan\": 2");
-        _builder_2.newLine();
-        _builder_2.append("        ");
-        _builder_2.append("}");
-        _builder_2.newLine();
-        _builder_2.append("        ");
-        _builder_2.append("],");
-        _builder_2.newLine();
-        _xifexpression_1 = _builder_2;
-      }
-      _xifexpression = _xifexpression_1;
-    }
-    _builder.append(_xifexpression);
+    CharSequence _generateFollowup = this.generateFollowup(intent);
+    _builder.append(_generateFollowup);
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("\"parameter\": [");
     _builder.newLine();
     {
-      EList<Question> _question = intent.getQuestion();
+      List<Question> _question = intent.getQuestion();
       for(final Question parameter : _question) {
         _builder.append("{ ");
         _builder.newLine();
@@ -222,15 +264,15 @@ public class VoiceGenerator extends AbstractGenerator {
         _builder.newLine();
         _builder.append("        ");
         _builder.append("} ");
-        CharSequence _xifexpression_2 = null;
+        CharSequence _xifexpression = null;
         Question _last = IterableExtensions.<Question>last(intent.getQuestion());
         boolean _notEquals = (!Objects.equal(parameter, _last));
         if (_notEquals) {
-          StringConcatenation _builder_3 = new StringConcatenation();
-          _builder_3.append(",");
-          _xifexpression_2 = _builder_3;
+          StringConcatenation _builder_1 = new StringConcatenation();
+          _builder_1.append(",");
+          _xifexpression = _builder_1;
         }
-        _builder.append(_xifexpression_2, "        ");
+        _builder.append(_xifexpression, "        ");
         _builder.newLineIfNotEmpty();
       }
     }
@@ -311,6 +353,31 @@ public class VoiceGenerator extends AbstractGenerator {
     return _builder;
   }
   
+  public Set<VoiceGenerator.IntentFollowUp> collectFollowUp(final Iterator<Intent> intents) {
+    HashSet<VoiceGenerator.IntentFollowUp> _xblockexpression = null;
+    {
+      final HashSet<VoiceGenerator.IntentFollowUp> result = new HashSet<VoiceGenerator.IntentFollowUp>();
+      final Procedure1<Intent> _function = (Intent intent) -> {
+        String _name = intent.getName();
+        Intent _xifexpression = null;
+        IsFollowup _isFollowup = intent.getIsFollowup();
+        boolean _tripleNotEquals = (_isFollowup != null);
+        if (_tripleNotEquals) {
+          _xifexpression = intent.getIsFollowup().getIntent();
+        } else {
+          _xifexpression = null;
+        }
+        EList<Question> _question = intent.getQuestion();
+        Training _training = intent.getTraining();
+        VoiceGenerator.IntentFollowUp _intentFollowUp = new VoiceGenerator.IntentFollowUp(_name, _xifexpression, intent, _question, _training);
+        result.add(_intentFollowUp);
+      };
+      IteratorExtensions.<Intent>forEach(intents, _function);
+      _xblockexpression = result;
+    }
+    return _xblockexpression;
+  }
+  
   public String getEntityType(final Reference ref) {
     String _xifexpression = null;
     Entity _entity = ref.getEntity();
@@ -328,6 +395,73 @@ public class VoiceGenerator extends AbstractGenerator {
       _xifexpression = _xifexpression_1;
     }
     return _xifexpression;
+  }
+  
+  public CharSequence generateFollowup(final VoiceGenerator.IntentFollowUp followup) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("\"contexts\": [");
+    _builder.newLine();
+    CharSequence _xifexpression = null;
+    Intent _followupTo = followup.getFollowupTo();
+    boolean _tripleNotEquals = (_followupTo != null);
+    if (_tripleNotEquals) {
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("\"");
+      String _name = followup.getFollowupTo().getName();
+      _builder_1.append(_name);
+      _builder_1.append("-followup\"");
+      _xifexpression = _builder_1;
+    }
+    _builder.append(_xifexpression);
+    _builder.newLineIfNotEmpty();
+    _builder.append("],");
+    _builder.newLine();
+    _builder.append("\t\t\t  ");
+    _builder.append("\"responses\": [");
+    _builder.newLine();
+    _builder.append("\t\t\t  \t\t\t\t\t");
+    _builder.append("{");
+    _builder.newLine();
+    _builder.append("\t\t\t  \t\t\t\t\t");
+    _builder.append("\"resetContexts\": false,");
+    _builder.newLine();
+    _builder.append("\t\t\t  \t\t\t\t\t");
+    _builder.append("\"affectedContexts\":[");
+    _builder.newLine();
+    _builder.append("\t\t\t  \t\t\t\t\t");
+    CharSequence _xifexpression_1 = null;
+    Intent _followupTo_1 = followup.getFollowupTo();
+    boolean _tripleEquals = (_followupTo_1 == null);
+    if (_tripleEquals) {
+      StringConcatenation _builder_2 = new StringConcatenation();
+      _builder_2.append("{");
+      _builder_2.newLine();
+      _builder_2.append("\t\t\t\t  \t\t\t\t\t\t\t\t          ");
+      _builder_2.append("\"name\": \"");
+      String _name_1 = followup.getFollowupFrom().getName();
+      _builder_2.append(_name_1, "\t\t\t\t  \t\t\t\t\t\t\t\t          ");
+      _builder_2.append("-followup\",");
+      _builder_2.newLineIfNotEmpty();
+      _builder_2.append("\t\t\t\t  \t\t\t\t\t\t\t\t          ");
+      _builder_2.append("\"parameters\": {},");
+      _builder_2.newLine();
+      _builder_2.append("\t\t\t\t  \t\t\t\t\t\t\t\t          ");
+      _builder_2.append("\"lifespan\": 2");
+      _builder_2.newLine();
+      _builder_2.append("\t\t\t\t  \t\t\t\t\t\t\t\t        ");
+      _builder_2.append("}");
+      _xifexpression_1 = _builder_2;
+    }
+    _builder.append(_xifexpression_1, "\t\t\t  \t\t\t\t\t");
+    _builder.append("        ");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t\t\t  \t\t\t\t\t");
+    _builder.append("],");
+    _builder.newLine();
+    _builder.append("\t\t\t  \t\t\t\t\t");
+    _builder.append("\"action\": \"\",");
+    _builder.newLine();
+    return _builder;
   }
   
   public CharSequence generateEntityEntries(final Entity entity) {

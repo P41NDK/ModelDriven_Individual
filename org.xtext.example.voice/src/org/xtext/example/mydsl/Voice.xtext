@@ -11,7 +11,7 @@ Agent:
 ;
 	
 Intent:
-	'Intent' name=ID (hasFollowup=HasFollowup)? (isFollowup=IsFollowup)? question+=Question+ training=Training
+	'Intent' name=ID (isFollowup=IsFollowup)? question+=Question+ training=Training
 ;
 
 Entity:
@@ -41,10 +41,6 @@ Declaration:
 
 EntityExample:
 	name=ID ','?
-;
-
-HasFollowup:
-	'HasFollowup'
 ;
 
 IsFollowup:

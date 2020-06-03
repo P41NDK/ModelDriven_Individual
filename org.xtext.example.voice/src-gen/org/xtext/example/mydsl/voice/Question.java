@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.voice.Question#getRequired <em>Required</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.voice.Question#getQuestionEntity <em>Question Entity</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.voice.Question#getPrompt <em>Prompt</em>}</li>
  * </ul>
@@ -25,28 +24,6 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Question extends EObject
 {
-  /**
-   * Returns the value of the '<em><b>Required</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Required</em>' attribute.
-   * @see #setRequired(String)
-   * @see org.xtext.example.mydsl.voice.VoicePackage#getQuestion_Required()
-   * @model
-   * @generated
-   */
-  String getRequired();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.voice.Question#getRequired <em>Required</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Required</em>' attribute.
-   * @see #getRequired()
-   * @generated
-   */
-  void setRequired(String value);
-
   /**
    * Returns the value of the '<em><b>Question Entity</b></em>' containment reference.
    * <!-- begin-user-doc -->

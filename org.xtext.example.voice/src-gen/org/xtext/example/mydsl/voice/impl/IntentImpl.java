@@ -32,7 +32,6 @@ import org.xtext.example.mydsl.voice.VoicePackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.voice.impl.IntentImpl#getHasFollowup <em>Has Followup</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.voice.impl.IntentImpl#getIsFollowup <em>Is Followup</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.voice.impl.IntentImpl#getQuestion <em>Question</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.voice.impl.IntentImpl#getTraining <em>Training</em>}</li>
@@ -42,26 +41,6 @@ import org.xtext.example.mydsl.voice.VoicePackage;
  */
 public class IntentImpl extends AgentImpl implements Intent
 {
-  /**
-   * The default value of the '{@link #getHasFollowup() <em>Has Followup</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getHasFollowup()
-   * @generated
-   * @ordered
-   */
-  protected static final String HAS_FOLLOWUP_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getHasFollowup() <em>Has Followup</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getHasFollowup()
-   * @generated
-   * @ordered
-   */
-  protected String hasFollowup = HAS_FOLLOWUP_EDEFAULT;
-
   /**
    * The cached value of the '{@link #getIsFollowup() <em>Is Followup</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -111,31 +90,6 @@ public class IntentImpl extends AgentImpl implements Intent
   protected EClass eStaticClass()
   {
     return VoicePackage.Literals.INTENT;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String getHasFollowup()
-  {
-    return hasFollowup;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setHasFollowup(String newHasFollowup)
-  {
-    String oldHasFollowup = hasFollowup;
-    hasFollowup = newHasFollowup;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, VoicePackage.INTENT__HAS_FOLLOWUP, oldHasFollowup, hasFollowup));
   }
 
   /**
@@ -283,8 +237,6 @@ public class IntentImpl extends AgentImpl implements Intent
   {
     switch (featureID)
     {
-      case VoicePackage.INTENT__HAS_FOLLOWUP:
-        return getHasFollowup();
       case VoicePackage.INTENT__IS_FOLLOWUP:
         return getIsFollowup();
       case VoicePackage.INTENT__QUESTION:
@@ -306,9 +258,6 @@ public class IntentImpl extends AgentImpl implements Intent
   {
     switch (featureID)
     {
-      case VoicePackage.INTENT__HAS_FOLLOWUP:
-        setHasFollowup((String)newValue);
-        return;
       case VoicePackage.INTENT__IS_FOLLOWUP:
         setIsFollowup((IsFollowup)newValue);
         return;
@@ -333,9 +282,6 @@ public class IntentImpl extends AgentImpl implements Intent
   {
     switch (featureID)
     {
-      case VoicePackage.INTENT__HAS_FOLLOWUP:
-        setHasFollowup(HAS_FOLLOWUP_EDEFAULT);
-        return;
       case VoicePackage.INTENT__IS_FOLLOWUP:
         setIsFollowup((IsFollowup)null);
         return;
@@ -359,8 +305,6 @@ public class IntentImpl extends AgentImpl implements Intent
   {
     switch (featureID)
     {
-      case VoicePackage.INTENT__HAS_FOLLOWUP:
-        return HAS_FOLLOWUP_EDEFAULT == null ? hasFollowup != null : !HAS_FOLLOWUP_EDEFAULT.equals(hasFollowup);
       case VoicePackage.INTENT__IS_FOLLOWUP:
         return isFollowup != null;
       case VoicePackage.INTENT__QUESTION:
@@ -369,23 +313,6 @@ public class IntentImpl extends AgentImpl implements Intent
         return training != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (hasFollowup: ");
-    result.append(hasFollowup);
-    result.append(')');
-    return result.toString();
   }
 
 } //IntentImpl

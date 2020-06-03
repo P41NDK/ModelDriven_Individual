@@ -142,7 +142,7 @@ public class VoiceSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Intent returns Intent
 	 *
 	 * Constraint:
-	 *     (name=ID hasFollowup=HasFollowup? isFollowup=IsFollowup? question+=Question+ training=Training)
+	 *     (name=ID isFollowup=IsFollowup? question+=Question+ training=Training)
 	 */
 	protected void sequence_Intent(ISerializationContext context, Intent semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -202,10 +202,19 @@ public class VoiceSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Question returns Question
 	 *
 	 * Constraint:
-	 *     (required=Required? questionEntity=QuestionEntity prompt=Prompt)
+	 *     (questionEntity=QuestionEntity prompt=STRING)
 	 */
 	protected void sequence_Question(ISerializationContext context, Question semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, VoicePackage.Literals.QUESTION__QUESTION_ENTITY) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, VoicePackage.Literals.QUESTION__QUESTION_ENTITY));
+			if (transientValues.isValueTransient(semanticObject, VoicePackage.Literals.QUESTION__PROMPT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, VoicePackage.Literals.QUESTION__PROMPT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getQuestionAccess().getQuestionEntityQuestionEntityParserRuleCall_0_0(), semanticObject.getQuestionEntity());
+		feeder.accept(grammarAccess.getQuestionAccess().getPromptSTRINGTerminalRuleCall_2_0(), semanticObject.getPrompt());
+		feeder.finish();
 	}
 	
 	

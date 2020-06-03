@@ -133,22 +133,13 @@ public interface VoicePackage extends EPackage
   int INTENT__NAME = AGENT__NAME;
 
   /**
-   * The feature id for the '<em><b>Has Followup</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INTENT__HAS_FOLLOWUP = AGENT_FEATURE_COUNT + 0;
-
-  /**
    * The feature id for the '<em><b>Is Followup</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int INTENT__IS_FOLLOWUP = AGENT_FEATURE_COUNT + 1;
+  int INTENT__IS_FOLLOWUP = AGENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Question</b></em>' containment reference list.
@@ -157,7 +148,7 @@ public interface VoicePackage extends EPackage
    * @generated
    * @ordered
    */
-  int INTENT__QUESTION = AGENT_FEATURE_COUNT + 2;
+  int INTENT__QUESTION = AGENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Training</b></em>' containment reference.
@@ -166,7 +157,7 @@ public interface VoicePackage extends EPackage
    * @generated
    * @ordered
    */
-  int INTENT__TRAINING = AGENT_FEATURE_COUNT + 3;
+  int INTENT__TRAINING = AGENT_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Intent</em>' class.
@@ -175,7 +166,7 @@ public interface VoicePackage extends EPackage
    * @generated
    * @ordered
    */
-  int INTENT_FEATURE_COUNT = AGENT_FEATURE_COUNT + 4;
+  int INTENT_FEATURE_COUNT = AGENT_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mydsl.voice.impl.EntityImpl <em>Entity</em>}' class.
@@ -225,22 +216,13 @@ public interface VoicePackage extends EPackage
   int QUESTION = 4;
 
   /**
-   * The feature id for the '<em><b>Required</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int QUESTION__REQUIRED = 0;
-
-  /**
    * The feature id for the '<em><b>Question Entity</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int QUESTION__QUESTION_ENTITY = 1;
+  int QUESTION__QUESTION_ENTITY = 0;
 
   /**
    * The feature id for the '<em><b>Prompt</b></em>' attribute.
@@ -249,7 +231,7 @@ public interface VoicePackage extends EPackage
    * @generated
    * @ordered
    */
-  int QUESTION__PROMPT = 2;
+  int QUESTION__PROMPT = 1;
 
   /**
    * The number of structural features of the '<em>Question</em>' class.
@@ -258,7 +240,7 @@ public interface VoicePackage extends EPackage
    * @generated
    * @ordered
    */
-  int QUESTION_FEATURE_COUNT = 3;
+  int QUESTION_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mydsl.voice.impl.QuestionEntityImpl <em>Question Entity</em>}' class.
@@ -575,17 +557,6 @@ public interface VoicePackage extends EPackage
   EClass getIntent();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.voice.Intent#getHasFollowup <em>Has Followup</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Has Followup</em>'.
-   * @see org.xtext.example.mydsl.voice.Intent#getHasFollowup()
-   * @see #getIntent()
-   * @generated
-   */
-  EAttribute getIntent_HasFollowup();
-
-  /**
    * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.voice.Intent#getIsFollowup <em>Is Followup</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -648,17 +619,6 @@ public interface VoicePackage extends EPackage
    * @generated
    */
   EClass getQuestion();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.voice.Question#getRequired <em>Required</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Required</em>'.
-   * @see org.xtext.example.mydsl.voice.Question#getRequired()
-   * @see #getQuestion()
-   * @generated
-   */
-  EAttribute getQuestion_Required();
 
   /**
    * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.voice.Question#getQuestionEntity <em>Question Entity</em>}'.
@@ -952,14 +912,6 @@ public interface VoicePackage extends EPackage
     EClass INTENT = eINSTANCE.getIntent();
 
     /**
-     * The meta object literal for the '<em><b>Has Followup</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute INTENT__HAS_FOLLOWUP = eINSTANCE.getIntent_HasFollowup();
-
-    /**
      * The meta object literal for the '<em><b>Is Followup</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1010,14 +962,6 @@ public interface VoicePackage extends EPackage
      * @generated
      */
     EClass QUESTION = eINSTANCE.getQuestion();
-
-    /**
-     * The meta object literal for the '<em><b>Required</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute QUESTION__REQUIRED = eINSTANCE.getQuestion_Required();
 
     /**
      * The meta object literal for the '<em><b>Question Entity</b></em>' containment reference feature.

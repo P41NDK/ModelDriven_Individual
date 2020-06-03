@@ -22,13 +22,12 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalVoiceParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'require'", "'HasFollowup'", "'number'", "'date-time'", "'date'", "'duration'", "'address'", "'email'", "'phone-number'", "'date-period'", "'time-period'", "'url'", "'any'", "'color'", "'language'", "'Intent'", "'Entity'", "'['", "']'", "'with'", "'Training:'", "'.'", "'('", "'is'", "')'", "','", "'IsFollowup'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'number'", "'date-time'", "'date'", "'duration'", "'address'", "'email'", "'phone-number'", "'date-period'", "'time-period'", "'url'", "'any'", "'color'", "'language'", "'Intent'", "'Entity'", "'['", "']'", "'with'", "'Training:'", "'.'", "'('", "'is'", "')'", "','", "'IsFollowup'"
     };
     public static final int RULE_STRING=4;
     public static final int RULE_SL_COMMENT=8;
     public static final int T__19=19;
     public static final int T__15=15;
-    public static final int T__37=37;
     public static final int T__16=16;
     public static final int T__17=17;
     public static final int T__18=18;
@@ -39,7 +38,6 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
     public static final int T__13=13;
     public static final int T__35=35;
     public static final int T__14=14;
-    public static final int T__36=36;
     public static final int EOF=-1;
     public static final int T__30=30;
     public static final int T__31=31;
@@ -145,7 +143,7 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
                 int alt1=2;
                 int LA1_0 = input.LA(1);
 
-                if ( ((LA1_0>=26 && LA1_0<=27)) ) {
+                if ( ((LA1_0>=24 && LA1_0<=25)) ) {
                     alt1=1;
                 }
 
@@ -575,146 +573,12 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "ruleQuestionEntity"
 
 
-    // $ANTLR start "entryRulePrompt"
-    // InternalVoice.g:203:1: entryRulePrompt : rulePrompt EOF ;
-    public final void entryRulePrompt() throws RecognitionException {
-        try {
-            // InternalVoice.g:204:1: ( rulePrompt EOF )
-            // InternalVoice.g:205:1: rulePrompt EOF
-            {
-             before(grammarAccess.getPromptRule()); 
-            pushFollow(FOLLOW_1);
-            rulePrompt();
-
-            state._fsp--;
-
-             after(grammarAccess.getPromptRule()); 
-            match(input,EOF,FOLLOW_2); 
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-        }
-        return ;
-    }
-    // $ANTLR end "entryRulePrompt"
-
-
-    // $ANTLR start "rulePrompt"
-    // InternalVoice.g:212:1: rulePrompt : ( RULE_STRING ) ;
-    public final void rulePrompt() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalVoice.g:216:2: ( ( RULE_STRING ) )
-            // InternalVoice.g:217:2: ( RULE_STRING )
-            {
-            // InternalVoice.g:217:2: ( RULE_STRING )
-            // InternalVoice.g:218:3: RULE_STRING
-            {
-             before(grammarAccess.getPromptAccess().getSTRINGTerminalRuleCall()); 
-            match(input,RULE_STRING,FOLLOW_2); 
-             after(grammarAccess.getPromptAccess().getSTRINGTerminalRuleCall()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rulePrompt"
-
-
-    // $ANTLR start "entryRuleRequired"
-    // InternalVoice.g:228:1: entryRuleRequired : ruleRequired EOF ;
-    public final void entryRuleRequired() throws RecognitionException {
-        try {
-            // InternalVoice.g:229:1: ( ruleRequired EOF )
-            // InternalVoice.g:230:1: ruleRequired EOF
-            {
-             before(grammarAccess.getRequiredRule()); 
-            pushFollow(FOLLOW_1);
-            ruleRequired();
-
-            state._fsp--;
-
-             after(grammarAccess.getRequiredRule()); 
-            match(input,EOF,FOLLOW_2); 
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-        }
-        return ;
-    }
-    // $ANTLR end "entryRuleRequired"
-
-
-    // $ANTLR start "ruleRequired"
-    // InternalVoice.g:237:1: ruleRequired : ( 'require' ) ;
-    public final void ruleRequired() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalVoice.g:241:2: ( ( 'require' ) )
-            // InternalVoice.g:242:2: ( 'require' )
-            {
-            // InternalVoice.g:242:2: ( 'require' )
-            // InternalVoice.g:243:3: 'require'
-            {
-             before(grammarAccess.getRequiredAccess().getRequireKeyword()); 
-            match(input,11,FOLLOW_2); 
-             after(grammarAccess.getRequiredAccess().getRequireKeyword()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "ruleRequired"
-
-
     // $ANTLR start "entryRuleTraining"
-    // InternalVoice.g:253:1: entryRuleTraining : ruleTraining EOF ;
+    // InternalVoice.g:203:1: entryRuleTraining : ruleTraining EOF ;
     public final void entryRuleTraining() throws RecognitionException {
         try {
-            // InternalVoice.g:254:1: ( ruleTraining EOF )
-            // InternalVoice.g:255:1: ruleTraining EOF
+            // InternalVoice.g:204:1: ( ruleTraining EOF )
+            // InternalVoice.g:205:1: ruleTraining EOF
             {
              before(grammarAccess.getTrainingRule()); 
             pushFollow(FOLLOW_1);
@@ -740,21 +604,21 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "ruleTraining"
-    // InternalVoice.g:262:1: ruleTraining : ( ( rule__Training__Group__0 ) ) ;
+    // InternalVoice.g:212:1: ruleTraining : ( ( rule__Training__Group__0 ) ) ;
     public final void ruleTraining() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:266:2: ( ( ( rule__Training__Group__0 ) ) )
-            // InternalVoice.g:267:2: ( ( rule__Training__Group__0 ) )
+            // InternalVoice.g:216:2: ( ( ( rule__Training__Group__0 ) ) )
+            // InternalVoice.g:217:2: ( ( rule__Training__Group__0 ) )
             {
-            // InternalVoice.g:267:2: ( ( rule__Training__Group__0 ) )
-            // InternalVoice.g:268:3: ( rule__Training__Group__0 )
+            // InternalVoice.g:217:2: ( ( rule__Training__Group__0 ) )
+            // InternalVoice.g:218:3: ( rule__Training__Group__0 )
             {
              before(grammarAccess.getTrainingAccess().getGroup()); 
-            // InternalVoice.g:269:3: ( rule__Training__Group__0 )
-            // InternalVoice.g:269:4: rule__Training__Group__0
+            // InternalVoice.g:219:3: ( rule__Training__Group__0 )
+            // InternalVoice.g:219:4: rule__Training__Group__0
             {
             pushFollow(FOLLOW_2);
             rule__Training__Group__0();
@@ -787,11 +651,11 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "entryRuleTrainingRef"
-    // InternalVoice.g:278:1: entryRuleTrainingRef : ruleTrainingRef EOF ;
+    // InternalVoice.g:228:1: entryRuleTrainingRef : ruleTrainingRef EOF ;
     public final void entryRuleTrainingRef() throws RecognitionException {
         try {
-            // InternalVoice.g:279:1: ( ruleTrainingRef EOF )
-            // InternalVoice.g:280:1: ruleTrainingRef EOF
+            // InternalVoice.g:229:1: ( ruleTrainingRef EOF )
+            // InternalVoice.g:230:1: ruleTrainingRef EOF
             {
              before(grammarAccess.getTrainingRefRule()); 
             pushFollow(FOLLOW_1);
@@ -817,21 +681,21 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "ruleTrainingRef"
-    // InternalVoice.g:287:1: ruleTrainingRef : ( ( rule__TrainingRef__Group__0 ) ) ;
+    // InternalVoice.g:237:1: ruleTrainingRef : ( ( rule__TrainingRef__Group__0 ) ) ;
     public final void ruleTrainingRef() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:291:2: ( ( ( rule__TrainingRef__Group__0 ) ) )
-            // InternalVoice.g:292:2: ( ( rule__TrainingRef__Group__0 ) )
+            // InternalVoice.g:241:2: ( ( ( rule__TrainingRef__Group__0 ) ) )
+            // InternalVoice.g:242:2: ( ( rule__TrainingRef__Group__0 ) )
             {
-            // InternalVoice.g:292:2: ( ( rule__TrainingRef__Group__0 ) )
-            // InternalVoice.g:293:3: ( rule__TrainingRef__Group__0 )
+            // InternalVoice.g:242:2: ( ( rule__TrainingRef__Group__0 ) )
+            // InternalVoice.g:243:3: ( rule__TrainingRef__Group__0 )
             {
              before(grammarAccess.getTrainingRefAccess().getGroup()); 
-            // InternalVoice.g:294:3: ( rule__TrainingRef__Group__0 )
-            // InternalVoice.g:294:4: rule__TrainingRef__Group__0
+            // InternalVoice.g:244:3: ( rule__TrainingRef__Group__0 )
+            // InternalVoice.g:244:4: rule__TrainingRef__Group__0
             {
             pushFollow(FOLLOW_2);
             rule__TrainingRef__Group__0();
@@ -864,11 +728,11 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "entryRuleDeclaration"
-    // InternalVoice.g:303:1: entryRuleDeclaration : ruleDeclaration EOF ;
+    // InternalVoice.g:253:1: entryRuleDeclaration : ruleDeclaration EOF ;
     public final void entryRuleDeclaration() throws RecognitionException {
         try {
-            // InternalVoice.g:304:1: ( ruleDeclaration EOF )
-            // InternalVoice.g:305:1: ruleDeclaration EOF
+            // InternalVoice.g:254:1: ( ruleDeclaration EOF )
+            // InternalVoice.g:255:1: ruleDeclaration EOF
             {
              before(grammarAccess.getDeclarationRule()); 
             pushFollow(FOLLOW_1);
@@ -894,21 +758,21 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "ruleDeclaration"
-    // InternalVoice.g:312:1: ruleDeclaration : ( ( rule__Declaration__Group__0 ) ) ;
+    // InternalVoice.g:262:1: ruleDeclaration : ( ( rule__Declaration__Group__0 ) ) ;
     public final void ruleDeclaration() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:316:2: ( ( ( rule__Declaration__Group__0 ) ) )
-            // InternalVoice.g:317:2: ( ( rule__Declaration__Group__0 ) )
+            // InternalVoice.g:266:2: ( ( ( rule__Declaration__Group__0 ) ) )
+            // InternalVoice.g:267:2: ( ( rule__Declaration__Group__0 ) )
             {
-            // InternalVoice.g:317:2: ( ( rule__Declaration__Group__0 ) )
-            // InternalVoice.g:318:3: ( rule__Declaration__Group__0 )
+            // InternalVoice.g:267:2: ( ( rule__Declaration__Group__0 ) )
+            // InternalVoice.g:268:3: ( rule__Declaration__Group__0 )
             {
              before(grammarAccess.getDeclarationAccess().getGroup()); 
-            // InternalVoice.g:319:3: ( rule__Declaration__Group__0 )
-            // InternalVoice.g:319:4: rule__Declaration__Group__0
+            // InternalVoice.g:269:3: ( rule__Declaration__Group__0 )
+            // InternalVoice.g:269:4: rule__Declaration__Group__0
             {
             pushFollow(FOLLOW_2);
             rule__Declaration__Group__0();
@@ -941,11 +805,11 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "entryRuleEntityExample"
-    // InternalVoice.g:328:1: entryRuleEntityExample : ruleEntityExample EOF ;
+    // InternalVoice.g:278:1: entryRuleEntityExample : ruleEntityExample EOF ;
     public final void entryRuleEntityExample() throws RecognitionException {
         try {
-            // InternalVoice.g:329:1: ( ruleEntityExample EOF )
-            // InternalVoice.g:330:1: ruleEntityExample EOF
+            // InternalVoice.g:279:1: ( ruleEntityExample EOF )
+            // InternalVoice.g:280:1: ruleEntityExample EOF
             {
              before(grammarAccess.getEntityExampleRule()); 
             pushFollow(FOLLOW_1);
@@ -971,21 +835,21 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "ruleEntityExample"
-    // InternalVoice.g:337:1: ruleEntityExample : ( ( rule__EntityExample__Group__0 ) ) ;
+    // InternalVoice.g:287:1: ruleEntityExample : ( ( rule__EntityExample__Group__0 ) ) ;
     public final void ruleEntityExample() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:341:2: ( ( ( rule__EntityExample__Group__0 ) ) )
-            // InternalVoice.g:342:2: ( ( rule__EntityExample__Group__0 ) )
+            // InternalVoice.g:291:2: ( ( ( rule__EntityExample__Group__0 ) ) )
+            // InternalVoice.g:292:2: ( ( rule__EntityExample__Group__0 ) )
             {
-            // InternalVoice.g:342:2: ( ( rule__EntityExample__Group__0 ) )
-            // InternalVoice.g:343:3: ( rule__EntityExample__Group__0 )
+            // InternalVoice.g:292:2: ( ( rule__EntityExample__Group__0 ) )
+            // InternalVoice.g:293:3: ( rule__EntityExample__Group__0 )
             {
              before(grammarAccess.getEntityExampleAccess().getGroup()); 
-            // InternalVoice.g:344:3: ( rule__EntityExample__Group__0 )
-            // InternalVoice.g:344:4: rule__EntityExample__Group__0
+            // InternalVoice.g:294:3: ( rule__EntityExample__Group__0 )
+            // InternalVoice.g:294:4: rule__EntityExample__Group__0
             {
             pushFollow(FOLLOW_2);
             rule__EntityExample__Group__0();
@@ -1017,79 +881,12 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "ruleEntityExample"
 
 
-    // $ANTLR start "entryRuleHasFollowup"
-    // InternalVoice.g:353:1: entryRuleHasFollowup : ruleHasFollowup EOF ;
-    public final void entryRuleHasFollowup() throws RecognitionException {
-        try {
-            // InternalVoice.g:354:1: ( ruleHasFollowup EOF )
-            // InternalVoice.g:355:1: ruleHasFollowup EOF
-            {
-             before(grammarAccess.getHasFollowupRule()); 
-            pushFollow(FOLLOW_1);
-            ruleHasFollowup();
-
-            state._fsp--;
-
-             after(grammarAccess.getHasFollowupRule()); 
-            match(input,EOF,FOLLOW_2); 
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-        }
-        return ;
-    }
-    // $ANTLR end "entryRuleHasFollowup"
-
-
-    // $ANTLR start "ruleHasFollowup"
-    // InternalVoice.g:362:1: ruleHasFollowup : ( 'HasFollowup' ) ;
-    public final void ruleHasFollowup() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalVoice.g:366:2: ( ( 'HasFollowup' ) )
-            // InternalVoice.g:367:2: ( 'HasFollowup' )
-            {
-            // InternalVoice.g:367:2: ( 'HasFollowup' )
-            // InternalVoice.g:368:3: 'HasFollowup'
-            {
-             before(grammarAccess.getHasFollowupAccess().getHasFollowupKeyword()); 
-            match(input,12,FOLLOW_2); 
-             after(grammarAccess.getHasFollowupAccess().getHasFollowupKeyword()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "ruleHasFollowup"
-
-
     // $ANTLR start "entryRuleIsFollowup"
-    // InternalVoice.g:378:1: entryRuleIsFollowup : ruleIsFollowup EOF ;
+    // InternalVoice.g:303:1: entryRuleIsFollowup : ruleIsFollowup EOF ;
     public final void entryRuleIsFollowup() throws RecognitionException {
         try {
-            // InternalVoice.g:379:1: ( ruleIsFollowup EOF )
-            // InternalVoice.g:380:1: ruleIsFollowup EOF
+            // InternalVoice.g:304:1: ( ruleIsFollowup EOF )
+            // InternalVoice.g:305:1: ruleIsFollowup EOF
             {
              before(grammarAccess.getIsFollowupRule()); 
             pushFollow(FOLLOW_1);
@@ -1115,21 +912,21 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "ruleIsFollowup"
-    // InternalVoice.g:387:1: ruleIsFollowup : ( ( rule__IsFollowup__Group__0 ) ) ;
+    // InternalVoice.g:312:1: ruleIsFollowup : ( ( rule__IsFollowup__Group__0 ) ) ;
     public final void ruleIsFollowup() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:391:2: ( ( ( rule__IsFollowup__Group__0 ) ) )
-            // InternalVoice.g:392:2: ( ( rule__IsFollowup__Group__0 ) )
+            // InternalVoice.g:316:2: ( ( ( rule__IsFollowup__Group__0 ) ) )
+            // InternalVoice.g:317:2: ( ( rule__IsFollowup__Group__0 ) )
             {
-            // InternalVoice.g:392:2: ( ( rule__IsFollowup__Group__0 ) )
-            // InternalVoice.g:393:3: ( rule__IsFollowup__Group__0 )
+            // InternalVoice.g:317:2: ( ( rule__IsFollowup__Group__0 ) )
+            // InternalVoice.g:318:3: ( rule__IsFollowup__Group__0 )
             {
              before(grammarAccess.getIsFollowupAccess().getGroup()); 
-            // InternalVoice.g:394:3: ( rule__IsFollowup__Group__0 )
-            // InternalVoice.g:394:4: rule__IsFollowup__Group__0
+            // InternalVoice.g:319:3: ( rule__IsFollowup__Group__0 )
+            // InternalVoice.g:319:4: rule__IsFollowup__Group__0
             {
             pushFollow(FOLLOW_2);
             rule__IsFollowup__Group__0();
@@ -1162,11 +959,11 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "entryRuleSysvariable"
-    // InternalVoice.g:403:1: entryRuleSysvariable : ruleSysvariable EOF ;
+    // InternalVoice.g:328:1: entryRuleSysvariable : ruleSysvariable EOF ;
     public final void entryRuleSysvariable() throws RecognitionException {
         try {
-            // InternalVoice.g:404:1: ( ruleSysvariable EOF )
-            // InternalVoice.g:405:1: ruleSysvariable EOF
+            // InternalVoice.g:329:1: ( ruleSysvariable EOF )
+            // InternalVoice.g:330:1: ruleSysvariable EOF
             {
              before(grammarAccess.getSysvariableRule()); 
             pushFollow(FOLLOW_1);
@@ -1192,21 +989,21 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "ruleSysvariable"
-    // InternalVoice.g:412:1: ruleSysvariable : ( ( rule__Sysvariable__ValueAssignment ) ) ;
+    // InternalVoice.g:337:1: ruleSysvariable : ( ( rule__Sysvariable__ValueAssignment ) ) ;
     public final void ruleSysvariable() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:416:2: ( ( ( rule__Sysvariable__ValueAssignment ) ) )
-            // InternalVoice.g:417:2: ( ( rule__Sysvariable__ValueAssignment ) )
+            // InternalVoice.g:341:2: ( ( ( rule__Sysvariable__ValueAssignment ) ) )
+            // InternalVoice.g:342:2: ( ( rule__Sysvariable__ValueAssignment ) )
             {
-            // InternalVoice.g:417:2: ( ( rule__Sysvariable__ValueAssignment ) )
-            // InternalVoice.g:418:3: ( rule__Sysvariable__ValueAssignment )
+            // InternalVoice.g:342:2: ( ( rule__Sysvariable__ValueAssignment ) )
+            // InternalVoice.g:343:3: ( rule__Sysvariable__ValueAssignment )
             {
              before(grammarAccess.getSysvariableAccess().getValueAssignment()); 
-            // InternalVoice.g:419:3: ( rule__Sysvariable__ValueAssignment )
-            // InternalVoice.g:419:4: rule__Sysvariable__ValueAssignment
+            // InternalVoice.g:344:3: ( rule__Sysvariable__ValueAssignment )
+            // InternalVoice.g:344:4: rule__Sysvariable__ValueAssignment
             {
             pushFollow(FOLLOW_2);
             rule__Sysvariable__ValueAssignment();
@@ -1239,11 +1036,11 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "entryRuleReference"
-    // InternalVoice.g:428:1: entryRuleReference : ruleReference EOF ;
+    // InternalVoice.g:353:1: entryRuleReference : ruleReference EOF ;
     public final void entryRuleReference() throws RecognitionException {
         try {
-            // InternalVoice.g:429:1: ( ruleReference EOF )
-            // InternalVoice.g:430:1: ruleReference EOF
+            // InternalVoice.g:354:1: ( ruleReference EOF )
+            // InternalVoice.g:355:1: ruleReference EOF
             {
              before(grammarAccess.getReferenceRule()); 
             pushFollow(FOLLOW_1);
@@ -1269,21 +1066,21 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "ruleReference"
-    // InternalVoice.g:437:1: ruleReference : ( ( rule__Reference__Alternatives ) ) ;
+    // InternalVoice.g:362:1: ruleReference : ( ( rule__Reference__Alternatives ) ) ;
     public final void ruleReference() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:441:2: ( ( ( rule__Reference__Alternatives ) ) )
-            // InternalVoice.g:442:2: ( ( rule__Reference__Alternatives ) )
+            // InternalVoice.g:366:2: ( ( ( rule__Reference__Alternatives ) ) )
+            // InternalVoice.g:367:2: ( ( rule__Reference__Alternatives ) )
             {
-            // InternalVoice.g:442:2: ( ( rule__Reference__Alternatives ) )
-            // InternalVoice.g:443:3: ( rule__Reference__Alternatives )
+            // InternalVoice.g:367:2: ( ( rule__Reference__Alternatives ) )
+            // InternalVoice.g:368:3: ( rule__Reference__Alternatives )
             {
              before(grammarAccess.getReferenceAccess().getAlternatives()); 
-            // InternalVoice.g:444:3: ( rule__Reference__Alternatives )
-            // InternalVoice.g:444:4: rule__Reference__Alternatives
+            // InternalVoice.g:369:3: ( rule__Reference__Alternatives )
+            // InternalVoice.g:369:4: rule__Reference__Alternatives
             {
             pushFollow(FOLLOW_2);
             rule__Reference__Alternatives();
@@ -1316,20 +1113,20 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Agent__Alternatives"
-    // InternalVoice.g:452:1: rule__Agent__Alternatives : ( ( ruleEntity ) | ( ruleIntent ) );
+    // InternalVoice.g:377:1: rule__Agent__Alternatives : ( ( ruleEntity ) | ( ruleIntent ) );
     public final void rule__Agent__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:456:1: ( ( ruleEntity ) | ( ruleIntent ) )
+            // InternalVoice.g:381:1: ( ( ruleEntity ) | ( ruleIntent ) )
             int alt2=2;
             int LA2_0 = input.LA(1);
 
-            if ( (LA2_0==27) ) {
+            if ( (LA2_0==25) ) {
                 alt2=1;
             }
-            else if ( (LA2_0==26) ) {
+            else if ( (LA2_0==24) ) {
                 alt2=2;
             }
             else {
@@ -1340,10 +1137,10 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
             }
             switch (alt2) {
                 case 1 :
-                    // InternalVoice.g:457:2: ( ruleEntity )
+                    // InternalVoice.g:382:2: ( ruleEntity )
                     {
-                    // InternalVoice.g:457:2: ( ruleEntity )
-                    // InternalVoice.g:458:3: ruleEntity
+                    // InternalVoice.g:382:2: ( ruleEntity )
+                    // InternalVoice.g:383:3: ruleEntity
                     {
                      before(grammarAccess.getAgentAccess().getEntityParserRuleCall_0()); 
                     pushFollow(FOLLOW_2);
@@ -1359,10 +1156,10 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // InternalVoice.g:463:2: ( ruleIntent )
+                    // InternalVoice.g:388:2: ( ruleIntent )
                     {
-                    // InternalVoice.g:463:2: ( ruleIntent )
-                    // InternalVoice.g:464:3: ruleIntent
+                    // InternalVoice.g:388:2: ( ruleIntent )
+                    // InternalVoice.g:389:3: ruleIntent
                     {
                      before(grammarAccess.getAgentAccess().getIntentParserRuleCall_1()); 
                     pushFollow(FOLLOW_2);
@@ -1395,20 +1192,20 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TrainingRef__Alternatives_1"
-    // InternalVoice.g:473:1: rule__TrainingRef__Alternatives_1 : ( ( RULE_STRING ) | ( ( rule__TrainingRef__DeclarationsAssignment_1_1 ) ) );
+    // InternalVoice.g:398:1: rule__TrainingRef__Alternatives_1 : ( ( RULE_STRING ) | ( ( rule__TrainingRef__DeclarationsAssignment_1_1 ) ) );
     public final void rule__TrainingRef__Alternatives_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:477:1: ( ( RULE_STRING ) | ( ( rule__TrainingRef__DeclarationsAssignment_1_1 ) ) )
+            // InternalVoice.g:402:1: ( ( RULE_STRING ) | ( ( rule__TrainingRef__DeclarationsAssignment_1_1 ) ) )
             int alt3=2;
             int LA3_0 = input.LA(1);
 
             if ( (LA3_0==RULE_STRING) ) {
                 alt3=1;
             }
-            else if ( (LA3_0==33) ) {
+            else if ( (LA3_0==31) ) {
                 alt3=2;
             }
             else {
@@ -1419,10 +1216,10 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
             }
             switch (alt3) {
                 case 1 :
-                    // InternalVoice.g:478:2: ( RULE_STRING )
+                    // InternalVoice.g:403:2: ( RULE_STRING )
                     {
-                    // InternalVoice.g:478:2: ( RULE_STRING )
-                    // InternalVoice.g:479:3: RULE_STRING
+                    // InternalVoice.g:403:2: ( RULE_STRING )
+                    // InternalVoice.g:404:3: RULE_STRING
                     {
                      before(grammarAccess.getTrainingRefAccess().getSTRINGTerminalRuleCall_1_0()); 
                     match(input,RULE_STRING,FOLLOW_2); 
@@ -1434,14 +1231,14 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // InternalVoice.g:484:2: ( ( rule__TrainingRef__DeclarationsAssignment_1_1 ) )
+                    // InternalVoice.g:409:2: ( ( rule__TrainingRef__DeclarationsAssignment_1_1 ) )
                     {
-                    // InternalVoice.g:484:2: ( ( rule__TrainingRef__DeclarationsAssignment_1_1 ) )
-                    // InternalVoice.g:485:3: ( rule__TrainingRef__DeclarationsAssignment_1_1 )
+                    // InternalVoice.g:409:2: ( ( rule__TrainingRef__DeclarationsAssignment_1_1 ) )
+                    // InternalVoice.g:410:3: ( rule__TrainingRef__DeclarationsAssignment_1_1 )
                     {
                      before(grammarAccess.getTrainingRefAccess().getDeclarationsAssignment_1_1()); 
-                    // InternalVoice.g:486:3: ( rule__TrainingRef__DeclarationsAssignment_1_1 )
-                    // InternalVoice.g:486:4: rule__TrainingRef__DeclarationsAssignment_1_1
+                    // InternalVoice.g:411:3: ( rule__TrainingRef__DeclarationsAssignment_1_1 )
+                    // InternalVoice.g:411:4: rule__TrainingRef__DeclarationsAssignment_1_1
                     {
                     pushFollow(FOLLOW_2);
                     rule__TrainingRef__DeclarationsAssignment_1_1();
@@ -1476,76 +1273,76 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Sysvariable__ValueAlternatives_0"
-    // InternalVoice.g:494:1: rule__Sysvariable__ValueAlternatives_0 : ( ( 'number' ) | ( 'date-time' ) | ( 'date' ) | ( 'duration' ) | ( 'address' ) | ( 'email' ) | ( 'phone-number' ) | ( 'date-period' ) | ( 'time-period' ) | ( 'url' ) | ( 'any' ) | ( 'color' ) | ( 'language' ) );
+    // InternalVoice.g:419:1: rule__Sysvariable__ValueAlternatives_0 : ( ( 'number' ) | ( 'date-time' ) | ( 'date' ) | ( 'duration' ) | ( 'address' ) | ( 'email' ) | ( 'phone-number' ) | ( 'date-period' ) | ( 'time-period' ) | ( 'url' ) | ( 'any' ) | ( 'color' ) | ( 'language' ) );
     public final void rule__Sysvariable__ValueAlternatives_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:498:1: ( ( 'number' ) | ( 'date-time' ) | ( 'date' ) | ( 'duration' ) | ( 'address' ) | ( 'email' ) | ( 'phone-number' ) | ( 'date-period' ) | ( 'time-period' ) | ( 'url' ) | ( 'any' ) | ( 'color' ) | ( 'language' ) )
+            // InternalVoice.g:423:1: ( ( 'number' ) | ( 'date-time' ) | ( 'date' ) | ( 'duration' ) | ( 'address' ) | ( 'email' ) | ( 'phone-number' ) | ( 'date-period' ) | ( 'time-period' ) | ( 'url' ) | ( 'any' ) | ( 'color' ) | ( 'language' ) )
             int alt4=13;
             switch ( input.LA(1) ) {
-            case 13:
+            case 11:
                 {
                 alt4=1;
                 }
                 break;
-            case 14:
+            case 12:
                 {
                 alt4=2;
                 }
                 break;
-            case 15:
+            case 13:
                 {
                 alt4=3;
                 }
                 break;
-            case 16:
+            case 14:
                 {
                 alt4=4;
                 }
                 break;
-            case 17:
+            case 15:
                 {
                 alt4=5;
                 }
                 break;
-            case 18:
+            case 16:
                 {
                 alt4=6;
                 }
                 break;
-            case 19:
+            case 17:
                 {
                 alt4=7;
                 }
                 break;
-            case 20:
+            case 18:
                 {
                 alt4=8;
                 }
                 break;
-            case 21:
+            case 19:
                 {
                 alt4=9;
                 }
                 break;
-            case 22:
+            case 20:
                 {
                 alt4=10;
                 }
                 break;
-            case 23:
+            case 21:
                 {
                 alt4=11;
                 }
                 break;
-            case 24:
+            case 22:
                 {
                 alt4=12;
                 }
                 break;
-            case 25:
+            case 23:
                 {
                 alt4=13;
                 }
@@ -1559,13 +1356,13 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
             switch (alt4) {
                 case 1 :
-                    // InternalVoice.g:499:2: ( 'number' )
+                    // InternalVoice.g:424:2: ( 'number' )
                     {
-                    // InternalVoice.g:499:2: ( 'number' )
-                    // InternalVoice.g:500:3: 'number'
+                    // InternalVoice.g:424:2: ( 'number' )
+                    // InternalVoice.g:425:3: 'number'
                     {
                      before(grammarAccess.getSysvariableAccess().getValueNumberKeyword_0_0()); 
-                    match(input,13,FOLLOW_2); 
+                    match(input,11,FOLLOW_2); 
                      after(grammarAccess.getSysvariableAccess().getValueNumberKeyword_0_0()); 
 
                     }
@@ -1574,13 +1371,13 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // InternalVoice.g:505:2: ( 'date-time' )
+                    // InternalVoice.g:430:2: ( 'date-time' )
                     {
-                    // InternalVoice.g:505:2: ( 'date-time' )
-                    // InternalVoice.g:506:3: 'date-time'
+                    // InternalVoice.g:430:2: ( 'date-time' )
+                    // InternalVoice.g:431:3: 'date-time'
                     {
                      before(grammarAccess.getSysvariableAccess().getValueDateTimeKeyword_0_1()); 
-                    match(input,14,FOLLOW_2); 
+                    match(input,12,FOLLOW_2); 
                      after(grammarAccess.getSysvariableAccess().getValueDateTimeKeyword_0_1()); 
 
                     }
@@ -1589,13 +1386,13 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 3 :
-                    // InternalVoice.g:511:2: ( 'date' )
+                    // InternalVoice.g:436:2: ( 'date' )
                     {
-                    // InternalVoice.g:511:2: ( 'date' )
-                    // InternalVoice.g:512:3: 'date'
+                    // InternalVoice.g:436:2: ( 'date' )
+                    // InternalVoice.g:437:3: 'date'
                     {
                      before(grammarAccess.getSysvariableAccess().getValueDateKeyword_0_2()); 
-                    match(input,15,FOLLOW_2); 
+                    match(input,13,FOLLOW_2); 
                      after(grammarAccess.getSysvariableAccess().getValueDateKeyword_0_2()); 
 
                     }
@@ -1604,13 +1401,13 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 4 :
-                    // InternalVoice.g:517:2: ( 'duration' )
+                    // InternalVoice.g:442:2: ( 'duration' )
                     {
-                    // InternalVoice.g:517:2: ( 'duration' )
-                    // InternalVoice.g:518:3: 'duration'
+                    // InternalVoice.g:442:2: ( 'duration' )
+                    // InternalVoice.g:443:3: 'duration'
                     {
                      before(grammarAccess.getSysvariableAccess().getValueDurationKeyword_0_3()); 
-                    match(input,16,FOLLOW_2); 
+                    match(input,14,FOLLOW_2); 
                      after(grammarAccess.getSysvariableAccess().getValueDurationKeyword_0_3()); 
 
                     }
@@ -1619,13 +1416,13 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 5 :
-                    // InternalVoice.g:523:2: ( 'address' )
+                    // InternalVoice.g:448:2: ( 'address' )
                     {
-                    // InternalVoice.g:523:2: ( 'address' )
-                    // InternalVoice.g:524:3: 'address'
+                    // InternalVoice.g:448:2: ( 'address' )
+                    // InternalVoice.g:449:3: 'address'
                     {
                      before(grammarAccess.getSysvariableAccess().getValueAddressKeyword_0_4()); 
-                    match(input,17,FOLLOW_2); 
+                    match(input,15,FOLLOW_2); 
                      after(grammarAccess.getSysvariableAccess().getValueAddressKeyword_0_4()); 
 
                     }
@@ -1634,13 +1431,13 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 6 :
-                    // InternalVoice.g:529:2: ( 'email' )
+                    // InternalVoice.g:454:2: ( 'email' )
                     {
-                    // InternalVoice.g:529:2: ( 'email' )
-                    // InternalVoice.g:530:3: 'email'
+                    // InternalVoice.g:454:2: ( 'email' )
+                    // InternalVoice.g:455:3: 'email'
                     {
                      before(grammarAccess.getSysvariableAccess().getValueEmailKeyword_0_5()); 
-                    match(input,18,FOLLOW_2); 
+                    match(input,16,FOLLOW_2); 
                      after(grammarAccess.getSysvariableAccess().getValueEmailKeyword_0_5()); 
 
                     }
@@ -1649,13 +1446,13 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 7 :
-                    // InternalVoice.g:535:2: ( 'phone-number' )
+                    // InternalVoice.g:460:2: ( 'phone-number' )
                     {
-                    // InternalVoice.g:535:2: ( 'phone-number' )
-                    // InternalVoice.g:536:3: 'phone-number'
+                    // InternalVoice.g:460:2: ( 'phone-number' )
+                    // InternalVoice.g:461:3: 'phone-number'
                     {
                      before(grammarAccess.getSysvariableAccess().getValuePhoneNumberKeyword_0_6()); 
-                    match(input,19,FOLLOW_2); 
+                    match(input,17,FOLLOW_2); 
                      after(grammarAccess.getSysvariableAccess().getValuePhoneNumberKeyword_0_6()); 
 
                     }
@@ -1664,13 +1461,13 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 8 :
-                    // InternalVoice.g:541:2: ( 'date-period' )
+                    // InternalVoice.g:466:2: ( 'date-period' )
                     {
-                    // InternalVoice.g:541:2: ( 'date-period' )
-                    // InternalVoice.g:542:3: 'date-period'
+                    // InternalVoice.g:466:2: ( 'date-period' )
+                    // InternalVoice.g:467:3: 'date-period'
                     {
                      before(grammarAccess.getSysvariableAccess().getValueDatePeriodKeyword_0_7()); 
-                    match(input,20,FOLLOW_2); 
+                    match(input,18,FOLLOW_2); 
                      after(grammarAccess.getSysvariableAccess().getValueDatePeriodKeyword_0_7()); 
 
                     }
@@ -1679,13 +1476,13 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 9 :
-                    // InternalVoice.g:547:2: ( 'time-period' )
+                    // InternalVoice.g:472:2: ( 'time-period' )
                     {
-                    // InternalVoice.g:547:2: ( 'time-period' )
-                    // InternalVoice.g:548:3: 'time-period'
+                    // InternalVoice.g:472:2: ( 'time-period' )
+                    // InternalVoice.g:473:3: 'time-period'
                     {
                      before(grammarAccess.getSysvariableAccess().getValueTimePeriodKeyword_0_8()); 
-                    match(input,21,FOLLOW_2); 
+                    match(input,19,FOLLOW_2); 
                      after(grammarAccess.getSysvariableAccess().getValueTimePeriodKeyword_0_8()); 
 
                     }
@@ -1694,13 +1491,13 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 10 :
-                    // InternalVoice.g:553:2: ( 'url' )
+                    // InternalVoice.g:478:2: ( 'url' )
                     {
-                    // InternalVoice.g:553:2: ( 'url' )
-                    // InternalVoice.g:554:3: 'url'
+                    // InternalVoice.g:478:2: ( 'url' )
+                    // InternalVoice.g:479:3: 'url'
                     {
                      before(grammarAccess.getSysvariableAccess().getValueUrlKeyword_0_9()); 
-                    match(input,22,FOLLOW_2); 
+                    match(input,20,FOLLOW_2); 
                      after(grammarAccess.getSysvariableAccess().getValueUrlKeyword_0_9()); 
 
                     }
@@ -1709,13 +1506,13 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 11 :
-                    // InternalVoice.g:559:2: ( 'any' )
+                    // InternalVoice.g:484:2: ( 'any' )
                     {
-                    // InternalVoice.g:559:2: ( 'any' )
-                    // InternalVoice.g:560:3: 'any'
+                    // InternalVoice.g:484:2: ( 'any' )
+                    // InternalVoice.g:485:3: 'any'
                     {
                      before(grammarAccess.getSysvariableAccess().getValueAnyKeyword_0_10()); 
-                    match(input,23,FOLLOW_2); 
+                    match(input,21,FOLLOW_2); 
                      after(grammarAccess.getSysvariableAccess().getValueAnyKeyword_0_10()); 
 
                     }
@@ -1724,13 +1521,13 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 12 :
-                    // InternalVoice.g:565:2: ( 'color' )
+                    // InternalVoice.g:490:2: ( 'color' )
                     {
-                    // InternalVoice.g:565:2: ( 'color' )
-                    // InternalVoice.g:566:3: 'color'
+                    // InternalVoice.g:490:2: ( 'color' )
+                    // InternalVoice.g:491:3: 'color'
                     {
                      before(grammarAccess.getSysvariableAccess().getValueColorKeyword_0_11()); 
-                    match(input,24,FOLLOW_2); 
+                    match(input,22,FOLLOW_2); 
                      after(grammarAccess.getSysvariableAccess().getValueColorKeyword_0_11()); 
 
                     }
@@ -1739,13 +1536,13 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 13 :
-                    // InternalVoice.g:571:2: ( 'language' )
+                    // InternalVoice.g:496:2: ( 'language' )
                     {
-                    // InternalVoice.g:571:2: ( 'language' )
-                    // InternalVoice.g:572:3: 'language'
+                    // InternalVoice.g:496:2: ( 'language' )
+                    // InternalVoice.g:497:3: 'language'
                     {
                      before(grammarAccess.getSysvariableAccess().getValueLanguageKeyword_0_12()); 
-                    match(input,25,FOLLOW_2); 
+                    match(input,23,FOLLOW_2); 
                      after(grammarAccess.getSysvariableAccess().getValueLanguageKeyword_0_12()); 
 
                     }
@@ -1771,20 +1568,20 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Reference__Alternatives"
-    // InternalVoice.g:581:1: rule__Reference__Alternatives : ( ( ( rule__Reference__EntityAssignment_0 ) ) | ( ( rule__Reference__SysvarAssignment_1 ) ) );
+    // InternalVoice.g:506:1: rule__Reference__Alternatives : ( ( ( rule__Reference__EntityAssignment_0 ) ) | ( ( rule__Reference__SysvarAssignment_1 ) ) );
     public final void rule__Reference__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:585:1: ( ( ( rule__Reference__EntityAssignment_0 ) ) | ( ( rule__Reference__SysvarAssignment_1 ) ) )
+            // InternalVoice.g:510:1: ( ( ( rule__Reference__EntityAssignment_0 ) ) | ( ( rule__Reference__SysvarAssignment_1 ) ) )
             int alt5=2;
             int LA5_0 = input.LA(1);
 
             if ( (LA5_0==RULE_ID) ) {
                 alt5=1;
             }
-            else if ( ((LA5_0>=13 && LA5_0<=25)) ) {
+            else if ( ((LA5_0>=11 && LA5_0<=23)) ) {
                 alt5=2;
             }
             else {
@@ -1795,14 +1592,14 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
             }
             switch (alt5) {
                 case 1 :
-                    // InternalVoice.g:586:2: ( ( rule__Reference__EntityAssignment_0 ) )
+                    // InternalVoice.g:511:2: ( ( rule__Reference__EntityAssignment_0 ) )
                     {
-                    // InternalVoice.g:586:2: ( ( rule__Reference__EntityAssignment_0 ) )
-                    // InternalVoice.g:587:3: ( rule__Reference__EntityAssignment_0 )
+                    // InternalVoice.g:511:2: ( ( rule__Reference__EntityAssignment_0 ) )
+                    // InternalVoice.g:512:3: ( rule__Reference__EntityAssignment_0 )
                     {
                      before(grammarAccess.getReferenceAccess().getEntityAssignment_0()); 
-                    // InternalVoice.g:588:3: ( rule__Reference__EntityAssignment_0 )
-                    // InternalVoice.g:588:4: rule__Reference__EntityAssignment_0
+                    // InternalVoice.g:513:3: ( rule__Reference__EntityAssignment_0 )
+                    // InternalVoice.g:513:4: rule__Reference__EntityAssignment_0
                     {
                     pushFollow(FOLLOW_2);
                     rule__Reference__EntityAssignment_0();
@@ -1820,14 +1617,14 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // InternalVoice.g:592:2: ( ( rule__Reference__SysvarAssignment_1 ) )
+                    // InternalVoice.g:517:2: ( ( rule__Reference__SysvarAssignment_1 ) )
                     {
-                    // InternalVoice.g:592:2: ( ( rule__Reference__SysvarAssignment_1 ) )
-                    // InternalVoice.g:593:3: ( rule__Reference__SysvarAssignment_1 )
+                    // InternalVoice.g:517:2: ( ( rule__Reference__SysvarAssignment_1 ) )
+                    // InternalVoice.g:518:3: ( rule__Reference__SysvarAssignment_1 )
                     {
                      before(grammarAccess.getReferenceAccess().getSysvarAssignment_1()); 
-                    // InternalVoice.g:594:3: ( rule__Reference__SysvarAssignment_1 )
-                    // InternalVoice.g:594:4: rule__Reference__SysvarAssignment_1
+                    // InternalVoice.g:519:3: ( rule__Reference__SysvarAssignment_1 )
+                    // InternalVoice.g:519:4: rule__Reference__SysvarAssignment_1
                     {
                     pushFollow(FOLLOW_2);
                     rule__Reference__SysvarAssignment_1();
@@ -1862,14 +1659,14 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Intent__Group__0"
-    // InternalVoice.g:602:1: rule__Intent__Group__0 : rule__Intent__Group__0__Impl rule__Intent__Group__1 ;
+    // InternalVoice.g:527:1: rule__Intent__Group__0 : rule__Intent__Group__0__Impl rule__Intent__Group__1 ;
     public final void rule__Intent__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:606:1: ( rule__Intent__Group__0__Impl rule__Intent__Group__1 )
-            // InternalVoice.g:607:2: rule__Intent__Group__0__Impl rule__Intent__Group__1
+            // InternalVoice.g:531:1: ( rule__Intent__Group__0__Impl rule__Intent__Group__1 )
+            // InternalVoice.g:532:2: rule__Intent__Group__0__Impl rule__Intent__Group__1
             {
             pushFollow(FOLLOW_4);
             rule__Intent__Group__0__Impl();
@@ -1900,20 +1697,20 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Intent__Group__0__Impl"
-    // InternalVoice.g:614:1: rule__Intent__Group__0__Impl : ( 'Intent' ) ;
+    // InternalVoice.g:539:1: rule__Intent__Group__0__Impl : ( 'Intent' ) ;
     public final void rule__Intent__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:618:1: ( ( 'Intent' ) )
-            // InternalVoice.g:619:1: ( 'Intent' )
+            // InternalVoice.g:543:1: ( ( 'Intent' ) )
+            // InternalVoice.g:544:1: ( 'Intent' )
             {
-            // InternalVoice.g:619:1: ( 'Intent' )
-            // InternalVoice.g:620:2: 'Intent'
+            // InternalVoice.g:544:1: ( 'Intent' )
+            // InternalVoice.g:545:2: 'Intent'
             {
              before(grammarAccess.getIntentAccess().getIntentKeyword_0()); 
-            match(input,26,FOLLOW_2); 
+            match(input,24,FOLLOW_2); 
              after(grammarAccess.getIntentAccess().getIntentKeyword_0()); 
 
             }
@@ -1937,14 +1734,14 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Intent__Group__1"
-    // InternalVoice.g:629:1: rule__Intent__Group__1 : rule__Intent__Group__1__Impl rule__Intent__Group__2 ;
+    // InternalVoice.g:554:1: rule__Intent__Group__1 : rule__Intent__Group__1__Impl rule__Intent__Group__2 ;
     public final void rule__Intent__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:633:1: ( rule__Intent__Group__1__Impl rule__Intent__Group__2 )
-            // InternalVoice.g:634:2: rule__Intent__Group__1__Impl rule__Intent__Group__2
+            // InternalVoice.g:558:1: ( rule__Intent__Group__1__Impl rule__Intent__Group__2 )
+            // InternalVoice.g:559:2: rule__Intent__Group__1__Impl rule__Intent__Group__2
             {
             pushFollow(FOLLOW_5);
             rule__Intent__Group__1__Impl();
@@ -1975,21 +1772,21 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Intent__Group__1__Impl"
-    // InternalVoice.g:641:1: rule__Intent__Group__1__Impl : ( ( rule__Intent__NameAssignment_1 ) ) ;
+    // InternalVoice.g:566:1: rule__Intent__Group__1__Impl : ( ( rule__Intent__NameAssignment_1 ) ) ;
     public final void rule__Intent__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:645:1: ( ( ( rule__Intent__NameAssignment_1 ) ) )
-            // InternalVoice.g:646:1: ( ( rule__Intent__NameAssignment_1 ) )
+            // InternalVoice.g:570:1: ( ( ( rule__Intent__NameAssignment_1 ) ) )
+            // InternalVoice.g:571:1: ( ( rule__Intent__NameAssignment_1 ) )
             {
-            // InternalVoice.g:646:1: ( ( rule__Intent__NameAssignment_1 ) )
-            // InternalVoice.g:647:2: ( rule__Intent__NameAssignment_1 )
+            // InternalVoice.g:571:1: ( ( rule__Intent__NameAssignment_1 ) )
+            // InternalVoice.g:572:2: ( rule__Intent__NameAssignment_1 )
             {
              before(grammarAccess.getIntentAccess().getNameAssignment_1()); 
-            // InternalVoice.g:648:2: ( rule__Intent__NameAssignment_1 )
-            // InternalVoice.g:648:3: rule__Intent__NameAssignment_1
+            // InternalVoice.g:573:2: ( rule__Intent__NameAssignment_1 )
+            // InternalVoice.g:573:3: rule__Intent__NameAssignment_1
             {
             pushFollow(FOLLOW_2);
             rule__Intent__NameAssignment_1();
@@ -2022,14 +1819,14 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Intent__Group__2"
-    // InternalVoice.g:656:1: rule__Intent__Group__2 : rule__Intent__Group__2__Impl rule__Intent__Group__3 ;
+    // InternalVoice.g:581:1: rule__Intent__Group__2 : rule__Intent__Group__2__Impl rule__Intent__Group__3 ;
     public final void rule__Intent__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:660:1: ( rule__Intent__Group__2__Impl rule__Intent__Group__3 )
-            // InternalVoice.g:661:2: rule__Intent__Group__2__Impl rule__Intent__Group__3
+            // InternalVoice.g:585:1: ( rule__Intent__Group__2__Impl rule__Intent__Group__3 )
+            // InternalVoice.g:586:2: rule__Intent__Group__2__Impl rule__Intent__Group__3
             {
             pushFollow(FOLLOW_5);
             rule__Intent__Group__2__Impl();
@@ -2060,32 +1857,32 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Intent__Group__2__Impl"
-    // InternalVoice.g:668:1: rule__Intent__Group__2__Impl : ( ( rule__Intent__HasFollowupAssignment_2 )? ) ;
+    // InternalVoice.g:593:1: rule__Intent__Group__2__Impl : ( ( rule__Intent__IsFollowupAssignment_2 )? ) ;
     public final void rule__Intent__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:672:1: ( ( ( rule__Intent__HasFollowupAssignment_2 )? ) )
-            // InternalVoice.g:673:1: ( ( rule__Intent__HasFollowupAssignment_2 )? )
+            // InternalVoice.g:597:1: ( ( ( rule__Intent__IsFollowupAssignment_2 )? ) )
+            // InternalVoice.g:598:1: ( ( rule__Intent__IsFollowupAssignment_2 )? )
             {
-            // InternalVoice.g:673:1: ( ( rule__Intent__HasFollowupAssignment_2 )? )
-            // InternalVoice.g:674:2: ( rule__Intent__HasFollowupAssignment_2 )?
+            // InternalVoice.g:598:1: ( ( rule__Intent__IsFollowupAssignment_2 )? )
+            // InternalVoice.g:599:2: ( rule__Intent__IsFollowupAssignment_2 )?
             {
-             before(grammarAccess.getIntentAccess().getHasFollowupAssignment_2()); 
-            // InternalVoice.g:675:2: ( rule__Intent__HasFollowupAssignment_2 )?
+             before(grammarAccess.getIntentAccess().getIsFollowupAssignment_2()); 
+            // InternalVoice.g:600:2: ( rule__Intent__IsFollowupAssignment_2 )?
             int alt6=2;
             int LA6_0 = input.LA(1);
 
-            if ( (LA6_0==12) ) {
+            if ( (LA6_0==35) ) {
                 alt6=1;
             }
             switch (alt6) {
                 case 1 :
-                    // InternalVoice.g:675:3: rule__Intent__HasFollowupAssignment_2
+                    // InternalVoice.g:600:3: rule__Intent__IsFollowupAssignment_2
                     {
                     pushFollow(FOLLOW_2);
-                    rule__Intent__HasFollowupAssignment_2();
+                    rule__Intent__IsFollowupAssignment_2();
 
                     state._fsp--;
 
@@ -2095,7 +1892,7 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
             }
 
-             after(grammarAccess.getIntentAccess().getHasFollowupAssignment_2()); 
+             after(grammarAccess.getIntentAccess().getIsFollowupAssignment_2()); 
 
             }
 
@@ -2118,16 +1915,16 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Intent__Group__3"
-    // InternalVoice.g:683:1: rule__Intent__Group__3 : rule__Intent__Group__3__Impl rule__Intent__Group__4 ;
+    // InternalVoice.g:608:1: rule__Intent__Group__3 : rule__Intent__Group__3__Impl rule__Intent__Group__4 ;
     public final void rule__Intent__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:687:1: ( rule__Intent__Group__3__Impl rule__Intent__Group__4 )
-            // InternalVoice.g:688:2: rule__Intent__Group__3__Impl rule__Intent__Group__4
+            // InternalVoice.g:612:1: ( rule__Intent__Group__3__Impl rule__Intent__Group__4 )
+            // InternalVoice.g:613:2: rule__Intent__Group__3__Impl rule__Intent__Group__4
             {
-            pushFollow(FOLLOW_5);
+            pushFollow(FOLLOW_6);
             rule__Intent__Group__3__Impl();
 
             state._fsp--;
@@ -2156,42 +1953,74 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Intent__Group__3__Impl"
-    // InternalVoice.g:695:1: rule__Intent__Group__3__Impl : ( ( rule__Intent__IsFollowupAssignment_3 )? ) ;
+    // InternalVoice.g:620:1: rule__Intent__Group__3__Impl : ( ( ( rule__Intent__QuestionAssignment_3 ) ) ( ( rule__Intent__QuestionAssignment_3 )* ) ) ;
     public final void rule__Intent__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:699:1: ( ( ( rule__Intent__IsFollowupAssignment_3 )? ) )
-            // InternalVoice.g:700:1: ( ( rule__Intent__IsFollowupAssignment_3 )? )
+            // InternalVoice.g:624:1: ( ( ( ( rule__Intent__QuestionAssignment_3 ) ) ( ( rule__Intent__QuestionAssignment_3 )* ) ) )
+            // InternalVoice.g:625:1: ( ( ( rule__Intent__QuestionAssignment_3 ) ) ( ( rule__Intent__QuestionAssignment_3 )* ) )
             {
-            // InternalVoice.g:700:1: ( ( rule__Intent__IsFollowupAssignment_3 )? )
-            // InternalVoice.g:701:2: ( rule__Intent__IsFollowupAssignment_3 )?
+            // InternalVoice.g:625:1: ( ( ( rule__Intent__QuestionAssignment_3 ) ) ( ( rule__Intent__QuestionAssignment_3 )* ) )
+            // InternalVoice.g:626:2: ( ( rule__Intent__QuestionAssignment_3 ) ) ( ( rule__Intent__QuestionAssignment_3 )* )
             {
-             before(grammarAccess.getIntentAccess().getIsFollowupAssignment_3()); 
-            // InternalVoice.g:702:2: ( rule__Intent__IsFollowupAssignment_3 )?
-            int alt7=2;
-            int LA7_0 = input.LA(1);
+            // InternalVoice.g:626:2: ( ( rule__Intent__QuestionAssignment_3 ) )
+            // InternalVoice.g:627:3: ( rule__Intent__QuestionAssignment_3 )
+            {
+             before(grammarAccess.getIntentAccess().getQuestionAssignment_3()); 
+            // InternalVoice.g:628:3: ( rule__Intent__QuestionAssignment_3 )
+            // InternalVoice.g:628:4: rule__Intent__QuestionAssignment_3
+            {
+            pushFollow(FOLLOW_7);
+            rule__Intent__QuestionAssignment_3();
 
-            if ( (LA7_0==37) ) {
-                alt7=1;
-            }
-            switch (alt7) {
-                case 1 :
-                    // InternalVoice.g:702:3: rule__Intent__IsFollowupAssignment_3
-                    {
-                    pushFollow(FOLLOW_2);
-                    rule__Intent__IsFollowupAssignment_3();
+            state._fsp--;
 
-                    state._fsp--;
-
-
-                    }
-                    break;
 
             }
 
-             after(grammarAccess.getIntentAccess().getIsFollowupAssignment_3()); 
+             after(grammarAccess.getIntentAccess().getQuestionAssignment_3()); 
+
+            }
+
+            // InternalVoice.g:631:2: ( ( rule__Intent__QuestionAssignment_3 )* )
+            // InternalVoice.g:632:3: ( rule__Intent__QuestionAssignment_3 )*
+            {
+             before(grammarAccess.getIntentAccess().getQuestionAssignment_3()); 
+            // InternalVoice.g:633:3: ( rule__Intent__QuestionAssignment_3 )*
+            loop7:
+            do {
+                int alt7=2;
+                int LA7_0 = input.LA(1);
+
+                if ( (LA7_0==RULE_ID||(LA7_0>=11 && LA7_0<=23)) ) {
+                    alt7=1;
+                }
+
+
+                switch (alt7) {
+            	case 1 :
+            	    // InternalVoice.g:633:4: rule__Intent__QuestionAssignment_3
+            	    {
+            	    pushFollow(FOLLOW_7);
+            	    rule__Intent__QuestionAssignment_3();
+
+            	    state._fsp--;
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop7;
+                }
+            } while (true);
+
+             after(grammarAccess.getIntentAccess().getQuestionAssignment_3()); 
+
+            }
+
 
             }
 
@@ -2214,22 +2043,17 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Intent__Group__4"
-    // InternalVoice.g:710:1: rule__Intent__Group__4 : rule__Intent__Group__4__Impl rule__Intent__Group__5 ;
+    // InternalVoice.g:642:1: rule__Intent__Group__4 : rule__Intent__Group__4__Impl ;
     public final void rule__Intent__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:714:1: ( rule__Intent__Group__4__Impl rule__Intent__Group__5 )
-            // InternalVoice.g:715:2: rule__Intent__Group__4__Impl rule__Intent__Group__5
+            // InternalVoice.g:646:1: ( rule__Intent__Group__4__Impl )
+            // InternalVoice.g:647:2: rule__Intent__Group__4__Impl
             {
-            pushFollow(FOLLOW_6);
-            rule__Intent__Group__4__Impl();
-
-            state._fsp--;
-
             pushFollow(FOLLOW_2);
-            rule__Intent__Group__5();
+            rule__Intent__Group__4__Impl();
 
             state._fsp--;
 
@@ -2252,74 +2076,31 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Intent__Group__4__Impl"
-    // InternalVoice.g:722:1: rule__Intent__Group__4__Impl : ( ( ( rule__Intent__QuestionAssignment_4 ) ) ( ( rule__Intent__QuestionAssignment_4 )* ) ) ;
+    // InternalVoice.g:653:1: rule__Intent__Group__4__Impl : ( ( rule__Intent__TrainingAssignment_4 ) ) ;
     public final void rule__Intent__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:726:1: ( ( ( ( rule__Intent__QuestionAssignment_4 ) ) ( ( rule__Intent__QuestionAssignment_4 )* ) ) )
-            // InternalVoice.g:727:1: ( ( ( rule__Intent__QuestionAssignment_4 ) ) ( ( rule__Intent__QuestionAssignment_4 )* ) )
+            // InternalVoice.g:657:1: ( ( ( rule__Intent__TrainingAssignment_4 ) ) )
+            // InternalVoice.g:658:1: ( ( rule__Intent__TrainingAssignment_4 ) )
             {
-            // InternalVoice.g:727:1: ( ( ( rule__Intent__QuestionAssignment_4 ) ) ( ( rule__Intent__QuestionAssignment_4 )* ) )
-            // InternalVoice.g:728:2: ( ( rule__Intent__QuestionAssignment_4 ) ) ( ( rule__Intent__QuestionAssignment_4 )* )
+            // InternalVoice.g:658:1: ( ( rule__Intent__TrainingAssignment_4 ) )
+            // InternalVoice.g:659:2: ( rule__Intent__TrainingAssignment_4 )
             {
-            // InternalVoice.g:728:2: ( ( rule__Intent__QuestionAssignment_4 ) )
-            // InternalVoice.g:729:3: ( rule__Intent__QuestionAssignment_4 )
+             before(grammarAccess.getIntentAccess().getTrainingAssignment_4()); 
+            // InternalVoice.g:660:2: ( rule__Intent__TrainingAssignment_4 )
+            // InternalVoice.g:660:3: rule__Intent__TrainingAssignment_4
             {
-             before(grammarAccess.getIntentAccess().getQuestionAssignment_4()); 
-            // InternalVoice.g:730:3: ( rule__Intent__QuestionAssignment_4 )
-            // InternalVoice.g:730:4: rule__Intent__QuestionAssignment_4
-            {
-            pushFollow(FOLLOW_7);
-            rule__Intent__QuestionAssignment_4();
+            pushFollow(FOLLOW_2);
+            rule__Intent__TrainingAssignment_4();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getIntentAccess().getQuestionAssignment_4()); 
-
-            }
-
-            // InternalVoice.g:733:2: ( ( rule__Intent__QuestionAssignment_4 )* )
-            // InternalVoice.g:734:3: ( rule__Intent__QuestionAssignment_4 )*
-            {
-             before(grammarAccess.getIntentAccess().getQuestionAssignment_4()); 
-            // InternalVoice.g:735:3: ( rule__Intent__QuestionAssignment_4 )*
-            loop8:
-            do {
-                int alt8=2;
-                int LA8_0 = input.LA(1);
-
-                if ( (LA8_0==RULE_ID||LA8_0==11||(LA8_0>=13 && LA8_0<=25)) ) {
-                    alt8=1;
-                }
-
-
-                switch (alt8) {
-            	case 1 :
-            	    // InternalVoice.g:735:4: rule__Intent__QuestionAssignment_4
-            	    {
-            	    pushFollow(FOLLOW_7);
-            	    rule__Intent__QuestionAssignment_4();
-
-            	    state._fsp--;
-
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop8;
-                }
-            } while (true);
-
-             after(grammarAccess.getIntentAccess().getQuestionAssignment_4()); 
-
-            }
-
+             after(grammarAccess.getIntentAccess().getTrainingAssignment_4()); 
 
             }
 
@@ -2341,95 +2122,15 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Intent__Group__4__Impl"
 
 
-    // $ANTLR start "rule__Intent__Group__5"
-    // InternalVoice.g:744:1: rule__Intent__Group__5 : rule__Intent__Group__5__Impl ;
-    public final void rule__Intent__Group__5() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalVoice.g:748:1: ( rule__Intent__Group__5__Impl )
-            // InternalVoice.g:749:2: rule__Intent__Group__5__Impl
-            {
-            pushFollow(FOLLOW_2);
-            rule__Intent__Group__5__Impl();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Intent__Group__5"
-
-
-    // $ANTLR start "rule__Intent__Group__5__Impl"
-    // InternalVoice.g:755:1: rule__Intent__Group__5__Impl : ( ( rule__Intent__TrainingAssignment_5 ) ) ;
-    public final void rule__Intent__Group__5__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalVoice.g:759:1: ( ( ( rule__Intent__TrainingAssignment_5 ) ) )
-            // InternalVoice.g:760:1: ( ( rule__Intent__TrainingAssignment_5 ) )
-            {
-            // InternalVoice.g:760:1: ( ( rule__Intent__TrainingAssignment_5 ) )
-            // InternalVoice.g:761:2: ( rule__Intent__TrainingAssignment_5 )
-            {
-             before(grammarAccess.getIntentAccess().getTrainingAssignment_5()); 
-            // InternalVoice.g:762:2: ( rule__Intent__TrainingAssignment_5 )
-            // InternalVoice.g:762:3: rule__Intent__TrainingAssignment_5
-            {
-            pushFollow(FOLLOW_2);
-            rule__Intent__TrainingAssignment_5();
-
-            state._fsp--;
-
-
-            }
-
-             after(grammarAccess.getIntentAccess().getTrainingAssignment_5()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Intent__Group__5__Impl"
-
-
     // $ANTLR start "rule__Entity__Group__0"
-    // InternalVoice.g:771:1: rule__Entity__Group__0 : rule__Entity__Group__0__Impl rule__Entity__Group__1 ;
+    // InternalVoice.g:669:1: rule__Entity__Group__0 : rule__Entity__Group__0__Impl rule__Entity__Group__1 ;
     public final void rule__Entity__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:775:1: ( rule__Entity__Group__0__Impl rule__Entity__Group__1 )
-            // InternalVoice.g:776:2: rule__Entity__Group__0__Impl rule__Entity__Group__1
+            // InternalVoice.g:673:1: ( rule__Entity__Group__0__Impl rule__Entity__Group__1 )
+            // InternalVoice.g:674:2: rule__Entity__Group__0__Impl rule__Entity__Group__1
             {
             pushFollow(FOLLOW_4);
             rule__Entity__Group__0__Impl();
@@ -2460,20 +2161,20 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Entity__Group__0__Impl"
-    // InternalVoice.g:783:1: rule__Entity__Group__0__Impl : ( 'Entity' ) ;
+    // InternalVoice.g:681:1: rule__Entity__Group__0__Impl : ( 'Entity' ) ;
     public final void rule__Entity__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:787:1: ( ( 'Entity' ) )
-            // InternalVoice.g:788:1: ( 'Entity' )
+            // InternalVoice.g:685:1: ( ( 'Entity' ) )
+            // InternalVoice.g:686:1: ( 'Entity' )
             {
-            // InternalVoice.g:788:1: ( 'Entity' )
-            // InternalVoice.g:789:2: 'Entity'
+            // InternalVoice.g:686:1: ( 'Entity' )
+            // InternalVoice.g:687:2: 'Entity'
             {
              before(grammarAccess.getEntityAccess().getEntityKeyword_0()); 
-            match(input,27,FOLLOW_2); 
+            match(input,25,FOLLOW_2); 
              after(grammarAccess.getEntityAccess().getEntityKeyword_0()); 
 
             }
@@ -2497,14 +2198,14 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Entity__Group__1"
-    // InternalVoice.g:798:1: rule__Entity__Group__1 : rule__Entity__Group__1__Impl rule__Entity__Group__2 ;
+    // InternalVoice.g:696:1: rule__Entity__Group__1 : rule__Entity__Group__1__Impl rule__Entity__Group__2 ;
     public final void rule__Entity__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:802:1: ( rule__Entity__Group__1__Impl rule__Entity__Group__2 )
-            // InternalVoice.g:803:2: rule__Entity__Group__1__Impl rule__Entity__Group__2
+            // InternalVoice.g:700:1: ( rule__Entity__Group__1__Impl rule__Entity__Group__2 )
+            // InternalVoice.g:701:2: rule__Entity__Group__1__Impl rule__Entity__Group__2
             {
             pushFollow(FOLLOW_8);
             rule__Entity__Group__1__Impl();
@@ -2535,21 +2236,21 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Entity__Group__1__Impl"
-    // InternalVoice.g:810:1: rule__Entity__Group__1__Impl : ( ( rule__Entity__NameAssignment_1 ) ) ;
+    // InternalVoice.g:708:1: rule__Entity__Group__1__Impl : ( ( rule__Entity__NameAssignment_1 ) ) ;
     public final void rule__Entity__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:814:1: ( ( ( rule__Entity__NameAssignment_1 ) ) )
-            // InternalVoice.g:815:1: ( ( rule__Entity__NameAssignment_1 ) )
+            // InternalVoice.g:712:1: ( ( ( rule__Entity__NameAssignment_1 ) ) )
+            // InternalVoice.g:713:1: ( ( rule__Entity__NameAssignment_1 ) )
             {
-            // InternalVoice.g:815:1: ( ( rule__Entity__NameAssignment_1 ) )
-            // InternalVoice.g:816:2: ( rule__Entity__NameAssignment_1 )
+            // InternalVoice.g:713:1: ( ( rule__Entity__NameAssignment_1 ) )
+            // InternalVoice.g:714:2: ( rule__Entity__NameAssignment_1 )
             {
              before(grammarAccess.getEntityAccess().getNameAssignment_1()); 
-            // InternalVoice.g:817:2: ( rule__Entity__NameAssignment_1 )
-            // InternalVoice.g:817:3: rule__Entity__NameAssignment_1
+            // InternalVoice.g:715:2: ( rule__Entity__NameAssignment_1 )
+            // InternalVoice.g:715:3: rule__Entity__NameAssignment_1
             {
             pushFollow(FOLLOW_2);
             rule__Entity__NameAssignment_1();
@@ -2582,14 +2283,14 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Entity__Group__2"
-    // InternalVoice.g:825:1: rule__Entity__Group__2 : rule__Entity__Group__2__Impl rule__Entity__Group__3 ;
+    // InternalVoice.g:723:1: rule__Entity__Group__2 : rule__Entity__Group__2__Impl rule__Entity__Group__3 ;
     public final void rule__Entity__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:829:1: ( rule__Entity__Group__2__Impl rule__Entity__Group__3 )
-            // InternalVoice.g:830:2: rule__Entity__Group__2__Impl rule__Entity__Group__3
+            // InternalVoice.g:727:1: ( rule__Entity__Group__2__Impl rule__Entity__Group__3 )
+            // InternalVoice.g:728:2: rule__Entity__Group__2__Impl rule__Entity__Group__3
             {
             pushFollow(FOLLOW_4);
             rule__Entity__Group__2__Impl();
@@ -2620,20 +2321,20 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Entity__Group__2__Impl"
-    // InternalVoice.g:837:1: rule__Entity__Group__2__Impl : ( '[' ) ;
+    // InternalVoice.g:735:1: rule__Entity__Group__2__Impl : ( '[' ) ;
     public final void rule__Entity__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:841:1: ( ( '[' ) )
-            // InternalVoice.g:842:1: ( '[' )
+            // InternalVoice.g:739:1: ( ( '[' ) )
+            // InternalVoice.g:740:1: ( '[' )
             {
-            // InternalVoice.g:842:1: ( '[' )
-            // InternalVoice.g:843:2: '['
+            // InternalVoice.g:740:1: ( '[' )
+            // InternalVoice.g:741:2: '['
             {
              before(grammarAccess.getEntityAccess().getLeftSquareBracketKeyword_2()); 
-            match(input,28,FOLLOW_2); 
+            match(input,26,FOLLOW_2); 
              after(grammarAccess.getEntityAccess().getLeftSquareBracketKeyword_2()); 
 
             }
@@ -2657,14 +2358,14 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Entity__Group__3"
-    // InternalVoice.g:852:1: rule__Entity__Group__3 : rule__Entity__Group__3__Impl rule__Entity__Group__4 ;
+    // InternalVoice.g:750:1: rule__Entity__Group__3 : rule__Entity__Group__3__Impl rule__Entity__Group__4 ;
     public final void rule__Entity__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:856:1: ( rule__Entity__Group__3__Impl rule__Entity__Group__4 )
-            // InternalVoice.g:857:2: rule__Entity__Group__3__Impl rule__Entity__Group__4
+            // InternalVoice.g:754:1: ( rule__Entity__Group__3__Impl rule__Entity__Group__4 )
+            // InternalVoice.g:755:2: rule__Entity__Group__3__Impl rule__Entity__Group__4
             {
             pushFollow(FOLLOW_9);
             rule__Entity__Group__3__Impl();
@@ -2695,24 +2396,24 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Entity__Group__3__Impl"
-    // InternalVoice.g:864:1: rule__Entity__Group__3__Impl : ( ( ( rule__Entity__ExampleAssignment_3 ) ) ( ( rule__Entity__ExampleAssignment_3 )* ) ) ;
+    // InternalVoice.g:762:1: rule__Entity__Group__3__Impl : ( ( ( rule__Entity__ExampleAssignment_3 ) ) ( ( rule__Entity__ExampleAssignment_3 )* ) ) ;
     public final void rule__Entity__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:868:1: ( ( ( ( rule__Entity__ExampleAssignment_3 ) ) ( ( rule__Entity__ExampleAssignment_3 )* ) ) )
-            // InternalVoice.g:869:1: ( ( ( rule__Entity__ExampleAssignment_3 ) ) ( ( rule__Entity__ExampleAssignment_3 )* ) )
+            // InternalVoice.g:766:1: ( ( ( ( rule__Entity__ExampleAssignment_3 ) ) ( ( rule__Entity__ExampleAssignment_3 )* ) ) )
+            // InternalVoice.g:767:1: ( ( ( rule__Entity__ExampleAssignment_3 ) ) ( ( rule__Entity__ExampleAssignment_3 )* ) )
             {
-            // InternalVoice.g:869:1: ( ( ( rule__Entity__ExampleAssignment_3 ) ) ( ( rule__Entity__ExampleAssignment_3 )* ) )
-            // InternalVoice.g:870:2: ( ( rule__Entity__ExampleAssignment_3 ) ) ( ( rule__Entity__ExampleAssignment_3 )* )
+            // InternalVoice.g:767:1: ( ( ( rule__Entity__ExampleAssignment_3 ) ) ( ( rule__Entity__ExampleAssignment_3 )* ) )
+            // InternalVoice.g:768:2: ( ( rule__Entity__ExampleAssignment_3 ) ) ( ( rule__Entity__ExampleAssignment_3 )* )
             {
-            // InternalVoice.g:870:2: ( ( rule__Entity__ExampleAssignment_3 ) )
-            // InternalVoice.g:871:3: ( rule__Entity__ExampleAssignment_3 )
+            // InternalVoice.g:768:2: ( ( rule__Entity__ExampleAssignment_3 ) )
+            // InternalVoice.g:769:3: ( rule__Entity__ExampleAssignment_3 )
             {
              before(grammarAccess.getEntityAccess().getExampleAssignment_3()); 
-            // InternalVoice.g:872:3: ( rule__Entity__ExampleAssignment_3 )
-            // InternalVoice.g:872:4: rule__Entity__ExampleAssignment_3
+            // InternalVoice.g:770:3: ( rule__Entity__ExampleAssignment_3 )
+            // InternalVoice.g:770:4: rule__Entity__ExampleAssignment_3
             {
             pushFollow(FOLLOW_10);
             rule__Entity__ExampleAssignment_3();
@@ -2726,24 +2427,24 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
             }
 
-            // InternalVoice.g:875:2: ( ( rule__Entity__ExampleAssignment_3 )* )
-            // InternalVoice.g:876:3: ( rule__Entity__ExampleAssignment_3 )*
+            // InternalVoice.g:773:2: ( ( rule__Entity__ExampleAssignment_3 )* )
+            // InternalVoice.g:774:3: ( rule__Entity__ExampleAssignment_3 )*
             {
              before(grammarAccess.getEntityAccess().getExampleAssignment_3()); 
-            // InternalVoice.g:877:3: ( rule__Entity__ExampleAssignment_3 )*
-            loop9:
+            // InternalVoice.g:775:3: ( rule__Entity__ExampleAssignment_3 )*
+            loop8:
             do {
-                int alt9=2;
-                int LA9_0 = input.LA(1);
+                int alt8=2;
+                int LA8_0 = input.LA(1);
 
-                if ( (LA9_0==RULE_ID) ) {
-                    alt9=1;
+                if ( (LA8_0==RULE_ID) ) {
+                    alt8=1;
                 }
 
 
-                switch (alt9) {
+                switch (alt8) {
             	case 1 :
-            	    // InternalVoice.g:877:4: rule__Entity__ExampleAssignment_3
+            	    // InternalVoice.g:775:4: rule__Entity__ExampleAssignment_3
             	    {
             	    pushFollow(FOLLOW_10);
             	    rule__Entity__ExampleAssignment_3();
@@ -2755,7 +2456,7 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
             	    break;
 
             	default :
-            	    break loop9;
+            	    break loop8;
                 }
             } while (true);
 
@@ -2785,14 +2486,14 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Entity__Group__4"
-    // InternalVoice.g:886:1: rule__Entity__Group__4 : rule__Entity__Group__4__Impl ;
+    // InternalVoice.g:784:1: rule__Entity__Group__4 : rule__Entity__Group__4__Impl ;
     public final void rule__Entity__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:890:1: ( rule__Entity__Group__4__Impl )
-            // InternalVoice.g:891:2: rule__Entity__Group__4__Impl
+            // InternalVoice.g:788:1: ( rule__Entity__Group__4__Impl )
+            // InternalVoice.g:789:2: rule__Entity__Group__4__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Entity__Group__4__Impl();
@@ -2818,20 +2519,20 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Entity__Group__4__Impl"
-    // InternalVoice.g:897:1: rule__Entity__Group__4__Impl : ( ']' ) ;
+    // InternalVoice.g:795:1: rule__Entity__Group__4__Impl : ( ']' ) ;
     public final void rule__Entity__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:901:1: ( ( ']' ) )
-            // InternalVoice.g:902:1: ( ']' )
+            // InternalVoice.g:799:1: ( ( ']' ) )
+            // InternalVoice.g:800:1: ( ']' )
             {
-            // InternalVoice.g:902:1: ( ']' )
-            // InternalVoice.g:903:2: ']'
+            // InternalVoice.g:800:1: ( ']' )
+            // InternalVoice.g:801:2: ']'
             {
              before(grammarAccess.getEntityAccess().getRightSquareBracketKeyword_4()); 
-            match(input,29,FOLLOW_2); 
+            match(input,27,FOLLOW_2); 
              after(grammarAccess.getEntityAccess().getRightSquareBracketKeyword_4()); 
 
             }
@@ -2855,16 +2556,16 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Question__Group__0"
-    // InternalVoice.g:913:1: rule__Question__Group__0 : rule__Question__Group__0__Impl rule__Question__Group__1 ;
+    // InternalVoice.g:811:1: rule__Question__Group__0 : rule__Question__Group__0__Impl rule__Question__Group__1 ;
     public final void rule__Question__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:917:1: ( rule__Question__Group__0__Impl rule__Question__Group__1 )
-            // InternalVoice.g:918:2: rule__Question__Group__0__Impl rule__Question__Group__1
+            // InternalVoice.g:815:1: ( rule__Question__Group__0__Impl rule__Question__Group__1 )
+            // InternalVoice.g:816:2: rule__Question__Group__0__Impl rule__Question__Group__1
             {
-            pushFollow(FOLLOW_5);
+            pushFollow(FOLLOW_11);
             rule__Question__Group__0__Impl();
 
             state._fsp--;
@@ -2893,42 +2594,31 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Question__Group__0__Impl"
-    // InternalVoice.g:925:1: rule__Question__Group__0__Impl : ( ( rule__Question__RequiredAssignment_0 )? ) ;
+    // InternalVoice.g:823:1: rule__Question__Group__0__Impl : ( ( rule__Question__QuestionEntityAssignment_0 ) ) ;
     public final void rule__Question__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:929:1: ( ( ( rule__Question__RequiredAssignment_0 )? ) )
-            // InternalVoice.g:930:1: ( ( rule__Question__RequiredAssignment_0 )? )
+            // InternalVoice.g:827:1: ( ( ( rule__Question__QuestionEntityAssignment_0 ) ) )
+            // InternalVoice.g:828:1: ( ( rule__Question__QuestionEntityAssignment_0 ) )
             {
-            // InternalVoice.g:930:1: ( ( rule__Question__RequiredAssignment_0 )? )
-            // InternalVoice.g:931:2: ( rule__Question__RequiredAssignment_0 )?
+            // InternalVoice.g:828:1: ( ( rule__Question__QuestionEntityAssignment_0 ) )
+            // InternalVoice.g:829:2: ( rule__Question__QuestionEntityAssignment_0 )
             {
-             before(grammarAccess.getQuestionAccess().getRequiredAssignment_0()); 
-            // InternalVoice.g:932:2: ( rule__Question__RequiredAssignment_0 )?
-            int alt10=2;
-            int LA10_0 = input.LA(1);
+             before(grammarAccess.getQuestionAccess().getQuestionEntityAssignment_0()); 
+            // InternalVoice.g:830:2: ( rule__Question__QuestionEntityAssignment_0 )
+            // InternalVoice.g:830:3: rule__Question__QuestionEntityAssignment_0
+            {
+            pushFollow(FOLLOW_2);
+            rule__Question__QuestionEntityAssignment_0();
 
-            if ( (LA10_0==11) ) {
-                alt10=1;
-            }
-            switch (alt10) {
-                case 1 :
-                    // InternalVoice.g:932:3: rule__Question__RequiredAssignment_0
-                    {
-                    pushFollow(FOLLOW_2);
-                    rule__Question__RequiredAssignment_0();
+            state._fsp--;
 
-                    state._fsp--;
-
-
-                    }
-                    break;
 
             }
 
-             after(grammarAccess.getQuestionAccess().getRequiredAssignment_0()); 
+             after(grammarAccess.getQuestionAccess().getQuestionEntityAssignment_0()); 
 
             }
 
@@ -2951,16 +2641,16 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Question__Group__1"
-    // InternalVoice.g:940:1: rule__Question__Group__1 : rule__Question__Group__1__Impl rule__Question__Group__2 ;
+    // InternalVoice.g:838:1: rule__Question__Group__1 : rule__Question__Group__1__Impl rule__Question__Group__2 ;
     public final void rule__Question__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:944:1: ( rule__Question__Group__1__Impl rule__Question__Group__2 )
-            // InternalVoice.g:945:2: rule__Question__Group__1__Impl rule__Question__Group__2
+            // InternalVoice.g:842:1: ( rule__Question__Group__1__Impl rule__Question__Group__2 )
+            // InternalVoice.g:843:2: rule__Question__Group__1__Impl rule__Question__Group__2
             {
-            pushFollow(FOLLOW_11);
+            pushFollow(FOLLOW_12);
             rule__Question__Group__1__Impl();
 
             state._fsp--;
@@ -2989,31 +2679,21 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Question__Group__1__Impl"
-    // InternalVoice.g:952:1: rule__Question__Group__1__Impl : ( ( rule__Question__QuestionEntityAssignment_1 ) ) ;
+    // InternalVoice.g:850:1: rule__Question__Group__1__Impl : ( 'with' ) ;
     public final void rule__Question__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:956:1: ( ( ( rule__Question__QuestionEntityAssignment_1 ) ) )
-            // InternalVoice.g:957:1: ( ( rule__Question__QuestionEntityAssignment_1 ) )
+            // InternalVoice.g:854:1: ( ( 'with' ) )
+            // InternalVoice.g:855:1: ( 'with' )
             {
-            // InternalVoice.g:957:1: ( ( rule__Question__QuestionEntityAssignment_1 ) )
-            // InternalVoice.g:958:2: ( rule__Question__QuestionEntityAssignment_1 )
+            // InternalVoice.g:855:1: ( 'with' )
+            // InternalVoice.g:856:2: 'with'
             {
-             before(grammarAccess.getQuestionAccess().getQuestionEntityAssignment_1()); 
-            // InternalVoice.g:959:2: ( rule__Question__QuestionEntityAssignment_1 )
-            // InternalVoice.g:959:3: rule__Question__QuestionEntityAssignment_1
-            {
-            pushFollow(FOLLOW_2);
-            rule__Question__QuestionEntityAssignment_1();
-
-            state._fsp--;
-
-
-            }
-
-             after(grammarAccess.getQuestionAccess().getQuestionEntityAssignment_1()); 
+             before(grammarAccess.getQuestionAccess().getWithKeyword_1()); 
+            match(input,28,FOLLOW_2); 
+             after(grammarAccess.getQuestionAccess().getWithKeyword_1()); 
 
             }
 
@@ -3036,22 +2716,17 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Question__Group__2"
-    // InternalVoice.g:967:1: rule__Question__Group__2 : rule__Question__Group__2__Impl rule__Question__Group__3 ;
+    // InternalVoice.g:865:1: rule__Question__Group__2 : rule__Question__Group__2__Impl ;
     public final void rule__Question__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:971:1: ( rule__Question__Group__2__Impl rule__Question__Group__3 )
-            // InternalVoice.g:972:2: rule__Question__Group__2__Impl rule__Question__Group__3
+            // InternalVoice.g:869:1: ( rule__Question__Group__2__Impl )
+            // InternalVoice.g:870:2: rule__Question__Group__2__Impl
             {
-            pushFollow(FOLLOW_12);
-            rule__Question__Group__2__Impl();
-
-            state._fsp--;
-
             pushFollow(FOLLOW_2);
-            rule__Question__Group__3();
+            rule__Question__Group__2__Impl();
 
             state._fsp--;
 
@@ -3074,21 +2749,31 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Question__Group__2__Impl"
-    // InternalVoice.g:979:1: rule__Question__Group__2__Impl : ( 'with' ) ;
+    // InternalVoice.g:876:1: rule__Question__Group__2__Impl : ( ( rule__Question__PromptAssignment_2 ) ) ;
     public final void rule__Question__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:983:1: ( ( 'with' ) )
-            // InternalVoice.g:984:1: ( 'with' )
+            // InternalVoice.g:880:1: ( ( ( rule__Question__PromptAssignment_2 ) ) )
+            // InternalVoice.g:881:1: ( ( rule__Question__PromptAssignment_2 ) )
             {
-            // InternalVoice.g:984:1: ( 'with' )
-            // InternalVoice.g:985:2: 'with'
+            // InternalVoice.g:881:1: ( ( rule__Question__PromptAssignment_2 ) )
+            // InternalVoice.g:882:2: ( rule__Question__PromptAssignment_2 )
             {
-             before(grammarAccess.getQuestionAccess().getWithKeyword_2()); 
-            match(input,30,FOLLOW_2); 
-             after(grammarAccess.getQuestionAccess().getWithKeyword_2()); 
+             before(grammarAccess.getQuestionAccess().getPromptAssignment_2()); 
+            // InternalVoice.g:883:2: ( rule__Question__PromptAssignment_2 )
+            // InternalVoice.g:883:3: rule__Question__PromptAssignment_2
+            {
+            pushFollow(FOLLOW_2);
+            rule__Question__PromptAssignment_2();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getQuestionAccess().getPromptAssignment_2()); 
 
             }
 
@@ -3110,95 +2795,15 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Question__Group__2__Impl"
 
 
-    // $ANTLR start "rule__Question__Group__3"
-    // InternalVoice.g:994:1: rule__Question__Group__3 : rule__Question__Group__3__Impl ;
-    public final void rule__Question__Group__3() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalVoice.g:998:1: ( rule__Question__Group__3__Impl )
-            // InternalVoice.g:999:2: rule__Question__Group__3__Impl
-            {
-            pushFollow(FOLLOW_2);
-            rule__Question__Group__3__Impl();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Question__Group__3"
-
-
-    // $ANTLR start "rule__Question__Group__3__Impl"
-    // InternalVoice.g:1005:1: rule__Question__Group__3__Impl : ( ( rule__Question__PromptAssignment_3 ) ) ;
-    public final void rule__Question__Group__3__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalVoice.g:1009:1: ( ( ( rule__Question__PromptAssignment_3 ) ) )
-            // InternalVoice.g:1010:1: ( ( rule__Question__PromptAssignment_3 ) )
-            {
-            // InternalVoice.g:1010:1: ( ( rule__Question__PromptAssignment_3 ) )
-            // InternalVoice.g:1011:2: ( rule__Question__PromptAssignment_3 )
-            {
-             before(grammarAccess.getQuestionAccess().getPromptAssignment_3()); 
-            // InternalVoice.g:1012:2: ( rule__Question__PromptAssignment_3 )
-            // InternalVoice.g:1012:3: rule__Question__PromptAssignment_3
-            {
-            pushFollow(FOLLOW_2);
-            rule__Question__PromptAssignment_3();
-
-            state._fsp--;
-
-
-            }
-
-             after(grammarAccess.getQuestionAccess().getPromptAssignment_3()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Question__Group__3__Impl"
-
-
     // $ANTLR start "rule__Training__Group__0"
-    // InternalVoice.g:1021:1: rule__Training__Group__0 : rule__Training__Group__0__Impl rule__Training__Group__1 ;
+    // InternalVoice.g:892:1: rule__Training__Group__0 : rule__Training__Group__0__Impl rule__Training__Group__1 ;
     public final void rule__Training__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1025:1: ( rule__Training__Group__0__Impl rule__Training__Group__1 )
-            // InternalVoice.g:1026:2: rule__Training__Group__0__Impl rule__Training__Group__1
+            // InternalVoice.g:896:1: ( rule__Training__Group__0__Impl rule__Training__Group__1 )
+            // InternalVoice.g:897:2: rule__Training__Group__0__Impl rule__Training__Group__1
             {
             pushFollow(FOLLOW_6);
             rule__Training__Group__0__Impl();
@@ -3229,21 +2834,21 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Training__Group__0__Impl"
-    // InternalVoice.g:1033:1: rule__Training__Group__0__Impl : ( () ) ;
+    // InternalVoice.g:904:1: rule__Training__Group__0__Impl : ( () ) ;
     public final void rule__Training__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1037:1: ( ( () ) )
-            // InternalVoice.g:1038:1: ( () )
+            // InternalVoice.g:908:1: ( ( () ) )
+            // InternalVoice.g:909:1: ( () )
             {
-            // InternalVoice.g:1038:1: ( () )
-            // InternalVoice.g:1039:2: ()
+            // InternalVoice.g:909:1: ( () )
+            // InternalVoice.g:910:2: ()
             {
              before(grammarAccess.getTrainingAccess().getTrainingAction_0()); 
-            // InternalVoice.g:1040:2: ()
-            // InternalVoice.g:1040:3: 
+            // InternalVoice.g:911:2: ()
+            // InternalVoice.g:911:3: 
             {
             }
 
@@ -3266,14 +2871,14 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Training__Group__1"
-    // InternalVoice.g:1048:1: rule__Training__Group__1 : rule__Training__Group__1__Impl rule__Training__Group__2 ;
+    // InternalVoice.g:919:1: rule__Training__Group__1 : rule__Training__Group__1__Impl rule__Training__Group__2 ;
     public final void rule__Training__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1052:1: ( rule__Training__Group__1__Impl rule__Training__Group__2 )
-            // InternalVoice.g:1053:2: rule__Training__Group__1__Impl rule__Training__Group__2
+            // InternalVoice.g:923:1: ( rule__Training__Group__1__Impl rule__Training__Group__2 )
+            // InternalVoice.g:924:2: rule__Training__Group__1__Impl rule__Training__Group__2
             {
             pushFollow(FOLLOW_13);
             rule__Training__Group__1__Impl();
@@ -3304,20 +2909,20 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Training__Group__1__Impl"
-    // InternalVoice.g:1060:1: rule__Training__Group__1__Impl : ( 'Training:' ) ;
+    // InternalVoice.g:931:1: rule__Training__Group__1__Impl : ( 'Training:' ) ;
     public final void rule__Training__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1064:1: ( ( 'Training:' ) )
-            // InternalVoice.g:1065:1: ( 'Training:' )
+            // InternalVoice.g:935:1: ( ( 'Training:' ) )
+            // InternalVoice.g:936:1: ( 'Training:' )
             {
-            // InternalVoice.g:1065:1: ( 'Training:' )
-            // InternalVoice.g:1066:2: 'Training:'
+            // InternalVoice.g:936:1: ( 'Training:' )
+            // InternalVoice.g:937:2: 'Training:'
             {
              before(grammarAccess.getTrainingAccess().getTrainingKeyword_1()); 
-            match(input,31,FOLLOW_2); 
+            match(input,29,FOLLOW_2); 
              after(grammarAccess.getTrainingAccess().getTrainingKeyword_1()); 
 
             }
@@ -3341,14 +2946,14 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Training__Group__2"
-    // InternalVoice.g:1075:1: rule__Training__Group__2 : rule__Training__Group__2__Impl ;
+    // InternalVoice.g:946:1: rule__Training__Group__2 : rule__Training__Group__2__Impl ;
     public final void rule__Training__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1079:1: ( rule__Training__Group__2__Impl )
-            // InternalVoice.g:1080:2: rule__Training__Group__2__Impl
+            // InternalVoice.g:950:1: ( rule__Training__Group__2__Impl )
+            // InternalVoice.g:951:2: rule__Training__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Training__Group__2__Impl();
@@ -3374,24 +2979,24 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Training__Group__2__Impl"
-    // InternalVoice.g:1086:1: rule__Training__Group__2__Impl : ( ( ( rule__Training__TrainingrefAssignment_2 ) ) ( ( rule__Training__TrainingrefAssignment_2 )* ) ) ;
+    // InternalVoice.g:957:1: rule__Training__Group__2__Impl : ( ( ( rule__Training__TrainingrefAssignment_2 ) ) ( ( rule__Training__TrainingrefAssignment_2 )* ) ) ;
     public final void rule__Training__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1090:1: ( ( ( ( rule__Training__TrainingrefAssignment_2 ) ) ( ( rule__Training__TrainingrefAssignment_2 )* ) ) )
-            // InternalVoice.g:1091:1: ( ( ( rule__Training__TrainingrefAssignment_2 ) ) ( ( rule__Training__TrainingrefAssignment_2 )* ) )
+            // InternalVoice.g:961:1: ( ( ( ( rule__Training__TrainingrefAssignment_2 ) ) ( ( rule__Training__TrainingrefAssignment_2 )* ) ) )
+            // InternalVoice.g:962:1: ( ( ( rule__Training__TrainingrefAssignment_2 ) ) ( ( rule__Training__TrainingrefAssignment_2 )* ) )
             {
-            // InternalVoice.g:1091:1: ( ( ( rule__Training__TrainingrefAssignment_2 ) ) ( ( rule__Training__TrainingrefAssignment_2 )* ) )
-            // InternalVoice.g:1092:2: ( ( rule__Training__TrainingrefAssignment_2 ) ) ( ( rule__Training__TrainingrefAssignment_2 )* )
+            // InternalVoice.g:962:1: ( ( ( rule__Training__TrainingrefAssignment_2 ) ) ( ( rule__Training__TrainingrefAssignment_2 )* ) )
+            // InternalVoice.g:963:2: ( ( rule__Training__TrainingrefAssignment_2 ) ) ( ( rule__Training__TrainingrefAssignment_2 )* )
             {
-            // InternalVoice.g:1092:2: ( ( rule__Training__TrainingrefAssignment_2 ) )
-            // InternalVoice.g:1093:3: ( rule__Training__TrainingrefAssignment_2 )
+            // InternalVoice.g:963:2: ( ( rule__Training__TrainingrefAssignment_2 ) )
+            // InternalVoice.g:964:3: ( rule__Training__TrainingrefAssignment_2 )
             {
              before(grammarAccess.getTrainingAccess().getTrainingrefAssignment_2()); 
-            // InternalVoice.g:1094:3: ( rule__Training__TrainingrefAssignment_2 )
-            // InternalVoice.g:1094:4: rule__Training__TrainingrefAssignment_2
+            // InternalVoice.g:965:3: ( rule__Training__TrainingrefAssignment_2 )
+            // InternalVoice.g:965:4: rule__Training__TrainingrefAssignment_2
             {
             pushFollow(FOLLOW_14);
             rule__Training__TrainingrefAssignment_2();
@@ -3405,24 +3010,24 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
             }
 
-            // InternalVoice.g:1097:2: ( ( rule__Training__TrainingrefAssignment_2 )* )
-            // InternalVoice.g:1098:3: ( rule__Training__TrainingrefAssignment_2 )*
+            // InternalVoice.g:968:2: ( ( rule__Training__TrainingrefAssignment_2 )* )
+            // InternalVoice.g:969:3: ( rule__Training__TrainingrefAssignment_2 )*
             {
              before(grammarAccess.getTrainingAccess().getTrainingrefAssignment_2()); 
-            // InternalVoice.g:1099:3: ( rule__Training__TrainingrefAssignment_2 )*
-            loop11:
+            // InternalVoice.g:970:3: ( rule__Training__TrainingrefAssignment_2 )*
+            loop9:
             do {
-                int alt11=2;
-                int LA11_0 = input.LA(1);
+                int alt9=2;
+                int LA9_0 = input.LA(1);
 
-                if ( (LA11_0==RULE_STRING||LA11_0==33) ) {
-                    alt11=1;
+                if ( (LA9_0==RULE_STRING||LA9_0==31) ) {
+                    alt9=1;
                 }
 
 
-                switch (alt11) {
+                switch (alt9) {
             	case 1 :
-            	    // InternalVoice.g:1099:4: rule__Training__TrainingrefAssignment_2
+            	    // InternalVoice.g:970:4: rule__Training__TrainingrefAssignment_2
             	    {
             	    pushFollow(FOLLOW_14);
             	    rule__Training__TrainingrefAssignment_2();
@@ -3434,7 +3039,7 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
             	    break;
 
             	default :
-            	    break loop11;
+            	    break loop9;
                 }
             } while (true);
 
@@ -3464,14 +3069,14 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TrainingRef__Group__0"
-    // InternalVoice.g:1109:1: rule__TrainingRef__Group__0 : rule__TrainingRef__Group__0__Impl rule__TrainingRef__Group__1 ;
+    // InternalVoice.g:980:1: rule__TrainingRef__Group__0 : rule__TrainingRef__Group__0__Impl rule__TrainingRef__Group__1 ;
     public final void rule__TrainingRef__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1113:1: ( rule__TrainingRef__Group__0__Impl rule__TrainingRef__Group__1 )
-            // InternalVoice.g:1114:2: rule__TrainingRef__Group__0__Impl rule__TrainingRef__Group__1
+            // InternalVoice.g:984:1: ( rule__TrainingRef__Group__0__Impl rule__TrainingRef__Group__1 )
+            // InternalVoice.g:985:2: rule__TrainingRef__Group__0__Impl rule__TrainingRef__Group__1
             {
             pushFollow(FOLLOW_13);
             rule__TrainingRef__Group__0__Impl();
@@ -3502,21 +3107,21 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TrainingRef__Group__0__Impl"
-    // InternalVoice.g:1121:1: rule__TrainingRef__Group__0__Impl : ( () ) ;
+    // InternalVoice.g:992:1: rule__TrainingRef__Group__0__Impl : ( () ) ;
     public final void rule__TrainingRef__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1125:1: ( ( () ) )
-            // InternalVoice.g:1126:1: ( () )
+            // InternalVoice.g:996:1: ( ( () ) )
+            // InternalVoice.g:997:1: ( () )
             {
-            // InternalVoice.g:1126:1: ( () )
-            // InternalVoice.g:1127:2: ()
+            // InternalVoice.g:997:1: ( () )
+            // InternalVoice.g:998:2: ()
             {
              before(grammarAccess.getTrainingRefAccess().getTrainingRefSimpleAction_0()); 
-            // InternalVoice.g:1128:2: ()
-            // InternalVoice.g:1128:3: 
+            // InternalVoice.g:999:2: ()
+            // InternalVoice.g:999:3: 
             {
             }
 
@@ -3539,14 +3144,14 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TrainingRef__Group__1"
-    // InternalVoice.g:1136:1: rule__TrainingRef__Group__1 : rule__TrainingRef__Group__1__Impl rule__TrainingRef__Group__2 ;
+    // InternalVoice.g:1007:1: rule__TrainingRef__Group__1 : rule__TrainingRef__Group__1__Impl rule__TrainingRef__Group__2 ;
     public final void rule__TrainingRef__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1140:1: ( rule__TrainingRef__Group__1__Impl rule__TrainingRef__Group__2 )
-            // InternalVoice.g:1141:2: rule__TrainingRef__Group__1__Impl rule__TrainingRef__Group__2
+            // InternalVoice.g:1011:1: ( rule__TrainingRef__Group__1__Impl rule__TrainingRef__Group__2 )
+            // InternalVoice.g:1012:2: rule__TrainingRef__Group__1__Impl rule__TrainingRef__Group__2
             {
             pushFollow(FOLLOW_15);
             rule__TrainingRef__Group__1__Impl();
@@ -3577,24 +3182,24 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TrainingRef__Group__1__Impl"
-    // InternalVoice.g:1148:1: rule__TrainingRef__Group__1__Impl : ( ( ( rule__TrainingRef__Alternatives_1 ) ) ( ( rule__TrainingRef__Alternatives_1 )* ) ) ;
+    // InternalVoice.g:1019:1: rule__TrainingRef__Group__1__Impl : ( ( ( rule__TrainingRef__Alternatives_1 ) ) ( ( rule__TrainingRef__Alternatives_1 )* ) ) ;
     public final void rule__TrainingRef__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1152:1: ( ( ( ( rule__TrainingRef__Alternatives_1 ) ) ( ( rule__TrainingRef__Alternatives_1 )* ) ) )
-            // InternalVoice.g:1153:1: ( ( ( rule__TrainingRef__Alternatives_1 ) ) ( ( rule__TrainingRef__Alternatives_1 )* ) )
+            // InternalVoice.g:1023:1: ( ( ( ( rule__TrainingRef__Alternatives_1 ) ) ( ( rule__TrainingRef__Alternatives_1 )* ) ) )
+            // InternalVoice.g:1024:1: ( ( ( rule__TrainingRef__Alternatives_1 ) ) ( ( rule__TrainingRef__Alternatives_1 )* ) )
             {
-            // InternalVoice.g:1153:1: ( ( ( rule__TrainingRef__Alternatives_1 ) ) ( ( rule__TrainingRef__Alternatives_1 )* ) )
-            // InternalVoice.g:1154:2: ( ( rule__TrainingRef__Alternatives_1 ) ) ( ( rule__TrainingRef__Alternatives_1 )* )
+            // InternalVoice.g:1024:1: ( ( ( rule__TrainingRef__Alternatives_1 ) ) ( ( rule__TrainingRef__Alternatives_1 )* ) )
+            // InternalVoice.g:1025:2: ( ( rule__TrainingRef__Alternatives_1 ) ) ( ( rule__TrainingRef__Alternatives_1 )* )
             {
-            // InternalVoice.g:1154:2: ( ( rule__TrainingRef__Alternatives_1 ) )
-            // InternalVoice.g:1155:3: ( rule__TrainingRef__Alternatives_1 )
+            // InternalVoice.g:1025:2: ( ( rule__TrainingRef__Alternatives_1 ) )
+            // InternalVoice.g:1026:3: ( rule__TrainingRef__Alternatives_1 )
             {
              before(grammarAccess.getTrainingRefAccess().getAlternatives_1()); 
-            // InternalVoice.g:1156:3: ( rule__TrainingRef__Alternatives_1 )
-            // InternalVoice.g:1156:4: rule__TrainingRef__Alternatives_1
+            // InternalVoice.g:1027:3: ( rule__TrainingRef__Alternatives_1 )
+            // InternalVoice.g:1027:4: rule__TrainingRef__Alternatives_1
             {
             pushFollow(FOLLOW_14);
             rule__TrainingRef__Alternatives_1();
@@ -3608,24 +3213,24 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
             }
 
-            // InternalVoice.g:1159:2: ( ( rule__TrainingRef__Alternatives_1 )* )
-            // InternalVoice.g:1160:3: ( rule__TrainingRef__Alternatives_1 )*
+            // InternalVoice.g:1030:2: ( ( rule__TrainingRef__Alternatives_1 )* )
+            // InternalVoice.g:1031:3: ( rule__TrainingRef__Alternatives_1 )*
             {
              before(grammarAccess.getTrainingRefAccess().getAlternatives_1()); 
-            // InternalVoice.g:1161:3: ( rule__TrainingRef__Alternatives_1 )*
-            loop12:
+            // InternalVoice.g:1032:3: ( rule__TrainingRef__Alternatives_1 )*
+            loop10:
             do {
-                int alt12=2;
-                int LA12_0 = input.LA(1);
+                int alt10=2;
+                int LA10_0 = input.LA(1);
 
-                if ( (LA12_0==RULE_STRING||LA12_0==33) ) {
-                    alt12=1;
+                if ( (LA10_0==RULE_STRING||LA10_0==31) ) {
+                    alt10=1;
                 }
 
 
-                switch (alt12) {
+                switch (alt10) {
             	case 1 :
-            	    // InternalVoice.g:1161:4: rule__TrainingRef__Alternatives_1
+            	    // InternalVoice.g:1032:4: rule__TrainingRef__Alternatives_1
             	    {
             	    pushFollow(FOLLOW_14);
             	    rule__TrainingRef__Alternatives_1();
@@ -3637,7 +3242,7 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
             	    break;
 
             	default :
-            	    break loop12;
+            	    break loop10;
                 }
             } while (true);
 
@@ -3667,14 +3272,14 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TrainingRef__Group__2"
-    // InternalVoice.g:1170:1: rule__TrainingRef__Group__2 : rule__TrainingRef__Group__2__Impl ;
+    // InternalVoice.g:1041:1: rule__TrainingRef__Group__2 : rule__TrainingRef__Group__2__Impl ;
     public final void rule__TrainingRef__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1174:1: ( rule__TrainingRef__Group__2__Impl )
-            // InternalVoice.g:1175:2: rule__TrainingRef__Group__2__Impl
+            // InternalVoice.g:1045:1: ( rule__TrainingRef__Group__2__Impl )
+            // InternalVoice.g:1046:2: rule__TrainingRef__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__TrainingRef__Group__2__Impl();
@@ -3700,20 +3305,20 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TrainingRef__Group__2__Impl"
-    // InternalVoice.g:1181:1: rule__TrainingRef__Group__2__Impl : ( '.' ) ;
+    // InternalVoice.g:1052:1: rule__TrainingRef__Group__2__Impl : ( '.' ) ;
     public final void rule__TrainingRef__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1185:1: ( ( '.' ) )
-            // InternalVoice.g:1186:1: ( '.' )
+            // InternalVoice.g:1056:1: ( ( '.' ) )
+            // InternalVoice.g:1057:1: ( '.' )
             {
-            // InternalVoice.g:1186:1: ( '.' )
-            // InternalVoice.g:1187:2: '.'
+            // InternalVoice.g:1057:1: ( '.' )
+            // InternalVoice.g:1058:2: '.'
             {
              before(grammarAccess.getTrainingRefAccess().getFullStopKeyword_2()); 
-            match(input,32,FOLLOW_2); 
+            match(input,30,FOLLOW_2); 
              after(grammarAccess.getTrainingRefAccess().getFullStopKeyword_2()); 
 
             }
@@ -3737,14 +3342,14 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Declaration__Group__0"
-    // InternalVoice.g:1197:1: rule__Declaration__Group__0 : rule__Declaration__Group__0__Impl rule__Declaration__Group__1 ;
+    // InternalVoice.g:1068:1: rule__Declaration__Group__0 : rule__Declaration__Group__0__Impl rule__Declaration__Group__1 ;
     public final void rule__Declaration__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1201:1: ( rule__Declaration__Group__0__Impl rule__Declaration__Group__1 )
-            // InternalVoice.g:1202:2: rule__Declaration__Group__0__Impl rule__Declaration__Group__1
+            // InternalVoice.g:1072:1: ( rule__Declaration__Group__0__Impl rule__Declaration__Group__1 )
+            // InternalVoice.g:1073:2: rule__Declaration__Group__0__Impl rule__Declaration__Group__1
             {
             pushFollow(FOLLOW_12);
             rule__Declaration__Group__0__Impl();
@@ -3775,20 +3380,20 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Declaration__Group__0__Impl"
-    // InternalVoice.g:1209:1: rule__Declaration__Group__0__Impl : ( '(' ) ;
+    // InternalVoice.g:1080:1: rule__Declaration__Group__0__Impl : ( '(' ) ;
     public final void rule__Declaration__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1213:1: ( ( '(' ) )
-            // InternalVoice.g:1214:1: ( '(' )
+            // InternalVoice.g:1084:1: ( ( '(' ) )
+            // InternalVoice.g:1085:1: ( '(' )
             {
-            // InternalVoice.g:1214:1: ( '(' )
-            // InternalVoice.g:1215:2: '('
+            // InternalVoice.g:1085:1: ( '(' )
+            // InternalVoice.g:1086:2: '('
             {
              before(grammarAccess.getDeclarationAccess().getLeftParenthesisKeyword_0()); 
-            match(input,33,FOLLOW_2); 
+            match(input,31,FOLLOW_2); 
              after(grammarAccess.getDeclarationAccess().getLeftParenthesisKeyword_0()); 
 
             }
@@ -3812,14 +3417,14 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Declaration__Group__1"
-    // InternalVoice.g:1224:1: rule__Declaration__Group__1 : rule__Declaration__Group__1__Impl rule__Declaration__Group__2 ;
+    // InternalVoice.g:1095:1: rule__Declaration__Group__1 : rule__Declaration__Group__1__Impl rule__Declaration__Group__2 ;
     public final void rule__Declaration__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1228:1: ( rule__Declaration__Group__1__Impl rule__Declaration__Group__2 )
-            // InternalVoice.g:1229:2: rule__Declaration__Group__1__Impl rule__Declaration__Group__2
+            // InternalVoice.g:1099:1: ( rule__Declaration__Group__1__Impl rule__Declaration__Group__2 )
+            // InternalVoice.g:1100:2: rule__Declaration__Group__1__Impl rule__Declaration__Group__2
             {
             pushFollow(FOLLOW_16);
             rule__Declaration__Group__1__Impl();
@@ -3850,21 +3455,21 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Declaration__Group__1__Impl"
-    // InternalVoice.g:1236:1: rule__Declaration__Group__1__Impl : ( ( rule__Declaration__TrainingstringAssignment_1 ) ) ;
+    // InternalVoice.g:1107:1: rule__Declaration__Group__1__Impl : ( ( rule__Declaration__TrainingstringAssignment_1 ) ) ;
     public final void rule__Declaration__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1240:1: ( ( ( rule__Declaration__TrainingstringAssignment_1 ) ) )
-            // InternalVoice.g:1241:1: ( ( rule__Declaration__TrainingstringAssignment_1 ) )
+            // InternalVoice.g:1111:1: ( ( ( rule__Declaration__TrainingstringAssignment_1 ) ) )
+            // InternalVoice.g:1112:1: ( ( rule__Declaration__TrainingstringAssignment_1 ) )
             {
-            // InternalVoice.g:1241:1: ( ( rule__Declaration__TrainingstringAssignment_1 ) )
-            // InternalVoice.g:1242:2: ( rule__Declaration__TrainingstringAssignment_1 )
+            // InternalVoice.g:1112:1: ( ( rule__Declaration__TrainingstringAssignment_1 ) )
+            // InternalVoice.g:1113:2: ( rule__Declaration__TrainingstringAssignment_1 )
             {
              before(grammarAccess.getDeclarationAccess().getTrainingstringAssignment_1()); 
-            // InternalVoice.g:1243:2: ( rule__Declaration__TrainingstringAssignment_1 )
-            // InternalVoice.g:1243:3: rule__Declaration__TrainingstringAssignment_1
+            // InternalVoice.g:1114:2: ( rule__Declaration__TrainingstringAssignment_1 )
+            // InternalVoice.g:1114:3: rule__Declaration__TrainingstringAssignment_1
             {
             pushFollow(FOLLOW_2);
             rule__Declaration__TrainingstringAssignment_1();
@@ -3897,14 +3502,14 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Declaration__Group__2"
-    // InternalVoice.g:1251:1: rule__Declaration__Group__2 : rule__Declaration__Group__2__Impl rule__Declaration__Group__3 ;
+    // InternalVoice.g:1122:1: rule__Declaration__Group__2 : rule__Declaration__Group__2__Impl rule__Declaration__Group__3 ;
     public final void rule__Declaration__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1255:1: ( rule__Declaration__Group__2__Impl rule__Declaration__Group__3 )
-            // InternalVoice.g:1256:2: rule__Declaration__Group__2__Impl rule__Declaration__Group__3
+            // InternalVoice.g:1126:1: ( rule__Declaration__Group__2__Impl rule__Declaration__Group__3 )
+            // InternalVoice.g:1127:2: rule__Declaration__Group__2__Impl rule__Declaration__Group__3
             {
             pushFollow(FOLLOW_5);
             rule__Declaration__Group__2__Impl();
@@ -3935,20 +3540,20 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Declaration__Group__2__Impl"
-    // InternalVoice.g:1263:1: rule__Declaration__Group__2__Impl : ( 'is' ) ;
+    // InternalVoice.g:1134:1: rule__Declaration__Group__2__Impl : ( 'is' ) ;
     public final void rule__Declaration__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1267:1: ( ( 'is' ) )
-            // InternalVoice.g:1268:1: ( 'is' )
+            // InternalVoice.g:1138:1: ( ( 'is' ) )
+            // InternalVoice.g:1139:1: ( 'is' )
             {
-            // InternalVoice.g:1268:1: ( 'is' )
-            // InternalVoice.g:1269:2: 'is'
+            // InternalVoice.g:1139:1: ( 'is' )
+            // InternalVoice.g:1140:2: 'is'
             {
              before(grammarAccess.getDeclarationAccess().getIsKeyword_2()); 
-            match(input,34,FOLLOW_2); 
+            match(input,32,FOLLOW_2); 
              after(grammarAccess.getDeclarationAccess().getIsKeyword_2()); 
 
             }
@@ -3972,14 +3577,14 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Declaration__Group__3"
-    // InternalVoice.g:1278:1: rule__Declaration__Group__3 : rule__Declaration__Group__3__Impl rule__Declaration__Group__4 ;
+    // InternalVoice.g:1149:1: rule__Declaration__Group__3 : rule__Declaration__Group__3__Impl rule__Declaration__Group__4 ;
     public final void rule__Declaration__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1282:1: ( rule__Declaration__Group__3__Impl rule__Declaration__Group__4 )
-            // InternalVoice.g:1283:2: rule__Declaration__Group__3__Impl rule__Declaration__Group__4
+            // InternalVoice.g:1153:1: ( rule__Declaration__Group__3__Impl rule__Declaration__Group__4 )
+            // InternalVoice.g:1154:2: rule__Declaration__Group__3__Impl rule__Declaration__Group__4
             {
             pushFollow(FOLLOW_17);
             rule__Declaration__Group__3__Impl();
@@ -4010,21 +3615,21 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Declaration__Group__3__Impl"
-    // InternalVoice.g:1290:1: rule__Declaration__Group__3__Impl : ( ( rule__Declaration__ReferenceAssignment_3 ) ) ;
+    // InternalVoice.g:1161:1: rule__Declaration__Group__3__Impl : ( ( rule__Declaration__ReferenceAssignment_3 ) ) ;
     public final void rule__Declaration__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1294:1: ( ( ( rule__Declaration__ReferenceAssignment_3 ) ) )
-            // InternalVoice.g:1295:1: ( ( rule__Declaration__ReferenceAssignment_3 ) )
+            // InternalVoice.g:1165:1: ( ( ( rule__Declaration__ReferenceAssignment_3 ) ) )
+            // InternalVoice.g:1166:1: ( ( rule__Declaration__ReferenceAssignment_3 ) )
             {
-            // InternalVoice.g:1295:1: ( ( rule__Declaration__ReferenceAssignment_3 ) )
-            // InternalVoice.g:1296:2: ( rule__Declaration__ReferenceAssignment_3 )
+            // InternalVoice.g:1166:1: ( ( rule__Declaration__ReferenceAssignment_3 ) )
+            // InternalVoice.g:1167:2: ( rule__Declaration__ReferenceAssignment_3 )
             {
              before(grammarAccess.getDeclarationAccess().getReferenceAssignment_3()); 
-            // InternalVoice.g:1297:2: ( rule__Declaration__ReferenceAssignment_3 )
-            // InternalVoice.g:1297:3: rule__Declaration__ReferenceAssignment_3
+            // InternalVoice.g:1168:2: ( rule__Declaration__ReferenceAssignment_3 )
+            // InternalVoice.g:1168:3: rule__Declaration__ReferenceAssignment_3
             {
             pushFollow(FOLLOW_2);
             rule__Declaration__ReferenceAssignment_3();
@@ -4057,14 +3662,14 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Declaration__Group__4"
-    // InternalVoice.g:1305:1: rule__Declaration__Group__4 : rule__Declaration__Group__4__Impl ;
+    // InternalVoice.g:1176:1: rule__Declaration__Group__4 : rule__Declaration__Group__4__Impl ;
     public final void rule__Declaration__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1309:1: ( rule__Declaration__Group__4__Impl )
-            // InternalVoice.g:1310:2: rule__Declaration__Group__4__Impl
+            // InternalVoice.g:1180:1: ( rule__Declaration__Group__4__Impl )
+            // InternalVoice.g:1181:2: rule__Declaration__Group__4__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Declaration__Group__4__Impl();
@@ -4090,20 +3695,20 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Declaration__Group__4__Impl"
-    // InternalVoice.g:1316:1: rule__Declaration__Group__4__Impl : ( ')' ) ;
+    // InternalVoice.g:1187:1: rule__Declaration__Group__4__Impl : ( ')' ) ;
     public final void rule__Declaration__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1320:1: ( ( ')' ) )
-            // InternalVoice.g:1321:1: ( ')' )
+            // InternalVoice.g:1191:1: ( ( ')' ) )
+            // InternalVoice.g:1192:1: ( ')' )
             {
-            // InternalVoice.g:1321:1: ( ')' )
-            // InternalVoice.g:1322:2: ')'
+            // InternalVoice.g:1192:1: ( ')' )
+            // InternalVoice.g:1193:2: ')'
             {
              before(grammarAccess.getDeclarationAccess().getRightParenthesisKeyword_4()); 
-            match(input,35,FOLLOW_2); 
+            match(input,33,FOLLOW_2); 
              after(grammarAccess.getDeclarationAccess().getRightParenthesisKeyword_4()); 
 
             }
@@ -4127,14 +3732,14 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EntityExample__Group__0"
-    // InternalVoice.g:1332:1: rule__EntityExample__Group__0 : rule__EntityExample__Group__0__Impl rule__EntityExample__Group__1 ;
+    // InternalVoice.g:1203:1: rule__EntityExample__Group__0 : rule__EntityExample__Group__0__Impl rule__EntityExample__Group__1 ;
     public final void rule__EntityExample__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1336:1: ( rule__EntityExample__Group__0__Impl rule__EntityExample__Group__1 )
-            // InternalVoice.g:1337:2: rule__EntityExample__Group__0__Impl rule__EntityExample__Group__1
+            // InternalVoice.g:1207:1: ( rule__EntityExample__Group__0__Impl rule__EntityExample__Group__1 )
+            // InternalVoice.g:1208:2: rule__EntityExample__Group__0__Impl rule__EntityExample__Group__1
             {
             pushFollow(FOLLOW_18);
             rule__EntityExample__Group__0__Impl();
@@ -4165,21 +3770,21 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EntityExample__Group__0__Impl"
-    // InternalVoice.g:1344:1: rule__EntityExample__Group__0__Impl : ( ( rule__EntityExample__NameAssignment_0 ) ) ;
+    // InternalVoice.g:1215:1: rule__EntityExample__Group__0__Impl : ( ( rule__EntityExample__NameAssignment_0 ) ) ;
     public final void rule__EntityExample__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1348:1: ( ( ( rule__EntityExample__NameAssignment_0 ) ) )
-            // InternalVoice.g:1349:1: ( ( rule__EntityExample__NameAssignment_0 ) )
+            // InternalVoice.g:1219:1: ( ( ( rule__EntityExample__NameAssignment_0 ) ) )
+            // InternalVoice.g:1220:1: ( ( rule__EntityExample__NameAssignment_0 ) )
             {
-            // InternalVoice.g:1349:1: ( ( rule__EntityExample__NameAssignment_0 ) )
-            // InternalVoice.g:1350:2: ( rule__EntityExample__NameAssignment_0 )
+            // InternalVoice.g:1220:1: ( ( rule__EntityExample__NameAssignment_0 ) )
+            // InternalVoice.g:1221:2: ( rule__EntityExample__NameAssignment_0 )
             {
              before(grammarAccess.getEntityExampleAccess().getNameAssignment_0()); 
-            // InternalVoice.g:1351:2: ( rule__EntityExample__NameAssignment_0 )
-            // InternalVoice.g:1351:3: rule__EntityExample__NameAssignment_0
+            // InternalVoice.g:1222:2: ( rule__EntityExample__NameAssignment_0 )
+            // InternalVoice.g:1222:3: rule__EntityExample__NameAssignment_0
             {
             pushFollow(FOLLOW_2);
             rule__EntityExample__NameAssignment_0();
@@ -4212,14 +3817,14 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EntityExample__Group__1"
-    // InternalVoice.g:1359:1: rule__EntityExample__Group__1 : rule__EntityExample__Group__1__Impl ;
+    // InternalVoice.g:1230:1: rule__EntityExample__Group__1 : rule__EntityExample__Group__1__Impl ;
     public final void rule__EntityExample__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1363:1: ( rule__EntityExample__Group__1__Impl )
-            // InternalVoice.g:1364:2: rule__EntityExample__Group__1__Impl
+            // InternalVoice.g:1234:1: ( rule__EntityExample__Group__1__Impl )
+            // InternalVoice.g:1235:2: rule__EntityExample__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__EntityExample__Group__1__Impl();
@@ -4245,31 +3850,31 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EntityExample__Group__1__Impl"
-    // InternalVoice.g:1370:1: rule__EntityExample__Group__1__Impl : ( ( ',' )? ) ;
+    // InternalVoice.g:1241:1: rule__EntityExample__Group__1__Impl : ( ( ',' )? ) ;
     public final void rule__EntityExample__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1374:1: ( ( ( ',' )? ) )
-            // InternalVoice.g:1375:1: ( ( ',' )? )
+            // InternalVoice.g:1245:1: ( ( ( ',' )? ) )
+            // InternalVoice.g:1246:1: ( ( ',' )? )
             {
-            // InternalVoice.g:1375:1: ( ( ',' )? )
-            // InternalVoice.g:1376:2: ( ',' )?
+            // InternalVoice.g:1246:1: ( ( ',' )? )
+            // InternalVoice.g:1247:2: ( ',' )?
             {
              before(grammarAccess.getEntityExampleAccess().getCommaKeyword_1()); 
-            // InternalVoice.g:1377:2: ( ',' )?
-            int alt13=2;
-            int LA13_0 = input.LA(1);
+            // InternalVoice.g:1248:2: ( ',' )?
+            int alt11=2;
+            int LA11_0 = input.LA(1);
 
-            if ( (LA13_0==36) ) {
-                alt13=1;
+            if ( (LA11_0==34) ) {
+                alt11=1;
             }
-            switch (alt13) {
+            switch (alt11) {
                 case 1 :
-                    // InternalVoice.g:1377:3: ','
+                    // InternalVoice.g:1248:3: ','
                     {
-                    match(input,36,FOLLOW_2); 
+                    match(input,34,FOLLOW_2); 
 
                     }
                     break;
@@ -4299,14 +3904,14 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__IsFollowup__Group__0"
-    // InternalVoice.g:1386:1: rule__IsFollowup__Group__0 : rule__IsFollowup__Group__0__Impl rule__IsFollowup__Group__1 ;
+    // InternalVoice.g:1257:1: rule__IsFollowup__Group__0 : rule__IsFollowup__Group__0__Impl rule__IsFollowup__Group__1 ;
     public final void rule__IsFollowup__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1390:1: ( rule__IsFollowup__Group__0__Impl rule__IsFollowup__Group__1 )
-            // InternalVoice.g:1391:2: rule__IsFollowup__Group__0__Impl rule__IsFollowup__Group__1
+            // InternalVoice.g:1261:1: ( rule__IsFollowup__Group__0__Impl rule__IsFollowup__Group__1 )
+            // InternalVoice.g:1262:2: rule__IsFollowup__Group__0__Impl rule__IsFollowup__Group__1
             {
             pushFollow(FOLLOW_4);
             rule__IsFollowup__Group__0__Impl();
@@ -4337,20 +3942,20 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__IsFollowup__Group__0__Impl"
-    // InternalVoice.g:1398:1: rule__IsFollowup__Group__0__Impl : ( 'IsFollowup' ) ;
+    // InternalVoice.g:1269:1: rule__IsFollowup__Group__0__Impl : ( 'IsFollowup' ) ;
     public final void rule__IsFollowup__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1402:1: ( ( 'IsFollowup' ) )
-            // InternalVoice.g:1403:1: ( 'IsFollowup' )
+            // InternalVoice.g:1273:1: ( ( 'IsFollowup' ) )
+            // InternalVoice.g:1274:1: ( 'IsFollowup' )
             {
-            // InternalVoice.g:1403:1: ( 'IsFollowup' )
-            // InternalVoice.g:1404:2: 'IsFollowup'
+            // InternalVoice.g:1274:1: ( 'IsFollowup' )
+            // InternalVoice.g:1275:2: 'IsFollowup'
             {
              before(grammarAccess.getIsFollowupAccess().getIsFollowupKeyword_0()); 
-            match(input,37,FOLLOW_2); 
+            match(input,35,FOLLOW_2); 
              after(grammarAccess.getIsFollowupAccess().getIsFollowupKeyword_0()); 
 
             }
@@ -4374,14 +3979,14 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__IsFollowup__Group__1"
-    // InternalVoice.g:1413:1: rule__IsFollowup__Group__1 : rule__IsFollowup__Group__1__Impl ;
+    // InternalVoice.g:1284:1: rule__IsFollowup__Group__1 : rule__IsFollowup__Group__1__Impl ;
     public final void rule__IsFollowup__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1417:1: ( rule__IsFollowup__Group__1__Impl )
-            // InternalVoice.g:1418:2: rule__IsFollowup__Group__1__Impl
+            // InternalVoice.g:1288:1: ( rule__IsFollowup__Group__1__Impl )
+            // InternalVoice.g:1289:2: rule__IsFollowup__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__IsFollowup__Group__1__Impl();
@@ -4407,21 +4012,21 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__IsFollowup__Group__1__Impl"
-    // InternalVoice.g:1424:1: rule__IsFollowup__Group__1__Impl : ( ( rule__IsFollowup__IntentAssignment_1 ) ) ;
+    // InternalVoice.g:1295:1: rule__IsFollowup__Group__1__Impl : ( ( rule__IsFollowup__IntentAssignment_1 ) ) ;
     public final void rule__IsFollowup__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1428:1: ( ( ( rule__IsFollowup__IntentAssignment_1 ) ) )
-            // InternalVoice.g:1429:1: ( ( rule__IsFollowup__IntentAssignment_1 ) )
+            // InternalVoice.g:1299:1: ( ( ( rule__IsFollowup__IntentAssignment_1 ) ) )
+            // InternalVoice.g:1300:1: ( ( rule__IsFollowup__IntentAssignment_1 ) )
             {
-            // InternalVoice.g:1429:1: ( ( rule__IsFollowup__IntentAssignment_1 ) )
-            // InternalVoice.g:1430:2: ( rule__IsFollowup__IntentAssignment_1 )
+            // InternalVoice.g:1300:1: ( ( rule__IsFollowup__IntentAssignment_1 ) )
+            // InternalVoice.g:1301:2: ( rule__IsFollowup__IntentAssignment_1 )
             {
              before(grammarAccess.getIsFollowupAccess().getIntentAssignment_1()); 
-            // InternalVoice.g:1431:2: ( rule__IsFollowup__IntentAssignment_1 )
-            // InternalVoice.g:1431:3: rule__IsFollowup__IntentAssignment_1
+            // InternalVoice.g:1302:2: ( rule__IsFollowup__IntentAssignment_1 )
+            // InternalVoice.g:1302:3: rule__IsFollowup__IntentAssignment_1
             {
             pushFollow(FOLLOW_2);
             rule__IsFollowup__IntentAssignment_1();
@@ -4454,17 +4059,17 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Model__AgentAssignment"
-    // InternalVoice.g:1440:1: rule__Model__AgentAssignment : ( ruleAgent ) ;
+    // InternalVoice.g:1311:1: rule__Model__AgentAssignment : ( ruleAgent ) ;
     public final void rule__Model__AgentAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1444:1: ( ( ruleAgent ) )
-            // InternalVoice.g:1445:2: ( ruleAgent )
+            // InternalVoice.g:1315:1: ( ( ruleAgent ) )
+            // InternalVoice.g:1316:2: ( ruleAgent )
             {
-            // InternalVoice.g:1445:2: ( ruleAgent )
-            // InternalVoice.g:1446:3: ruleAgent
+            // InternalVoice.g:1316:2: ( ruleAgent )
+            // InternalVoice.g:1317:3: ruleAgent
             {
              before(grammarAccess.getModelAccess().getAgentAgentParserRuleCall_0()); 
             pushFollow(FOLLOW_2);
@@ -4495,17 +4100,17 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Intent__NameAssignment_1"
-    // InternalVoice.g:1455:1: rule__Intent__NameAssignment_1 : ( RULE_ID ) ;
+    // InternalVoice.g:1326:1: rule__Intent__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__Intent__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1459:1: ( ( RULE_ID ) )
-            // InternalVoice.g:1460:2: ( RULE_ID )
+            // InternalVoice.g:1330:1: ( ( RULE_ID ) )
+            // InternalVoice.g:1331:2: ( RULE_ID )
             {
-            // InternalVoice.g:1460:2: ( RULE_ID )
-            // InternalVoice.g:1461:3: RULE_ID
+            // InternalVoice.g:1331:2: ( RULE_ID )
+            // InternalVoice.g:1332:3: RULE_ID
             {
              before(grammarAccess.getIntentAccess().getNameIDTerminalRuleCall_1_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -4531,67 +4136,26 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Intent__NameAssignment_1"
 
 
-    // $ANTLR start "rule__Intent__HasFollowupAssignment_2"
-    // InternalVoice.g:1470:1: rule__Intent__HasFollowupAssignment_2 : ( ruleHasFollowup ) ;
-    public final void rule__Intent__HasFollowupAssignment_2() throws RecognitionException {
+    // $ANTLR start "rule__Intent__IsFollowupAssignment_2"
+    // InternalVoice.g:1341:1: rule__Intent__IsFollowupAssignment_2 : ( ruleIsFollowup ) ;
+    public final void rule__Intent__IsFollowupAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1474:1: ( ( ruleHasFollowup ) )
-            // InternalVoice.g:1475:2: ( ruleHasFollowup )
+            // InternalVoice.g:1345:1: ( ( ruleIsFollowup ) )
+            // InternalVoice.g:1346:2: ( ruleIsFollowup )
             {
-            // InternalVoice.g:1475:2: ( ruleHasFollowup )
-            // InternalVoice.g:1476:3: ruleHasFollowup
+            // InternalVoice.g:1346:2: ( ruleIsFollowup )
+            // InternalVoice.g:1347:3: ruleIsFollowup
             {
-             before(grammarAccess.getIntentAccess().getHasFollowupHasFollowupParserRuleCall_2_0()); 
-            pushFollow(FOLLOW_2);
-            ruleHasFollowup();
-
-            state._fsp--;
-
-             after(grammarAccess.getIntentAccess().getHasFollowupHasFollowupParserRuleCall_2_0()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Intent__HasFollowupAssignment_2"
-
-
-    // $ANTLR start "rule__Intent__IsFollowupAssignment_3"
-    // InternalVoice.g:1485:1: rule__Intent__IsFollowupAssignment_3 : ( ruleIsFollowup ) ;
-    public final void rule__Intent__IsFollowupAssignment_3() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalVoice.g:1489:1: ( ( ruleIsFollowup ) )
-            // InternalVoice.g:1490:2: ( ruleIsFollowup )
-            {
-            // InternalVoice.g:1490:2: ( ruleIsFollowup )
-            // InternalVoice.g:1491:3: ruleIsFollowup
-            {
-             before(grammarAccess.getIntentAccess().getIsFollowupIsFollowupParserRuleCall_3_0()); 
+             before(grammarAccess.getIntentAccess().getIsFollowupIsFollowupParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
             ruleIsFollowup();
 
             state._fsp--;
 
-             after(grammarAccess.getIntentAccess().getIsFollowupIsFollowupParserRuleCall_3_0()); 
+             after(grammarAccess.getIntentAccess().getIsFollowupIsFollowupParserRuleCall_2_0()); 
 
             }
 
@@ -4610,29 +4174,29 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Intent__IsFollowupAssignment_3"
+    // $ANTLR end "rule__Intent__IsFollowupAssignment_2"
 
 
-    // $ANTLR start "rule__Intent__QuestionAssignment_4"
-    // InternalVoice.g:1500:1: rule__Intent__QuestionAssignment_4 : ( ruleQuestion ) ;
-    public final void rule__Intent__QuestionAssignment_4() throws RecognitionException {
+    // $ANTLR start "rule__Intent__QuestionAssignment_3"
+    // InternalVoice.g:1356:1: rule__Intent__QuestionAssignment_3 : ( ruleQuestion ) ;
+    public final void rule__Intent__QuestionAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1504:1: ( ( ruleQuestion ) )
-            // InternalVoice.g:1505:2: ( ruleQuestion )
+            // InternalVoice.g:1360:1: ( ( ruleQuestion ) )
+            // InternalVoice.g:1361:2: ( ruleQuestion )
             {
-            // InternalVoice.g:1505:2: ( ruleQuestion )
-            // InternalVoice.g:1506:3: ruleQuestion
+            // InternalVoice.g:1361:2: ( ruleQuestion )
+            // InternalVoice.g:1362:3: ruleQuestion
             {
-             before(grammarAccess.getIntentAccess().getQuestionQuestionParserRuleCall_4_0()); 
+             before(grammarAccess.getIntentAccess().getQuestionQuestionParserRuleCall_3_0()); 
             pushFollow(FOLLOW_2);
             ruleQuestion();
 
             state._fsp--;
 
-             after(grammarAccess.getIntentAccess().getQuestionQuestionParserRuleCall_4_0()); 
+             after(grammarAccess.getIntentAccess().getQuestionQuestionParserRuleCall_3_0()); 
 
             }
 
@@ -4651,29 +4215,29 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Intent__QuestionAssignment_4"
+    // $ANTLR end "rule__Intent__QuestionAssignment_3"
 
 
-    // $ANTLR start "rule__Intent__TrainingAssignment_5"
-    // InternalVoice.g:1515:1: rule__Intent__TrainingAssignment_5 : ( ruleTraining ) ;
-    public final void rule__Intent__TrainingAssignment_5() throws RecognitionException {
+    // $ANTLR start "rule__Intent__TrainingAssignment_4"
+    // InternalVoice.g:1371:1: rule__Intent__TrainingAssignment_4 : ( ruleTraining ) ;
+    public final void rule__Intent__TrainingAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1519:1: ( ( ruleTraining ) )
-            // InternalVoice.g:1520:2: ( ruleTraining )
+            // InternalVoice.g:1375:1: ( ( ruleTraining ) )
+            // InternalVoice.g:1376:2: ( ruleTraining )
             {
-            // InternalVoice.g:1520:2: ( ruleTraining )
-            // InternalVoice.g:1521:3: ruleTraining
+            // InternalVoice.g:1376:2: ( ruleTraining )
+            // InternalVoice.g:1377:3: ruleTraining
             {
-             before(grammarAccess.getIntentAccess().getTrainingTrainingParserRuleCall_5_0()); 
+             before(grammarAccess.getIntentAccess().getTrainingTrainingParserRuleCall_4_0()); 
             pushFollow(FOLLOW_2);
             ruleTraining();
 
             state._fsp--;
 
-             after(grammarAccess.getIntentAccess().getTrainingTrainingParserRuleCall_5_0()); 
+             after(grammarAccess.getIntentAccess().getTrainingTrainingParserRuleCall_4_0()); 
 
             }
 
@@ -4692,21 +4256,21 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Intent__TrainingAssignment_5"
+    // $ANTLR end "rule__Intent__TrainingAssignment_4"
 
 
     // $ANTLR start "rule__Entity__NameAssignment_1"
-    // InternalVoice.g:1530:1: rule__Entity__NameAssignment_1 : ( RULE_ID ) ;
+    // InternalVoice.g:1386:1: rule__Entity__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__Entity__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1534:1: ( ( RULE_ID ) )
-            // InternalVoice.g:1535:2: ( RULE_ID )
+            // InternalVoice.g:1390:1: ( ( RULE_ID ) )
+            // InternalVoice.g:1391:2: ( RULE_ID )
             {
-            // InternalVoice.g:1535:2: ( RULE_ID )
-            // InternalVoice.g:1536:3: RULE_ID
+            // InternalVoice.g:1391:2: ( RULE_ID )
+            // InternalVoice.g:1392:3: RULE_ID
             {
              before(grammarAccess.getEntityAccess().getNameIDTerminalRuleCall_1_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -4733,17 +4297,17 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Entity__ExampleAssignment_3"
-    // InternalVoice.g:1545:1: rule__Entity__ExampleAssignment_3 : ( ruleEntityExample ) ;
+    // InternalVoice.g:1401:1: rule__Entity__ExampleAssignment_3 : ( ruleEntityExample ) ;
     public final void rule__Entity__ExampleAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1549:1: ( ( ruleEntityExample ) )
-            // InternalVoice.g:1550:2: ( ruleEntityExample )
+            // InternalVoice.g:1405:1: ( ( ruleEntityExample ) )
+            // InternalVoice.g:1406:2: ( ruleEntityExample )
             {
-            // InternalVoice.g:1550:2: ( ruleEntityExample )
-            // InternalVoice.g:1551:3: ruleEntityExample
+            // InternalVoice.g:1406:2: ( ruleEntityExample )
+            // InternalVoice.g:1407:3: ruleEntityExample
             {
              before(grammarAccess.getEntityAccess().getExampleEntityExampleParserRuleCall_3_0()); 
             pushFollow(FOLLOW_2);
@@ -4773,67 +4337,26 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Entity__ExampleAssignment_3"
 
 
-    // $ANTLR start "rule__Question__RequiredAssignment_0"
-    // InternalVoice.g:1560:1: rule__Question__RequiredAssignment_0 : ( ruleRequired ) ;
-    public final void rule__Question__RequiredAssignment_0() throws RecognitionException {
+    // $ANTLR start "rule__Question__QuestionEntityAssignment_0"
+    // InternalVoice.g:1416:1: rule__Question__QuestionEntityAssignment_0 : ( ruleQuestionEntity ) ;
+    public final void rule__Question__QuestionEntityAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1564:1: ( ( ruleRequired ) )
-            // InternalVoice.g:1565:2: ( ruleRequired )
+            // InternalVoice.g:1420:1: ( ( ruleQuestionEntity ) )
+            // InternalVoice.g:1421:2: ( ruleQuestionEntity )
             {
-            // InternalVoice.g:1565:2: ( ruleRequired )
-            // InternalVoice.g:1566:3: ruleRequired
+            // InternalVoice.g:1421:2: ( ruleQuestionEntity )
+            // InternalVoice.g:1422:3: ruleQuestionEntity
             {
-             before(grammarAccess.getQuestionAccess().getRequiredRequiredParserRuleCall_0_0()); 
-            pushFollow(FOLLOW_2);
-            ruleRequired();
-
-            state._fsp--;
-
-             after(grammarAccess.getQuestionAccess().getRequiredRequiredParserRuleCall_0_0()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Question__RequiredAssignment_0"
-
-
-    // $ANTLR start "rule__Question__QuestionEntityAssignment_1"
-    // InternalVoice.g:1575:1: rule__Question__QuestionEntityAssignment_1 : ( ruleQuestionEntity ) ;
-    public final void rule__Question__QuestionEntityAssignment_1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalVoice.g:1579:1: ( ( ruleQuestionEntity ) )
-            // InternalVoice.g:1580:2: ( ruleQuestionEntity )
-            {
-            // InternalVoice.g:1580:2: ( ruleQuestionEntity )
-            // InternalVoice.g:1581:3: ruleQuestionEntity
-            {
-             before(grammarAccess.getQuestionAccess().getQuestionEntityQuestionEntityParserRuleCall_1_0()); 
+             before(grammarAccess.getQuestionAccess().getQuestionEntityQuestionEntityParserRuleCall_0_0()); 
             pushFollow(FOLLOW_2);
             ruleQuestionEntity();
 
             state._fsp--;
 
-             after(grammarAccess.getQuestionAccess().getQuestionEntityQuestionEntityParserRuleCall_1_0()); 
+             after(grammarAccess.getQuestionAccess().getQuestionEntityQuestionEntityParserRuleCall_0_0()); 
 
             }
 
@@ -4852,29 +4375,25 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Question__QuestionEntityAssignment_1"
+    // $ANTLR end "rule__Question__QuestionEntityAssignment_0"
 
 
-    // $ANTLR start "rule__Question__PromptAssignment_3"
-    // InternalVoice.g:1590:1: rule__Question__PromptAssignment_3 : ( rulePrompt ) ;
-    public final void rule__Question__PromptAssignment_3() throws RecognitionException {
+    // $ANTLR start "rule__Question__PromptAssignment_2"
+    // InternalVoice.g:1431:1: rule__Question__PromptAssignment_2 : ( RULE_STRING ) ;
+    public final void rule__Question__PromptAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1594:1: ( ( rulePrompt ) )
-            // InternalVoice.g:1595:2: ( rulePrompt )
+            // InternalVoice.g:1435:1: ( ( RULE_STRING ) )
+            // InternalVoice.g:1436:2: ( RULE_STRING )
             {
-            // InternalVoice.g:1595:2: ( rulePrompt )
-            // InternalVoice.g:1596:3: rulePrompt
+            // InternalVoice.g:1436:2: ( RULE_STRING )
+            // InternalVoice.g:1437:3: RULE_STRING
             {
-             before(grammarAccess.getQuestionAccess().getPromptPromptParserRuleCall_3_0()); 
-            pushFollow(FOLLOW_2);
-            rulePrompt();
-
-            state._fsp--;
-
-             after(grammarAccess.getQuestionAccess().getPromptPromptParserRuleCall_3_0()); 
+             before(grammarAccess.getQuestionAccess().getPromptSTRINGTerminalRuleCall_2_0()); 
+            match(input,RULE_STRING,FOLLOW_2); 
+             after(grammarAccess.getQuestionAccess().getPromptSTRINGTerminalRuleCall_2_0()); 
 
             }
 
@@ -4893,21 +4412,21 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Question__PromptAssignment_3"
+    // $ANTLR end "rule__Question__PromptAssignment_2"
 
 
     // $ANTLR start "rule__QuestionEntity__WithEntityAssignment"
-    // InternalVoice.g:1605:1: rule__QuestionEntity__WithEntityAssignment : ( ruleReference ) ;
+    // InternalVoice.g:1446:1: rule__QuestionEntity__WithEntityAssignment : ( ruleReference ) ;
     public final void rule__QuestionEntity__WithEntityAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1609:1: ( ( ruleReference ) )
-            // InternalVoice.g:1610:2: ( ruleReference )
+            // InternalVoice.g:1450:1: ( ( ruleReference ) )
+            // InternalVoice.g:1451:2: ( ruleReference )
             {
-            // InternalVoice.g:1610:2: ( ruleReference )
-            // InternalVoice.g:1611:3: ruleReference
+            // InternalVoice.g:1451:2: ( ruleReference )
+            // InternalVoice.g:1452:3: ruleReference
             {
              before(grammarAccess.getQuestionEntityAccess().getWithEntityReferenceParserRuleCall_0()); 
             pushFollow(FOLLOW_2);
@@ -4938,17 +4457,17 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Training__TrainingrefAssignment_2"
-    // InternalVoice.g:1620:1: rule__Training__TrainingrefAssignment_2 : ( ruleTrainingRef ) ;
+    // InternalVoice.g:1461:1: rule__Training__TrainingrefAssignment_2 : ( ruleTrainingRef ) ;
     public final void rule__Training__TrainingrefAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1624:1: ( ( ruleTrainingRef ) )
-            // InternalVoice.g:1625:2: ( ruleTrainingRef )
+            // InternalVoice.g:1465:1: ( ( ruleTrainingRef ) )
+            // InternalVoice.g:1466:2: ( ruleTrainingRef )
             {
-            // InternalVoice.g:1625:2: ( ruleTrainingRef )
-            // InternalVoice.g:1626:3: ruleTrainingRef
+            // InternalVoice.g:1466:2: ( ruleTrainingRef )
+            // InternalVoice.g:1467:3: ruleTrainingRef
             {
              before(grammarAccess.getTrainingAccess().getTrainingrefTrainingRefParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
@@ -4979,17 +4498,17 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TrainingRef__DeclarationsAssignment_1_1"
-    // InternalVoice.g:1635:1: rule__TrainingRef__DeclarationsAssignment_1_1 : ( ruleDeclaration ) ;
+    // InternalVoice.g:1476:1: rule__TrainingRef__DeclarationsAssignment_1_1 : ( ruleDeclaration ) ;
     public final void rule__TrainingRef__DeclarationsAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1639:1: ( ( ruleDeclaration ) )
-            // InternalVoice.g:1640:2: ( ruleDeclaration )
+            // InternalVoice.g:1480:1: ( ( ruleDeclaration ) )
+            // InternalVoice.g:1481:2: ( ruleDeclaration )
             {
-            // InternalVoice.g:1640:2: ( ruleDeclaration )
-            // InternalVoice.g:1641:3: ruleDeclaration
+            // InternalVoice.g:1481:2: ( ruleDeclaration )
+            // InternalVoice.g:1482:3: ruleDeclaration
             {
              before(grammarAccess.getTrainingRefAccess().getDeclarationsDeclarationParserRuleCall_1_1_0()); 
             pushFollow(FOLLOW_2);
@@ -5020,17 +4539,17 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Declaration__TrainingstringAssignment_1"
-    // InternalVoice.g:1650:1: rule__Declaration__TrainingstringAssignment_1 : ( RULE_STRING ) ;
+    // InternalVoice.g:1491:1: rule__Declaration__TrainingstringAssignment_1 : ( RULE_STRING ) ;
     public final void rule__Declaration__TrainingstringAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1654:1: ( ( RULE_STRING ) )
-            // InternalVoice.g:1655:2: ( RULE_STRING )
+            // InternalVoice.g:1495:1: ( ( RULE_STRING ) )
+            // InternalVoice.g:1496:2: ( RULE_STRING )
             {
-            // InternalVoice.g:1655:2: ( RULE_STRING )
-            // InternalVoice.g:1656:3: RULE_STRING
+            // InternalVoice.g:1496:2: ( RULE_STRING )
+            // InternalVoice.g:1497:3: RULE_STRING
             {
              before(grammarAccess.getDeclarationAccess().getTrainingstringSTRINGTerminalRuleCall_1_0()); 
             match(input,RULE_STRING,FOLLOW_2); 
@@ -5057,17 +4576,17 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Declaration__ReferenceAssignment_3"
-    // InternalVoice.g:1665:1: rule__Declaration__ReferenceAssignment_3 : ( ruleReference ) ;
+    // InternalVoice.g:1506:1: rule__Declaration__ReferenceAssignment_3 : ( ruleReference ) ;
     public final void rule__Declaration__ReferenceAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1669:1: ( ( ruleReference ) )
-            // InternalVoice.g:1670:2: ( ruleReference )
+            // InternalVoice.g:1510:1: ( ( ruleReference ) )
+            // InternalVoice.g:1511:2: ( ruleReference )
             {
-            // InternalVoice.g:1670:2: ( ruleReference )
-            // InternalVoice.g:1671:3: ruleReference
+            // InternalVoice.g:1511:2: ( ruleReference )
+            // InternalVoice.g:1512:3: ruleReference
             {
              before(grammarAccess.getDeclarationAccess().getReferenceReferenceParserRuleCall_3_0()); 
             pushFollow(FOLLOW_2);
@@ -5098,17 +4617,17 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EntityExample__NameAssignment_0"
-    // InternalVoice.g:1680:1: rule__EntityExample__NameAssignment_0 : ( RULE_ID ) ;
+    // InternalVoice.g:1521:1: rule__EntityExample__NameAssignment_0 : ( RULE_ID ) ;
     public final void rule__EntityExample__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1684:1: ( ( RULE_ID ) )
-            // InternalVoice.g:1685:2: ( RULE_ID )
+            // InternalVoice.g:1525:1: ( ( RULE_ID ) )
+            // InternalVoice.g:1526:2: ( RULE_ID )
             {
-            // InternalVoice.g:1685:2: ( RULE_ID )
-            // InternalVoice.g:1686:3: RULE_ID
+            // InternalVoice.g:1526:2: ( RULE_ID )
+            // InternalVoice.g:1527:3: RULE_ID
             {
              before(grammarAccess.getEntityExampleAccess().getNameIDTerminalRuleCall_0_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -5135,21 +4654,21 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__IsFollowup__IntentAssignment_1"
-    // InternalVoice.g:1695:1: rule__IsFollowup__IntentAssignment_1 : ( ( RULE_ID ) ) ;
+    // InternalVoice.g:1536:1: rule__IsFollowup__IntentAssignment_1 : ( ( RULE_ID ) ) ;
     public final void rule__IsFollowup__IntentAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1699:1: ( ( ( RULE_ID ) ) )
-            // InternalVoice.g:1700:2: ( ( RULE_ID ) )
+            // InternalVoice.g:1540:1: ( ( ( RULE_ID ) ) )
+            // InternalVoice.g:1541:2: ( ( RULE_ID ) )
             {
-            // InternalVoice.g:1700:2: ( ( RULE_ID ) )
-            // InternalVoice.g:1701:3: ( RULE_ID )
+            // InternalVoice.g:1541:2: ( ( RULE_ID ) )
+            // InternalVoice.g:1542:3: ( RULE_ID )
             {
              before(grammarAccess.getIsFollowupAccess().getIntentIntentCrossReference_1_0()); 
-            // InternalVoice.g:1702:3: ( RULE_ID )
-            // InternalVoice.g:1703:4: RULE_ID
+            // InternalVoice.g:1543:3: ( RULE_ID )
+            // InternalVoice.g:1544:4: RULE_ID
             {
              before(grammarAccess.getIsFollowupAccess().getIntentIntentIDTerminalRuleCall_1_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -5180,21 +4699,21 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Sysvariable__ValueAssignment"
-    // InternalVoice.g:1714:1: rule__Sysvariable__ValueAssignment : ( ( rule__Sysvariable__ValueAlternatives_0 ) ) ;
+    // InternalVoice.g:1555:1: rule__Sysvariable__ValueAssignment : ( ( rule__Sysvariable__ValueAlternatives_0 ) ) ;
     public final void rule__Sysvariable__ValueAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1718:1: ( ( ( rule__Sysvariable__ValueAlternatives_0 ) ) )
-            // InternalVoice.g:1719:2: ( ( rule__Sysvariable__ValueAlternatives_0 ) )
+            // InternalVoice.g:1559:1: ( ( ( rule__Sysvariable__ValueAlternatives_0 ) ) )
+            // InternalVoice.g:1560:2: ( ( rule__Sysvariable__ValueAlternatives_0 ) )
             {
-            // InternalVoice.g:1719:2: ( ( rule__Sysvariable__ValueAlternatives_0 ) )
-            // InternalVoice.g:1720:3: ( rule__Sysvariable__ValueAlternatives_0 )
+            // InternalVoice.g:1560:2: ( ( rule__Sysvariable__ValueAlternatives_0 ) )
+            // InternalVoice.g:1561:3: ( rule__Sysvariable__ValueAlternatives_0 )
             {
              before(grammarAccess.getSysvariableAccess().getValueAlternatives_0()); 
-            // InternalVoice.g:1721:3: ( rule__Sysvariable__ValueAlternatives_0 )
-            // InternalVoice.g:1721:4: rule__Sysvariable__ValueAlternatives_0
+            // InternalVoice.g:1562:3: ( rule__Sysvariable__ValueAlternatives_0 )
+            // InternalVoice.g:1562:4: rule__Sysvariable__ValueAlternatives_0
             {
             pushFollow(FOLLOW_2);
             rule__Sysvariable__ValueAlternatives_0();
@@ -5227,21 +4746,21 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Reference__EntityAssignment_0"
-    // InternalVoice.g:1729:1: rule__Reference__EntityAssignment_0 : ( ( RULE_ID ) ) ;
+    // InternalVoice.g:1570:1: rule__Reference__EntityAssignment_0 : ( ( RULE_ID ) ) ;
     public final void rule__Reference__EntityAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1733:1: ( ( ( RULE_ID ) ) )
-            // InternalVoice.g:1734:2: ( ( RULE_ID ) )
+            // InternalVoice.g:1574:1: ( ( ( RULE_ID ) ) )
+            // InternalVoice.g:1575:2: ( ( RULE_ID ) )
             {
-            // InternalVoice.g:1734:2: ( ( RULE_ID ) )
-            // InternalVoice.g:1735:3: ( RULE_ID )
+            // InternalVoice.g:1575:2: ( ( RULE_ID ) )
+            // InternalVoice.g:1576:3: ( RULE_ID )
             {
              before(grammarAccess.getReferenceAccess().getEntityEntityCrossReference_0_0()); 
-            // InternalVoice.g:1736:3: ( RULE_ID )
-            // InternalVoice.g:1737:4: RULE_ID
+            // InternalVoice.g:1577:3: ( RULE_ID )
+            // InternalVoice.g:1578:4: RULE_ID
             {
              before(grammarAccess.getReferenceAccess().getEntityEntityIDTerminalRuleCall_0_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -5272,17 +4791,17 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Reference__SysvarAssignment_1"
-    // InternalVoice.g:1748:1: rule__Reference__SysvarAssignment_1 : ( ruleSysvariable ) ;
+    // InternalVoice.g:1589:1: rule__Reference__SysvarAssignment_1 : ( ruleSysvariable ) ;
     public final void rule__Reference__SysvarAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:1752:1: ( ( ruleSysvariable ) )
-            // InternalVoice.g:1753:2: ( ruleSysvariable )
+            // InternalVoice.g:1593:1: ( ( ruleSysvariable ) )
+            // InternalVoice.g:1594:2: ( ruleSysvariable )
             {
-            // InternalVoice.g:1753:2: ( ruleSysvariable )
-            // InternalVoice.g:1754:3: ruleSysvariable
+            // InternalVoice.g:1594:2: ( ruleSysvariable )
+            // InternalVoice.g:1595:3: ruleSysvariable
             {
              before(grammarAccess.getReferenceAccess().getSysvarSysvariableParserRuleCall_1_0()); 
             pushFollow(FOLLOW_2);
@@ -5318,21 +4837,21 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x000000000C000002L});
+    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000003000002L});
     public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000002003FFF820L});
-    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000002003FFF822L});
-    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000020000000L});
+    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000800FFF820L});
+    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000020000000L});
+    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000800FFF822L});
+    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000008000000L});
     public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000000022L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000040000000L});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000010000000L});
     public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000200000010L});
-    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000200000012L});
-    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000100000000L});
-    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000001000000000L});
+    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000080000010L});
+    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000080000012L});
+    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000040000000L});
+    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000100000000L});
+    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000200000000L});
+    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000400000000L});
 
 }
