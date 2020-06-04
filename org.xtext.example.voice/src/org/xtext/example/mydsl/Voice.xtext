@@ -28,7 +28,6 @@ QuestionEntity:
 
 Training:
 	{Training} 'Training:' trainingref+=TrainingRef+
-	
 ;
 
 TrainingRef:

@@ -5,6 +5,7 @@ package org.xtext.example.mydsl.generator;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterators;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -143,6 +144,8 @@ public class VoiceGenerator extends AbstractGenerator {
   }
   
   private Set<VoiceGenerator.IntentFollowUp> followUpInformation;
+  
+  private ArrayList<Intent> intentsWithFollowup = new ArrayList<Intent>();
   
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
@@ -343,34 +346,29 @@ public class VoiceGenerator extends AbstractGenerator {
     return _builder;
   }
   
-  public CharSequence generateFollowupIntent(final Intent intent) {
-    StringConcatenation _builder = new StringConcatenation();
-    return _builder;
-  }
-  
-  public CharSequence generateRegularIntent(final Intent intent) {
-    StringConcatenation _builder = new StringConcatenation();
-    return _builder;
-  }
-  
   public Set<VoiceGenerator.IntentFollowUp> collectFollowUp(final Iterator<Intent> intents) {
     HashSet<VoiceGenerator.IntentFollowUp> _xblockexpression = null;
     {
       final HashSet<VoiceGenerator.IntentFollowUp> result = new HashSet<VoiceGenerator.IntentFollowUp>();
-      final Procedure1<Intent> _function = (Intent intent) -> {
-        String _name = intent.getName();
+      final Procedure1<Intent> _function = (Intent item) -> {
+        String _name = item.getName();
         Intent _xifexpression = null;
-        IsFollowup _isFollowup = intent.getIsFollowup();
+        IsFollowup _isFollowup = item.getIsFollowup();
         boolean _tripleNotEquals = (_isFollowup != null);
         if (_tripleNotEquals) {
-          _xifexpression = intent.getIsFollowup().getIntent();
+          _xifexpression = item.getIsFollowup().getIntent();
         } else {
           _xifexpression = null;
         }
-        EList<Question> _question = intent.getQuestion();
-        Training _training = intent.getTraining();
-        VoiceGenerator.IntentFollowUp _intentFollowUp = new VoiceGenerator.IntentFollowUp(_name, _xifexpression, intent, _question, _training);
+        EList<Question> _question = item.getQuestion();
+        Training _training = item.getTraining();
+        VoiceGenerator.IntentFollowUp _intentFollowUp = new VoiceGenerator.IntentFollowUp(_name, _xifexpression, item, _question, _training);
         result.add(_intentFollowUp);
+        IsFollowup _isFollowup_1 = item.getIsFollowup();
+        boolean _tripleNotEquals_1 = (_isFollowup_1 != null);
+        if (_tripleNotEquals_1) {
+          this.intentsWithFollowup.add(item.getIsFollowup().getIntent());
+        }
       };
       IteratorExtensions.<Intent>forEach(intents, _function);
       _xblockexpression = result;
@@ -430,25 +428,24 @@ public class VoiceGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("\t\t\t  \t\t\t\t\t");
     CharSequence _xifexpression_1 = null;
-    Intent _followupTo_1 = followup.getFollowupTo();
-    boolean _tripleEquals = (_followupTo_1 == null);
-    if (_tripleEquals) {
+    boolean _contains = this.intentsWithFollowup.contains(followup.getFollowupFrom());
+    if (_contains) {
       StringConcatenation _builder_2 = new StringConcatenation();
       _builder_2.append("{");
       _builder_2.newLine();
-      _builder_2.append("\t\t\t\t  \t\t\t\t\t\t\t\t          ");
+      _builder_2.append("\t\t\t\t  \t\t\t\t\t\t\t");
       _builder_2.append("\"name\": \"");
       String _name_1 = followup.getFollowupFrom().getName();
-      _builder_2.append(_name_1, "\t\t\t\t  \t\t\t\t\t\t\t\t          ");
+      _builder_2.append(_name_1, "\t\t\t\t  \t\t\t\t\t\t\t");
       _builder_2.append("-followup\",");
       _builder_2.newLineIfNotEmpty();
-      _builder_2.append("\t\t\t\t  \t\t\t\t\t\t\t\t          ");
+      _builder_2.append("\t\t\t\t  \t\t\t\t\t\t\t");
       _builder_2.append("\"parameters\": {},");
       _builder_2.newLine();
-      _builder_2.append("\t\t\t\t  \t\t\t\t\t\t\t\t          ");
+      _builder_2.append("\t\t\t\t  \t\t\t\t\t\t\t");
       _builder_2.append("\"lifespan\": 2");
       _builder_2.newLine();
-      _builder_2.append("\t\t\t\t  \t\t\t\t\t\t\t\t        ");
+      _builder_2.append("\t\t\t\t  \t\t\t\t\t\t");
       _builder_2.append("}");
       _xifexpression_1 = _builder_2;
     }

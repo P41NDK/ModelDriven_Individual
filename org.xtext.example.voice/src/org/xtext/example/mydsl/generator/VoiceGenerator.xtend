@@ -16,6 +16,7 @@ import java.util.HashSet
 import org.xtext.example.mydsl.voice.Question
 import java.util.List
 import org.xtext.example.mydsl.voice.Training
+import java.util.ArrayList
 
 /**
  * Generates code from your model files on save.
@@ -24,9 +25,9 @@ import org.xtext.example.mydsl.voice.Training
  */
 class VoiceGenerator extends AbstractGenerator {
 	var Set<IntentFollowUp> followUpInformation
+	var ArrayList<Intent> intentsWithFollowup = new ArrayList<Intent>
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		//val entity = resource.allContents.filter(Entity).next
 		followUpInformation = resource.allContents.filter(Intent).collectFollowUp
 		resource.allContents.filter(Entity).forEach[generateEntityFile(fsa)]
 		followUpInformation.forEach[generateIntentFile(fsa)]			
@@ -92,17 +93,13 @@ class VoiceGenerator extends AbstractGenerator {
 		  "conditionalFollowupEvents": []
 		}
 		'''
-		
-	def CharSequence generateFollowupIntent(Intent intent) '''
-	'''
-	
-	def CharSequence generateRegularIntent(Intent intent) '''
-	'''
 	
 	def Set<IntentFollowUp> collectFollowUp(Iterator<Intent> intents){
 		val result = new HashSet<IntentFollowUp>
-		intents.forEach[intent | 
-			result.add(new IntentFollowUp(intent.name, if(intent.isFollowup !== null) intent.isFollowup.intent else null, intent, intent.question, intent.training))
+		intents.forEach[item | 
+			result.add(new IntentFollowUp(item.name, item.isFollowup !== null ? item.isFollowup.intent : null, item, item.question, item.training))
+			if(item.isFollowup !== null) 
+				intentsWithFollowup.add(item.isFollowup.intent)
 		]
 		result
 	}
@@ -123,12 +120,12 @@ class VoiceGenerator extends AbstractGenerator {
 				  					{
 				  					"resetContexts": false,
 				  					"affectedContexts":[
-				  					«if (followup.followupTo === null)
+				  					«if(intentsWithFollowup.contains(followup.followupFrom))
 				  					'''{
-				  								          "name": "«followup.followupFrom.name»-followup",
-				  								          "parameters": {},
-				  								          "lifespan": 2
-				  								        }'''»        
+				  							"name": "«followup.followupFrom.name»-followup",
+				  							"parameters": {},
+				  							"lifespan": 2
+				  						}'''»        
 				  					],
 				  					"action": "",
 				  					'''
@@ -171,7 +168,9 @@ class VoiceGenerator extends AbstractGenerator {
 	@Data
 	static class IntentFollowUp{
 		String name
+		//to is the intent which its supposed to follow
 		Intent followupTo
+		//from is this intent
 		Intent followupFrom
 		List<Question> question
 		Training training
