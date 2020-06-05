@@ -596,9 +596,9 @@ rule__Intent__Group__2__Impl
 	}
 :
 (
-	{ before(grammarAccess.getIntentAccess().getIsFollowupAssignment_2()); }
-	(rule__Intent__IsFollowupAssignment_2)?
-	{ after(grammarAccess.getIntentAccess().getIsFollowupAssignment_2()); }
+	{ before(grammarAccess.getIntentAccess().getGroup_2()); }
+	(rule__Intent__Group_2__0)?
+	{ after(grammarAccess.getIntentAccess().getGroup_2()); }
 )
 ;
 finally {
@@ -623,16 +623,9 @@ rule__Intent__Group__3__Impl
 	}
 :
 (
-	(
-		{ before(grammarAccess.getIntentAccess().getQuestionAssignment_3()); }
-		(rule__Intent__QuestionAssignment_3)
-		{ after(grammarAccess.getIntentAccess().getQuestionAssignment_3()); }
-	)
-	(
-		{ before(grammarAccess.getIntentAccess().getQuestionAssignment_3()); }
-		(rule__Intent__QuestionAssignment_3)*
-		{ after(grammarAccess.getIntentAccess().getQuestionAssignment_3()); }
-	)
+	{ before(grammarAccess.getIntentAccess().getIsFollowupAssignment_3()); }
+	(rule__Intent__IsFollowupAssignment_3)?
+	{ after(grammarAccess.getIntentAccess().getIsFollowupAssignment_3()); }
 )
 ;
 finally {
@@ -645,6 +638,7 @@ rule__Intent__Group__4
 	}
 :
 	rule__Intent__Group__4__Impl
+	rule__Intent__Group__5
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -656,9 +650,96 @@ rule__Intent__Group__4__Impl
 	}
 :
 (
-	{ before(grammarAccess.getIntentAccess().getTrainingAssignment_4()); }
-	(rule__Intent__TrainingAssignment_4)
-	{ after(grammarAccess.getIntentAccess().getTrainingAssignment_4()); }
+	(
+		{ before(grammarAccess.getIntentAccess().getQuestionAssignment_4()); }
+		(rule__Intent__QuestionAssignment_4)
+		{ after(grammarAccess.getIntentAccess().getQuestionAssignment_4()); }
+	)
+	(
+		{ before(grammarAccess.getIntentAccess().getQuestionAssignment_4()); }
+		(rule__Intent__QuestionAssignment_4)*
+		{ after(grammarAccess.getIntentAccess().getQuestionAssignment_4()); }
+	)
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Intent__Group__5
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__Intent__Group__5__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Intent__Group__5__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getIntentAccess().getTrainingAssignment_5()); }
+	(rule__Intent__TrainingAssignment_5)
+	{ after(grammarAccess.getIntentAccess().getTrainingAssignment_5()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__Intent__Group_2__0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__Intent__Group_2__0__Impl
+	rule__Intent__Group_2__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Intent__Group_2__0__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getIntentAccess().getColonKeyword_2_0()); }
+	':'
+	{ after(grammarAccess.getIntentAccess().getColonKeyword_2_0()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Intent__Group_2__1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__Intent__Group_2__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Intent__Group_2__1__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getIntentAccess().getZuperAssignment_2_1()); }
+	(rule__Intent__ZuperAssignment_2_1)
+	{ after(grammarAccess.getIntentAccess().getZuperAssignment_2_1()); }
 )
 ;
 finally {
@@ -1338,45 +1419,64 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Intent__IsFollowupAssignment_2
+rule__Intent__ZuperAssignment_2_1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getIntentAccess().getIsFollowupIsFollowupParserRuleCall_2_0()); }
+		{ before(grammarAccess.getIntentAccess().getZuperIntentCrossReference_2_1_0()); }
+		(
+			{ before(grammarAccess.getIntentAccess().getZuperIntentIDTerminalRuleCall_2_1_0_1()); }
+			RULE_ID
+			{ after(grammarAccess.getIntentAccess().getZuperIntentIDTerminalRuleCall_2_1_0_1()); }
+		)
+		{ after(grammarAccess.getIntentAccess().getZuperIntentCrossReference_2_1_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Intent__IsFollowupAssignment_3
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getIntentAccess().getIsFollowupIsFollowupParserRuleCall_3_0()); }
 		ruleIsFollowup
-		{ after(grammarAccess.getIntentAccess().getIsFollowupIsFollowupParserRuleCall_2_0()); }
+		{ after(grammarAccess.getIntentAccess().getIsFollowupIsFollowupParserRuleCall_3_0()); }
 	)
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Intent__QuestionAssignment_3
+rule__Intent__QuestionAssignment_4
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getIntentAccess().getQuestionQuestionParserRuleCall_3_0()); }
+		{ before(grammarAccess.getIntentAccess().getQuestionQuestionParserRuleCall_4_0()); }
 		ruleQuestion
-		{ after(grammarAccess.getIntentAccess().getQuestionQuestionParserRuleCall_3_0()); }
+		{ after(grammarAccess.getIntentAccess().getQuestionQuestionParserRuleCall_4_0()); }
 	)
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Intent__TrainingAssignment_4
+rule__Intent__TrainingAssignment_5
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getIntentAccess().getTrainingTrainingParserRuleCall_4_0()); }
+		{ before(grammarAccess.getIntentAccess().getTrainingTrainingParserRuleCall_5_0()); }
 		ruleTraining
-		{ after(grammarAccess.getIntentAccess().getTrainingTrainingParserRuleCall_4_0()); }
+		{ after(grammarAccess.getIntentAccess().getTrainingTrainingParserRuleCall_5_0()); }
 	)
 ;
 finally {

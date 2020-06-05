@@ -32,6 +32,7 @@ import org.xtext.example.mydsl.voice.VoicePackage;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.xtext.example.mydsl.voice.impl.IntentImpl#getZuper <em>Zuper</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.voice.impl.IntentImpl#getIsFollowup <em>Is Followup</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.voice.impl.IntentImpl#getQuestion <em>Question</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.voice.impl.IntentImpl#getTraining <em>Training</em>}</li>
@@ -41,6 +42,16 @@ import org.xtext.example.mydsl.voice.VoicePackage;
  */
 public class IntentImpl extends AgentImpl implements Intent
 {
+  /**
+   * The cached value of the '{@link #getZuper() <em>Zuper</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getZuper()
+   * @generated
+   * @ordered
+   */
+  protected Intent zuper;
+
   /**
    * The cached value of the '{@link #getIsFollowup() <em>Is Followup</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -90,6 +101,51 @@ public class IntentImpl extends AgentImpl implements Intent
   protected EClass eStaticClass()
   {
     return VoicePackage.Literals.INTENT;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Intent getZuper()
+  {
+    if (zuper != null && zuper.eIsProxy())
+    {
+      InternalEObject oldZuper = (InternalEObject)zuper;
+      zuper = (Intent)eResolveProxy(oldZuper);
+      if (zuper != oldZuper)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, VoicePackage.INTENT__ZUPER, oldZuper, zuper));
+      }
+    }
+    return zuper;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Intent basicGetZuper()
+  {
+    return zuper;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setZuper(Intent newZuper)
+  {
+    Intent oldZuper = zuper;
+    zuper = newZuper;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, VoicePackage.INTENT__ZUPER, oldZuper, zuper));
   }
 
   /**
@@ -237,6 +293,9 @@ public class IntentImpl extends AgentImpl implements Intent
   {
     switch (featureID)
     {
+      case VoicePackage.INTENT__ZUPER:
+        if (resolve) return getZuper();
+        return basicGetZuper();
       case VoicePackage.INTENT__IS_FOLLOWUP:
         return getIsFollowup();
       case VoicePackage.INTENT__QUESTION:
@@ -258,6 +317,9 @@ public class IntentImpl extends AgentImpl implements Intent
   {
     switch (featureID)
     {
+      case VoicePackage.INTENT__ZUPER:
+        setZuper((Intent)newValue);
+        return;
       case VoicePackage.INTENT__IS_FOLLOWUP:
         setIsFollowup((IsFollowup)newValue);
         return;
@@ -282,6 +344,9 @@ public class IntentImpl extends AgentImpl implements Intent
   {
     switch (featureID)
     {
+      case VoicePackage.INTENT__ZUPER:
+        setZuper((Intent)null);
+        return;
       case VoicePackage.INTENT__IS_FOLLOWUP:
         setIsFollowup((IsFollowup)null);
         return;
@@ -305,6 +370,8 @@ public class IntentImpl extends AgentImpl implements Intent
   {
     switch (featureID)
     {
+      case VoicePackage.INTENT__ZUPER:
+        return zuper != null;
       case VoicePackage.INTENT__IS_FOLLOWUP:
         return isFollowup != null;
       case VoicePackage.INTENT__QUESTION:

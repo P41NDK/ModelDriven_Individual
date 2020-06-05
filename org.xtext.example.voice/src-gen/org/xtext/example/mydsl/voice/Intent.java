@@ -14,6 +14,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link org.xtext.example.mydsl.voice.Intent#getZuper <em>Zuper</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.voice.Intent#getIsFollowup <em>Is Followup</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.voice.Intent#getQuestion <em>Question</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.voice.Intent#getTraining <em>Training</em>}</li>
@@ -25,6 +26,28 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface Intent extends Agent
 {
+  /**
+   * Returns the value of the '<em><b>Zuper</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Zuper</em>' reference.
+   * @see #setZuper(Intent)
+   * @see org.xtext.example.mydsl.voice.VoicePackage#getIntent_Zuper()
+   * @model
+   * @generated
+   */
+  Intent getZuper();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.voice.Intent#getZuper <em>Zuper</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Zuper</em>' reference.
+   * @see #getZuper()
+   * @generated
+   */
+  void setZuper(Intent value);
+
   /**
    * Returns the value of the '<em><b>Is Followup</b></em>' containment reference.
    * <!-- begin-user-doc -->

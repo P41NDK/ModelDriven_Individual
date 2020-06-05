@@ -64,18 +64,23 @@ public class VoiceGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cIntentKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Assignment cIsFollowupAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cIsFollowupIsFollowupParserRuleCall_2_0 = (RuleCall)cIsFollowupAssignment_2.eContents().get(0);
-		private final Assignment cQuestionAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cQuestionQuestionParserRuleCall_3_0 = (RuleCall)cQuestionAssignment_3.eContents().get(0);
-		private final Assignment cTrainingAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cTrainingTrainingParserRuleCall_4_0 = (RuleCall)cTrainingAssignment_4.eContents().get(0);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cColonKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cZuperAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final CrossReference cZuperIntentCrossReference_2_1_0 = (CrossReference)cZuperAssignment_2_1.eContents().get(0);
+		private final RuleCall cZuperIntentIDTerminalRuleCall_2_1_0_1 = (RuleCall)cZuperIntentCrossReference_2_1_0.eContents().get(1);
+		private final Assignment cIsFollowupAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cIsFollowupIsFollowupParserRuleCall_3_0 = (RuleCall)cIsFollowupAssignment_3.eContents().get(0);
+		private final Assignment cQuestionAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cQuestionQuestionParserRuleCall_4_0 = (RuleCall)cQuestionAssignment_4.eContents().get(0);
+		private final Assignment cTrainingAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cTrainingTrainingParserRuleCall_5_0 = (RuleCall)cTrainingAssignment_5.eContents().get(0);
 		
 		//Intent:
-		//	'Intent' name=ID isFollowup=IsFollowup? question+=Question+ training=Training;
+		//	'Intent' name=ID (':' zuper=[Intent])? isFollowup=IsFollowup? question+=Question+ training=Training;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Intent' name=ID isFollowup=IsFollowup? question+=Question+ training=Training
+		//'Intent' name=ID (':' zuper=[Intent])? isFollowup=IsFollowup? question+=Question+ training=Training
 		public Group getGroup() { return cGroup; }
 		
 		//'Intent'
@@ -87,23 +92,38 @@ public class VoiceGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 		
+		//(':' zuper=[Intent])?
+		public Group getGroup_2() { return cGroup_2; }
+		
+		//':'
+		public Keyword getColonKeyword_2_0() { return cColonKeyword_2_0; }
+		
+		//zuper=[Intent]
+		public Assignment getZuperAssignment_2_1() { return cZuperAssignment_2_1; }
+		
+		//[Intent]
+		public CrossReference getZuperIntentCrossReference_2_1_0() { return cZuperIntentCrossReference_2_1_0; }
+		
+		//ID
+		public RuleCall getZuperIntentIDTerminalRuleCall_2_1_0_1() { return cZuperIntentIDTerminalRuleCall_2_1_0_1; }
+		
 		//isFollowup=IsFollowup?
-		public Assignment getIsFollowupAssignment_2() { return cIsFollowupAssignment_2; }
+		public Assignment getIsFollowupAssignment_3() { return cIsFollowupAssignment_3; }
 		
 		//IsFollowup
-		public RuleCall getIsFollowupIsFollowupParserRuleCall_2_0() { return cIsFollowupIsFollowupParserRuleCall_2_0; }
+		public RuleCall getIsFollowupIsFollowupParserRuleCall_3_0() { return cIsFollowupIsFollowupParserRuleCall_3_0; }
 		
 		//question+=Question+
-		public Assignment getQuestionAssignment_3() { return cQuestionAssignment_3; }
+		public Assignment getQuestionAssignment_4() { return cQuestionAssignment_4; }
 		
 		//Question
-		public RuleCall getQuestionQuestionParserRuleCall_3_0() { return cQuestionQuestionParserRuleCall_3_0; }
+		public RuleCall getQuestionQuestionParserRuleCall_4_0() { return cQuestionQuestionParserRuleCall_4_0; }
 		
 		//training=Training
-		public Assignment getTrainingAssignment_4() { return cTrainingAssignment_4; }
+		public Assignment getTrainingAssignment_5() { return cTrainingAssignment_5; }
 		
 		//Training
-		public RuleCall getTrainingTrainingParserRuleCall_4_0() { return cTrainingTrainingParserRuleCall_4_0; }
+		public RuleCall getTrainingTrainingParserRuleCall_5_0() { return cTrainingTrainingParserRuleCall_5_0; }
 	}
 	public class EntityElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.Voice.Entity");
@@ -530,7 +550,7 @@ public class VoiceGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Intent:
-	//	'Intent' name=ID isFollowup=IsFollowup? question+=Question+ training=Training;
+	//	'Intent' name=ID (':' zuper=[Intent])? isFollowup=IsFollowup? question+=Question+ training=Training;
 	public IntentElements getIntentAccess() {
 		return pIntent;
 	}

@@ -29,6 +29,7 @@ class VoiceGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		followUpInformation = resource.allContents.filter(Intent).collectFollowUp
+		
 		resource.allContents.filter(Entity).forEach[generateEntityFile(fsa)]
 		followUpInformation.forEach[generateIntentFile(fsa)]			
 	}

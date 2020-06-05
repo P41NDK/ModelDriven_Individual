@@ -171,11 +171,30 @@ ruleIntent returns [EObject current=null]
 			)
 		)
 		(
+			otherlv_2=':'
+			{
+				newLeafNode(otherlv_2, grammarAccess.getIntentAccess().getColonKeyword_2_0());
+			}
+			(
+				(
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getIntentRule());
+						}
+					}
+					otherlv_3=RULE_ID
+					{
+						newLeafNode(otherlv_3, grammarAccess.getIntentAccess().getZuperIntentCrossReference_2_1_0());
+					}
+				)
+			)
+		)?
+		(
 			(
 				{
-					newCompositeNode(grammarAccess.getIntentAccess().getIsFollowupIsFollowupParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getIntentAccess().getIsFollowupIsFollowupParserRuleCall_3_0());
 				}
-				lv_isFollowup_2_0=ruleIsFollowup
+				lv_isFollowup_4_0=ruleIsFollowup
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getIntentRule());
@@ -183,7 +202,7 @@ ruleIntent returns [EObject current=null]
 					set(
 						$current,
 						"isFollowup",
-						lv_isFollowup_2_0,
+						lv_isFollowup_4_0,
 						"org.xtext.example.mydsl.Voice.IsFollowup");
 					afterParserOrEnumRuleCall();
 				}
@@ -192,9 +211,9 @@ ruleIntent returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getIntentAccess().getQuestionQuestionParserRuleCall_3_0());
+					newCompositeNode(grammarAccess.getIntentAccess().getQuestionQuestionParserRuleCall_4_0());
 				}
-				lv_question_3_0=ruleQuestion
+				lv_question_5_0=ruleQuestion
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getIntentRule());
@@ -202,7 +221,7 @@ ruleIntent returns [EObject current=null]
 					add(
 						$current,
 						"question",
-						lv_question_3_0,
+						lv_question_5_0,
 						"org.xtext.example.mydsl.Voice.Question");
 					afterParserOrEnumRuleCall();
 				}
@@ -211,9 +230,9 @@ ruleIntent returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getIntentAccess().getTrainingTrainingParserRuleCall_4_0());
+					newCompositeNode(grammarAccess.getIntentAccess().getTrainingTrainingParserRuleCall_5_0());
 				}
-				lv_training_4_0=ruleTraining
+				lv_training_6_0=ruleTraining
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getIntentRule());
@@ -221,7 +240,7 @@ ruleIntent returns [EObject current=null]
 					set(
 						$current,
 						"training",
-						lv_training_4_0,
+						lv_training_6_0,
 						"org.xtext.example.mydsl.Voice.Training");
 					afterParserOrEnumRuleCall();
 				}

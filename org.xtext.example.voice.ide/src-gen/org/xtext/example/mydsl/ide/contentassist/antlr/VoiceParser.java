@@ -36,6 +36,7 @@ public class VoiceParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getSysvariableAccess().getValueAlternatives_0(), "rule__Sysvariable__ValueAlternatives_0");
 			builder.put(grammarAccess.getReferenceAccess().getAlternatives(), "rule__Reference__Alternatives");
 			builder.put(grammarAccess.getIntentAccess().getGroup(), "rule__Intent__Group__0");
+			builder.put(grammarAccess.getIntentAccess().getGroup_2(), "rule__Intent__Group_2__0");
 			builder.put(grammarAccess.getEntityAccess().getGroup(), "rule__Entity__Group__0");
 			builder.put(grammarAccess.getQuestionAccess().getGroup(), "rule__Question__Group__0");
 			builder.put(grammarAccess.getTrainingAccess().getGroup(), "rule__Training__Group__0");
@@ -45,9 +46,10 @@ public class VoiceParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getIsFollowupAccess().getGroup(), "rule__IsFollowup__Group__0");
 			builder.put(grammarAccess.getModelAccess().getAgentAssignment(), "rule__Model__AgentAssignment");
 			builder.put(grammarAccess.getIntentAccess().getNameAssignment_1(), "rule__Intent__NameAssignment_1");
-			builder.put(grammarAccess.getIntentAccess().getIsFollowupAssignment_2(), "rule__Intent__IsFollowupAssignment_2");
-			builder.put(grammarAccess.getIntentAccess().getQuestionAssignment_3(), "rule__Intent__QuestionAssignment_3");
-			builder.put(grammarAccess.getIntentAccess().getTrainingAssignment_4(), "rule__Intent__TrainingAssignment_4");
+			builder.put(grammarAccess.getIntentAccess().getZuperAssignment_2_1(), "rule__Intent__ZuperAssignment_2_1");
+			builder.put(grammarAccess.getIntentAccess().getIsFollowupAssignment_3(), "rule__Intent__IsFollowupAssignment_3");
+			builder.put(grammarAccess.getIntentAccess().getQuestionAssignment_4(), "rule__Intent__QuestionAssignment_4");
+			builder.put(grammarAccess.getIntentAccess().getTrainingAssignment_5(), "rule__Intent__TrainingAssignment_5");
 			builder.put(grammarAccess.getEntityAccess().getNameAssignment_1(), "rule__Entity__NameAssignment_1");
 			builder.put(grammarAccess.getEntityAccess().getExampleAssignment_3(), "rule__Entity__ExampleAssignment_3");
 			builder.put(grammarAccess.getQuestionAccess().getQuestionEntityAssignment_0(), "rule__Question__QuestionEntityAssignment_0");

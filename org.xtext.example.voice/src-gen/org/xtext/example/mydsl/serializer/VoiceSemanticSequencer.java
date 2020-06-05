@@ -142,7 +142,7 @@ public class VoiceSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Intent returns Intent
 	 *
 	 * Constraint:
-	 *     (name=ID isFollowup=IsFollowup? question+=Question+ training=Training)
+	 *     (name=ID zuper=[Intent|ID]? isFollowup=IsFollowup? question+=Question+ training=Training)
 	 */
 	protected void sequence_Intent(ISerializationContext context, Intent semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

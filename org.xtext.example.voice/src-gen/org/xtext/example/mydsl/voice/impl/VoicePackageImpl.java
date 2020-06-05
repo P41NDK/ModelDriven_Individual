@@ -257,7 +257,7 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
    * @generated
    */
   @Override
-  public EReference getIntent_IsFollowup()
+  public EReference getIntent_Zuper()
   {
     return (EReference)intentEClass.getEStructuralFeatures().get(0);
   }
@@ -268,7 +268,7 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
    * @generated
    */
   @Override
-  public EReference getIntent_Question()
+  public EReference getIntent_IsFollowup()
   {
     return (EReference)intentEClass.getEStructuralFeatures().get(1);
   }
@@ -279,9 +279,20 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
    * @generated
    */
   @Override
-  public EReference getIntent_Training()
+  public EReference getIntent_Question()
   {
     return (EReference)intentEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getIntent_Training()
+  {
+    return (EReference)intentEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -586,6 +597,7 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
     createEAttribute(agentEClass, AGENT__NAME);
 
     intentEClass = createEClass(INTENT);
+    createEReference(intentEClass, INTENT__ZUPER);
     createEReference(intentEClass, INTENT__IS_FOLLOWUP);
     createEReference(intentEClass, INTENT__QUESTION);
     createEReference(intentEClass, INTENT__TRAINING);
@@ -667,6 +679,7 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
     initEAttribute(getAgent_Name(), ecorePackage.getEString(), "name", null, 0, 1, Agent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(intentEClass, Intent.class, "Intent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getIntent_Zuper(), this.getIntent(), null, "zuper", null, 0, 1, Intent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getIntent_IsFollowup(), this.getIsFollowup(), null, "isFollowup", null, 0, 1, Intent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getIntent_Question(), this.getQuestion(), null, "question", null, 0, -1, Intent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getIntent_Training(), this.getTraining(), null, "training", null, 0, 1, Intent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
