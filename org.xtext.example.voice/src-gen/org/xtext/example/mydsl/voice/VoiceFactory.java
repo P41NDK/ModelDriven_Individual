@@ -141,15 +141,6 @@ public interface VoiceFactory extends EFactory
   Reference createReference();
 
   /**
-   * Returns a new object of class '<em>Training Ref Simple</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Training Ref Simple</em>'.
-   * @generated
-   */
-  TrainingRefSimple createTrainingRefSimple();
-
-  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

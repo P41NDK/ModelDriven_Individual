@@ -78,7 +78,6 @@ public class VoiceFactoryImpl extends EFactoryImpl implements VoiceFactory
       case VoicePackage.IS_FOLLOWUP: return createIsFollowup();
       case VoicePackage.SYSVARIABLE: return createSysvariable();
       case VoicePackage.REFERENCE: return createReference();
-      case VoicePackage.TRAINING_REF_SIMPLE: return createTrainingRefSimple();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -238,18 +237,6 @@ public class VoiceFactoryImpl extends EFactoryImpl implements VoiceFactory
   {
     ReferenceImpl reference = new ReferenceImpl();
     return reference;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public TrainingRefSimple createTrainingRefSimple()
-  {
-    TrainingRefSimpleImpl trainingRefSimple = new TrainingRefSimpleImpl();
-    return trainingRefSimple;
   }
 
   /**

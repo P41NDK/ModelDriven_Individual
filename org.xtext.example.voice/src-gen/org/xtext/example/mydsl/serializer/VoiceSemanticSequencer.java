@@ -26,7 +26,7 @@ import org.xtext.example.mydsl.voice.QuestionEntity;
 import org.xtext.example.mydsl.voice.Reference;
 import org.xtext.example.mydsl.voice.Sysvariable;
 import org.xtext.example.mydsl.voice.Training;
-import org.xtext.example.mydsl.voice.TrainingRefSimple;
+import org.xtext.example.mydsl.voice.TrainingRef;
 import org.xtext.example.mydsl.voice.VoicePackage;
 
 @SuppressWarnings("all")
@@ -76,8 +76,8 @@ public class VoiceSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 			case VoicePackage.TRAINING:
 				sequence_Training(context, (Training) semanticObject); 
 				return; 
-			case VoicePackage.TRAINING_REF_SIMPLE:
-				sequence_TrainingRef(context, (TrainingRefSimple) semanticObject); 
+			case VoicePackage.TRAINING_REF:
+				sequence_TrainingRef(context, (TrainingRef) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -258,13 +258,22 @@ public class VoiceSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
-	 *     TrainingRef returns TrainingRefSimple
+	 *     TrainingRef returns TrainingRef
 	 *
 	 * Constraint:
-	 *     declarations+=Declaration*
+	 *     (phrase=STRING declarations=Declaration)
 	 */
-	protected void sequence_TrainingRef(ISerializationContext context, TrainingRefSimple semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+	protected void sequence_TrainingRef(ISerializationContext context, TrainingRef semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, VoicePackage.Literals.TRAINING_REF__PHRASE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, VoicePackage.Literals.TRAINING_REF__PHRASE));
+			if (transientValues.isValueTransient(semanticObject, VoicePackage.Literals.TRAINING_REF__DECLARATIONS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, VoicePackage.Literals.TRAINING_REF__DECLARATIONS));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getTrainingRefAccess().getPhraseSTRINGTerminalRuleCall_0_0(), semanticObject.getPhrase());
+		feeder.accept(grammarAccess.getTrainingRefAccess().getDeclarationsDeclarationParserRuleCall_1_0(), semanticObject.getDeclarations());
+		feeder.finish();
 	}
 	
 	

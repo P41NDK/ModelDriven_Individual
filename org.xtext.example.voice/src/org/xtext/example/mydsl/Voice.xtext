@@ -13,12 +13,13 @@ Agent:
 Intent:
 	'Intent' name=ID (':' zuper=[Intent])? (isFollowup=IsFollowup)? question+=Question+ training=Training
 ;
+
 Entity:
 	 'Entity' name=ID '[' example+=EntityExample+ ']'
 ;
 
 Question: 
-	questionEntity=QuestionEntity 'with' prompt=STRING
+	questionEntity=QuestionEntity 'with' prompt=STRING 
 ;
 
 QuestionEntity:
@@ -30,7 +31,7 @@ Training:
 ;
 
 TrainingRef:
-	{TrainingRefSimple} (STRING | declarations+=Declaration)+ '.'
+	phrase=STRING declarations=Declaration '.'
 ;
 
 Declaration:

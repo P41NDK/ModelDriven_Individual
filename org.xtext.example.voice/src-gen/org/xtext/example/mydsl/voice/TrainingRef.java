@@ -10,6 +10,13 @@ import org.eclipse.emf.ecore.EObject;
  * A representation of the model object '<em><b>Training Ref</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link org.xtext.example.mydsl.voice.TrainingRef#getPhrase <em>Phrase</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.voice.TrainingRef#getDeclarations <em>Declarations</em>}</li>
+ * </ul>
  *
  * @see org.xtext.example.mydsl.voice.VoicePackage#getTrainingRef()
  * @model
@@ -17,4 +24,48 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface TrainingRef extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Phrase</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Phrase</em>' attribute.
+   * @see #setPhrase(String)
+   * @see org.xtext.example.mydsl.voice.VoicePackage#getTrainingRef_Phrase()
+   * @model
+   * @generated
+   */
+  String getPhrase();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.voice.TrainingRef#getPhrase <em>Phrase</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Phrase</em>' attribute.
+   * @see #getPhrase()
+   * @generated
+   */
+  void setPhrase(String value);
+
+  /**
+   * Returns the value of the '<em><b>Declarations</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Declarations</em>' containment reference.
+   * @see #setDeclarations(Declaration)
+   * @see org.xtext.example.mydsl.voice.VoicePackage#getTrainingRef_Declarations()
+   * @model containment="true"
+   * @generated
+   */
+  Declaration getDeclarations();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.voice.TrainingRef#getDeclarations <em>Declarations</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Declarations</em>' containment reference.
+   * @see #getDeclarations()
+   * @generated
+   */
+  void setDeclarations(Declaration value);
+
 } // TrainingRef

@@ -3,17 +3,11 @@
  */
 package org.xtext.example.mydsl.validation;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
-
 import org.eclipse.xtext.validation.Check;
-import org.xtext.example.mydsl.voice.Agent;
 import org.xtext.example.mydsl.voice.Declaration;
 import org.xtext.example.mydsl.voice.Intent;
-import org.xtext.example.mydsl.voice.Model;
 import org.xtext.example.mydsl.voice.Question;
-import org.xtext.example.mydsl.voice.QuestionEntity;
+import org.xtext.example.mydsl.voice.TrainingRef;
 import org.xtext.example.mydsl.voice.VoicePackage;
 
 /**
@@ -37,36 +31,45 @@ public class VoiceValidator extends AbstractVoiceValidator {
 	@Check
 	public void checkQuestion(Question question) {
 		if(question.getPrompt().isEmpty()) {
-			error("Prompt cannot be empty", VoicePackage.Literals.QUESTION__PROMPT);
+			warning("Prompt should not be empty", VoicePackage.Literals.QUESTION__PROMPT);
 		}
 	}
 	@Check
 	public void checkDeclaration(Declaration declaration) {
 		if(declaration.getTrainingstring().isEmpty()){
-			error("Trainingstring cannot be empty", VoicePackage.Literals.DECLARATION__TRAININGSTRING);
+			warning("Trainingstring should not be empty", VoicePackage.Literals.DECLARATION__TRAININGSTRING);
 		}
 	}
 	@Check
-	public void checkIntent(Intent intent) {
-		for(Question question : intent.getQuestion()) {
-			if(!intent.getTraining().getTrainingref().contains(question.getQuestionEntity().getWithEntity())) {
-				error("Make training phrases for this question", VoicePackage.Literals.INTENT__QUESTION);
-			}
-		}
+	public void checkFeatureNameIsUnique(Question question) {
+	    Intent superIntent = ((Intent) question.eContainer()).getZuper();
+	    while (superIntent != null) {
+	        for (Question other : superIntent.getQuestion()) {
+	            if (question.getPrompt().equals(other.getPrompt())) {
+	                error("Prompt must be unique", VoicePackage.Literals.QUESTION__PROMPT);
+	                return;
+	            }
+	        }
+	        superIntent = superIntent.getZuper();
+	    }
 	}
 	@Check
-	public void checkAgentUniquenes(Agent agent) {
-		Model model = (Model) agent.eContainer();
-		for(Agent item: model.getAgent()) {
-			if(agent != item) {
-				if(agent.getName().equals(item.getName())){
-					String errorString = "Cannot use " + agent.getName() + " again";
-					error(errorString, VoicePackage.Literals.AGENT__NAME);
-				}
+	public void checkForTraining(Question question){
+		Intent intent = ((Intent) question.eContainer());
+		Boolean exists = false;
+		Object questionTest = question.getQuestionEntity().getWithEntity().getSysvar() != null? question.getQuestionEntity().getWithEntity().getSysvar() : question.getQuestionEntity().getWithEntity().getEntity();
+		for(TrainingRef trainingRef : intent.getTraining().getTrainingref()) {
+			if(trainingRef.getDeclarations().getReference().getSysvar().equals(questionTest)) {
+				exists = true;
+				break;
+			}
+			else if(trainingRef.getDeclarations().getReference().getEntity().equals(questionTest)){
+				exists = true;
+				break;
 			}
 		}
+		if(!exists) {
+			error("You need to write training for this", VoicePackage.Literals.QUESTION__QUESTION_ENTITY);
+		}
 	}
-	
-	
-	
 }

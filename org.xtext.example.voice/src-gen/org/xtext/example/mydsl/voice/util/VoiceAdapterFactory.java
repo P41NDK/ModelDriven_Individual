@@ -141,11 +141,6 @@ public class VoiceAdapterFactory extends AdapterFactoryImpl
         return createReferenceAdapter();
       }
       @Override
-      public Adapter caseTrainingRefSimple(TrainingRefSimple object)
-      {
-        return createTrainingRefSimpleAdapter();
-      }
-      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -358,21 +353,6 @@ public class VoiceAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createReferenceAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.voice.TrainingRefSimple <em>Training Ref Simple</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.example.mydsl.voice.TrainingRefSimple
-   * @generated
-   */
-  public Adapter createTrainingRefSimpleAdapter()
   {
     return null;
   }

@@ -32,7 +32,6 @@ public class VoiceParser extends AbstractContentAssistParser {
 		
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, VoiceGrammarAccess grammarAccess) {
 			builder.put(grammarAccess.getAgentAccess().getAlternatives(), "rule__Agent__Alternatives");
-			builder.put(grammarAccess.getTrainingRefAccess().getAlternatives_1(), "rule__TrainingRef__Alternatives_1");
 			builder.put(grammarAccess.getSysvariableAccess().getValueAlternatives_0(), "rule__Sysvariable__ValueAlternatives_0");
 			builder.put(grammarAccess.getReferenceAccess().getAlternatives(), "rule__Reference__Alternatives");
 			builder.put(grammarAccess.getIntentAccess().getGroup(), "rule__Intent__Group__0");
@@ -56,7 +55,8 @@ public class VoiceParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getQuestionAccess().getPromptAssignment_2(), "rule__Question__PromptAssignment_2");
 			builder.put(grammarAccess.getQuestionEntityAccess().getWithEntityAssignment(), "rule__QuestionEntity__WithEntityAssignment");
 			builder.put(grammarAccess.getTrainingAccess().getTrainingrefAssignment_2(), "rule__Training__TrainingrefAssignment_2");
-			builder.put(grammarAccess.getTrainingRefAccess().getDeclarationsAssignment_1_1(), "rule__TrainingRef__DeclarationsAssignment_1_1");
+			builder.put(grammarAccess.getTrainingRefAccess().getPhraseAssignment_0(), "rule__TrainingRef__PhraseAssignment_0");
+			builder.put(grammarAccess.getTrainingRefAccess().getDeclarationsAssignment_1(), "rule__TrainingRef__DeclarationsAssignment_1");
 			builder.put(grammarAccess.getDeclarationAccess().getTrainingstringAssignment_1(), "rule__Declaration__TrainingstringAssignment_1");
 			builder.put(grammarAccess.getDeclarationAccess().getReferenceAssignment_3(), "rule__Declaration__ReferenceAssignment_3");
 			builder.put(grammarAccess.getEntityExampleAccess().getNameAssignment_0(), "rule__EntityExample__NameAssignment_0");

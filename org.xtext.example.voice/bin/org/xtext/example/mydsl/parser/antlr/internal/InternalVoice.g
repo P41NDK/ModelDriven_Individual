@@ -479,41 +479,45 @@ ruleTrainingRef returns [EObject current=null]
 }:
 	(
 		(
-			{
-				$current = forceCreateModelElement(
-					grammarAccess.getTrainingRefAccess().getTrainingRefSimpleAction_0(),
-					$current);
-			}
+			(
+				lv_phrase_0_0=RULE_STRING
+				{
+					newLeafNode(lv_phrase_0_0, grammarAccess.getTrainingRefAccess().getPhraseSTRINGTerminalRuleCall_0_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getTrainingRefRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"phrase",
+						lv_phrase_0_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
+				}
+			)
 		)
 		(
-			this_STRING_1=RULE_STRING
-			{
-				newLeafNode(this_STRING_1, grammarAccess.getTrainingRefAccess().getSTRINGTerminalRuleCall_1_0());
-			}
-			    |
 			(
-				(
-					{
-						newCompositeNode(grammarAccess.getTrainingRefAccess().getDeclarationsDeclarationParserRuleCall_1_1_0());
+				{
+					newCompositeNode(grammarAccess.getTrainingRefAccess().getDeclarationsDeclarationParserRuleCall_1_0());
+				}
+				lv_declarations_1_0=ruleDeclaration
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getTrainingRefRule());
 					}
-					lv_declarations_2_0=ruleDeclaration
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getTrainingRefRule());
-						}
-						add(
-							$current,
-							"declarations",
-							lv_declarations_2_0,
-							"org.xtext.example.mydsl.Voice.Declaration");
-						afterParserOrEnumRuleCall();
-					}
-				)
+					set(
+						$current,
+						"declarations",
+						lv_declarations_1_0,
+						"org.xtext.example.mydsl.Voice.Declaration");
+					afterParserOrEnumRuleCall();
+				}
 			)
-		)+
-		otherlv_3='.'
+		)
+		otherlv_2='.'
 		{
-			newLeafNode(otherlv_3, grammarAccess.getTrainingRefAccess().getFullStopKeyword_2());
+			newLeafNode(otherlv_2, grammarAccess.getTrainingRefAccess().getFullStopKeyword_2());
 		}
 	)
 ;

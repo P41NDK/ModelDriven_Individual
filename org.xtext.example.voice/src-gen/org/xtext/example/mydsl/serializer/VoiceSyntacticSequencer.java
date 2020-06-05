@@ -21,35 +21,18 @@ public class VoiceSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected VoiceGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_EntityExample_CommaKeyword_1_q;
-	protected AbstractElementAlias match_TrainingRef_STRINGTerminalRuleCall_1_0_a;
-	protected AbstractElementAlias match_TrainingRef_STRINGTerminalRuleCall_1_0_p;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (VoiceGrammarAccess) access;
 		match_EntityExample_CommaKeyword_1_q = new TokenAlias(false, true, grammarAccess.getEntityExampleAccess().getCommaKeyword_1());
-		match_TrainingRef_STRINGTerminalRuleCall_1_0_a = new TokenAlias(true, true, grammarAccess.getTrainingRefAccess().getSTRINGTerminalRuleCall_1_0());
-		match_TrainingRef_STRINGTerminalRuleCall_1_0_p = new TokenAlias(true, false, grammarAccess.getTrainingRefAccess().getSTRINGTerminalRuleCall_1_0());
 	}
 	
 	@Override
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (ruleCall.getRule() == grammarAccess.getSTRINGRule())
-			return getSTRINGToken(semanticObject, ruleCall, node);
 		return "";
 	}
 	
-	/**
-	 * terminal STRING:
-	 * 			'"' ( '\\' .  | !('\\'|'"') )* '"' |
-	 * 			"'" ( '\\' .  | !('\\'|"'") )* "'"
-	 * 		;
-	 */
-	protected String getSTRINGToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "\"\"";
-	}
 	
 	@Override
 	protected void emitUnassignedTokens(EObject semanticObject, ISynTransition transition, INode fromNode, INode toNode) {
@@ -59,10 +42,6 @@ public class VoiceSyntacticSequencer extends AbstractSyntacticSequencer {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
 			if (match_EntityExample_CommaKeyword_1_q.equals(syntax))
 				emit_EntityExample_CommaKeyword_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_TrainingRef_STRINGTerminalRuleCall_1_0_a.equals(syntax))
-				emit_TrainingRef_STRINGTerminalRuleCall_1_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_TrainingRef_STRINGTerminalRuleCall_1_0_p.equals(syntax))
-				emit_TrainingRef_STRINGTerminalRuleCall_1_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
@@ -75,30 +54,6 @@ public class VoiceSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     name=ID (ambiguity) (rule end)
 	 */
 	protected void emit_EntityExample_CommaKeyword_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     STRING*
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) declarations+=Declaration
-	 *     declarations+=Declaration (ambiguity) '.' (rule end)
-	 *     declarations+=Declaration (ambiguity) declarations+=Declaration
-	 */
-	protected void emit_TrainingRef_STRINGTerminalRuleCall_1_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     STRING+
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) '.' (rule start)
-	 */
-	protected void emit_TrainingRef_STRINGTerminalRuleCall_1_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

@@ -240,34 +240,30 @@ public class VoiceGrammarAccess extends AbstractGrammarElementFinder {
 	public class TrainingRefElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.Voice.TrainingRef");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cTrainingRefSimpleAction_0 = (Action)cGroup.eContents().get(0);
-		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
-		private final RuleCall cSTRINGTerminalRuleCall_1_0 = (RuleCall)cAlternatives_1.eContents().get(0);
-		private final Assignment cDeclarationsAssignment_1_1 = (Assignment)cAlternatives_1.eContents().get(1);
-		private final RuleCall cDeclarationsDeclarationParserRuleCall_1_1_0 = (RuleCall)cDeclarationsAssignment_1_1.eContents().get(0);
+		private final Assignment cPhraseAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cPhraseSTRINGTerminalRuleCall_0_0 = (RuleCall)cPhraseAssignment_0.eContents().get(0);
+		private final Assignment cDeclarationsAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cDeclarationsDeclarationParserRuleCall_1_0 = (RuleCall)cDeclarationsAssignment_1.eContents().get(0);
 		private final Keyword cFullStopKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
 		//TrainingRef:
-		//	{TrainingRefSimple} (STRING | declarations+=Declaration)+ '.';
+		//	phrase=STRING declarations=Declaration '.';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{TrainingRefSimple} (STRING | declarations+=Declaration)+ '.'
+		//phrase=STRING declarations=Declaration '.'
 		public Group getGroup() { return cGroup; }
 		
-		//{TrainingRefSimple}
-		public Action getTrainingRefSimpleAction_0() { return cTrainingRefSimpleAction_0; }
-		
-		//(STRING | declarations+=Declaration)+
-		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+		//phrase=STRING
+		public Assignment getPhraseAssignment_0() { return cPhraseAssignment_0; }
 		
 		//STRING
-		public RuleCall getSTRINGTerminalRuleCall_1_0() { return cSTRINGTerminalRuleCall_1_0; }
+		public RuleCall getPhraseSTRINGTerminalRuleCall_0_0() { return cPhraseSTRINGTerminalRuleCall_0_0; }
 		
-		//declarations+=Declaration
-		public Assignment getDeclarationsAssignment_1_1() { return cDeclarationsAssignment_1_1; }
+		//declarations=Declaration
+		public Assignment getDeclarationsAssignment_1() { return cDeclarationsAssignment_1; }
 		
 		//Declaration
-		public RuleCall getDeclarationsDeclarationParserRuleCall_1_1_0() { return cDeclarationsDeclarationParserRuleCall_1_1_0; }
+		public RuleCall getDeclarationsDeclarationParserRuleCall_1_0() { return cDeclarationsDeclarationParserRuleCall_1_0; }
 		
 		//'.'
 		public Keyword getFullStopKeyword_2() { return cFullStopKeyword_2; }
@@ -600,7 +596,7 @@ public class VoiceGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//TrainingRef:
-	//	{TrainingRefSimple} (STRING | declarations+=Declaration)+ '.';
+	//	phrase=STRING declarations=Declaration '.';
 	public TrainingRefElements getTrainingRefAccess() {
 		return pTrainingRef;
 	}

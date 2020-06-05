@@ -318,13 +318,31 @@ public interface VoicePackage extends EPackage
   int TRAINING_REF = 7;
 
   /**
+   * The feature id for the '<em><b>Phrase</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TRAINING_REF__PHRASE = 0;
+
+  /**
+   * The feature id for the '<em><b>Declarations</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TRAINING_REF__DECLARATIONS = 1;
+
+  /**
    * The number of structural features of the '<em>Training Ref</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TRAINING_REF_FEATURE_COUNT = 0;
+  int TRAINING_REF_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mydsl.voice.impl.DeclarationImpl <em>Declaration</em>}' class.
@@ -483,34 +501,6 @@ public interface VoicePackage extends EPackage
    * @ordered
    */
   int REFERENCE_FEATURE_COUNT = 2;
-
-  /**
-   * The meta object id for the '{@link org.xtext.example.mydsl.voice.impl.TrainingRefSimpleImpl <em>Training Ref Simple</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.xtext.example.mydsl.voice.impl.TrainingRefSimpleImpl
-   * @see org.xtext.example.mydsl.voice.impl.VoicePackageImpl#getTrainingRefSimple()
-   * @generated
-   */
-  int TRAINING_REF_SIMPLE = 13;
-
-  /**
-   * The feature id for the '<em><b>Declarations</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TRAINING_REF_SIMPLE__DECLARATIONS = TRAINING_REF_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Training Ref Simple</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TRAINING_REF_SIMPLE_FEATURE_COUNT = TRAINING_REF_FEATURE_COUNT + 1;
 
 
   /**
@@ -715,6 +705,28 @@ public interface VoicePackage extends EPackage
   EClass getTrainingRef();
 
   /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.voice.TrainingRef#getPhrase <em>Phrase</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Phrase</em>'.
+   * @see org.xtext.example.mydsl.voice.TrainingRef#getPhrase()
+   * @see #getTrainingRef()
+   * @generated
+   */
+  EAttribute getTrainingRef_Phrase();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.voice.TrainingRef#getDeclarations <em>Declarations</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Declarations</em>'.
+   * @see org.xtext.example.mydsl.voice.TrainingRef#getDeclarations()
+   * @see #getTrainingRef()
+   * @generated
+   */
+  EReference getTrainingRef_Declarations();
+
+  /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.voice.Declaration <em>Declaration</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -840,27 +852,6 @@ public interface VoicePackage extends EPackage
    * @generated
    */
   EReference getReference_Sysvar();
-
-  /**
-   * Returns the meta object for class '{@link org.xtext.example.mydsl.voice.TrainingRefSimple <em>Training Ref Simple</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Training Ref Simple</em>'.
-   * @see org.xtext.example.mydsl.voice.TrainingRefSimple
-   * @generated
-   */
-  EClass getTrainingRefSimple();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link org.xtext.example.mydsl.voice.TrainingRefSimple#getDeclarations <em>Declarations</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Declarations</em>'.
-   * @see org.xtext.example.mydsl.voice.TrainingRefSimple#getDeclarations()
-   * @see #getTrainingRefSimple()
-   * @generated
-   */
-  EReference getTrainingRefSimple_Declarations();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -1054,6 +1045,22 @@ public interface VoicePackage extends EPackage
     EClass TRAINING_REF = eINSTANCE.getTrainingRef();
 
     /**
+     * The meta object literal for the '<em><b>Phrase</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TRAINING_REF__PHRASE = eINSTANCE.getTrainingRef_Phrase();
+
+    /**
+     * The meta object literal for the '<em><b>Declarations</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TRAINING_REF__DECLARATIONS = eINSTANCE.getTrainingRef_Declarations();
+
+    /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.voice.impl.DeclarationImpl <em>Declaration</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1158,24 +1165,6 @@ public interface VoicePackage extends EPackage
      * @generated
      */
     EReference REFERENCE__SYSVAR = eINSTANCE.getReference_Sysvar();
-
-    /**
-     * The meta object literal for the '{@link org.xtext.example.mydsl.voice.impl.TrainingRefSimpleImpl <em>Training Ref Simple</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.xtext.example.mydsl.voice.impl.TrainingRefSimpleImpl
-     * @see org.xtext.example.mydsl.voice.impl.VoicePackageImpl#getTrainingRefSimple()
-     * @generated
-     */
-    EClass TRAINING_REF_SIMPLE = eINSTANCE.getTrainingRefSimple();
-
-    /**
-     * The meta object literal for the '<em><b>Declarations</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference TRAINING_REF_SIMPLE__DECLARATIONS = eINSTANCE.getTrainingRefSimple_Declarations();
 
   }
 

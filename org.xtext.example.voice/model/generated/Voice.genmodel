@@ -31,7 +31,10 @@
     <genClasses ecoreClass="Voice.ecore#//Training">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Voice.ecore#//Training/trainingref"/>
     </genClasses>
-    <genClasses ecoreClass="Voice.ecore#//TrainingRef"/>
+    <genClasses ecoreClass="Voice.ecore#//TrainingRef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Voice.ecore#//TrainingRef/phrase"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Voice.ecore#//TrainingRef/declarations"/>
+    </genClasses>
     <genClasses ecoreClass="Voice.ecore#//Declaration">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Voice.ecore#//Declaration/trainingstring"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Voice.ecore#//Declaration/reference"/>
@@ -48,9 +51,6 @@
     <genClasses ecoreClass="Voice.ecore#//Reference">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Voice.ecore#//Reference/entity"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Voice.ecore#//Reference/sysvar"/>
-    </genClasses>
-    <genClasses ecoreClass="Voice.ecore#//TrainingRefSimple">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Voice.ecore#//TrainingRefSimple/declarations"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

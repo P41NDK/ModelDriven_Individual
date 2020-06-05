@@ -3,20 +3,21 @@
  */
 package org.xtext.example.mydsl.generator
 
+import java.util.ArrayList
+import java.util.HashSet
+import java.util.Iterator
+import java.util.List
+import java.util.Set
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
-import org.xtext.example.mydsl.voice.Intent
 import org.xtext.example.mydsl.voice.Entity
-import org.xtext.example.mydsl.voice.Reference
-import java.util.Set
-import java.util.Iterator
-import java.util.HashSet
+import org.xtext.example.mydsl.voice.Intent
 import org.xtext.example.mydsl.voice.Question
-import java.util.List
+import org.xtext.example.mydsl.voice.Reference
 import org.xtext.example.mydsl.voice.Training
-import java.util.ArrayList
+import org.xtext.example.mydsl.voice.TrainingRef
 
 /**
  * Generates code from your model files on save.
@@ -46,30 +47,27 @@ class VoiceGenerator extends AbstractGenerator {
 	def CharSequence generateIntent(IntentFollowUp intent)
 		'''
 		{
-		"id": "«36.generateId»",
+		"id": "«generateUUID»",
 		"name": "«intent.name»",
 		"auto": true,
 		«intent.generateFollowup»
-			"parameter": [
-		«FOR parameter: intent.question»
+			"parameters": [
+		«FOR parameter: intent.createQuestionList»
 		{ 
-		          "id": "«36.generateId»",
+		          "id": "«generateUUID»",
 		          "required": "true",
 		          "dataType": "@«parameter.questionEntity.withEntity.getEntityType»",
-		          "name": "«parameter.questionEntity.withEntity.getEntityType»",
-		          "value": "$«parameter.questionEntity.withEntity.getEntityType»",
+		          "name": "«parameter.questionEntity.withEntity.sysvar!==null?parameter.questionEntity.withEntity.sysvar.value:parameter.questionEntity.withEntity.entity.name»",
+		          "value": "$«parameter.questionEntity.withEntity.sysvar!==null?parameter.questionEntity.withEntity.sysvar.value:parameter.questionEntity.withEntity.entity.name»",
 		          "prompts": [
-		            {
-		              "lang": "en",
-		              "value": "«parameter.prompt»"
-		            }
+		            "«parameter.prompt»"
 		          ],
 		          "promptMessages": [],
 		          "noMatchPromptMessages": [],
 		          "noInputPromptMessages": [],
 		          "outputDialogContexts": [],
 		          "isList": false
-		        } «if (parameter != intent.question.last) ''','''»
+		        } «if (parameter != intent.question.last && intent.superIntent === null) ''','''»
 		«ENDFOR»
 		],
 		      "messages": [
@@ -91,20 +89,60 @@ class VoiceGenerator extends AbstractGenerator {
 		  "events": [],
 		  "conditionalResponses": [],
 		  "condition": "",
-		  "conditionalFollowupEvents": []
+		  "conditionalFollowupEvents": [],
+		  "userSays": [
+		  «FOR trainingRef : intent.createTrainingList»
+		  «trainingRef.generateTraining» «if (trainingRef !== intent.training.trainingref.last) ''','''»
+		  «ENDFOR»
+		  ]
 		}
 		'''
+	def List<Question> createQuestionList(IntentFollowUp intent){
+		val result = intent.question
+		if(intent.superIntent !== null){
+			result.addAll(intent.superIntent.question)
+		}
+		result
+	}
+	def List<TrainingRef> createTrainingList(IntentFollowUp intent){
+		val result = intent.training.trainingref
+		if(intent.superIntent !== null){
+			result.addAll(intent.superIntent.training.trainingref)
+		}
+		result
+	}
+	
+	def CharSequence generateTraining(TrainingRef training){	
+		'''
+		{
+		"isTemplate": false,
+		"data": [
+		{
+		"text": "«training.phrase»",
+		"userDefined": false
+		},
+		{
+		"text": "«training.declarations.trainingstring»",
+		"userDefined": true,
+		"alias": "«training.declarations.reference.sysvar!==null?training.declarations.reference.sysvar.value:training.declarations.reference.entity.name»",
+		"meta": "@«training.declarations.reference.entityType»"
+		}
+		],
+		"count": 0,
+		"updated": null
+		}
+		'''
+	}
 	
 	def Set<IntentFollowUp> collectFollowUp(Iterator<Intent> intents){
 		val result = new HashSet<IntentFollowUp>
 		intents.forEach[item | 
-			result.add(new IntentFollowUp(item.name, item.isFollowup !== null ? item.isFollowup.intent : null, item, item.question, item.training))
+			result.add(new IntentFollowUp(item.name, item.isFollowup !== null ? item.isFollowup.intent : null, item, item.question, item.training, item.zuper))
 			if(item.isFollowup !== null) 
 				intentsWithFollowup.add(item.isFollowup.intent)
 		]
 		result
 	}
-	
 	def String getEntityType(Reference ref) {
 		if (ref.entity !== null)
 			ref.entity.name
@@ -147,7 +185,7 @@ class VoiceGenerator extends AbstractGenerator {
 	
 	def CharSequence generateEntity(Entity entity) '''
 	{
-	  "id": "«36.generateId»",
+	  "id": "«generateUUID»",
 	  "name": "«entity.name»",
 	  "isOverridable": true,
 	  "isEnum": false,
@@ -156,7 +194,10 @@ class VoiceGenerator extends AbstractGenerator {
 	  "allowFuzzyExtraction": true
 	}
 	'''
-	val ALPHA_NUMERIC_STRING = "abcdefghijklmnopqrstuvxyz0123456789-"
+	def String generateUUID(){
+		8.generateId + "-"+ 4.generateId + "-" + 4.generateId + "-" + 4.generateId + "-" + 12.generateId
+	} 
+	val ALPHA_NUMERIC_STRING = "abcdefghijklmnopqrstuvxyz0123456789"
 	def String generateId(int count) {
 		var c = count
     	var id = ""
@@ -175,5 +216,6 @@ class VoiceGenerator extends AbstractGenerator {
 		Intent followupFrom
 		List<Question> question
 		Training training
+		Intent superIntent
 	}
 }

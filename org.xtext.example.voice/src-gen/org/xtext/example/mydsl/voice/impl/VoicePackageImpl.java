@@ -23,7 +23,6 @@ import org.xtext.example.mydsl.voice.Reference;
 import org.xtext.example.mydsl.voice.Sysvariable;
 import org.xtext.example.mydsl.voice.Training;
 import org.xtext.example.mydsl.voice.TrainingRef;
-import org.xtext.example.mydsl.voice.TrainingRefSimple;
 import org.xtext.example.mydsl.voice.VoiceFactory;
 import org.xtext.example.mydsl.voice.VoicePackage;
 
@@ -125,13 +124,6 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
    * @generated
    */
   private EClass referenceEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass trainingRefSimpleEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -411,6 +403,28 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
    * @generated
    */
   @Override
+  public EAttribute getTrainingRef_Phrase()
+  {
+    return (EAttribute)trainingRefEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getTrainingRef_Declarations()
+  {
+    return (EReference)trainingRefEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getDeclaration()
   {
     return declarationEClass;
@@ -543,28 +557,6 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
    * @generated
    */
   @Override
-  public EClass getTrainingRefSimple()
-  {
-    return trainingRefSimpleEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getTrainingRefSimple_Declarations()
-  {
-    return (EReference)trainingRefSimpleEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public VoiceFactory getVoiceFactory()
   {
     return (VoiceFactory)getEFactoryInstance();
@@ -616,6 +608,8 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
     createEReference(trainingEClass, TRAINING__TRAININGREF);
 
     trainingRefEClass = createEClass(TRAINING_REF);
+    createEAttribute(trainingRefEClass, TRAINING_REF__PHRASE);
+    createEReference(trainingRefEClass, TRAINING_REF__DECLARATIONS);
 
     declarationEClass = createEClass(DECLARATION);
     createEAttribute(declarationEClass, DECLARATION__TRAININGSTRING);
@@ -633,9 +627,6 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
     referenceEClass = createEClass(REFERENCE);
     createEReference(referenceEClass, REFERENCE__ENTITY);
     createEReference(referenceEClass, REFERENCE__SYSVAR);
-
-    trainingRefSimpleEClass = createEClass(TRAINING_REF_SIMPLE);
-    createEReference(trainingRefSimpleEClass, TRAINING_REF_SIMPLE__DECLARATIONS);
   }
 
   /**
@@ -669,7 +660,6 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
     // Add supertypes to classes
     intentEClass.getESuperTypes().add(this.getAgent());
     entityEClass.getESuperTypes().add(this.getAgent());
-    trainingRefSimpleEClass.getESuperTypes().add(this.getTrainingRef());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -698,6 +688,8 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
     initEReference(getTraining_Trainingref(), this.getTrainingRef(), null, "trainingref", null, 0, -1, Training.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(trainingRefEClass, TrainingRef.class, "TrainingRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getTrainingRef_Phrase(), ecorePackage.getEString(), "phrase", null, 0, 1, TrainingRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTrainingRef_Declarations(), this.getDeclaration(), null, "declarations", null, 0, 1, TrainingRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(declarationEClass, Declaration.class, "Declaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getDeclaration_Trainingstring(), ecorePackage.getEString(), "trainingstring", null, 0, 1, Declaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -715,9 +707,6 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
     initEClass(referenceEClass, Reference.class, "Reference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getReference_Entity(), this.getEntity(), null, "entity", null, 0, 1, Reference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getReference_Sysvar(), this.getSysvariable(), null, "sysvar", null, 0, 1, Reference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(trainingRefSimpleEClass, TrainingRefSimple.class, "TrainingRefSimple", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getTrainingRefSimple_Declarations(), this.getDeclaration(), null, "declarations", null, 0, -1, TrainingRefSimple.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

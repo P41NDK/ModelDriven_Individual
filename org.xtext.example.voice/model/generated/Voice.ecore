@@ -34,7 +34,11 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="trainingref" upperBound="-1"
         eType="#//TrainingRef" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TrainingRef"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TrainingRef">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="phrase" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="declarations" eType="#//Declaration"
+        containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Declaration">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="trainingstring" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="#//Reference"
@@ -53,9 +57,5 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="entity" eType="#//Entity"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sysvar" eType="#//Sysvariable"
         containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TrainingRefSimple" eSuperTypes="#//TrainingRef">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="declarations" upperBound="-1"
-        eType="#//Declaration" containment="true"/>
   </eClassifiers>
 </ecore:EPackage>
