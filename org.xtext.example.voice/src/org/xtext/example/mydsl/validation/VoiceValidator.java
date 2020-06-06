@@ -3,9 +3,13 @@
  */
 package org.xtext.example.mydsl.validation;
 
+import java.util.HashSet;
+
 import org.eclipse.xtext.validation.Check;
+import org.xtext.example.mydsl.voice.Agent;
 import org.xtext.example.mydsl.voice.Declaration;
 import org.xtext.example.mydsl.voice.Intent;
+import org.xtext.example.mydsl.voice.Model;
 import org.xtext.example.mydsl.voice.Question;
 import org.xtext.example.mydsl.voice.TrainingRef;
 import org.xtext.example.mydsl.voice.VoicePackage;
@@ -16,18 +20,32 @@ import org.xtext.example.mydsl.voice.VoicePackage;
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
  */
 public class VoiceValidator extends AbstractVoiceValidator {
+	protected static String ISSUE_CODE_PREFIX = "org.example.intents.";
 	
-//	public static final String INVALID_NAME = "invalidName";
-//
-//	@Check
-//	public void checkGreetingStartsWithCapital(Greeting greeting) {
-//		if (!Character.isUpperCase(greeting.getName().charAt(0))) {
-//			warning("Name should start with a capital",
-//					VoicePackage.Literals.GREETING__NAME,
-//					INVALID_NAME);
-//		}
-//	}
-	
+	public static String HIERARCHY_CYCLE =
+			ISSUE_CODE_PREFIX + "HierarchyCycle";
+	@Check
+	public void checkNoCycleInIntentHierarchy(Model model) {
+		HashSet<Intent> visitedIntents = new HashSet<Intent>();
+		for(Agent agent : model.getAgent()) {
+			if(agent instanceof Intent) {
+				Intent intent = (Intent) agent;
+				if (intent.getZuper() == null) {
+					return ; // nothing to check
+				}
+				visitedIntents.add(intent);
+				Intent current = intent.getZuper();
+				while (current != null) {
+				if (visitedIntents.contains(current)) {
+					error("cycle in hierarchy of intent '"+current.getName()+"'", VoicePackage.Literals.MODEL__AGENT, HIERARCHY_CYCLE, current.getZuper().getName());
+				return ;
+				}
+				visitedIntents.add(current);
+				current = current.getZuper();
+				}
+			}
+		}
+	}
 	@Check
 	public void checkQuestion(Question question) {
 		if(question.getPrompt().isEmpty()) {
@@ -72,4 +90,7 @@ public class VoiceValidator extends AbstractVoiceValidator {
 			error("You need to write training for this", VoicePackage.Literals.QUESTION__QUESTION_ENTITY);
 		}
 	}
+	
+	
 }
+	

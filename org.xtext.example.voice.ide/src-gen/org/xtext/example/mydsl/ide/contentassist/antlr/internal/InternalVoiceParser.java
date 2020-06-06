@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalVoiceParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'number'", "'date-time'", "'date'", "'duration'", "'address'", "'email'", "'phone-number'", "'date-period'", "'time-period'", "'url'", "'any'", "'color'", "'language'", "'Intent'", "':'", "'Entity'", "'['", "']'", "'with'", "'Training:'", "'.'", "'('", "'is'", "')'", "','", "'IsFollowup'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'number'", "'date-time'", "'date'", "'duration'", "'address'", "'email'", "'phone-number'", "'date-period'", "'time-period'", "'url'", "'any'", "'color'", "'language'", "'Intent'", "'extends'", "'Entity'", "'['", "']'", "'with'", "'Training:'", "'.'", "'('", "'is'", "')'", "','", "'IsFollowup'"
     };
     public static final int RULE_STRING=5;
     public static final int RULE_SL_COMMENT=8;
@@ -2177,21 +2177,21 @@ public class InternalVoiceParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Intent__Group_2__0__Impl"
-    // InternalVoice.g:687:1: rule__Intent__Group_2__0__Impl : ( ':' ) ;
+    // InternalVoice.g:687:1: rule__Intent__Group_2__0__Impl : ( 'extends' ) ;
     public final void rule__Intent__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalVoice.g:691:1: ( ( ':' ) )
-            // InternalVoice.g:692:1: ( ':' )
+            // InternalVoice.g:691:1: ( ( 'extends' ) )
+            // InternalVoice.g:692:1: ( 'extends' )
             {
-            // InternalVoice.g:692:1: ( ':' )
-            // InternalVoice.g:693:2: ':'
+            // InternalVoice.g:692:1: ( 'extends' )
+            // InternalVoice.g:693:2: 'extends'
             {
-             before(grammarAccess.getIntentAccess().getColonKeyword_2_0()); 
+             before(grammarAccess.getIntentAccess().getExtendsKeyword_2_0()); 
             match(input,25,FOLLOW_2); 
-             after(grammarAccess.getIntentAccess().getColonKeyword_2_0()); 
+             after(grammarAccess.getIntentAccess().getExtendsKeyword_2_0()); 
 
             }
 

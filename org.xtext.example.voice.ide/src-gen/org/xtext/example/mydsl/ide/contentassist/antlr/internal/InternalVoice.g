@@ -690,9 +690,9 @@ rule__Intent__Group_2__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getIntentAccess().getColonKeyword_2_0()); }
-	':'
-	{ after(grammarAccess.getIntentAccess().getColonKeyword_2_0()); }
+	{ before(grammarAccess.getIntentAccess().getExtendsKeyword_2_0()); }
+	'extends'
+	{ after(grammarAccess.getIntentAccess().getExtendsKeyword_2_0()); }
 )
 ;
 finally {

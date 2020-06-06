@@ -11,20 +11,82 @@ import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.^extension.ExtendWith
 import org.xtext.example.mydsl.voice.Model
+import org.eclipse.xtext.testing.validation.ValidationTestHelper
+import org.xtext.example.mydsl.voice.VoicePackage
+import org.xtext.example.mydsl.validation.VoiceValidator
+import org.xtext.example.mydsl.voice.Agent
+import java.util.List
+import org.xtext.example.mydsl.voice.Intent
 
 @ExtendWith(InjectionExtension)
 @InjectWith(VoiceInjectorProvider)
 class VoiceParsingTest {
-	@Inject
-	ParseHelper<Model> parseHelper
+	@Inject extension ParseHelper<Model>
+	@Inject extension ValidationTestHelper
 	
 	@Test
-	def void loadModel() {
-		val result = parseHelper.parse('''
-			Hello Xtext!
-		''')
-		Assertions.assertNotNull(result)
-		val errors = result.eResource.errors
-		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+	def void T00_loadModel() {
+	val result =
+	'''
+	Entity car [Toyota, Audi, BMW]
+	
+	Intent pickCar
+		car with 'what car would you like?'
+		
+		Training:
+		'i would like a ' ('Toyota' is car).
+	'''
+	val parse = result.parse
+	Assertions.assertNotNull(parse)
+	parse.assertNoErrors
+	} 
+	
+	@Test
+	def void T01_noCyclicInheritance(){
+	'''
+	Entity car [Toyota, Audi, BMW]
+	Entity city [Odense, Aarhus, Copenhagen]
+	
+	Intent pickCar extends pickPlace
+		car with 'what car would you like?'
+		
+		Training:
+		'i would like a ' ('Toyota' is car).
+		
+	Intent pickPlace extends pickCar
+			city with 'Where would you like to pick it up??'
+			
+			Training:
+			'i would pick the car up at ' ('Odense' is city).
+	'''.parse.assertCycleInHierarchy("pickCar")
 	}
+	def private assertCycleInHierarchy(Model m, String intentName) {
+	m.assertError(VoicePackage.Literals.MODEL, VoiceValidator.HIERARCHY_CYCLE,"cycle in hierarchy of intent '" + intentName + "'")
+	}
+	@Test
+	def void T02_testIntentIsCorrectlyNamed() {
+	val result =
+	'''
+	Entity car [Toyota, Audi, BMW]
+	
+	Intent pickCar
+		car with 'what car would you like?'
+		
+		Training:
+		'i would like a ' ('Toyota' is car).
+	'''
+	val parsed = result.parse
+	Assertions.assertTrue(checkForIntentName(parsed.agent, "pickCar"))
+}
+def boolean checkForIntentName(List<Agent> agentList, String name){
+	for(Agent agent: agentList){
+		if(agent instanceof Intent){
+			if(agent.name.equals(name)){
+				return true
+				
+			}
+		}
+	}
+	return false
+}
 }

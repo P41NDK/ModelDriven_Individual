@@ -2,7 +2,6 @@
 ')'=21
 ','=22
 '.'=18
-':'=12
 'Entity'=13
 'Intent'=11
 'IsFollowup'=23
@@ -17,6 +16,7 @@
 'date-time'=25
 'duration'=27
 'email'=29
+'extends'=12
 'is'=20
 'language'=36
 'number'=24

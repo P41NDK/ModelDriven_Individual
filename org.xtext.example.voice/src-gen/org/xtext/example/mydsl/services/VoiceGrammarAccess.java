@@ -65,7 +65,7 @@ public class VoiceGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cColonKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Keyword cExtendsKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
 		private final Assignment cZuperAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
 		private final CrossReference cZuperIntentCrossReference_2_1_0 = (CrossReference)cZuperAssignment_2_1.eContents().get(0);
 		private final RuleCall cZuperIntentIDTerminalRuleCall_2_1_0_1 = (RuleCall)cZuperIntentCrossReference_2_1_0.eContents().get(1);
@@ -77,10 +77,10 @@ public class VoiceGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cTrainingTrainingParserRuleCall_5_0 = (RuleCall)cTrainingAssignment_5.eContents().get(0);
 		
 		//Intent:
-		//	'Intent' name=ID (':' zuper=[Intent])? isFollowup=IsFollowup? question+=Question+ training=Training;
+		//	'Intent' name=ID ('extends' zuper=[Intent])? isFollowup=IsFollowup? question+=Question+ training=Training;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Intent' name=ID (':' zuper=[Intent])? isFollowup=IsFollowup? question+=Question+ training=Training
+		//'Intent' name=ID ('extends' zuper=[Intent])? isFollowup=IsFollowup? question+=Question+ training=Training
 		public Group getGroup() { return cGroup; }
 		
 		//'Intent'
@@ -92,11 +92,11 @@ public class VoiceGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 		
-		//(':' zuper=[Intent])?
+		//('extends' zuper=[Intent])?
 		public Group getGroup_2() { return cGroup_2; }
 		
-		//':'
-		public Keyword getColonKeyword_2_0() { return cColonKeyword_2_0; }
+		//'extends'
+		public Keyword getExtendsKeyword_2_0() { return cExtendsKeyword_2_0; }
 		
 		//zuper=[Intent]
 		public Assignment getZuperAssignment_2_1() { return cZuperAssignment_2_1; }
@@ -546,7 +546,7 @@ public class VoiceGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Intent:
-	//	'Intent' name=ID (':' zuper=[Intent])? isFollowup=IsFollowup? question+=Question+ training=Training;
+	//	'Intent' name=ID ('extends' zuper=[Intent])? isFollowup=IsFollowup? question+=Question+ training=Training;
 	public IntentElements getIntentAccess() {
 		return pIntent;
 	}

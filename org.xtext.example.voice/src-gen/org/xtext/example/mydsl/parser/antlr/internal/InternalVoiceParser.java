@@ -21,7 +21,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalVoiceParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'Intent'", "':'", "'Entity'", "'['", "']'", "'with'", "'Training:'", "'.'", "'('", "'is'", "')'", "','", "'IsFollowup'", "'number'", "'date-time'", "'date'", "'duration'", "'address'", "'email'", "'phone-number'", "'date-period'", "'time-period'", "'url'", "'any'", "'color'", "'language'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'Intent'", "'extends'", "'Entity'", "'['", "']'", "'with'", "'Training:'", "'.'", "'('", "'is'", "')'", "','", "'IsFollowup'", "'number'", "'date-time'", "'date'", "'duration'", "'address'", "'email'", "'phone-number'", "'date-period'", "'time-period'", "'url'", "'any'", "'color'", "'language'"
     };
     public static final int RULE_STRING=5;
     public static final int RULE_SL_COMMENT=8;
@@ -381,7 +381,7 @@ public class InternalVoiceParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleIntent"
-    // InternalVoice.g:143:1: ruleIntent returns [EObject current=null] : (otherlv_0= 'Intent' ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= ':' ( (otherlv_3= RULE_ID ) ) )? ( (lv_isFollowup_4_0= ruleIsFollowup ) )? ( (lv_question_5_0= ruleQuestion ) )+ ( (lv_training_6_0= ruleTraining ) ) ) ;
+    // InternalVoice.g:143:1: ruleIntent returns [EObject current=null] : (otherlv_0= 'Intent' ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= 'extends' ( (otherlv_3= RULE_ID ) ) )? ( (lv_isFollowup_4_0= ruleIsFollowup ) )? ( (lv_question_5_0= ruleQuestion ) )+ ( (lv_training_6_0= ruleTraining ) ) ) ;
     public final EObject ruleIntent() throws RecognitionException {
         EObject current = null;
 
@@ -400,11 +400,11 @@ public class InternalVoiceParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalVoice.g:149:2: ( (otherlv_0= 'Intent' ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= ':' ( (otherlv_3= RULE_ID ) ) )? ( (lv_isFollowup_4_0= ruleIsFollowup ) )? ( (lv_question_5_0= ruleQuestion ) )+ ( (lv_training_6_0= ruleTraining ) ) ) )
-            // InternalVoice.g:150:2: (otherlv_0= 'Intent' ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= ':' ( (otherlv_3= RULE_ID ) ) )? ( (lv_isFollowup_4_0= ruleIsFollowup ) )? ( (lv_question_5_0= ruleQuestion ) )+ ( (lv_training_6_0= ruleTraining ) ) )
+            // InternalVoice.g:149:2: ( (otherlv_0= 'Intent' ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= 'extends' ( (otherlv_3= RULE_ID ) ) )? ( (lv_isFollowup_4_0= ruleIsFollowup ) )? ( (lv_question_5_0= ruleQuestion ) )+ ( (lv_training_6_0= ruleTraining ) ) ) )
+            // InternalVoice.g:150:2: (otherlv_0= 'Intent' ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= 'extends' ( (otherlv_3= RULE_ID ) ) )? ( (lv_isFollowup_4_0= ruleIsFollowup ) )? ( (lv_question_5_0= ruleQuestion ) )+ ( (lv_training_6_0= ruleTraining ) ) )
             {
-            // InternalVoice.g:150:2: (otherlv_0= 'Intent' ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= ':' ( (otherlv_3= RULE_ID ) ) )? ( (lv_isFollowup_4_0= ruleIsFollowup ) )? ( (lv_question_5_0= ruleQuestion ) )+ ( (lv_training_6_0= ruleTraining ) ) )
-            // InternalVoice.g:151:3: otherlv_0= 'Intent' ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= ':' ( (otherlv_3= RULE_ID ) ) )? ( (lv_isFollowup_4_0= ruleIsFollowup ) )? ( (lv_question_5_0= ruleQuestion ) )+ ( (lv_training_6_0= ruleTraining ) )
+            // InternalVoice.g:150:2: (otherlv_0= 'Intent' ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= 'extends' ( (otherlv_3= RULE_ID ) ) )? ( (lv_isFollowup_4_0= ruleIsFollowup ) )? ( (lv_question_5_0= ruleQuestion ) )+ ( (lv_training_6_0= ruleTraining ) ) )
+            // InternalVoice.g:151:3: otherlv_0= 'Intent' ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= 'extends' ( (otherlv_3= RULE_ID ) ) )? ( (lv_isFollowup_4_0= ruleIsFollowup ) )? ( (lv_question_5_0= ruleQuestion ) )+ ( (lv_training_6_0= ruleTraining ) )
             {
             otherlv_0=(Token)match(input,11,FOLLOW_4); 
 
@@ -436,7 +436,7 @@ public class InternalVoiceParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalVoice.g:173:3: (otherlv_2= ':' ( (otherlv_3= RULE_ID ) ) )?
+            // InternalVoice.g:173:3: (otherlv_2= 'extends' ( (otherlv_3= RULE_ID ) ) )?
             int alt3=2;
             int LA3_0 = input.LA(1);
 
@@ -445,11 +445,11 @@ public class InternalVoiceParser extends AbstractInternalAntlrParser {
             }
             switch (alt3) {
                 case 1 :
-                    // InternalVoice.g:174:4: otherlv_2= ':' ( (otherlv_3= RULE_ID ) )
+                    // InternalVoice.g:174:4: otherlv_2= 'extends' ( (otherlv_3= RULE_ID ) )
                     {
                     otherlv_2=(Token)match(input,12,FOLLOW_4); 
 
-                    				newLeafNode(otherlv_2, grammarAccess.getIntentAccess().getColonKeyword_2_0());
+                    				newLeafNode(otherlv_2, grammarAccess.getIntentAccess().getExtendsKeyword_2_0());
                     			
                     // InternalVoice.g:178:4: ( (otherlv_3= RULE_ID ) )
                     // InternalVoice.g:179:5: (otherlv_3= RULE_ID )

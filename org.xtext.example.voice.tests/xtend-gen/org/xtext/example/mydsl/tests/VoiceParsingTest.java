@@ -4,44 +4,149 @@
 package org.xtext.example.mydsl.tests;
 
 import com.google.inject.Inject;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.resource.Resource;
+import java.util.List;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.testing.InjectWith;
 import org.eclipse.xtext.testing.extensions.InjectionExtension;
 import org.eclipse.xtext.testing.util.ParseHelper;
+import org.eclipse.xtext.testing.validation.ValidationTestHelper;
 import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.xtext.example.mydsl.tests.VoiceInjectorProvider;
+import org.xtext.example.mydsl.validation.VoiceValidator;
+import org.xtext.example.mydsl.voice.Agent;
+import org.xtext.example.mydsl.voice.Intent;
 import org.xtext.example.mydsl.voice.Model;
+import org.xtext.example.mydsl.voice.VoicePackage;
 
 @ExtendWith(InjectionExtension.class)
 @InjectWith(VoiceInjectorProvider.class)
 @SuppressWarnings("all")
 public class VoiceParsingTest {
   @Inject
-  private ParseHelper<Model> parseHelper;
+  @Extension
+  private ParseHelper<Model> _parseHelper;
+  
+  @Inject
+  @Extension
+  private ValidationTestHelper _validationTestHelper;
   
   @Test
-  public void loadModel() {
+  public void T00_loadModel() {
     try {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("Hello Xtext!");
+      _builder.append("Entity car [Toyota, Audi, BMW]");
       _builder.newLine();
-      final Model result = this.parseHelper.parse(_builder);
-      Assertions.assertNotNull(result);
-      final EList<Resource.Diagnostic> errors = result.eResource().getErrors();
-      boolean _isEmpty = errors.isEmpty();
-      StringConcatenation _builder_1 = new StringConcatenation();
-      _builder_1.append("Unexpected errors: ");
-      String _join = IterableExtensions.join(errors, ", ");
-      _builder_1.append(_join);
-      Assertions.assertTrue(_isEmpty, _builder_1.toString());
+      _builder.newLine();
+      _builder.append("Intent pickCar");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("car with \'what car would you like?\'");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("Training:");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("\'i would like a \' (\'Toyota\' is car).");
+      _builder.newLine();
+      final String result = _builder.toString();
+      final Model parse = this._parseHelper.parse(result);
+      Assertions.assertNotNull(parse);
+      this._validationTestHelper.assertNoErrors(parse);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
+  }
+  
+  @Test
+  public void T01_noCyclicInheritance() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("Entity car [Toyota, Audi, BMW]");
+      _builder.newLine();
+      _builder.append("Entity city [Odense, Aarhus, Copenhagen]");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("Intent pickCar extends pickPlace");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("car with \'what car would you like?\'");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("Training:");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("\'i would like a \' (\'Toyota\' is car).");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.newLine();
+      _builder.append("Intent pickPlace extends pickCar");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("city with \'Where would you like to pick it up??\'");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("Training:");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("\'i would pick the car up at \' (\'Odense\' is city).");
+      _builder.newLine();
+      this.assertCycleInHierarchy(this._parseHelper.parse(_builder), "pickCar");
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  private void assertCycleInHierarchy(final Model m, final String intentName) {
+    this._validationTestHelper.assertError(m, VoicePackage.Literals.MODEL, VoiceValidator.HIERARCHY_CYCLE, (("cycle in hierarchy of intent \'" + intentName) + "\'"));
+  }
+  
+  @Test
+  public void T02_testIntentIsCorrectlyNamed() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("Entity car [Toyota, Audi, BMW]");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("Intent pickCar");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("car with \'what car would you like?\'");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("Training:");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("\'i would like a \' (\'Toyota\' is car).");
+      _builder.newLine();
+      final String result = _builder.toString();
+      final Model parsed = this._parseHelper.parse(result);
+      Assertions.assertTrue(this.checkForIntentName(parsed.getAgent(), "pickCar"));
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  public boolean checkForIntentName(final List<Agent> agentList, final String name) {
+    for (final Agent agent : agentList) {
+      if ((agent instanceof Intent)) {
+        boolean _equals = ((Intent)agent).getName().equals(name);
+        if (_equals) {
+          return true;
+        }
+      }
+    }
+    return false;
   }
 }

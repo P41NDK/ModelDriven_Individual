@@ -171,9 +171,9 @@ ruleIntent returns [EObject current=null]
 			)
 		)
 		(
-			otherlv_2=':'
+			otherlv_2='extends'
 			{
-				newLeafNode(otherlv_2, grammarAccess.getIntentAccess().getColonKeyword_2_0());
+				newLeafNode(otherlv_2, grammarAccess.getIntentAccess().getExtendsKeyword_2_0());
 			}
 			(
 				(
