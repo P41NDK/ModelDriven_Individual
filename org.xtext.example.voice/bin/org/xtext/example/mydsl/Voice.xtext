@@ -11,14 +11,17 @@ Agent:
 ;
 	
 Intent:
-	'Intent' name=ID ('extends' zuper=[Intent])? (isFollowup=IsFollowup)? question+=Question+ training=Training
+	'Intent' name=ID ('extends' zuper=[Intent])? (isFollowup=IsFollowup)? questions+=QuestionReference+ training=Training
 ;
 Entity returns ReferenceObject:
 	 {Entity} 'Entity' name=ID '[' example+=EntityExample+ ']'
 ;
+QuestionReference:
+	question=Question | 'get' questionReference = [Question]
+;
 
 Question: 
-	'get' extendedQuestion=[ReferenceObject] | questionEntity=QuestionEntity 'with' prompt=STRING 
+	(name=ID '=')? questionEntity=QuestionEntity 'with' prompt=STRING 
 ;
 
 QuestionEntity:
@@ -47,10 +50,7 @@ IsFollowup:
 	'IsFollowup' intent=[Intent]
 ;
 Sysvariable returns ReferenceObject:
-	{Sysvariable} (name=ID '=')? defaultValue=DefaultValues
-;
-DefaultValues:
-	('number' | 'date-time' | 'date' | 'duration' | 'address' | 'email' | 'phone-number' | 'date-period' 
+	{Sysvariable} defaultValue=('number' | 'date-time' | 'date' | 'duration' | 'address' | 'email' | 'phone-number' | 'date-period' 
 		| 'time-period' | 'url' | 'any' | 'color' | 'language')
 ;
 

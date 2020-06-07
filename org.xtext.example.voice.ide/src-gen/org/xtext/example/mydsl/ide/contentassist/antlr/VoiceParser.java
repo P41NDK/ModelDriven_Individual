@@ -32,32 +32,34 @@ public class VoiceParser extends AbstractContentAssistParser {
 		
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, VoiceGrammarAccess grammarAccess) {
 			builder.put(grammarAccess.getAgentAccess().getAlternatives(), "rule__Agent__Alternatives");
-			builder.put(grammarAccess.getQuestionAccess().getAlternatives(), "rule__Question__Alternatives");
+			builder.put(grammarAccess.getQuestionReferenceAccess().getAlternatives(), "rule__QuestionReference__Alternatives");
 			builder.put(grammarAccess.getReferenceAccess().getAlternatives(), "rule__Reference__Alternatives");
-			builder.put(grammarAccess.getDefaultValuesAccess().getAlternatives(), "rule__DefaultValues__Alternatives");
+			builder.put(grammarAccess.getSysvariableAccess().getDefaultValueAlternatives_1_0(), "rule__Sysvariable__DefaultValueAlternatives_1_0");
 			builder.put(grammarAccess.getIntentAccess().getGroup(), "rule__Intent__Group__0");
 			builder.put(grammarAccess.getIntentAccess().getGroup_2(), "rule__Intent__Group_2__0");
 			builder.put(grammarAccess.getEntityAccess().getGroup(), "rule__Entity__Group__0");
+			builder.put(grammarAccess.getQuestionReferenceAccess().getGroup_1(), "rule__QuestionReference__Group_1__0");
+			builder.put(grammarAccess.getQuestionAccess().getGroup(), "rule__Question__Group__0");
 			builder.put(grammarAccess.getQuestionAccess().getGroup_0(), "rule__Question__Group_0__0");
-			builder.put(grammarAccess.getQuestionAccess().getGroup_1(), "rule__Question__Group_1__0");
 			builder.put(grammarAccess.getTrainingAccess().getGroup(), "rule__Training__Group__0");
 			builder.put(grammarAccess.getTrainingRefAccess().getGroup(), "rule__TrainingRef__Group__0");
 			builder.put(grammarAccess.getDeclarationAccess().getGroup(), "rule__Declaration__Group__0");
 			builder.put(grammarAccess.getEntityExampleAccess().getGroup(), "rule__EntityExample__Group__0");
 			builder.put(grammarAccess.getIsFollowupAccess().getGroup(), "rule__IsFollowup__Group__0");
 			builder.put(grammarAccess.getSysvariableAccess().getGroup(), "rule__Sysvariable__Group__0");
-			builder.put(grammarAccess.getSysvariableAccess().getGroup_1(), "rule__Sysvariable__Group_1__0");
 			builder.put(grammarAccess.getModelAccess().getAgentAssignment(), "rule__Model__AgentAssignment");
 			builder.put(grammarAccess.getIntentAccess().getNameAssignment_1(), "rule__Intent__NameAssignment_1");
 			builder.put(grammarAccess.getIntentAccess().getZuperAssignment_2_1(), "rule__Intent__ZuperAssignment_2_1");
 			builder.put(grammarAccess.getIntentAccess().getIsFollowupAssignment_3(), "rule__Intent__IsFollowupAssignment_3");
-			builder.put(grammarAccess.getIntentAccess().getQuestionAssignment_4(), "rule__Intent__QuestionAssignment_4");
+			builder.put(grammarAccess.getIntentAccess().getQuestionsAssignment_4(), "rule__Intent__QuestionsAssignment_4");
 			builder.put(grammarAccess.getIntentAccess().getTrainingAssignment_5(), "rule__Intent__TrainingAssignment_5");
 			builder.put(grammarAccess.getEntityAccess().getNameAssignment_2(), "rule__Entity__NameAssignment_2");
 			builder.put(grammarAccess.getEntityAccess().getExampleAssignment_4(), "rule__Entity__ExampleAssignment_4");
-			builder.put(grammarAccess.getQuestionAccess().getExtendedQuestionAssignment_0_1(), "rule__Question__ExtendedQuestionAssignment_0_1");
-			builder.put(grammarAccess.getQuestionAccess().getQuestionEntityAssignment_1_0(), "rule__Question__QuestionEntityAssignment_1_0");
-			builder.put(grammarAccess.getQuestionAccess().getPromptAssignment_1_2(), "rule__Question__PromptAssignment_1_2");
+			builder.put(grammarAccess.getQuestionReferenceAccess().getQuestionAssignment_0(), "rule__QuestionReference__QuestionAssignment_0");
+			builder.put(grammarAccess.getQuestionReferenceAccess().getQuestionReferenceAssignment_1_1(), "rule__QuestionReference__QuestionReferenceAssignment_1_1");
+			builder.put(grammarAccess.getQuestionAccess().getNameAssignment_0_0(), "rule__Question__NameAssignment_0_0");
+			builder.put(grammarAccess.getQuestionAccess().getQuestionEntityAssignment_1(), "rule__Question__QuestionEntityAssignment_1");
+			builder.put(grammarAccess.getQuestionAccess().getPromptAssignment_3(), "rule__Question__PromptAssignment_3");
 			builder.put(grammarAccess.getQuestionEntityAccess().getWithEntityAssignment(), "rule__QuestionEntity__WithEntityAssignment");
 			builder.put(grammarAccess.getReferenceAccess().getEntityAssignment_0(), "rule__Reference__EntityAssignment_0");
 			builder.put(grammarAccess.getReferenceAccess().getSysvarAssignment_1(), "rule__Reference__SysvarAssignment_1");
@@ -68,8 +70,7 @@ public class VoiceParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getDeclarationAccess().getReferenceAssignment_3(), "rule__Declaration__ReferenceAssignment_3");
 			builder.put(grammarAccess.getEntityExampleAccess().getNameAssignment_0(), "rule__EntityExample__NameAssignment_0");
 			builder.put(grammarAccess.getIsFollowupAccess().getIntentAssignment_1(), "rule__IsFollowup__IntentAssignment_1");
-			builder.put(grammarAccess.getSysvariableAccess().getNameAssignment_1_0(), "rule__Sysvariable__NameAssignment_1_0");
-			builder.put(grammarAccess.getSysvariableAccess().getDefaultValueAssignment_2(), "rule__Sysvariable__DefaultValueAssignment_2");
+			builder.put(grammarAccess.getSysvariableAccess().getDefaultValueAssignment_1(), "rule__Sysvariable__DefaultValueAssignment_1");
 		}
 	}
 	

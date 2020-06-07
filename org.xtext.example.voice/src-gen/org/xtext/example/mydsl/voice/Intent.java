@@ -14,9 +14,10 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link org.xtext.example.mydsl.voice.Intent#getName <em>Name</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.voice.Intent#getZuper <em>Zuper</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.voice.Intent#getIsFollowup <em>Is Followup</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.voice.Intent#getQuestion <em>Question</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.voice.Intent#getQuestions <em>Questions</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.voice.Intent#getTraining <em>Training</em>}</li>
  * </ul>
  *
@@ -26,6 +27,28 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface Intent extends Agent
 {
+  /**
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see org.xtext.example.mydsl.voice.VoicePackage#getIntent_Name()
+   * @model
+   * @generated
+   */
+  String getName();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.voice.Intent#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
+  void setName(String value);
+
   /**
    * Returns the value of the '<em><b>Zuper</b></em>' reference.
    * <!-- begin-user-doc -->
@@ -71,16 +94,16 @@ public interface Intent extends Agent
   void setIsFollowup(IsFollowup value);
 
   /**
-   * Returns the value of the '<em><b>Question</b></em>' containment reference list.
-   * The list contents are of type {@link org.xtext.example.mydsl.voice.Question}.
+   * Returns the value of the '<em><b>Questions</b></em>' containment reference list.
+   * The list contents are of type {@link org.xtext.example.mydsl.voice.QuestionReference}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Question</em>' containment reference list.
-   * @see org.xtext.example.mydsl.voice.VoicePackage#getIntent_Question()
+   * @return the value of the '<em>Questions</em>' containment reference list.
+   * @see org.xtext.example.mydsl.voice.VoicePackage#getIntent_Questions()
    * @model containment="true"
    * @generated
    */
-  EList<Question> getQuestion();
+  EList<QuestionReference> getQuestions();
 
   /**
    * Returns the value of the '<em><b>Training</b></em>' containment reference.

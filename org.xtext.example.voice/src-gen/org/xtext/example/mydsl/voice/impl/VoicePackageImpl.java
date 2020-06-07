@@ -19,6 +19,7 @@ import org.xtext.example.mydsl.voice.IsFollowup;
 import org.xtext.example.mydsl.voice.Model;
 import org.xtext.example.mydsl.voice.Question;
 import org.xtext.example.mydsl.voice.QuestionEntity;
+import org.xtext.example.mydsl.voice.QuestionReference;
 import org.xtext.example.mydsl.voice.Reference;
 import org.xtext.example.mydsl.voice.ReferenceObject;
 import org.xtext.example.mydsl.voice.Sysvariable;
@@ -62,6 +63,13 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
    * @generated
    */
   private EClass referenceObjectEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass questionReferenceEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -235,17 +243,6 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
    * @generated
    */
   @Override
-  public EAttribute getAgent_Name()
-  {
-    return (EAttribute)agentEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EClass getIntent()
   {
     return intentEClass;
@@ -257,9 +254,9 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
    * @generated
    */
   @Override
-  public EReference getIntent_Zuper()
+  public EAttribute getIntent_Name()
   {
-    return (EReference)intentEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)intentEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -268,7 +265,7 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
    * @generated
    */
   @Override
-  public EReference getIntent_IsFollowup()
+  public EReference getIntent_Zuper()
   {
     return (EReference)intentEClass.getEStructuralFeatures().get(1);
   }
@@ -279,7 +276,7 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
    * @generated
    */
   @Override
-  public EReference getIntent_Question()
+  public EReference getIntent_IsFollowup()
   {
     return (EReference)intentEClass.getEStructuralFeatures().get(2);
   }
@@ -290,9 +287,20 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
    * @generated
    */
   @Override
-  public EReference getIntent_Training()
+  public EReference getIntent_Questions()
   {
     return (EReference)intentEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getIntent_Training()
+  {
+    return (EReference)intentEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -312,6 +320,39 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
    * @generated
    */
   @Override
+  public EClass getQuestionReference()
+  {
+    return questionReferenceEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getQuestionReference_Question()
+  {
+    return (EReference)questionReferenceEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getQuestionReference_QuestionReference()
+  {
+    return (EReference)questionReferenceEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getQuestion()
   {
     return questionEClass;
@@ -323,9 +364,9 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
    * @generated
    */
   @Override
-  public EReference getQuestion_ExtendedQuestion()
+  public EAttribute getQuestion_Name()
   {
-    return (EReference)questionEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)questionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -554,9 +595,20 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
    * @generated
    */
   @Override
+  public EAttribute getEntity_Name()
+  {
+    return (EAttribute)entityEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EReference getEntity_Example()
   {
-    return (EReference)entityEClass.getEStructuralFeatures().get(0);
+    return (EReference)entityEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -616,18 +668,22 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
     createEReference(modelEClass, MODEL__AGENT);
 
     agentEClass = createEClass(AGENT);
-    createEAttribute(agentEClass, AGENT__NAME);
 
     intentEClass = createEClass(INTENT);
+    createEAttribute(intentEClass, INTENT__NAME);
     createEReference(intentEClass, INTENT__ZUPER);
     createEReference(intentEClass, INTENT__IS_FOLLOWUP);
-    createEReference(intentEClass, INTENT__QUESTION);
+    createEReference(intentEClass, INTENT__QUESTIONS);
     createEReference(intentEClass, INTENT__TRAINING);
 
     referenceObjectEClass = createEClass(REFERENCE_OBJECT);
 
+    questionReferenceEClass = createEClass(QUESTION_REFERENCE);
+    createEReference(questionReferenceEClass, QUESTION_REFERENCE__QUESTION);
+    createEReference(questionReferenceEClass, QUESTION_REFERENCE__QUESTION_REFERENCE);
+
     questionEClass = createEClass(QUESTION);
-    createEReference(questionEClass, QUESTION__EXTENDED_QUESTION);
+    createEAttribute(questionEClass, QUESTION__NAME);
     createEReference(questionEClass, QUESTION__QUESTION_ENTITY);
     createEAttribute(questionEClass, QUESTION__PROMPT);
 
@@ -656,6 +712,7 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
     createEReference(isFollowupEClass, IS_FOLLOWUP__INTENT);
 
     entityEClass = createEClass(ENTITY);
+    createEAttribute(entityEClass, ENTITY__NAME);
     createEReference(entityEClass, ENTITY__EXAMPLE);
 
     sysvariableEClass = createEClass(SYSVARIABLE);
@@ -701,18 +758,22 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
     initEReference(getModel_Agent(), this.getAgent(), null, "agent", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(agentEClass, Agent.class, "Agent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getAgent_Name(), ecorePackage.getEString(), "name", null, 0, 1, Agent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(intentEClass, Intent.class, "Intent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getIntent_Name(), ecorePackage.getEString(), "name", null, 0, 1, Intent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getIntent_Zuper(), this.getIntent(), null, "zuper", null, 0, 1, Intent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getIntent_IsFollowup(), this.getIsFollowup(), null, "isFollowup", null, 0, 1, Intent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getIntent_Question(), this.getQuestion(), null, "question", null, 0, -1, Intent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getIntent_Questions(), this.getQuestionReference(), null, "questions", null, 0, -1, Intent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getIntent_Training(), this.getTraining(), null, "training", null, 0, 1, Intent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(referenceObjectEClass, ReferenceObject.class, "ReferenceObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+    initEClass(questionReferenceEClass, QuestionReference.class, "QuestionReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getQuestionReference_Question(), this.getQuestion(), null, "question", null, 0, 1, QuestionReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getQuestionReference_QuestionReference(), this.getQuestion(), null, "questionReference", null, 0, 1, QuestionReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(questionEClass, Question.class, "Question", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getQuestion_ExtendedQuestion(), this.getReferenceObject(), null, "extendedQuestion", null, 0, 1, Question.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getQuestion_Name(), ecorePackage.getEString(), "name", null, 0, 1, Question.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getQuestion_QuestionEntity(), this.getQuestionEntity(), null, "questionEntity", null, 0, 1, Question.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getQuestion_Prompt(), ecorePackage.getEString(), "prompt", null, 0, 1, Question.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -741,6 +802,7 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
     initEReference(getIsFollowup_Intent(), this.getIntent(), null, "intent", null, 0, 1, IsFollowup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(entityEClass, Entity.class, "Entity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getEntity_Name(), ecorePackage.getEString(), "name", null, 0, 1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getEntity_Example(), this.getEntityExample(), null, "example", null, 0, -1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(sysvariableEClass, Sysvariable.class, "Sysvariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

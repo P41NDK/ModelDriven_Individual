@@ -60,6 +60,15 @@ public interface VoiceFactory extends EFactory
   ReferenceObject createReferenceObject();
 
   /**
+   * Returns a new object of class '<em>Question Reference</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Question Reference</em>'.
+   * @generated
+   */
+  QuestionReference createQuestionReference();
+
+  /**
    * Returns a new object of class '<em>Question</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

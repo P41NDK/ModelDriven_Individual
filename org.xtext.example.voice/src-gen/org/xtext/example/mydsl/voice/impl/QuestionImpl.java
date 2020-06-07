@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.xtext.example.mydsl.voice.Question;
 import org.xtext.example.mydsl.voice.QuestionEntity;
-import org.xtext.example.mydsl.voice.ReferenceObject;
 import org.xtext.example.mydsl.voice.VoicePackage;
 
 /**
@@ -25,7 +24,7 @@ import org.xtext.example.mydsl.voice.VoicePackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.voice.impl.QuestionImpl#getExtendedQuestion <em>Extended Question</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.voice.impl.QuestionImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.voice.impl.QuestionImpl#getQuestionEntity <em>Question Entity</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.voice.impl.QuestionImpl#getPrompt <em>Prompt</em>}</li>
  * </ul>
@@ -35,14 +34,24 @@ import org.xtext.example.mydsl.voice.VoicePackage;
 public class QuestionImpl extends MinimalEObjectImpl.Container implements Question
 {
   /**
-   * The cached value of the '{@link #getExtendedQuestion() <em>Extended Question</em>}' reference.
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getExtendedQuestion()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected ReferenceObject extendedQuestion;
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getQuestionEntity() <em>Question Entity</em>}' containment reference.
@@ -101,29 +110,9 @@ public class QuestionImpl extends MinimalEObjectImpl.Container implements Questi
    * @generated
    */
   @Override
-  public ReferenceObject getExtendedQuestion()
+  public String getName()
   {
-    if (extendedQuestion != null && extendedQuestion.eIsProxy())
-    {
-      InternalEObject oldExtendedQuestion = (InternalEObject)extendedQuestion;
-      extendedQuestion = (ReferenceObject)eResolveProxy(oldExtendedQuestion);
-      if (extendedQuestion != oldExtendedQuestion)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, VoicePackage.QUESTION__EXTENDED_QUESTION, oldExtendedQuestion, extendedQuestion));
-      }
-    }
-    return extendedQuestion;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ReferenceObject basicGetExtendedQuestion()
-  {
-    return extendedQuestion;
+    return name;
   }
 
   /**
@@ -132,12 +121,12 @@ public class QuestionImpl extends MinimalEObjectImpl.Container implements Questi
    * @generated
    */
   @Override
-  public void setExtendedQuestion(ReferenceObject newExtendedQuestion)
+  public void setName(String newName)
   {
-    ReferenceObject oldExtendedQuestion = extendedQuestion;
-    extendedQuestion = newExtendedQuestion;
+    String oldName = name;
+    name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, VoicePackage.QUESTION__EXTENDED_QUESTION, oldExtendedQuestion, extendedQuestion));
+      eNotify(new ENotificationImpl(this, Notification.SET, VoicePackage.QUESTION__NAME, oldName, name));
   }
 
   /**
@@ -241,9 +230,8 @@ public class QuestionImpl extends MinimalEObjectImpl.Container implements Questi
   {
     switch (featureID)
     {
-      case VoicePackage.QUESTION__EXTENDED_QUESTION:
-        if (resolve) return getExtendedQuestion();
-        return basicGetExtendedQuestion();
+      case VoicePackage.QUESTION__NAME:
+        return getName();
       case VoicePackage.QUESTION__QUESTION_ENTITY:
         return getQuestionEntity();
       case VoicePackage.QUESTION__PROMPT:
@@ -262,8 +250,8 @@ public class QuestionImpl extends MinimalEObjectImpl.Container implements Questi
   {
     switch (featureID)
     {
-      case VoicePackage.QUESTION__EXTENDED_QUESTION:
-        setExtendedQuestion((ReferenceObject)newValue);
+      case VoicePackage.QUESTION__NAME:
+        setName((String)newValue);
         return;
       case VoicePackage.QUESTION__QUESTION_ENTITY:
         setQuestionEntity((QuestionEntity)newValue);
@@ -285,8 +273,8 @@ public class QuestionImpl extends MinimalEObjectImpl.Container implements Questi
   {
     switch (featureID)
     {
-      case VoicePackage.QUESTION__EXTENDED_QUESTION:
-        setExtendedQuestion((ReferenceObject)null);
+      case VoicePackage.QUESTION__NAME:
+        setName(NAME_EDEFAULT);
         return;
       case VoicePackage.QUESTION__QUESTION_ENTITY:
         setQuestionEntity((QuestionEntity)null);
@@ -308,8 +296,8 @@ public class QuestionImpl extends MinimalEObjectImpl.Container implements Questi
   {
     switch (featureID)
     {
-      case VoicePackage.QUESTION__EXTENDED_QUESTION:
-        return extendedQuestion != null;
+      case VoicePackage.QUESTION__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case VoicePackage.QUESTION__QUESTION_ENTITY:
         return questionEntity != null;
       case VoicePackage.QUESTION__PROMPT:
@@ -329,7 +317,9 @@ public class QuestionImpl extends MinimalEObjectImpl.Container implements Questi
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (prompt: ");
+    result.append(" (name: ");
+    result.append(name);
+    result.append(", prompt: ");
     result.append(prompt);
     result.append(')');
     return result.toString();

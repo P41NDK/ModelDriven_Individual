@@ -5,21 +5,25 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="agent" upperBound="-1"
         eType="#//Agent" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Agent">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Agent"/>
   <eClassifiers xsi:type="ecore:EClass" name="Intent" eSuperTypes="#//Agent">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="zuper" eType="#//Intent"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="isFollowup" eType="#//IsFollowup"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="question" upperBound="-1"
-        eType="#//Question" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="questions" upperBound="-1"
+        eType="#//QuestionReference" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="training" eType="#//Training"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ReferenceObject" eSuperTypes="#//Agent"/>
+  <eClassifiers xsi:type="ecore:EClass" name="QuestionReference">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="question" eType="#//Question"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="questionReference" eType="#//Question"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Question">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="extendedQuestion" eType="#//ReferenceObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="questionEntity" eType="#//QuestionEntity"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="prompt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -54,6 +58,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="intent" eType="#//Intent"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Entity" eSuperTypes="#//ReferenceObject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="example" upperBound="-1"
         eType="#//EntityExample" containment="true"/>
   </eClassifiers>

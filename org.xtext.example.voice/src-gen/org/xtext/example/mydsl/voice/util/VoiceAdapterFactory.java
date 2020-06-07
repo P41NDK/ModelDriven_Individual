@@ -96,6 +96,11 @@ public class VoiceAdapterFactory extends AdapterFactoryImpl
         return createReferenceObjectAdapter();
       }
       @Override
+      public Adapter caseQuestionReference(QuestionReference object)
+      {
+        return createQuestionReferenceAdapter();
+      }
+      @Override
       public Adapter caseQuestion(Question object)
       {
         return createQuestionAdapter();
@@ -223,6 +228,21 @@ public class VoiceAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createReferenceObjectAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.voice.QuestionReference <em>Question Reference</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mydsl.voice.QuestionReference
+   * @generated
+   */
+  public Adapter createQuestionReferenceAdapter()
   {
     return null;
   }

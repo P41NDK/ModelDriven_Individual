@@ -11,9 +11,9 @@ import org.xtext.example.mydsl.voice.Declaration;
 import org.xtext.example.mydsl.voice.Intent;
 import org.xtext.example.mydsl.voice.Model;
 import org.xtext.example.mydsl.voice.Question;
+import org.xtext.example.mydsl.voice.QuestionReference;
 import org.xtext.example.mydsl.voice.Reference;
 import org.xtext.example.mydsl.voice.Sysvariable;
-import org.xtext.example.mydsl.voice.Training;
 import org.xtext.example.mydsl.voice.TrainingRef;
 import org.xtext.example.mydsl.voice.VoicePackage;
 
@@ -62,21 +62,21 @@ public class VoiceValidator extends AbstractVoiceValidator {
 		}
 	}
 	@Check
-	public void checkFeatureNameIsUnique(Question question) {
-	    Intent superIntent = ((Intent) question.eContainer()).getZuper();
-	    while (superIntent != null) {
-	        for (Question other : superIntent.getQuestion()) {
-	            if (question.getPrompt().equals(other.getPrompt())) {
-	                error("Prompt must be unique", VoicePackage.Literals.QUESTION__PROMPT);
+	public void checkQuestionPromptIsUnique(QuestionReference question) {
+	    Intent superIntent = (Intent) question.eContainer();
+	        for (QuestionReference other : superIntent.getQuestions()) {
+	            if ((question.getQuestion()!=null?question.getQuestion().getPrompt():question.getQuestionReference().getPrompt()).equals(other.getQuestion() != null?
+	            		other.getQuestion().getPrompt():
+	            			other.getQuestionReference().getPrompt()) && 
+	            		(!other.equals(question))) {
+	                error("Prompt must be unique", VoicePackage.Literals.QUESTION_REFERENCE__QUESTION);
 	                return;
 	            }
 	        }
-	        superIntent = superIntent.getZuper();
-	    }
 	}
 	@Check
 	public void checkForTraining(Question question){
-		Intent intent = ((Intent) question.eContainer());
+		Intent intent = ((Intent) question.eContainer().eContainer());
 		Boolean exists = false;
 		Reference questionTest = question.getQuestionEntity().getWithEntity();
 		for(TrainingRef trainingRef : intent.getTraining().getTrainingref()) {

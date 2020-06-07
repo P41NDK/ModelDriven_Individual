@@ -69,6 +69,7 @@ public class VoiceFactoryImpl extends EFactoryImpl implements VoiceFactory
       case VoicePackage.AGENT: return createAgent();
       case VoicePackage.INTENT: return createIntent();
       case VoicePackage.REFERENCE_OBJECT: return createReferenceObject();
+      case VoicePackage.QUESTION_REFERENCE: return createQuestionReference();
       case VoicePackage.QUESTION: return createQuestion();
       case VoicePackage.QUESTION_ENTITY: return createQuestionEntity();
       case VoicePackage.REFERENCE: return createReference();
@@ -130,6 +131,18 @@ public class VoiceFactoryImpl extends EFactoryImpl implements VoiceFactory
   {
     ReferenceObjectImpl referenceObject = new ReferenceObjectImpl();
     return referenceObject;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public QuestionReference createQuestionReference()
+  {
+    QuestionReferenceImpl questionReference = new QuestionReferenceImpl();
+    return questionReference;
   }
 
   /**

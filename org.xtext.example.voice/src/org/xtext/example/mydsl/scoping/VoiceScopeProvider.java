@@ -16,6 +16,7 @@ import org.eclipse.xtext.scoping.impl.FilteringScope;
 import org.xtext.example.mydsl.voice.Intent;
 import org.xtext.example.mydsl.voice.Question;
 import org.xtext.example.mydsl.voice.QuestionEntity;
+import org.xtext.example.mydsl.voice.QuestionReference;
 import org.xtext.example.mydsl.voice.ReferenceObject;
 import org.xtext.example.mydsl.voice.Sysvariable;
 import org.xtext.example.mydsl.voice.VoicePackage;
@@ -37,17 +38,14 @@ public class VoiceScopeProvider extends AbstractVoiceScopeProvider {
 
             return new FilteringScope(existingScope, (e) -> !Objects.equals(e.getEObjectOrProxy(), context));
         }
-       else if (context instanceof Question
-                && reference == VoicePackage.Literals.QUESTION__EXTENDED_QUESTION) {
+        
+       else if (context instanceof QuestionReference
+                && reference == VoicePackage.Literals.QUESTION_REFERENCE__QUESTION_REFERENCE) {
         	Intent intent = (Intent) context.eContainer();
         	intent = intent.getZuper();
-        	ArrayList<ReferenceObject> candidates = new ArrayList<ReferenceObject>();
-        		for(Question question: intent.getQuestion()) {
-        			if(question.getQuestionEntity() != null) {
-        				candidates.add(question.getQuestionEntity().getWithEntity().getEntity()!=null
-        						?question.getQuestionEntity().getWithEntity().getEntity()
-        								:question.getQuestionEntity().getWithEntity().getSysvar());
-        			}
+        	ArrayList<Question> candidates = new ArrayList<Question>();
+        		for(QuestionReference question: intent.getQuestions()) {
+        				candidates.add(question.getQuestion());
         		}
         	return Scopes.scopeFor(candidates);
         }

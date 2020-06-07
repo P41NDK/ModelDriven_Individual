@@ -23,6 +23,7 @@ import org.xtext.example.mydsl.voice.IsFollowup;
 import org.xtext.example.mydsl.voice.Model;
 import org.xtext.example.mydsl.voice.Question;
 import org.xtext.example.mydsl.voice.QuestionEntity;
+import org.xtext.example.mydsl.voice.QuestionReference;
 import org.xtext.example.mydsl.voice.Reference;
 import org.xtext.example.mydsl.voice.Sysvariable;
 import org.xtext.example.mydsl.voice.Training;
@@ -66,6 +67,9 @@ public class VoiceSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 				return; 
 			case VoicePackage.QUESTION_ENTITY:
 				sequence_QuestionEntity(context, (QuestionEntity) semanticObject); 
+				return; 
+			case VoicePackage.QUESTION_REFERENCE:
+				sequence_QuestionReference(context, (QuestionReference) semanticObject); 
 				return; 
 			case VoicePackage.REFERENCE:
 				sequence_Reference(context, (Reference) semanticObject); 
@@ -142,7 +146,7 @@ public class VoiceSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Intent returns Intent
 	 *
 	 * Constraint:
-	 *     (name=ID zuper=[Intent|ID]? isFollowup=IsFollowup? question+=Question+ training=Training)
+	 *     (name=ID zuper=[Intent|ID]? isFollowup=IsFollowup? questions+=QuestionReference+ training=Training)
 	 */
 	protected void sequence_Intent(ISerializationContext context, Intent semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -199,10 +203,22 @@ public class VoiceSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
+	 *     QuestionReference returns QuestionReference
+	 *
+	 * Constraint:
+	 *     (question=Question | questionReference=[Question|ID])
+	 */
+	protected void sequence_QuestionReference(ISerializationContext context, QuestionReference semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Question returns Question
 	 *
 	 * Constraint:
-	 *     (extendedQuestion=[ReferenceObject|ID] | (questionEntity=QuestionEntity prompt=STRING))
+	 *     (name=ID? questionEntity=QuestionEntity prompt=STRING)
 	 */
 	protected void sequence_Question(ISerializationContext context, Question semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -226,7 +242,21 @@ public class VoiceSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Sysvariable returns Sysvariable
 	 *
 	 * Constraint:
-	 *     (name=ID? defaultValue=DefaultValues)
+	 *     (
+	 *         defaultValue='number' | 
+	 *         defaultValue='date-time' | 
+	 *         defaultValue='date' | 
+	 *         defaultValue='duration' | 
+	 *         defaultValue='address' | 
+	 *         defaultValue='email' | 
+	 *         defaultValue='phone-number' | 
+	 *         defaultValue='date-period' | 
+	 *         defaultValue='time-period' | 
+	 *         defaultValue='url' | 
+	 *         defaultValue='any' | 
+	 *         defaultValue='color' | 
+	 *         defaultValue='language'
+	 *     )
 	 */
 	protected void sequence_Sysvariable(ISerializationContext context, Sysvariable semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

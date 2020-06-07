@@ -15,9 +15,10 @@ import org.eclipse.xtext.generator.IGeneratorContext
 import org.xtext.example.mydsl.voice.Entity
 import org.xtext.example.mydsl.voice.Intent
 import org.xtext.example.mydsl.voice.Question
-import org.xtext.example.mydsl.voice.TrainingRef
-import org.xtext.example.mydsl.voice.Sysvariable
 import org.xtext.example.mydsl.voice.Reference
+import org.xtext.example.mydsl.voice.Sysvariable
+import org.xtext.example.mydsl.voice.TrainingRef
+import org.xtext.example.mydsl.voice.QuestionReference
 import org.xtext.example.mydsl.voice.ReferenceObject
 
 /**
@@ -54,7 +55,6 @@ class VoiceGenerator extends AbstractGenerator {
 		«intent.generateFollowup»
 			"parameters": [
 		«FOR parameter: intent.question»
-		«if(parameter.extendedQuestion === null) '''
 		{ 
 		          "id": "«generateUUID»",
 		          "required": "true",
@@ -70,7 +70,6 @@ class VoiceGenerator extends AbstractGenerator {
 		          "outputDialogContexts": [],
 		          "isList": false
 		        } «if (parameter != intent.question.last) ''','''»
-		        '''»
 		«ENDFOR»
 		],
 		      "messages": [
@@ -131,20 +130,21 @@ class VoiceGenerator extends AbstractGenerator {
 			val referenceList = new ArrayList<ReferenceObject>
 			val trainingList = new ArrayList<TrainingRef>
 			trainingList.addAll(item.training.trainingref)
-			for(Question question: item.question){
-				if(question.extendedQuestion === null) questionList.add(question)
-				else if(question.extendedQuestion !== null && item.zuper!==null){
-				for(Question referenceQuestion: item.zuper.question)
-				if((referenceQuestion.questionEntity.withEntity.entity?:referenceQuestion.questionEntity.withEntity.sysvar).equals(question.extendedQuestion)){
-				referenceList.add(question.extendedQuestion);
-				questionList.add(referenceQuestion);
-				}
-				}
+			for(QuestionReference qr : item.questions){
+			questionList.add(qr.question?:qr.questionReference)
+			if(qr.questionReference !== null){
+				referenceList.add(qr.questionReference.questionEntity.withEntity.entity?:qr.questionReference.questionEntity.withEntity.sysvar)
+			}
+			
 			}
 			if(item.zuper !== null){
 				for(TrainingRef training: item.zuper.training.trainingref){
 				if(referenceList.contains(training.declarations.reference.entity)) trainingList.add(training)
-				else if(training.declarations.reference.sysvar!== null) for(Sysvariable ro : referenceList.filter(Sysvariable)) if(ro.defaultValue.equals((training.declarations.reference.sysvar as Sysvariable).defaultValue)) trainingList.add(training)
+				else if(training.declarations.reference.sysvar!== null) 
+				for(Sysvariable ro : referenceList.filter(Sysvariable)){ 
+				if(ro.defaultValue.equals((training.declarations.reference.sysvar as Sysvariable).defaultValue)) 
+				trainingList.add(training)
+				}
 			}
 			}
 			result.add(new IntentFollowUp(item.name, item.isFollowup !== null ? item.isFollowup.intent : null, item, questionList ,trainingList, item.zuper))

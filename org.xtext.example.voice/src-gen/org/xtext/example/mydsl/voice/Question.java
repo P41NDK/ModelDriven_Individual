@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.voice.Question#getExtendedQuestion <em>Extended Question</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.voice.Question#getName <em>Name</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.voice.Question#getQuestionEntity <em>Question Entity</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.voice.Question#getPrompt <em>Prompt</em>}</li>
  * </ul>
@@ -26,26 +26,26 @@ import org.eclipse.emf.ecore.EObject;
 public interface Question extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Extended Question</b></em>' reference.
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Extended Question</em>' reference.
-   * @see #setExtendedQuestion(ReferenceObject)
-   * @see org.xtext.example.mydsl.voice.VoicePackage#getQuestion_ExtendedQuestion()
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see org.xtext.example.mydsl.voice.VoicePackage#getQuestion_Name()
    * @model
    * @generated
    */
-  ReferenceObject getExtendedQuestion();
+  String getName();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.voice.Question#getExtendedQuestion <em>Extended Question</em>}' reference.
+   * Sets the value of the '{@link org.xtext.example.mydsl.voice.Question#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Extended Question</em>' reference.
-   * @see #getExtendedQuestion()
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
    * @generated
    */
-  void setExtendedQuestion(ReferenceObject value);
+  void setName(String value);
 
   /**
    * Returns the value of the '<em><b>Question Entity</b></em>' containment reference.

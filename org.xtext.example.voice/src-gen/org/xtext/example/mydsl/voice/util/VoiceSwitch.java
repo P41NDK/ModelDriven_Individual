@@ -103,6 +103,13 @@ public class VoiceSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case VoicePackage.QUESTION_REFERENCE:
+      {
+        QuestionReference questionReference = (QuestionReference)theEObject;
+        T result = caseQuestionReference(questionReference);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case VoicePackage.QUESTION:
       {
         Question question = (Question)theEObject;
@@ -241,6 +248,22 @@ public class VoiceSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseReferenceObject(ReferenceObject object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Question Reference</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Question Reference</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseQuestionReference(QuestionReference object)
   {
     return null;
   }

@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.xtext.example.mydsl.voice.Intent;
 import org.xtext.example.mydsl.voice.IsFollowup;
-import org.xtext.example.mydsl.voice.Question;
+import org.xtext.example.mydsl.voice.QuestionReference;
 import org.xtext.example.mydsl.voice.Training;
 import org.xtext.example.mydsl.voice.VoicePackage;
 
@@ -32,9 +32,10 @@ import org.xtext.example.mydsl.voice.VoicePackage;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.xtext.example.mydsl.voice.impl.IntentImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.voice.impl.IntentImpl#getZuper <em>Zuper</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.voice.impl.IntentImpl#getIsFollowup <em>Is Followup</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.voice.impl.IntentImpl#getQuestion <em>Question</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.voice.impl.IntentImpl#getQuestions <em>Questions</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.voice.impl.IntentImpl#getTraining <em>Training</em>}</li>
  * </ul>
  *
@@ -42,6 +43,26 @@ import org.xtext.example.mydsl.voice.VoicePackage;
  */
 public class IntentImpl extends AgentImpl implements Intent
 {
+  /**
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
+
   /**
    * The cached value of the '{@link #getZuper() <em>Zuper</em>}' reference.
    * <!-- begin-user-doc -->
@@ -63,14 +84,14 @@ public class IntentImpl extends AgentImpl implements Intent
   protected IsFollowup isFollowup;
 
   /**
-   * The cached value of the '{@link #getQuestion() <em>Question</em>}' containment reference list.
+   * The cached value of the '{@link #getQuestions() <em>Questions</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getQuestion()
+   * @see #getQuestions()
    * @generated
    * @ordered
    */
-  protected EList<Question> question;
+  protected EList<QuestionReference> questions;
 
   /**
    * The cached value of the '{@link #getTraining() <em>Training</em>}' containment reference.
@@ -101,6 +122,31 @@ public class IntentImpl extends AgentImpl implements Intent
   protected EClass eStaticClass()
   {
     return VoicePackage.Literals.INTENT;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getName()
+  {
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setName(String newName)
+  {
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, VoicePackage.INTENT__NAME, oldName, name));
   }
 
   /**
@@ -204,13 +250,13 @@ public class IntentImpl extends AgentImpl implements Intent
    * @generated
    */
   @Override
-  public EList<Question> getQuestion()
+  public EList<QuestionReference> getQuestions()
   {
-    if (question == null)
+    if (questions == null)
     {
-      question = new EObjectContainmentEList<Question>(Question.class, this, VoicePackage.INTENT__QUESTION);
+      questions = new EObjectContainmentEList<QuestionReference>(QuestionReference.class, this, VoicePackage.INTENT__QUESTIONS);
     }
-    return question;
+    return questions;
   }
 
   /**
@@ -275,8 +321,8 @@ public class IntentImpl extends AgentImpl implements Intent
     {
       case VoicePackage.INTENT__IS_FOLLOWUP:
         return basicSetIsFollowup(null, msgs);
-      case VoicePackage.INTENT__QUESTION:
-        return ((InternalEList<?>)getQuestion()).basicRemove(otherEnd, msgs);
+      case VoicePackage.INTENT__QUESTIONS:
+        return ((InternalEList<?>)getQuestions()).basicRemove(otherEnd, msgs);
       case VoicePackage.INTENT__TRAINING:
         return basicSetTraining(null, msgs);
     }
@@ -293,13 +339,15 @@ public class IntentImpl extends AgentImpl implements Intent
   {
     switch (featureID)
     {
+      case VoicePackage.INTENT__NAME:
+        return getName();
       case VoicePackage.INTENT__ZUPER:
         if (resolve) return getZuper();
         return basicGetZuper();
       case VoicePackage.INTENT__IS_FOLLOWUP:
         return getIsFollowup();
-      case VoicePackage.INTENT__QUESTION:
-        return getQuestion();
+      case VoicePackage.INTENT__QUESTIONS:
+        return getQuestions();
       case VoicePackage.INTENT__TRAINING:
         return getTraining();
     }
@@ -317,15 +365,18 @@ public class IntentImpl extends AgentImpl implements Intent
   {
     switch (featureID)
     {
+      case VoicePackage.INTENT__NAME:
+        setName((String)newValue);
+        return;
       case VoicePackage.INTENT__ZUPER:
         setZuper((Intent)newValue);
         return;
       case VoicePackage.INTENT__IS_FOLLOWUP:
         setIsFollowup((IsFollowup)newValue);
         return;
-      case VoicePackage.INTENT__QUESTION:
-        getQuestion().clear();
-        getQuestion().addAll((Collection<? extends Question>)newValue);
+      case VoicePackage.INTENT__QUESTIONS:
+        getQuestions().clear();
+        getQuestions().addAll((Collection<? extends QuestionReference>)newValue);
         return;
       case VoicePackage.INTENT__TRAINING:
         setTraining((Training)newValue);
@@ -344,14 +395,17 @@ public class IntentImpl extends AgentImpl implements Intent
   {
     switch (featureID)
     {
+      case VoicePackage.INTENT__NAME:
+        setName(NAME_EDEFAULT);
+        return;
       case VoicePackage.INTENT__ZUPER:
         setZuper((Intent)null);
         return;
       case VoicePackage.INTENT__IS_FOLLOWUP:
         setIsFollowup((IsFollowup)null);
         return;
-      case VoicePackage.INTENT__QUESTION:
-        getQuestion().clear();
+      case VoicePackage.INTENT__QUESTIONS:
+        getQuestions().clear();
         return;
       case VoicePackage.INTENT__TRAINING:
         setTraining((Training)null);
@@ -370,16 +424,35 @@ public class IntentImpl extends AgentImpl implements Intent
   {
     switch (featureID)
     {
+      case VoicePackage.INTENT__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case VoicePackage.INTENT__ZUPER:
         return zuper != null;
       case VoicePackage.INTENT__IS_FOLLOWUP:
         return isFollowup != null;
-      case VoicePackage.INTENT__QUESTION:
-        return question != null && !question.isEmpty();
+      case VoicePackage.INTENT__QUESTIONS:
+        return questions != null && !questions.isEmpty();
       case VoicePackage.INTENT__TRAINING:
         return training != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (name: ");
+    result.append(name);
+    result.append(')');
+    return result.toString();
   }
 
 } //IntentImpl
