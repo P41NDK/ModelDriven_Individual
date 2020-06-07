@@ -4,7 +4,9 @@
 package org.xtext.example.mydsl.tests;
 
 import com.google.inject.Inject;
+import java.util.ArrayList;
 import java.util.List;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.testing.InjectWith;
 import org.eclipse.xtext.testing.extensions.InjectionExtension;
@@ -20,6 +22,8 @@ import org.xtext.example.mydsl.validation.VoiceValidator;
 import org.xtext.example.mydsl.voice.Agent;
 import org.xtext.example.mydsl.voice.Intent;
 import org.xtext.example.mydsl.voice.Model;
+import org.xtext.example.mydsl.voice.Question;
+import org.xtext.example.mydsl.voice.QuestionReference;
 import org.xtext.example.mydsl.voice.VoicePackage;
 
 @ExtendWith(InjectionExtension.class)
@@ -148,5 +152,158 @@ public class VoiceParsingTest {
       }
     }
     return false;
+  }
+  
+  @Test
+  public void T03_variableInheritance() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("Entity car [Toyota, Audi, BMW]");
+      _builder.newLine();
+      _builder.append("Entity city [Odense, Aarhus, Copenhagen]");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("Intent pickCar");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("newcar = car with \'what car would you like?\'");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("Training:");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("\'i would like a \' (\'Toyota\' is car).");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.newLine();
+      _builder.append("Intent pickPlace extends pickCar");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("city with \'Where would you like to pick it up??\'");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("get newcar");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("Training:");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("\'i would pick the car up at \' (\'Odense\' is city).");
+      _builder.newLine();
+      this._validationTestHelper.assertNoErrors(this._parseHelper.parse(_builder));
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void T04_noVariableInheritanceFromOthers() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("Entity car [Toyota, Audi, BMW]");
+      _builder.newLine();
+      _builder.append("Entity city [Odense, Aarhus, Copenhagen]");
+      _builder.newLine();
+      _builder.append("Intent pickCar");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("newcar = car with \'what car would you like?\'");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("Training:");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("\'i would like a \' (\'Toyota\' is car).");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.newLine();
+      _builder.append("Intent pickPlace extends pickCar");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("get newcar");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("Training:");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("\'i would pick the car up at \' (\'Odense\' is city).");
+      _builder.newLine();
+      final Model result = this._parseHelper.parse(_builder);
+      Assertions.assertTrue(this.checkForInheritedQuestion(result.getAgent()));
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void T05_questionsAreNotTheSame() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("Entity car [Toyota, Audi, BMW]");
+      _builder.newLine();
+      _builder.append("Entity city [Odense, Aarhus, Copenhagen]");
+      _builder.newLine();
+      _builder.append("Intent pickCar");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("newcar = car with \'what car would you like?\'");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("Training:");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("\'i would like a \' (\'Toyota\' is car).");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.newLine();
+      _builder.append("Intent pickPlace extends pickCar");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("concertLocal = city with \'What city would you like?\'");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("Training:");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("\'i would pick the car up at \' (\'Odense\' is city).");
+      _builder.newLine();
+      final Model result = this._parseHelper.parse(_builder);
+      Assertions.assertFalse(this.checkForInheritedQuestion(result.getAgent()));
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  public boolean checkForInheritedQuestion(final List<Agent> agentList) {
+    final ArrayList<QuestionReference> intentList = new ArrayList<QuestionReference>();
+    for (final Agent agent : agentList) {
+      if ((agent instanceof Intent)) {
+        EList<QuestionReference> _questions = ((Intent)agent).getQuestions();
+        for (final QuestionReference question : _questions) {
+          intentList.add(question);
+        }
+      }
+    }
+    boolean _xifexpression = false;
+    Question _question = intentList.get(0).getQuestion();
+    boolean _tripleNotEquals = (_question != null);
+    if (_tripleNotEquals) {
+      _xifexpression = intentList.get(0).getQuestion().equals(intentList.get(1).getQuestionReference());
+    } else {
+      _xifexpression = intentList.get(0).getQuestionReference().equals(intentList.get(1).getQuestion());
+    }
+    return _xifexpression;
   }
 }

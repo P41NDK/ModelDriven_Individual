@@ -44,11 +44,13 @@ public class VoiceScopeProvider extends AbstractVoiceScopeProvider {
         	Intent intent = (Intent) context.eContainer();
         	intent = intent.getZuper();
         	ArrayList<Question> candidates = new ArrayList<Question>();
+        	if(intent!=null) {
         		for(QuestionReference question: intent.getQuestions()) {
         				candidates.add(question.getQuestion());
         		}
+        	}
         	return Scopes.scopeFor(candidates);
-        }
+        	}
         return super.getScope(context, reference);
     }
 }
