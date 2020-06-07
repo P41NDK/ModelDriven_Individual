@@ -15,9 +15,10 @@ import org.eclipse.xtext.generator.IGeneratorContext
 import org.xtext.example.mydsl.voice.Entity
 import org.xtext.example.mydsl.voice.Intent
 import org.xtext.example.mydsl.voice.Question
-import org.xtext.example.mydsl.voice.Reference
-import org.xtext.example.mydsl.voice.Training
 import org.xtext.example.mydsl.voice.TrainingRef
+import org.xtext.example.mydsl.voice.Sysvariable
+import org.xtext.example.mydsl.voice.Reference
+import org.xtext.example.mydsl.voice.ReferenceObject
 
 /**
  * Generates code from your model files on save.
@@ -52,13 +53,14 @@ class VoiceGenerator extends AbstractGenerator {
 		"auto": true,
 		«intent.generateFollowup»
 			"parameters": [
-		«FOR parameter: intent.createQuestionList»
+		«FOR parameter: intent.question»
+		«if(parameter.extendedQuestion === null) '''
 		{ 
 		          "id": "«generateUUID»",
 		          "required": "true",
 		          "dataType": "@«parameter.questionEntity.withEntity.getEntityType»",
-		          "name": "«parameter.questionEntity.withEntity.sysvar!==null?parameter.questionEntity.withEntity.sysvar.value:parameter.questionEntity.withEntity.entity.name»",
-		          "value": "$«parameter.questionEntity.withEntity.sysvar!==null?parameter.questionEntity.withEntity.sysvar.value:parameter.questionEntity.withEntity.entity.name»",
+		          "name": "«parameter.questionEntity.withEntity.normalType»",
+		          "value": "$«parameter.questionEntity.withEntity.normalType»",
 		          "prompts": [
 		            "«parameter.prompt»"
 		          ],
@@ -67,7 +69,8 @@ class VoiceGenerator extends AbstractGenerator {
 		          "noInputPromptMessages": [],
 		          "outputDialogContexts": [],
 		          "isList": false
-		        } «if (parameter != intent.question.last && intent.superIntent === null) ''','''»
+		        } «if (parameter != intent.question.last) ''','''»
+		        '''»
 		«ENDFOR»
 		],
 		      "messages": [
@@ -91,26 +94,13 @@ class VoiceGenerator extends AbstractGenerator {
 		  "condition": "",
 		  "conditionalFollowupEvents": [],
 		  "userSays": [
-		  «FOR trainingRef : intent.createTrainingList»
-		  «trainingRef.generateTraining» «if (trainingRef !== intent.training.trainingref.last) ''','''»
+		  «FOR trainingRef : intent.training»
+		  «trainingRef.generateTraining» «if (trainingRef !== intent.training.last) ''','''»
 		  «ENDFOR»
 		  ]
 		}
 		'''
-	def List<Question> createQuestionList(IntentFollowUp intent){
-		val result = intent.question
-		if(intent.superIntent !== null){
-			result.addAll(intent.superIntent.question)
-		}
-		result
-	}
-	def List<TrainingRef> createTrainingList(IntentFollowUp intent){
-		val result = intent.training.trainingref
-		if(intent.superIntent !== null){
-			result.addAll(intent.superIntent.training.trainingref)
-		}
-		result
-	}
+	
 	
 	def CharSequence generateTraining(TrainingRef training){	
 		'''
@@ -124,7 +114,7 @@ class VoiceGenerator extends AbstractGenerator {
 		{
 		"text": "«training.declarations.trainingstring»",
 		"userDefined": true,
-		"alias": "«training.declarations.reference.sysvar!==null?training.declarations.reference.sysvar.value:training.declarations.reference.entity.name»",
+		"alias": "«training.declarations.reference.normalType»",
 		"meta": "@«training.declarations.reference.entityType»"
 		}
 		],
@@ -137,7 +127,27 @@ class VoiceGenerator extends AbstractGenerator {
 	def Set<IntentFollowUp> collectFollowUp(Iterator<Intent> intents){
 		val result = new HashSet<IntentFollowUp>
 		intents.forEach[item | 
-			result.add(new IntentFollowUp(item.name, item.isFollowup !== null ? item.isFollowup.intent : null, item, item.question, item.training, item.zuper))
+			val questionList = new ArrayList<Question> 
+			val referenceList = new ArrayList<ReferenceObject>
+			val trainingList = new ArrayList<TrainingRef>
+			trainingList.addAll(item.training.trainingref)
+			for(Question question: item.question){
+				if(question.extendedQuestion === null) questionList.add(question)
+				else if(question.extendedQuestion !== null && item.zuper!==null){
+				for(Question referenceQuestion: item.zuper.question)
+				if((referenceQuestion.questionEntity.withEntity.entity?:referenceQuestion.questionEntity.withEntity.sysvar).equals(question.extendedQuestion)){
+				referenceList.add(question.extendedQuestion);
+				questionList.add(referenceQuestion);
+				}
+				}
+			}
+			if(item.zuper !== null){
+				for(TrainingRef training: item.zuper.training.trainingref){
+				if(referenceList.contains(training.declarations.reference.entity)) trainingList.add(training)
+				else if(training.declarations.reference.sysvar!== null) for(Sysvariable ro : referenceList.filter(Sysvariable)) if(ro.defaultValue.equals((training.declarations.reference.sysvar as Sysvariable).defaultValue)) trainingList.add(training)
+			}
+			}
+			result.add(new IntentFollowUp(item.name, item.isFollowup !== null ? item.isFollowup.intent : null, item, questionList ,trainingList, item.zuper))
 			if(item.isFollowup !== null) 
 				intentsWithFollowup.add(item.isFollowup.intent)
 		]
@@ -147,7 +157,13 @@ class VoiceGenerator extends AbstractGenerator {
 		if (ref.entity !== null)
 			ref.entity.name
 		else if (ref.sysvar !== null)
-			"sys." + ref.sysvar.value
+			"sys." + (ref.sysvar as Sysvariable).defaultValue
+	}
+	def String getNormalType(Reference ref) {
+		if (ref.entity !== null)
+			ref.entity.name
+		else if (ref.sysvar !== null)
+			(ref.sysvar as Sysvariable).defaultValue
 	}
 	
 	def generateFollowup(IntentFollowUp followup)
@@ -155,19 +171,19 @@ class VoiceGenerator extends AbstractGenerator {
 	"contexts": [
 	«if (followup.followupTo !== null)'''"«followup.followupTo.name»-followup"'''»
 	],
-				  "responses": [
-				  					{
-				  					"resetContexts": false,
-				  					"affectedContexts":[
-				  					«if(intentsWithFollowup.contains(followup.followupFrom))
-				  					'''{
-				  							"name": "«followup.followupFrom.name»-followup",
-				  							"parameters": {},
-				  							"lifespan": 2
-				  						}'''»        
-				  					],
-				  					"action": "",
-				  					'''
+	"responses": [
+				 	{
+				 		"resetContexts": false,
+				  		"affectedContexts":[
+				  		«if(intentsWithFollowup.contains(followup.followupFrom))
+				 '''{
+				  	"name": "«followup.followupFrom.name»-followup",
+				  	"parameters": {},
+				  	"lifespan": 2
+				  }'''»        
+				  ],
+				  "action": "",
+				  '''
 
 	def CharSequence generateEntityEntries(Entity entity) '''
 	[
@@ -215,7 +231,7 @@ class VoiceGenerator extends AbstractGenerator {
 		//from is this intent
 		Intent followupFrom
 		List<Question> question
-		Training training
+		List<TrainingRef> training
 		Intent superIntent
 	}
 }

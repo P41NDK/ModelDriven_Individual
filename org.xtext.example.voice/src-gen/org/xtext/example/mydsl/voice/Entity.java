@@ -21,7 +21,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Entity extends Agent
+public interface Entity extends ReferenceObject
 {
   /**
    * Returns the value of the '<em><b>Example</b></em>' containment reference list.

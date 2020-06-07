@@ -51,13 +51,13 @@ public interface VoiceFactory extends EFactory
   Intent createIntent();
 
   /**
-   * Returns a new object of class '<em>Entity</em>'.
+   * Returns a new object of class '<em>Reference Object</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Entity</em>'.
+   * @return a new object of class '<em>Reference Object</em>'.
    * @generated
    */
-  Entity createEntity();
+  ReferenceObject createReferenceObject();
 
   /**
    * Returns a new object of class '<em>Question</em>'.
@@ -76,6 +76,15 @@ public interface VoiceFactory extends EFactory
    * @generated
    */
   QuestionEntity createQuestionEntity();
+
+  /**
+   * Returns a new object of class '<em>Reference</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Reference</em>'.
+   * @generated
+   */
+  Reference createReference();
 
   /**
    * Returns a new object of class '<em>Training</em>'.
@@ -123,6 +132,15 @@ public interface VoiceFactory extends EFactory
   IsFollowup createIsFollowup();
 
   /**
+   * Returns a new object of class '<em>Entity</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Entity</em>'.
+   * @generated
+   */
+  Entity createEntity();
+
+  /**
    * Returns a new object of class '<em>Sysvariable</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -130,15 +148,6 @@ public interface VoiceFactory extends EFactory
    * @generated
    */
   Sysvariable createSysvariable();
-
-  /**
-   * Returns a new object of class '<em>Reference</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Reference</em>'.
-   * @generated
-   */
-  Reference createReference();
 
   /**
    * Returns the package supported by this factory.

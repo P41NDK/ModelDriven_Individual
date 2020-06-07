@@ -91,9 +91,9 @@ public class VoiceAdapterFactory extends AdapterFactoryImpl
         return createIntentAdapter();
       }
       @Override
-      public Adapter caseEntity(Entity object)
+      public Adapter caseReferenceObject(ReferenceObject object)
       {
-        return createEntityAdapter();
+        return createReferenceObjectAdapter();
       }
       @Override
       public Adapter caseQuestion(Question object)
@@ -104,6 +104,11 @@ public class VoiceAdapterFactory extends AdapterFactoryImpl
       public Adapter caseQuestionEntity(QuestionEntity object)
       {
         return createQuestionEntityAdapter();
+      }
+      @Override
+      public Adapter caseReference(Reference object)
+      {
+        return createReferenceAdapter();
       }
       @Override
       public Adapter caseTraining(Training object)
@@ -131,14 +136,14 @@ public class VoiceAdapterFactory extends AdapterFactoryImpl
         return createIsFollowupAdapter();
       }
       @Override
+      public Adapter caseEntity(Entity object)
+      {
+        return createEntityAdapter();
+      }
+      @Override
       public Adapter caseSysvariable(Sysvariable object)
       {
         return createSysvariableAdapter();
-      }
-      @Override
-      public Adapter caseReference(Reference object)
-      {
-        return createReferenceAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -208,16 +213,16 @@ public class VoiceAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.voice.Entity <em>Entity</em>}'.
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.voice.ReferenceObject <em>Reference Object</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.xtext.example.mydsl.voice.Entity
+   * @see org.xtext.example.mydsl.voice.ReferenceObject
    * @generated
    */
-  public Adapter createEntityAdapter()
+  public Adapter createReferenceObjectAdapter()
   {
     return null;
   }
@@ -248,6 +253,21 @@ public class VoiceAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createQuestionEntityAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.voice.Reference <em>Reference</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mydsl.voice.Reference
+   * @generated
+   */
+  public Adapter createReferenceAdapter()
   {
     return null;
   }
@@ -328,6 +348,21 @@ public class VoiceAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.voice.Entity <em>Entity</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mydsl.voice.Entity
+   * @generated
+   */
+  public Adapter createEntityAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.voice.Sysvariable <em>Sysvariable</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -338,21 +373,6 @@ public class VoiceAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createSysvariableAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.voice.Reference <em>Reference</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.example.mydsl.voice.Reference
-   * @generated
-   */
-  public Adapter createReferenceAdapter()
   {
     return null;
   }

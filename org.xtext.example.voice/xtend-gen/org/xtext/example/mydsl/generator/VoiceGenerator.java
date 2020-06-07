@@ -4,6 +4,7 @@
 package org.xtext.example.mydsl.generator;
 
 import com.google.common.base.Objects;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -29,8 +30,8 @@ import org.xtext.example.mydsl.voice.Intent;
 import org.xtext.example.mydsl.voice.IsFollowup;
 import org.xtext.example.mydsl.voice.Question;
 import org.xtext.example.mydsl.voice.Reference;
+import org.xtext.example.mydsl.voice.ReferenceObject;
 import org.xtext.example.mydsl.voice.Sysvariable;
-import org.xtext.example.mydsl.voice.Training;
 import org.xtext.example.mydsl.voice.TrainingRef;
 
 /**
@@ -50,11 +51,11 @@ public class VoiceGenerator extends AbstractGenerator {
     
     private final List<Question> _question;
     
-    private final Training _training;
+    private final List<TrainingRef> _training;
     
     private final Intent _superIntent;
     
-    public IntentFollowUp(final String name, final Intent followupTo, final Intent followupFrom, final List<Question> question, final Training training, final Intent superIntent) {
+    public IntentFollowUp(final String name, final Intent followupTo, final Intent followupFrom, final List<Question> question, final List<TrainingRef> training, final Intent superIntent) {
       super();
       this._name = name;
       this._followupTo = followupTo;
@@ -148,7 +149,7 @@ public class VoiceGenerator extends AbstractGenerator {
     }
     
     @Pure
-    public Training getTraining() {
+    public List<TrainingRef> getTraining() {
       return this._training;
     }
     
@@ -213,87 +214,84 @@ public class VoiceGenerator extends AbstractGenerator {
     _builder.append("\"parameters\": [");
     _builder.newLine();
     {
-      List<Question> _createQuestionList = this.createQuestionList(intent);
-      for(final Question parameter : _createQuestionList) {
-        _builder.append("{ ");
-        _builder.newLine();
-        _builder.append("          ");
-        _builder.append("\"id\": \"");
-        String _generateUUID_1 = this.generateUUID();
-        _builder.append(_generateUUID_1, "          ");
-        _builder.append("\",");
-        _builder.newLineIfNotEmpty();
-        _builder.append("          ");
-        _builder.append("\"required\": \"true\",");
-        _builder.newLine();
-        _builder.append("          ");
-        _builder.append("\"dataType\": \"@");
-        String _entityType = this.getEntityType(parameter.getQuestionEntity().getWithEntity());
-        _builder.append(_entityType, "          ");
-        _builder.append("\",");
-        _builder.newLineIfNotEmpty();
-        _builder.append("          ");
-        _builder.append("\"name\": \"");
-        String _xifexpression = null;
-        Sysvariable _sysvar = parameter.getQuestionEntity().getWithEntity().getSysvar();
-        boolean _tripleNotEquals = (_sysvar != null);
-        if (_tripleNotEquals) {
-          _xifexpression = parameter.getQuestionEntity().getWithEntity().getSysvar().getValue();
-        } else {
-          _xifexpression = parameter.getQuestionEntity().getWithEntity().getEntity().getName();
-        }
-        _builder.append(_xifexpression, "          ");
-        _builder.append("\",");
-        _builder.newLineIfNotEmpty();
-        _builder.append("          ");
-        _builder.append("\"value\": \"$");
-        String _xifexpression_1 = null;
-        Sysvariable _sysvar_1 = parameter.getQuestionEntity().getWithEntity().getSysvar();
-        boolean _tripleNotEquals_1 = (_sysvar_1 != null);
-        if (_tripleNotEquals_1) {
-          _xifexpression_1 = parameter.getQuestionEntity().getWithEntity().getSysvar().getValue();
-        } else {
-          _xifexpression_1 = parameter.getQuestionEntity().getWithEntity().getEntity().getName();
-        }
-        _builder.append(_xifexpression_1, "          ");
-        _builder.append("\",");
-        _builder.newLineIfNotEmpty();
-        _builder.append("          ");
-        _builder.append("\"prompts\": [");
-        _builder.newLine();
-        _builder.append("            ");
-        _builder.append("\"");
-        String _prompt = parameter.getPrompt();
-        _builder.append(_prompt, "            ");
-        _builder.append("\"");
-        _builder.newLineIfNotEmpty();
-        _builder.append("          ");
-        _builder.append("],");
-        _builder.newLine();
-        _builder.append("          ");
-        _builder.append("\"promptMessages\": [],");
-        _builder.newLine();
-        _builder.append("          ");
-        _builder.append("\"noMatchPromptMessages\": [],");
-        _builder.newLine();
-        _builder.append("          ");
-        _builder.append("\"noInputPromptMessages\": [],");
-        _builder.newLine();
-        _builder.append("          ");
-        _builder.append("\"outputDialogContexts\": [],");
-        _builder.newLine();
-        _builder.append("          ");
-        _builder.append("\"isList\": false");
-        _builder.newLine();
-        _builder.append("        ");
-        _builder.append("} ");
-        CharSequence _xifexpression_2 = null;
-        if (((!Objects.equal(parameter, IterableExtensions.<Question>last(intent.getQuestion()))) && (intent.getSuperIntent() == null))) {
+      List<Question> _question = intent.getQuestion();
+      for(final Question parameter : _question) {
+        CharSequence _xifexpression = null;
+        ReferenceObject _extendedQuestion = parameter.getExtendedQuestion();
+        boolean _tripleEquals = (_extendedQuestion == null);
+        if (_tripleEquals) {
           StringConcatenation _builder_1 = new StringConcatenation();
-          _builder_1.append(",");
-          _xifexpression_2 = _builder_1;
+          _builder_1.append("{ ");
+          _builder_1.newLine();
+          _builder_1.append("          ");
+          _builder_1.append("\"id\": \"");
+          String _generateUUID_1 = this.generateUUID();
+          _builder_1.append(_generateUUID_1, "          ");
+          _builder_1.append("\",");
+          _builder_1.newLineIfNotEmpty();
+          _builder_1.append("          ");
+          _builder_1.append("\"required\": \"true\",");
+          _builder_1.newLine();
+          _builder_1.append("          ");
+          _builder_1.append("\"dataType\": \"@");
+          String _entityType = this.getEntityType(parameter.getQuestionEntity().getWithEntity());
+          _builder_1.append(_entityType, "          ");
+          _builder_1.append("\",");
+          _builder_1.newLineIfNotEmpty();
+          _builder_1.append("          ");
+          _builder_1.append("\"name\": \"");
+          String _normalType = this.getNormalType(parameter.getQuestionEntity().getWithEntity());
+          _builder_1.append(_normalType, "          ");
+          _builder_1.append("\",");
+          _builder_1.newLineIfNotEmpty();
+          _builder_1.append("          ");
+          _builder_1.append("\"value\": \"$");
+          String _normalType_1 = this.getNormalType(parameter.getQuestionEntity().getWithEntity());
+          _builder_1.append(_normalType_1, "          ");
+          _builder_1.append("\",");
+          _builder_1.newLineIfNotEmpty();
+          _builder_1.append("          ");
+          _builder_1.append("\"prompts\": [");
+          _builder_1.newLine();
+          _builder_1.append("            ");
+          _builder_1.append("\"");
+          String _prompt = parameter.getPrompt();
+          _builder_1.append(_prompt, "            ");
+          _builder_1.append("\"");
+          _builder_1.newLineIfNotEmpty();
+          _builder_1.append("          ");
+          _builder_1.append("],");
+          _builder_1.newLine();
+          _builder_1.append("          ");
+          _builder_1.append("\"promptMessages\": [],");
+          _builder_1.newLine();
+          _builder_1.append("          ");
+          _builder_1.append("\"noMatchPromptMessages\": [],");
+          _builder_1.newLine();
+          _builder_1.append("          ");
+          _builder_1.append("\"noInputPromptMessages\": [],");
+          _builder_1.newLine();
+          _builder_1.append("          ");
+          _builder_1.append("\"outputDialogContexts\": [],");
+          _builder_1.newLine();
+          _builder_1.append("          ");
+          _builder_1.append("\"isList\": false");
+          _builder_1.newLine();
+          _builder_1.append("        ");
+          _builder_1.append("} ");
+          CharSequence _xifexpression_1 = null;
+          Question _last = IterableExtensions.<Question>last(intent.getQuestion());
+          boolean _notEquals = (!Objects.equal(parameter, _last));
+          if (_notEquals) {
+            StringConcatenation _builder_2 = new StringConcatenation();
+            _builder_2.append(",");
+            _xifexpression_1 = _builder_2;
+          }
+          _builder_1.append(_xifexpression_1, "        ");
+          _builder_1.newLineIfNotEmpty();
+          _xifexpression = _builder_1;
         }
-        _builder.append(_xifexpression_2, "        ");
+        _builder.append(_xifexpression);
         _builder.newLineIfNotEmpty();
       }
     }
@@ -363,21 +361,21 @@ public class VoiceGenerator extends AbstractGenerator {
     _builder.append("\"userSays\": [");
     _builder.newLine();
     {
-      List<TrainingRef> _createTrainingList = this.createTrainingList(intent);
-      for(final TrainingRef trainingRef : _createTrainingList) {
+      List<TrainingRef> _training = intent.getTraining();
+      for(final TrainingRef trainingRef : _training) {
         _builder.append("  ");
         CharSequence _generateTraining = this.generateTraining(trainingRef);
         _builder.append(_generateTraining, "  ");
         _builder.append(" ");
-        CharSequence _xifexpression_3 = null;
-        TrainingRef _last = IterableExtensions.<TrainingRef>last(intent.getTraining().getTrainingref());
-        boolean _tripleNotEquals_2 = (trainingRef != _last);
-        if (_tripleNotEquals_2) {
-          StringConcatenation _builder_2 = new StringConcatenation();
-          _builder_2.append(",");
-          _xifexpression_3 = _builder_2;
+        CharSequence _xifexpression_2 = null;
+        TrainingRef _last_1 = IterableExtensions.<TrainingRef>last(intent.getTraining());
+        boolean _tripleNotEquals = (trainingRef != _last_1);
+        if (_tripleNotEquals) {
+          StringConcatenation _builder_3 = new StringConcatenation();
+          _builder_3.append(",");
+          _xifexpression_2 = _builder_3;
         }
-        _builder.append(_xifexpression_3, "  ");
+        _builder.append(_xifexpression_2, "  ");
         _builder.newLineIfNotEmpty();
       }
     }
@@ -387,34 +385,6 @@ public class VoiceGenerator extends AbstractGenerator {
     _builder.append("}");
     _builder.newLine();
     return _builder;
-  }
-  
-  public List<Question> createQuestionList(final VoiceGenerator.IntentFollowUp intent) {
-    List<Question> _xblockexpression = null;
-    {
-      final List<Question> result = intent.getQuestion();
-      Intent _superIntent = intent.getSuperIntent();
-      boolean _tripleNotEquals = (_superIntent != null);
-      if (_tripleNotEquals) {
-        result.addAll(intent.getSuperIntent().getQuestion());
-      }
-      _xblockexpression = result;
-    }
-    return _xblockexpression;
-  }
-  
-  public List<TrainingRef> createTrainingList(final VoiceGenerator.IntentFollowUp intent) {
-    EList<TrainingRef> _xblockexpression = null;
-    {
-      final EList<TrainingRef> result = intent.getTraining().getTrainingref();
-      Intent _superIntent = intent.getSuperIntent();
-      boolean _tripleNotEquals = (_superIntent != null);
-      if (_tripleNotEquals) {
-        result.addAll(intent.getSuperIntent().getTraining().getTrainingref());
-      }
-      _xblockexpression = result;
-    }
-    return _xblockexpression;
   }
   
   public CharSequence generateTraining(final TrainingRef training) {
@@ -446,15 +416,8 @@ public class VoiceGenerator extends AbstractGenerator {
     _builder.append("\"userDefined\": true,");
     _builder.newLine();
     _builder.append("\"alias\": \"");
-    String _xifexpression = null;
-    Sysvariable _sysvar = training.getDeclarations().getReference().getSysvar();
-    boolean _tripleNotEquals = (_sysvar != null);
-    if (_tripleNotEquals) {
-      _xifexpression = training.getDeclarations().getReference().getSysvar().getValue();
-    } else {
-      _xifexpression = training.getDeclarations().getReference().getEntity().getName();
-    }
-    _builder.append(_xifexpression);
+    String _normalType = this.getNormalType(training.getDeclarations().getReference());
+    _builder.append(_normalType);
     _builder.append("\",");
     _builder.newLineIfNotEmpty();
     _builder.append("\"meta\": \"@");
@@ -480,23 +443,76 @@ public class VoiceGenerator extends AbstractGenerator {
     {
       final HashSet<VoiceGenerator.IntentFollowUp> result = new HashSet<VoiceGenerator.IntentFollowUp>();
       final Procedure1<Intent> _function = (Intent item) -> {
+        final ArrayList<Question> questionList = new ArrayList<Question>();
+        final ArrayList<ReferenceObject> referenceList = new ArrayList<ReferenceObject>();
+        final ArrayList<TrainingRef> trainingList = new ArrayList<TrainingRef>();
+        trainingList.addAll(item.getTraining().getTrainingref());
+        EList<Question> _question = item.getQuestion();
+        for (final Question question : _question) {
+          ReferenceObject _extendedQuestion = question.getExtendedQuestion();
+          boolean _tripleEquals = (_extendedQuestion == null);
+          if (_tripleEquals) {
+            questionList.add(question);
+          } else {
+            if (((question.getExtendedQuestion() != null) && (item.getZuper() != null))) {
+              EList<Question> _question_1 = item.getZuper().getQuestion();
+              for (final Question referenceQuestion : _question_1) {
+                ReferenceObject _elvis = null;
+                Entity _entity = referenceQuestion.getQuestionEntity().getWithEntity().getEntity();
+                if (_entity != null) {
+                  _elvis = _entity;
+                } else {
+                  ReferenceObject _sysvar = referenceQuestion.getQuestionEntity().getWithEntity().getSysvar();
+                  _elvis = _sysvar;
+                }
+                boolean _equals = _elvis.equals(question.getExtendedQuestion());
+                if (_equals) {
+                  referenceList.add(question.getExtendedQuestion());
+                  questionList.add(referenceQuestion);
+                }
+              }
+            }
+          }
+        }
+        Intent _zuper = item.getZuper();
+        boolean _tripleNotEquals = (_zuper != null);
+        if (_tripleNotEquals) {
+          EList<TrainingRef> _trainingref = item.getZuper().getTraining().getTrainingref();
+          for (final TrainingRef training : _trainingref) {
+            boolean _contains = referenceList.contains(training.getDeclarations().getReference().getEntity());
+            if (_contains) {
+              trainingList.add(training);
+            } else {
+              ReferenceObject _sysvar_1 = training.getDeclarations().getReference().getSysvar();
+              boolean _tripleNotEquals_1 = (_sysvar_1 != null);
+              if (_tripleNotEquals_1) {
+                Iterable<Sysvariable> _filter = Iterables.<Sysvariable>filter(referenceList, Sysvariable.class);
+                for (final Sysvariable ro : _filter) {
+                  ReferenceObject _sysvar_2 = training.getDeclarations().getReference().getSysvar();
+                  boolean _equals_1 = ro.getDefaultValue().equals(((Sysvariable) _sysvar_2).getDefaultValue());
+                  if (_equals_1) {
+                    trainingList.add(training);
+                  }
+                }
+              }
+            }
+          }
+        }
         String _name = item.getName();
         Intent _xifexpression = null;
         IsFollowup _isFollowup = item.getIsFollowup();
-        boolean _tripleNotEquals = (_isFollowup != null);
-        if (_tripleNotEquals) {
+        boolean _tripleNotEquals_2 = (_isFollowup != null);
+        if (_tripleNotEquals_2) {
           _xifexpression = item.getIsFollowup().getIntent();
         } else {
           _xifexpression = null;
         }
-        EList<Question> _question = item.getQuestion();
-        Training _training = item.getTraining();
-        Intent _zuper = item.getZuper();
-        VoiceGenerator.IntentFollowUp _intentFollowUp = new VoiceGenerator.IntentFollowUp(_name, _xifexpression, item, _question, _training, _zuper);
+        Intent _zuper_1 = item.getZuper();
+        VoiceGenerator.IntentFollowUp _intentFollowUp = new VoiceGenerator.IntentFollowUp(_name, _xifexpression, item, questionList, trainingList, _zuper_1);
         result.add(_intentFollowUp);
         IsFollowup _isFollowup_1 = item.getIsFollowup();
-        boolean _tripleNotEquals_1 = (_isFollowup_1 != null);
-        if (_tripleNotEquals_1) {
+        boolean _tripleNotEquals_3 = (_isFollowup_1 != null);
+        if (_tripleNotEquals_3) {
           this.intentsWithFollowup.add(item.getIsFollowup().getIntent());
         }
       };
@@ -514,11 +530,31 @@ public class VoiceGenerator extends AbstractGenerator {
       _xifexpression = ref.getEntity().getName();
     } else {
       String _xifexpression_1 = null;
-      Sysvariable _sysvar = ref.getSysvar();
+      ReferenceObject _sysvar = ref.getSysvar();
       boolean _tripleNotEquals_1 = (_sysvar != null);
       if (_tripleNotEquals_1) {
-        String _value = ref.getSysvar().getValue();
-        _xifexpression_1 = ("sys." + _value);
+        ReferenceObject _sysvar_1 = ref.getSysvar();
+        String _defaultValue = ((Sysvariable) _sysvar_1).getDefaultValue();
+        _xifexpression_1 = ("sys." + _defaultValue);
+      }
+      _xifexpression = _xifexpression_1;
+    }
+    return _xifexpression;
+  }
+  
+  public String getNormalType(final Reference ref) {
+    String _xifexpression = null;
+    Entity _entity = ref.getEntity();
+    boolean _tripleNotEquals = (_entity != null);
+    if (_tripleNotEquals) {
+      _xifexpression = ref.getEntity().getName();
+    } else {
+      String _xifexpression_1 = null;
+      ReferenceObject _sysvar = ref.getSysvar();
+      boolean _tripleNotEquals_1 = (_sysvar != null);
+      if (_tripleNotEquals_1) {
+        ReferenceObject _sysvar_1 = ref.getSysvar();
+        _xifexpression_1 = ((Sysvariable) _sysvar_1).getDefaultValue();
       }
       _xifexpression = _xifexpression_1;
     }
@@ -544,48 +580,47 @@ public class VoiceGenerator extends AbstractGenerator {
     _builder.newLineIfNotEmpty();
     _builder.append("],");
     _builder.newLine();
-    _builder.append("\t\t\t  ");
     _builder.append("\"responses\": [");
     _builder.newLine();
-    _builder.append("\t\t\t  \t\t\t\t\t");
+    _builder.append("\t\t\t \t");
     _builder.append("{");
     _builder.newLine();
-    _builder.append("\t\t\t  \t\t\t\t\t");
+    _builder.append("\t\t\t \t\t");
     _builder.append("\"resetContexts\": false,");
     _builder.newLine();
-    _builder.append("\t\t\t  \t\t\t\t\t");
+    _builder.append("\t\t\t  \t\t");
     _builder.append("\"affectedContexts\":[");
     _builder.newLine();
-    _builder.append("\t\t\t  \t\t\t\t\t");
+    _builder.append("\t\t\t  \t\t");
     CharSequence _xifexpression_1 = null;
     boolean _contains = this.intentsWithFollowup.contains(followup.getFollowupFrom());
     if (_contains) {
       StringConcatenation _builder_2 = new StringConcatenation();
       _builder_2.append("{");
       _builder_2.newLine();
-      _builder_2.append("\t\t\t\t  \t\t\t\t\t\t\t");
+      _builder_2.append("\t\t\t\t  \t");
       _builder_2.append("\"name\": \"");
       String _name_1 = followup.getFollowupFrom().getName();
-      _builder_2.append(_name_1, "\t\t\t\t  \t\t\t\t\t\t\t");
+      _builder_2.append(_name_1, "\t\t\t\t  \t");
       _builder_2.append("-followup\",");
       _builder_2.newLineIfNotEmpty();
-      _builder_2.append("\t\t\t\t  \t\t\t\t\t\t\t");
+      _builder_2.append("\t\t\t\t  \t");
       _builder_2.append("\"parameters\": {},");
       _builder_2.newLine();
-      _builder_2.append("\t\t\t\t  \t\t\t\t\t\t\t");
+      _builder_2.append("\t\t\t\t  \t");
       _builder_2.append("\"lifespan\": 2");
       _builder_2.newLine();
-      _builder_2.append("\t\t\t\t  \t\t\t\t\t\t");
+      _builder_2.append("\t\t\t\t  ");
       _builder_2.append("}");
       _xifexpression_1 = _builder_2;
     }
-    _builder.append(_xifexpression_1, "\t\t\t  \t\t\t\t\t");
+    _builder.append(_xifexpression_1, "\t\t\t  \t\t");
     _builder.append("        ");
     _builder.newLineIfNotEmpty();
-    _builder.append("\t\t\t  \t\t\t\t\t");
+    _builder.append("\t\t\t  ");
     _builder.append("],");
     _builder.newLine();
-    _builder.append("\t\t\t  \t\t\t\t\t");
+    _builder.append("\t\t\t  ");
     _builder.append("\"action\": \"\",");
     _builder.newLine();
     return _builder;

@@ -95,11 +95,11 @@ public class VoiceSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case VoicePackage.ENTITY:
+      case VoicePackage.REFERENCE_OBJECT:
       {
-        Entity entity = (Entity)theEObject;
-        T result = caseEntity(entity);
-        if (result == null) result = caseAgent(entity);
+        ReferenceObject referenceObject = (ReferenceObject)theEObject;
+        T result = caseReferenceObject(referenceObject);
+        if (result == null) result = caseAgent(referenceObject);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -114,6 +114,13 @@ public class VoiceSwitch<T> extends Switch<T>
       {
         QuestionEntity questionEntity = (QuestionEntity)theEObject;
         T result = caseQuestionEntity(questionEntity);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case VoicePackage.REFERENCE:
+      {
+        Reference reference = (Reference)theEObject;
+        T result = caseReference(reference);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -152,17 +159,21 @@ public class VoiceSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case VoicePackage.ENTITY:
+      {
+        Entity entity = (Entity)theEObject;
+        T result = caseEntity(entity);
+        if (result == null) result = caseReferenceObject(entity);
+        if (result == null) result = caseAgent(entity);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case VoicePackage.SYSVARIABLE:
       {
         Sysvariable sysvariable = (Sysvariable)theEObject;
         T result = caseSysvariable(sysvariable);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case VoicePackage.REFERENCE:
-      {
-        Reference reference = (Reference)theEObject;
-        T result = caseReference(reference);
+        if (result == null) result = caseReferenceObject(sysvariable);
+        if (result == null) result = caseAgent(sysvariable);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -219,17 +230,17 @@ public class VoiceSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Entity</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Reference Object</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Entity</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Reference Object</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseEntity(Entity object)
+  public T caseReferenceObject(ReferenceObject object)
   {
     return null;
   }
@@ -262,6 +273,22 @@ public class VoiceSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseQuestionEntity(QuestionEntity object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Reference</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Reference</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseReference(Reference object)
   {
     return null;
   }
@@ -347,6 +374,22 @@ public class VoiceSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Entity</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Entity</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseEntity(Entity object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Sysvariable</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -358,22 +401,6 @@ public class VoiceSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseSysvariable(Sysvariable object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Reference</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Reference</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseReference(Reference object)
   {
     return null;
   }

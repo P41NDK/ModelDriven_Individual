@@ -8,7 +8,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.xtext.example.mydsl.voice.Sysvariable;
 import org.xtext.example.mydsl.voice.VoicePackage;
@@ -21,32 +20,32 @@ import org.xtext.example.mydsl.voice.VoicePackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.voice.impl.SysvariableImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.voice.impl.SysvariableImpl#getDefaultValue <em>Default Value</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class SysvariableImpl extends MinimalEObjectImpl.Container implements Sysvariable
+public class SysvariableImpl extends ReferenceObjectImpl implements Sysvariable
 {
   /**
-   * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+   * The default value of the '{@link #getDefaultValue() <em>Default Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getValue()
+   * @see #getDefaultValue()
    * @generated
    * @ordered
    */
-  protected static final String VALUE_EDEFAULT = null;
+  protected static final String DEFAULT_VALUE_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
+   * The cached value of the '{@link #getDefaultValue() <em>Default Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getValue()
+   * @see #getDefaultValue()
    * @generated
    * @ordered
    */
-  protected String value = VALUE_EDEFAULT;
+  protected String defaultValue = DEFAULT_VALUE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -75,9 +74,9 @@ public class SysvariableImpl extends MinimalEObjectImpl.Container implements Sys
    * @generated
    */
   @Override
-  public String getValue()
+  public String getDefaultValue()
   {
-    return value;
+    return defaultValue;
   }
 
   /**
@@ -86,12 +85,12 @@ public class SysvariableImpl extends MinimalEObjectImpl.Container implements Sys
    * @generated
    */
   @Override
-  public void setValue(String newValue)
+  public void setDefaultValue(String newDefaultValue)
   {
-    String oldValue = value;
-    value = newValue;
+    String oldDefaultValue = defaultValue;
+    defaultValue = newDefaultValue;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, VoicePackage.SYSVARIABLE__VALUE, oldValue, value));
+      eNotify(new ENotificationImpl(this, Notification.SET, VoicePackage.SYSVARIABLE__DEFAULT_VALUE, oldDefaultValue, defaultValue));
   }
 
   /**
@@ -104,8 +103,8 @@ public class SysvariableImpl extends MinimalEObjectImpl.Container implements Sys
   {
     switch (featureID)
     {
-      case VoicePackage.SYSVARIABLE__VALUE:
-        return getValue();
+      case VoicePackage.SYSVARIABLE__DEFAULT_VALUE:
+        return getDefaultValue();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -120,8 +119,8 @@ public class SysvariableImpl extends MinimalEObjectImpl.Container implements Sys
   {
     switch (featureID)
     {
-      case VoicePackage.SYSVARIABLE__VALUE:
-        setValue((String)newValue);
+      case VoicePackage.SYSVARIABLE__DEFAULT_VALUE:
+        setDefaultValue((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -137,8 +136,8 @@ public class SysvariableImpl extends MinimalEObjectImpl.Container implements Sys
   {
     switch (featureID)
     {
-      case VoicePackage.SYSVARIABLE__VALUE:
-        setValue(VALUE_EDEFAULT);
+      case VoicePackage.SYSVARIABLE__DEFAULT_VALUE:
+        setDefaultValue(DEFAULT_VALUE_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -154,8 +153,8 @@ public class SysvariableImpl extends MinimalEObjectImpl.Container implements Sys
   {
     switch (featureID)
     {
-      case VoicePackage.SYSVARIABLE__VALUE:
-        return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+      case VoicePackage.SYSVARIABLE__DEFAULT_VALUE:
+        return DEFAULT_VALUE_EDEFAULT == null ? defaultValue != null : !DEFAULT_VALUE_EDEFAULT.equals(defaultValue);
     }
     return super.eIsSet(featureID);
   }
@@ -171,8 +170,8 @@ public class SysvariableImpl extends MinimalEObjectImpl.Container implements Sys
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (value: ");
-    result.append(value);
+    result.append(" (defaultValue: ");
+    result.append(defaultValue);
     result.append(')');
     return result.toString();
   }

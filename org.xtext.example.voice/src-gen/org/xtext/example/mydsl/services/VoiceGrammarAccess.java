@@ -128,72 +128,100 @@ public class VoiceGrammarAccess extends AbstractGrammarElementFinder {
 	public class EntityElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.Voice.Entity");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cEntityKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cLeftSquareBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cExampleAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cExampleEntityExampleParserRuleCall_3_0 = (RuleCall)cExampleAssignment_3.eContents().get(0);
-		private final Keyword cRightSquareBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Action cEntityAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cEntityKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Keyword cLeftSquareBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cExampleAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cExampleEntityExampleParserRuleCall_4_0 = (RuleCall)cExampleAssignment_4.eContents().get(0);
+		private final Keyword cRightSquareBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
-		//Entity:
-		//	'Entity' name=ID '[' example+=EntityExample+ ']';
+		//Entity ReferenceObject:
+		//	{Entity} 'Entity' name=ID '[' example+=EntityExample+ ']';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Entity' name=ID '[' example+=EntityExample+ ']'
+		//{Entity} 'Entity' name=ID '[' example+=EntityExample+ ']'
 		public Group getGroup() { return cGroup; }
 		
+		//{Entity}
+		public Action getEntityAction_0() { return cEntityAction_0; }
+		
 		//'Entity'
-		public Keyword getEntityKeyword_0() { return cEntityKeyword_0; }
+		public Keyword getEntityKeyword_1() { return cEntityKeyword_1; }
 		
 		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
 		
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 		
 		//'['
-		public Keyword getLeftSquareBracketKeyword_2() { return cLeftSquareBracketKeyword_2; }
+		public Keyword getLeftSquareBracketKeyword_3() { return cLeftSquareBracketKeyword_3; }
 		
 		//example+=EntityExample+
-		public Assignment getExampleAssignment_3() { return cExampleAssignment_3; }
+		public Assignment getExampleAssignment_4() { return cExampleAssignment_4; }
 		
 		//EntityExample
-		public RuleCall getExampleEntityExampleParserRuleCall_3_0() { return cExampleEntityExampleParserRuleCall_3_0; }
+		public RuleCall getExampleEntityExampleParserRuleCall_4_0() { return cExampleEntityExampleParserRuleCall_4_0; }
 		
 		//']'
-		public Keyword getRightSquareBracketKeyword_4() { return cRightSquareBracketKeyword_4; }
+		public Keyword getRightSquareBracketKeyword_5() { return cRightSquareBracketKeyword_5; }
 	}
 	public class QuestionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.Voice.Question");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cQuestionEntityAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cQuestionEntityQuestionEntityParserRuleCall_0_0 = (RuleCall)cQuestionEntityAssignment_0.eContents().get(0);
-		private final Keyword cWithKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cPromptAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cPromptSTRINGTerminalRuleCall_2_0 = (RuleCall)cPromptAssignment_2.eContents().get(0);
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Keyword cGetKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final Assignment cExtendedQuestionAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final CrossReference cExtendedQuestionReferenceObjectCrossReference_0_1_0 = (CrossReference)cExtendedQuestionAssignment_0_1.eContents().get(0);
+		private final RuleCall cExtendedQuestionReferenceObjectIDTerminalRuleCall_0_1_0_1 = (RuleCall)cExtendedQuestionReferenceObjectCrossReference_0_1_0.eContents().get(1);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Assignment cQuestionEntityAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
+		private final RuleCall cQuestionEntityQuestionEntityParserRuleCall_1_0_0 = (RuleCall)cQuestionEntityAssignment_1_0.eContents().get(0);
+		private final Keyword cWithKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Assignment cPromptAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cPromptSTRINGTerminalRuleCall_1_2_0 = (RuleCall)cPromptAssignment_1_2.eContents().get(0);
 		
 		//Question:
-		//	questionEntity=QuestionEntity 'with' prompt=STRING;
+		//	'get' extendedQuestion=[ReferenceObject] | questionEntity=QuestionEntity 'with' prompt=STRING;
 		@Override public ParserRule getRule() { return rule; }
 		
+		//'get' extendedQuestion=[ReferenceObject] | questionEntity=QuestionEntity 'with' prompt=STRING
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//'get' extendedQuestion=[ReferenceObject]
+		public Group getGroup_0() { return cGroup_0; }
+		
+		//'get'
+		public Keyword getGetKeyword_0_0() { return cGetKeyword_0_0; }
+		
+		//extendedQuestion=[ReferenceObject]
+		public Assignment getExtendedQuestionAssignment_0_1() { return cExtendedQuestionAssignment_0_1; }
+		
+		//[ReferenceObject]
+		public CrossReference getExtendedQuestionReferenceObjectCrossReference_0_1_0() { return cExtendedQuestionReferenceObjectCrossReference_0_1_0; }
+		
+		//ID
+		public RuleCall getExtendedQuestionReferenceObjectIDTerminalRuleCall_0_1_0_1() { return cExtendedQuestionReferenceObjectIDTerminalRuleCall_0_1_0_1; }
+		
 		//questionEntity=QuestionEntity 'with' prompt=STRING
-		public Group getGroup() { return cGroup; }
+		public Group getGroup_1() { return cGroup_1; }
 		
 		//questionEntity=QuestionEntity
-		public Assignment getQuestionEntityAssignment_0() { return cQuestionEntityAssignment_0; }
+		public Assignment getQuestionEntityAssignment_1_0() { return cQuestionEntityAssignment_1_0; }
 		
 		//QuestionEntity
-		public RuleCall getQuestionEntityQuestionEntityParserRuleCall_0_0() { return cQuestionEntityQuestionEntityParserRuleCall_0_0; }
+		public RuleCall getQuestionEntityQuestionEntityParserRuleCall_1_0_0() { return cQuestionEntityQuestionEntityParserRuleCall_1_0_0; }
 		
 		//'with'
-		public Keyword getWithKeyword_1() { return cWithKeyword_1; }
+		public Keyword getWithKeyword_1_1() { return cWithKeyword_1_1; }
 		
 		//prompt=STRING
-		public Assignment getPromptAssignment_2() { return cPromptAssignment_2; }
+		public Assignment getPromptAssignment_1_2() { return cPromptAssignment_1_2; }
 		
 		//STRING
-		public RuleCall getPromptSTRINGTerminalRuleCall_2_0() { return cPromptSTRINGTerminalRuleCall_2_0; }
+		public RuleCall getPromptSTRINGTerminalRuleCall_1_2_0() { return cPromptSTRINGTerminalRuleCall_1_2_0; }
 	}
 	public class QuestionEntityElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.Voice.QuestionEntity");
@@ -209,6 +237,37 @@ public class VoiceGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//Reference
 		public RuleCall getWithEntityReferenceParserRuleCall_0() { return cWithEntityReferenceParserRuleCall_0; }
+	}
+	public class ReferenceElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.Voice.Reference");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Assignment cEntityAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
+		private final CrossReference cEntityEntityCrossReference_0_0 = (CrossReference)cEntityAssignment_0.eContents().get(0);
+		private final RuleCall cEntityEntityIDTerminalRuleCall_0_0_1 = (RuleCall)cEntityEntityCrossReference_0_0.eContents().get(1);
+		private final Assignment cSysvarAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
+		private final RuleCall cSysvarSysvariableParserRuleCall_1_0 = (RuleCall)cSysvarAssignment_1.eContents().get(0);
+		
+		//Reference:
+		//	entity=[Entity] | sysvar=Sysvariable;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//entity=[Entity] | sysvar=Sysvariable
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//entity=[Entity]
+		public Assignment getEntityAssignment_0() { return cEntityAssignment_0; }
+		
+		//[Entity]
+		public CrossReference getEntityEntityCrossReference_0_0() { return cEntityEntityCrossReference_0_0; }
+		
+		//ID
+		public RuleCall getEntityEntityIDTerminalRuleCall_0_0_1() { return cEntityEntityIDTerminalRuleCall_0_0_1; }
+		
+		//sysvar=Sysvariable
+		public Assignment getSysvarAssignment_1() { return cSysvarAssignment_1; }
+		
+		//Sysvariable
+		public RuleCall getSysvarSysvariableParserRuleCall_1_0() { return cSysvarSysvariableParserRuleCall_1_0; }
 	}
 	public class TrainingElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.Voice.Training");
@@ -359,104 +418,107 @@ public class VoiceGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	public class SysvariableElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.Voice.Sysvariable");
-		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
-		private final Alternatives cValueAlternatives_0 = (Alternatives)cValueAssignment.eContents().get(0);
-		private final Keyword cValueNumberKeyword_0_0 = (Keyword)cValueAlternatives_0.eContents().get(0);
-		private final Keyword cValueDateTimeKeyword_0_1 = (Keyword)cValueAlternatives_0.eContents().get(1);
-		private final Keyword cValueDateKeyword_0_2 = (Keyword)cValueAlternatives_0.eContents().get(2);
-		private final Keyword cValueDurationKeyword_0_3 = (Keyword)cValueAlternatives_0.eContents().get(3);
-		private final Keyword cValueAddressKeyword_0_4 = (Keyword)cValueAlternatives_0.eContents().get(4);
-		private final Keyword cValueEmailKeyword_0_5 = (Keyword)cValueAlternatives_0.eContents().get(5);
-		private final Keyword cValuePhoneNumberKeyword_0_6 = (Keyword)cValueAlternatives_0.eContents().get(6);
-		private final Keyword cValueDatePeriodKeyword_0_7 = (Keyword)cValueAlternatives_0.eContents().get(7);
-		private final Keyword cValueTimePeriodKeyword_0_8 = (Keyword)cValueAlternatives_0.eContents().get(8);
-		private final Keyword cValueUrlKeyword_0_9 = (Keyword)cValueAlternatives_0.eContents().get(9);
-		private final Keyword cValueAnyKeyword_0_10 = (Keyword)cValueAlternatives_0.eContents().get(10);
-		private final Keyword cValueColorKeyword_0_11 = (Keyword)cValueAlternatives_0.eContents().get(11);
-		private final Keyword cValueLanguageKeyword_0_12 = (Keyword)cValueAlternatives_0.eContents().get(12);
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cSysvariableAction_0 = (Action)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
+		private final RuleCall cNameIDTerminalRuleCall_1_0_0 = (RuleCall)cNameAssignment_1_0.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Assignment cDefaultValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cDefaultValueDefaultValuesParserRuleCall_2_0 = (RuleCall)cDefaultValueAssignment_2.eContents().get(0);
 		
-		//Sysvariable:
-		//	value=('number' | 'date-time' | 'date' | 'duration' | 'address' | 'email' | 'phone-number' | 'date-period'
-		//	| 'time-period' | 'url' | 'any' | 'color' | 'language');
+		//Sysvariable ReferenceObject:
+		//	{Sysvariable} (name=ID '=')? defaultValue=DefaultValues;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//value=('number' | 'date-time' | 'date' | 'duration' | 'address' | 'email' | 'phone-number' | 'date-period' |
-		//'time-period' | 'url' | 'any' | 'color' | 'language')
-		public Assignment getValueAssignment() { return cValueAssignment; }
+		//{Sysvariable} (name=ID '=')? defaultValue=DefaultValues
+		public Group getGroup() { return cGroup; }
 		
-		//('number' | 'date-time' | 'date' | 'duration' | 'address' | 'email' | 'phone-number' | 'date-period' | 'time-period' |
-		//'url' | 'any' | 'color' | 'language')
-		public Alternatives getValueAlternatives_0() { return cValueAlternatives_0; }
+		//{Sysvariable}
+		public Action getSysvariableAction_0() { return cSysvariableAction_0; }
 		
-		//'number'
-		public Keyword getValueNumberKeyword_0_0() { return cValueNumberKeyword_0_0; }
+		//(name=ID '=')?
+		public Group getGroup_1() { return cGroup_1; }
 		
-		//'date-time'
-		public Keyword getValueDateTimeKeyword_0_1() { return cValueDateTimeKeyword_0_1; }
-		
-		//'date'
-		public Keyword getValueDateKeyword_0_2() { return cValueDateKeyword_0_2; }
-		
-		//'duration'
-		public Keyword getValueDurationKeyword_0_3() { return cValueDurationKeyword_0_3; }
-		
-		//'address'
-		public Keyword getValueAddressKeyword_0_4() { return cValueAddressKeyword_0_4; }
-		
-		//'email'
-		public Keyword getValueEmailKeyword_0_5() { return cValueEmailKeyword_0_5; }
-		
-		//'phone-number'
-		public Keyword getValuePhoneNumberKeyword_0_6() { return cValuePhoneNumberKeyword_0_6; }
-		
-		//'date-period'
-		public Keyword getValueDatePeriodKeyword_0_7() { return cValueDatePeriodKeyword_0_7; }
-		
-		//'time-period'
-		public Keyword getValueTimePeriodKeyword_0_8() { return cValueTimePeriodKeyword_0_8; }
-		
-		//'url'
-		public Keyword getValueUrlKeyword_0_9() { return cValueUrlKeyword_0_9; }
-		
-		//'any'
-		public Keyword getValueAnyKeyword_0_10() { return cValueAnyKeyword_0_10; }
-		
-		//'color'
-		public Keyword getValueColorKeyword_0_11() { return cValueColorKeyword_0_11; }
-		
-		//'language'
-		public Keyword getValueLanguageKeyword_0_12() { return cValueLanguageKeyword_0_12; }
-	}
-	public class ReferenceElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.Voice.Reference");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Assignment cEntityAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
-		private final CrossReference cEntityEntityCrossReference_0_0 = (CrossReference)cEntityAssignment_0.eContents().get(0);
-		private final RuleCall cEntityEntityIDTerminalRuleCall_0_0_1 = (RuleCall)cEntityEntityCrossReference_0_0.eContents().get(1);
-		private final Assignment cSysvarAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
-		private final RuleCall cSysvarSysvariableParserRuleCall_1_0 = (RuleCall)cSysvarAssignment_1.eContents().get(0);
-		
-		//Reference:
-		//	entity=[Entity] | sysvar=Sysvariable;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//entity=[Entity] | sysvar=Sysvariable
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//entity=[Entity]
-		public Assignment getEntityAssignment_0() { return cEntityAssignment_0; }
-		
-		//[Entity]
-		public CrossReference getEntityEntityCrossReference_0_0() { return cEntityEntityCrossReference_0_0; }
+		//name=ID
+		public Assignment getNameAssignment_1_0() { return cNameAssignment_1_0; }
 		
 		//ID
-		public RuleCall getEntityEntityIDTerminalRuleCall_0_0_1() { return cEntityEntityIDTerminalRuleCall_0_0_1; }
+		public RuleCall getNameIDTerminalRuleCall_1_0_0() { return cNameIDTerminalRuleCall_1_0_0; }
 		
-		//sysvar=Sysvariable
-		public Assignment getSysvarAssignment_1() { return cSysvarAssignment_1; }
+		//'='
+		public Keyword getEqualsSignKeyword_1_1() { return cEqualsSignKeyword_1_1; }
 		
-		//Sysvariable
-		public RuleCall getSysvarSysvariableParserRuleCall_1_0() { return cSysvarSysvariableParserRuleCall_1_0; }
+		//defaultValue=DefaultValues
+		public Assignment getDefaultValueAssignment_2() { return cDefaultValueAssignment_2; }
+		
+		//DefaultValues
+		public RuleCall getDefaultValueDefaultValuesParserRuleCall_2_0() { return cDefaultValueDefaultValuesParserRuleCall_2_0; }
+	}
+	public class DefaultValuesElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.Voice.DefaultValues");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Keyword cNumberKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
+		private final Keyword cDateTimeKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		private final Keyword cDateKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
+		private final Keyword cDurationKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
+		private final Keyword cAddressKeyword_4 = (Keyword)cAlternatives.eContents().get(4);
+		private final Keyword cEmailKeyword_5 = (Keyword)cAlternatives.eContents().get(5);
+		private final Keyword cPhoneNumberKeyword_6 = (Keyword)cAlternatives.eContents().get(6);
+		private final Keyword cDatePeriodKeyword_7 = (Keyword)cAlternatives.eContents().get(7);
+		private final Keyword cTimePeriodKeyword_8 = (Keyword)cAlternatives.eContents().get(8);
+		private final Keyword cUrlKeyword_9 = (Keyword)cAlternatives.eContents().get(9);
+		private final Keyword cAnyKeyword_10 = (Keyword)cAlternatives.eContents().get(10);
+		private final Keyword cColorKeyword_11 = (Keyword)cAlternatives.eContents().get(11);
+		private final Keyword cLanguageKeyword_12 = (Keyword)cAlternatives.eContents().get(12);
+		
+		//DefaultValues:
+		//	'number' | 'date-time' | 'date' | 'duration' | 'address' | 'email' | 'phone-number' | 'date-period'
+		//	| 'time-period' | 'url' | 'any' | 'color' | 'language';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'number' | 'date-time' | 'date' | 'duration' | 'address' | 'email' | 'phone-number' | 'date-period' | 'time-period' |
+		//'url' | 'any' | 'color' | 'language'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//'number'
+		public Keyword getNumberKeyword_0() { return cNumberKeyword_0; }
+		
+		//'date-time'
+		public Keyword getDateTimeKeyword_1() { return cDateTimeKeyword_1; }
+		
+		//'date'
+		public Keyword getDateKeyword_2() { return cDateKeyword_2; }
+		
+		//'duration'
+		public Keyword getDurationKeyword_3() { return cDurationKeyword_3; }
+		
+		//'address'
+		public Keyword getAddressKeyword_4() { return cAddressKeyword_4; }
+		
+		//'email'
+		public Keyword getEmailKeyword_5() { return cEmailKeyword_5; }
+		
+		//'phone-number'
+		public Keyword getPhoneNumberKeyword_6() { return cPhoneNumberKeyword_6; }
+		
+		//'date-period'
+		public Keyword getDatePeriodKeyword_7() { return cDatePeriodKeyword_7; }
+		
+		//'time-period'
+		public Keyword getTimePeriodKeyword_8() { return cTimePeriodKeyword_8; }
+		
+		//'url'
+		public Keyword getUrlKeyword_9() { return cUrlKeyword_9; }
+		
+		//'any'
+		public Keyword getAnyKeyword_10() { return cAnyKeyword_10; }
+		
+		//'color'
+		public Keyword getColorKeyword_11() { return cColorKeyword_11; }
+		
+		//'language'
+		public Keyword getLanguageKeyword_12() { return cLanguageKeyword_12; }
 	}
 	
 	
@@ -466,13 +528,14 @@ public class VoiceGrammarAccess extends AbstractGrammarElementFinder {
 	private final EntityElements pEntity;
 	private final QuestionElements pQuestion;
 	private final QuestionEntityElements pQuestionEntity;
+	private final ReferenceElements pReference;
 	private final TrainingElements pTraining;
 	private final TrainingRefElements pTrainingRef;
 	private final DeclarationElements pDeclaration;
 	private final EntityExampleElements pEntityExample;
 	private final IsFollowupElements pIsFollowup;
 	private final SysvariableElements pSysvariable;
-	private final ReferenceElements pReference;
+	private final DefaultValuesElements pDefaultValues;
 	
 	private final Grammar grammar;
 	
@@ -489,13 +552,14 @@ public class VoiceGrammarAccess extends AbstractGrammarElementFinder {
 		this.pEntity = new EntityElements();
 		this.pQuestion = new QuestionElements();
 		this.pQuestionEntity = new QuestionEntityElements();
+		this.pReference = new ReferenceElements();
 		this.pTraining = new TrainingElements();
 		this.pTrainingRef = new TrainingRefElements();
 		this.pDeclaration = new DeclarationElements();
 		this.pEntityExample = new EntityExampleElements();
 		this.pIsFollowup = new IsFollowupElements();
 		this.pSysvariable = new SysvariableElements();
-		this.pReference = new ReferenceElements();
+		this.pDefaultValues = new DefaultValuesElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -555,8 +619,8 @@ public class VoiceGrammarAccess extends AbstractGrammarElementFinder {
 		return getIntentAccess().getRule();
 	}
 	
-	//Entity:
-	//	'Entity' name=ID '[' example+=EntityExample+ ']';
+	//Entity ReferenceObject:
+	//	{Entity} 'Entity' name=ID '[' example+=EntityExample+ ']';
 	public EntityElements getEntityAccess() {
 		return pEntity;
 	}
@@ -566,7 +630,7 @@ public class VoiceGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Question:
-	//	questionEntity=QuestionEntity 'with' prompt=STRING;
+	//	'get' extendedQuestion=[ReferenceObject] | questionEntity=QuestionEntity 'with' prompt=STRING;
 	public QuestionElements getQuestionAccess() {
 		return pQuestion;
 	}
@@ -583,6 +647,16 @@ public class VoiceGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getQuestionEntityRule() {
 		return getQuestionEntityAccess().getRule();
+	}
+	
+	//Reference:
+	//	entity=[Entity] | sysvar=Sysvariable;
+	public ReferenceElements getReferenceAccess() {
+		return pReference;
+	}
+	
+	public ParserRule getReferenceRule() {
+		return getReferenceAccess().getRule();
 	}
 	
 	//Training:
@@ -635,9 +709,8 @@ public class VoiceGrammarAccess extends AbstractGrammarElementFinder {
 		return getIsFollowupAccess().getRule();
 	}
 	
-	//Sysvariable:
-	//	value=('number' | 'date-time' | 'date' | 'duration' | 'address' | 'email' | 'phone-number' | 'date-period'
-	//	| 'time-period' | 'url' | 'any' | 'color' | 'language');
+	//Sysvariable ReferenceObject:
+	//	{Sysvariable} (name=ID '=')? defaultValue=DefaultValues;
 	public SysvariableElements getSysvariableAccess() {
 		return pSysvariable;
 	}
@@ -646,14 +719,15 @@ public class VoiceGrammarAccess extends AbstractGrammarElementFinder {
 		return getSysvariableAccess().getRule();
 	}
 	
-	//Reference:
-	//	entity=[Entity] | sysvar=Sysvariable;
-	public ReferenceElements getReferenceAccess() {
-		return pReference;
+	//DefaultValues:
+	//	'number' | 'date-time' | 'date' | 'duration' | 'address' | 'email' | 'phone-number' | 'date-period'
+	//	| 'time-period' | 'url' | 'any' | 'color' | 'language';
+	public DefaultValuesElements getDefaultValuesAccess() {
+		return pDefaultValues;
 	}
 	
-	public ParserRule getReferenceRule() {
-		return getReferenceAccess().getRule();
+	public ParserRule getDefaultValuesRule() {
+		return getDefaultValuesAccess().getRule();
 	}
 	
 	//terminal ID:

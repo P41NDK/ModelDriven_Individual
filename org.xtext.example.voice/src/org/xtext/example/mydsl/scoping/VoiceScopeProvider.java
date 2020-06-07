@@ -3,6 +3,7 @@
  */
 package org.xtext.example.mydsl.scoping;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -13,6 +14,10 @@ import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
 import org.eclipse.xtext.scoping.impl.FilteringScope;
 import org.xtext.example.mydsl.voice.Intent;
+import org.xtext.example.mydsl.voice.Question;
+import org.xtext.example.mydsl.voice.QuestionEntity;
+import org.xtext.example.mydsl.voice.ReferenceObject;
+import org.xtext.example.mydsl.voice.Sysvariable;
 import org.xtext.example.mydsl.voice.VoicePackage;
 
 /**
@@ -31,6 +36,20 @@ public class VoiceScopeProvider extends AbstractVoiceScopeProvider {
             IScope existingScope = Scopes.scopeFor(candidates);
 
             return new FilteringScope(existingScope, (e) -> !Objects.equals(e.getEObjectOrProxy(), context));
+        }
+       else if (context instanceof Question
+                && reference == VoicePackage.Literals.QUESTION__EXTENDED_QUESTION) {
+        	Intent intent = (Intent) context.eContainer();
+        	intent = intent.getZuper();
+        	ArrayList<ReferenceObject> candidates = new ArrayList<ReferenceObject>();
+        		for(Question question: intent.getQuestion()) {
+        			if(question.getQuestionEntity() != null) {
+        				candidates.add(question.getQuestionEntity().getWithEntity().getEntity()!=null
+        						?question.getQuestionEntity().getWithEntity().getEntity()
+        								:question.getQuestionEntity().getWithEntity().getSysvar());
+        			}
+        		}
+        	return Scopes.scopeFor(candidates);
         }
         return super.getScope(context, reference);
     }

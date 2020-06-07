@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.xtext.example.mydsl.voice.Entity;
 import org.xtext.example.mydsl.voice.Reference;
-import org.xtext.example.mydsl.voice.Sysvariable;
+import org.xtext.example.mydsl.voice.ReferenceObject;
 import org.xtext.example.mydsl.voice.VoicePackage;
 
 /**
@@ -51,7 +51,7 @@ public class ReferenceImpl extends MinimalEObjectImpl.Container implements Refer
    * @generated
    * @ordered
    */
-  protected Sysvariable sysvar;
+  protected ReferenceObject sysvar;
 
   /**
    * <!-- begin-user-doc -->
@@ -125,7 +125,7 @@ public class ReferenceImpl extends MinimalEObjectImpl.Container implements Refer
    * @generated
    */
   @Override
-  public Sysvariable getSysvar()
+  public ReferenceObject getSysvar()
   {
     return sysvar;
   }
@@ -135,9 +135,9 @@ public class ReferenceImpl extends MinimalEObjectImpl.Container implements Refer
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetSysvar(Sysvariable newSysvar, NotificationChain msgs)
+  public NotificationChain basicSetSysvar(ReferenceObject newSysvar, NotificationChain msgs)
   {
-    Sysvariable oldSysvar = sysvar;
+    ReferenceObject oldSysvar = sysvar;
     sysvar = newSysvar;
     if (eNotificationRequired())
     {
@@ -153,7 +153,7 @@ public class ReferenceImpl extends MinimalEObjectImpl.Container implements Refer
    * @generated
    */
   @Override
-  public void setSysvar(Sysvariable newSysvar)
+  public void setSysvar(ReferenceObject newSysvar)
   {
     if (newSysvar != sysvar)
     {
@@ -218,7 +218,7 @@ public class ReferenceImpl extends MinimalEObjectImpl.Container implements Refer
         setEntity((Entity)newValue);
         return;
       case VoicePackage.REFERENCE__SYSVAR:
-        setSysvar((Sysvariable)newValue);
+        setSysvar((ReferenceObject)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -238,7 +238,7 @@ public class ReferenceImpl extends MinimalEObjectImpl.Container implements Refer
         setEntity((Entity)null);
         return;
       case VoicePackage.REFERENCE__SYSVAR:
-        setSysvar((Sysvariable)null);
+        setSysvar((ReferenceObject)null);
         return;
     }
     super.eUnset(featureID);

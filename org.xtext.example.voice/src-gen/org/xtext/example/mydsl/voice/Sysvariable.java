@@ -3,7 +3,6 @@
  */
 package org.xtext.example.mydsl.voice;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,35 +13,35 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.voice.Sysvariable#getValue <em>Value</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.voice.Sysvariable#getDefaultValue <em>Default Value</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.mydsl.voice.VoicePackage#getSysvariable()
  * @model
  * @generated
  */
-public interface Sysvariable extends EObject
+public interface Sysvariable extends ReferenceObject
 {
   /**
-   * Returns the value of the '<em><b>Value</b></em>' attribute.
+   * Returns the value of the '<em><b>Default Value</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Value</em>' attribute.
-   * @see #setValue(String)
-   * @see org.xtext.example.mydsl.voice.VoicePackage#getSysvariable_Value()
+   * @return the value of the '<em>Default Value</em>' attribute.
+   * @see #setDefaultValue(String)
+   * @see org.xtext.example.mydsl.voice.VoicePackage#getSysvariable_DefaultValue()
    * @model
    * @generated
    */
-  String getValue();
+  String getDefaultValue();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.voice.Sysvariable#getValue <em>Value</em>}' attribute.
+   * Sets the value of the '{@link org.xtext.example.mydsl.voice.Sysvariable#getDefaultValue <em>Default Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Value</em>' attribute.
-   * @see #getValue()
+   * @param value the new value of the '<em>Default Value</em>' attribute.
+   * @see #getDefaultValue()
    * @generated
    */
-  void setValue(String value);
+  void setDefaultValue(String value);
 
 } // Sysvariable

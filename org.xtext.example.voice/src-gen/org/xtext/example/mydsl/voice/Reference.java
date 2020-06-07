@@ -51,12 +51,12 @@ public interface Reference extends EObject
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Sysvar</em>' containment reference.
-   * @see #setSysvar(Sysvariable)
+   * @see #setSysvar(ReferenceObject)
    * @see org.xtext.example.mydsl.voice.VoicePackage#getReference_Sysvar()
    * @model containment="true"
    * @generated
    */
-  Sysvariable getSysvar();
+  ReferenceObject getSysvar();
 
   /**
    * Sets the value of the '{@link org.xtext.example.mydsl.voice.Reference#getSysvar <em>Sysvar</em>}' containment reference.
@@ -66,6 +66,6 @@ public interface Reference extends EObject
    * @see #getSysvar()
    * @generated
    */
-  void setSysvar(Sysvariable value);
+  void setSysvar(ReferenceObject value);
 
 } // Reference

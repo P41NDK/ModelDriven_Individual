@@ -13,18 +13,20 @@ Agent:
 Intent:
 	'Intent' name=ID ('extends' zuper=[Intent])? (isFollowup=IsFollowup)? question+=Question+ training=Training
 ;
-Entity:
-	 'Entity' name=ID '[' example+=EntityExample+ ']'
+Entity returns ReferenceObject:
+	 {Entity} 'Entity' name=ID '[' example+=EntityExample+ ']'
 ;
 
 Question: 
-	questionEntity=QuestionEntity 'with' prompt=STRING 
+	'get' extendedQuestion=[ReferenceObject] | questionEntity=QuestionEntity 'with' prompt=STRING 
 ;
 
 QuestionEntity:
-	withEntity=Reference
+	withEntity = Reference
 ;
-
+Reference:
+	entity=[Entity] | sysvar=Sysvariable
+;
 Training:
 	{Training} 'Training:' trainingref+=TrainingRef+
 ;
@@ -34,7 +36,7 @@ TrainingRef:
 ;
 
 Declaration:
-	'(' trainingstring=STRING 'is' reference=Reference ')'
+	'(' trainingstring=STRING 'is' reference = Reference')'
 ;
 
 EntityExample:
@@ -44,15 +46,11 @@ EntityExample:
 IsFollowup:
 	'IsFollowup' intent=[Intent]
 ;
-
-Sysvariable:
-	value=('number' | 'date-time' | 'date' | 'duration' | 'address' | 'email' | 'phone-number' | 'date-period' 
-		| 'time-period' | 'url' | 'any' | 'color' | 'language'
-	)
-	
+Sysvariable returns ReferenceObject:
+	{Sysvariable} (name=ID '=')? defaultValue=DefaultValues
 ;
-
-Reference:
-	entity=[Entity] | sysvar=Sysvariable
+DefaultValues:
+	('number' | 'date-time' | 'date' | 'duration' | 'address' | 'email' | 'phone-number' | 'date-period' 
+		| 'time-period' | 'url' | 'any' | 'color' | 'language')
 ;
 

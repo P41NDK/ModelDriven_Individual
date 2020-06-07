@@ -178,14 +178,14 @@ public interface VoicePackage extends EPackage
   int INTENT_FEATURE_COUNT = AGENT_FEATURE_COUNT + 4;
 
   /**
-   * The meta object id for the '{@link org.xtext.example.mydsl.voice.impl.EntityImpl <em>Entity</em>}' class.
+   * The meta object id for the '{@link org.xtext.example.mydsl.voice.impl.ReferenceObjectImpl <em>Reference Object</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.xtext.example.mydsl.voice.impl.EntityImpl
-   * @see org.xtext.example.mydsl.voice.impl.VoicePackageImpl#getEntity()
+   * @see org.xtext.example.mydsl.voice.impl.ReferenceObjectImpl
+   * @see org.xtext.example.mydsl.voice.impl.VoicePackageImpl#getReferenceObject()
    * @generated
    */
-  int ENTITY = 3;
+  int REFERENCE_OBJECT = 3;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -194,25 +194,16 @@ public interface VoicePackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENTITY__NAME = AGENT__NAME;
+  int REFERENCE_OBJECT__NAME = AGENT__NAME;
 
   /**
-   * The feature id for the '<em><b>Example</b></em>' containment reference list.
+   * The number of structural features of the '<em>Reference Object</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ENTITY__EXAMPLE = AGENT_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Entity</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ENTITY_FEATURE_COUNT = AGENT_FEATURE_COUNT + 1;
+  int REFERENCE_OBJECT_FEATURE_COUNT = AGENT_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mydsl.voice.impl.QuestionImpl <em>Question</em>}' class.
@@ -225,13 +216,22 @@ public interface VoicePackage extends EPackage
   int QUESTION = 4;
 
   /**
+   * The feature id for the '<em><b>Extended Question</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int QUESTION__EXTENDED_QUESTION = 0;
+
+  /**
    * The feature id for the '<em><b>Question Entity</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int QUESTION__QUESTION_ENTITY = 0;
+  int QUESTION__QUESTION_ENTITY = 1;
 
   /**
    * The feature id for the '<em><b>Prompt</b></em>' attribute.
@@ -240,7 +240,7 @@ public interface VoicePackage extends EPackage
    * @generated
    * @ordered
    */
-  int QUESTION__PROMPT = 1;
+  int QUESTION__PROMPT = 2;
 
   /**
    * The number of structural features of the '<em>Question</em>' class.
@@ -249,7 +249,7 @@ public interface VoicePackage extends EPackage
    * @generated
    * @ordered
    */
-  int QUESTION_FEATURE_COUNT = 2;
+  int QUESTION_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mydsl.voice.impl.QuestionEntityImpl <em>Question Entity</em>}' class.
@@ -280,6 +280,43 @@ public interface VoicePackage extends EPackage
   int QUESTION_ENTITY_FEATURE_COUNT = 1;
 
   /**
+   * The meta object id for the '{@link org.xtext.example.mydsl.voice.impl.ReferenceImpl <em>Reference</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.mydsl.voice.impl.ReferenceImpl
+   * @see org.xtext.example.mydsl.voice.impl.VoicePackageImpl#getReference()
+   * @generated
+   */
+  int REFERENCE = 6;
+
+  /**
+   * The feature id for the '<em><b>Entity</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REFERENCE__ENTITY = 0;
+
+  /**
+   * The feature id for the '<em><b>Sysvar</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REFERENCE__SYSVAR = 1;
+
+  /**
+   * The number of structural features of the '<em>Reference</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REFERENCE_FEATURE_COUNT = 2;
+
+  /**
    * The meta object id for the '{@link org.xtext.example.mydsl.voice.impl.TrainingImpl <em>Training</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -287,7 +324,7 @@ public interface VoicePackage extends EPackage
    * @see org.xtext.example.mydsl.voice.impl.VoicePackageImpl#getTraining()
    * @generated
    */
-  int TRAINING = 6;
+  int TRAINING = 7;
 
   /**
    * The feature id for the '<em><b>Trainingref</b></em>' containment reference list.
@@ -315,7 +352,7 @@ public interface VoicePackage extends EPackage
    * @see org.xtext.example.mydsl.voice.impl.VoicePackageImpl#getTrainingRef()
    * @generated
    */
-  int TRAINING_REF = 7;
+  int TRAINING_REF = 8;
 
   /**
    * The feature id for the '<em><b>Phrase</b></em>' attribute.
@@ -352,7 +389,7 @@ public interface VoicePackage extends EPackage
    * @see org.xtext.example.mydsl.voice.impl.VoicePackageImpl#getDeclaration()
    * @generated
    */
-  int DECLARATION = 8;
+  int DECLARATION = 9;
 
   /**
    * The feature id for the '<em><b>Trainingstring</b></em>' attribute.
@@ -389,7 +426,7 @@ public interface VoicePackage extends EPackage
    * @see org.xtext.example.mydsl.voice.impl.VoicePackageImpl#getEntityExample()
    * @generated
    */
-  int ENTITY_EXAMPLE = 9;
+  int ENTITY_EXAMPLE = 10;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -417,7 +454,7 @@ public interface VoicePackage extends EPackage
    * @see org.xtext.example.mydsl.voice.impl.VoicePackageImpl#getIsFollowup()
    * @generated
    */
-  int IS_FOLLOWUP = 10;
+  int IS_FOLLOWUP = 11;
 
   /**
    * The feature id for the '<em><b>Intent</b></em>' reference.
@@ -438,6 +475,43 @@ public interface VoicePackage extends EPackage
   int IS_FOLLOWUP_FEATURE_COUNT = 1;
 
   /**
+   * The meta object id for the '{@link org.xtext.example.mydsl.voice.impl.EntityImpl <em>Entity</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.mydsl.voice.impl.EntityImpl
+   * @see org.xtext.example.mydsl.voice.impl.VoicePackageImpl#getEntity()
+   * @generated
+   */
+  int ENTITY = 12;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTITY__NAME = REFERENCE_OBJECT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Example</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTITY__EXAMPLE = REFERENCE_OBJECT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Entity</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTITY_FEATURE_COUNT = REFERENCE_OBJECT_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link org.xtext.example.mydsl.voice.impl.SysvariableImpl <em>Sysvariable</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -445,16 +519,25 @@ public interface VoicePackage extends EPackage
    * @see org.xtext.example.mydsl.voice.impl.VoicePackageImpl#getSysvariable()
    * @generated
    */
-  int SYSVARIABLE = 11;
+  int SYSVARIABLE = 13;
 
   /**
-   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SYSVARIABLE__VALUE = 0;
+  int SYSVARIABLE__NAME = REFERENCE_OBJECT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Default Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SYSVARIABLE__DEFAULT_VALUE = REFERENCE_OBJECT_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Sysvariable</em>' class.
@@ -463,44 +546,7 @@ public interface VoicePackage extends EPackage
    * @generated
    * @ordered
    */
-  int SYSVARIABLE_FEATURE_COUNT = 1;
-
-  /**
-   * The meta object id for the '{@link org.xtext.example.mydsl.voice.impl.ReferenceImpl <em>Reference</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.xtext.example.mydsl.voice.impl.ReferenceImpl
-   * @see org.xtext.example.mydsl.voice.impl.VoicePackageImpl#getReference()
-   * @generated
-   */
-  int REFERENCE = 12;
-
-  /**
-   * The feature id for the '<em><b>Entity</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int REFERENCE__ENTITY = 0;
-
-  /**
-   * The feature id for the '<em><b>Sysvar</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int REFERENCE__SYSVAR = 1;
-
-  /**
-   * The number of structural features of the '<em>Reference</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int REFERENCE_FEATURE_COUNT = 2;
+  int SYSVARIABLE_FEATURE_COUNT = REFERENCE_OBJECT_FEATURE_COUNT + 1;
 
 
   /**
@@ -600,25 +646,14 @@ public interface VoicePackage extends EPackage
   EReference getIntent_Training();
 
   /**
-   * Returns the meta object for class '{@link org.xtext.example.mydsl.voice.Entity <em>Entity</em>}'.
+   * Returns the meta object for class '{@link org.xtext.example.mydsl.voice.ReferenceObject <em>Reference Object</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Entity</em>'.
-   * @see org.xtext.example.mydsl.voice.Entity
+   * @return the meta object for class '<em>Reference Object</em>'.
+   * @see org.xtext.example.mydsl.voice.ReferenceObject
    * @generated
    */
-  EClass getEntity();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link org.xtext.example.mydsl.voice.Entity#getExample <em>Example</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Example</em>'.
-   * @see org.xtext.example.mydsl.voice.Entity#getExample()
-   * @see #getEntity()
-   * @generated
-   */
-  EReference getEntity_Example();
+  EClass getReferenceObject();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.voice.Question <em>Question</em>}'.
@@ -629,6 +664,17 @@ public interface VoicePackage extends EPackage
    * @generated
    */
   EClass getQuestion();
+
+  /**
+   * Returns the meta object for the reference '{@link org.xtext.example.mydsl.voice.Question#getExtendedQuestion <em>Extended Question</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Extended Question</em>'.
+   * @see org.xtext.example.mydsl.voice.Question#getExtendedQuestion()
+   * @see #getQuestion()
+   * @generated
+   */
+  EReference getQuestion_ExtendedQuestion();
 
   /**
    * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.voice.Question#getQuestionEntity <em>Question Entity</em>}'.
@@ -672,6 +718,38 @@ public interface VoicePackage extends EPackage
    * @generated
    */
   EReference getQuestionEntity_WithEntity();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.example.mydsl.voice.Reference <em>Reference</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Reference</em>'.
+   * @see org.xtext.example.mydsl.voice.Reference
+   * @generated
+   */
+  EClass getReference();
+
+  /**
+   * Returns the meta object for the reference '{@link org.xtext.example.mydsl.voice.Reference#getEntity <em>Entity</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Entity</em>'.
+   * @see org.xtext.example.mydsl.voice.Reference#getEntity()
+   * @see #getReference()
+   * @generated
+   */
+  EReference getReference_Entity();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.voice.Reference#getSysvar <em>Sysvar</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Sysvar</em>'.
+   * @see org.xtext.example.mydsl.voice.Reference#getSysvar()
+   * @see #getReference()
+   * @generated
+   */
+  EReference getReference_Sysvar();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.voice.Training <em>Training</em>}'.
@@ -801,6 +879,27 @@ public interface VoicePackage extends EPackage
   EReference getIsFollowup_Intent();
 
   /**
+   * Returns the meta object for class '{@link org.xtext.example.mydsl.voice.Entity <em>Entity</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Entity</em>'.
+   * @see org.xtext.example.mydsl.voice.Entity
+   * @generated
+   */
+  EClass getEntity();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.xtext.example.mydsl.voice.Entity#getExample <em>Example</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Example</em>'.
+   * @see org.xtext.example.mydsl.voice.Entity#getExample()
+   * @see #getEntity()
+   * @generated
+   */
+  EReference getEntity_Example();
+
+  /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.voice.Sysvariable <em>Sysvariable</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -811,47 +910,15 @@ public interface VoicePackage extends EPackage
   EClass getSysvariable();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.voice.Sysvariable#getValue <em>Value</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.voice.Sysvariable#getDefaultValue <em>Default Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value</em>'.
-   * @see org.xtext.example.mydsl.voice.Sysvariable#getValue()
+   * @return the meta object for the attribute '<em>Default Value</em>'.
+   * @see org.xtext.example.mydsl.voice.Sysvariable#getDefaultValue()
    * @see #getSysvariable()
    * @generated
    */
-  EAttribute getSysvariable_Value();
-
-  /**
-   * Returns the meta object for class '{@link org.xtext.example.mydsl.voice.Reference <em>Reference</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Reference</em>'.
-   * @see org.xtext.example.mydsl.voice.Reference
-   * @generated
-   */
-  EClass getReference();
-
-  /**
-   * Returns the meta object for the reference '{@link org.xtext.example.mydsl.voice.Reference#getEntity <em>Entity</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Entity</em>'.
-   * @see org.xtext.example.mydsl.voice.Reference#getEntity()
-   * @see #getReference()
-   * @generated
-   */
-  EReference getReference_Entity();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.voice.Reference#getSysvar <em>Sysvar</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Sysvar</em>'.
-   * @see org.xtext.example.mydsl.voice.Reference#getSysvar()
-   * @see #getReference()
-   * @generated
-   */
-  EReference getReference_Sysvar();
+  EAttribute getSysvariable_DefaultValue();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -955,22 +1022,14 @@ public interface VoicePackage extends EPackage
     EReference INTENT__TRAINING = eINSTANCE.getIntent_Training();
 
     /**
-     * The meta object literal for the '{@link org.xtext.example.mydsl.voice.impl.EntityImpl <em>Entity</em>}' class.
+     * The meta object literal for the '{@link org.xtext.example.mydsl.voice.impl.ReferenceObjectImpl <em>Reference Object</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.xtext.example.mydsl.voice.impl.EntityImpl
-     * @see org.xtext.example.mydsl.voice.impl.VoicePackageImpl#getEntity()
+     * @see org.xtext.example.mydsl.voice.impl.ReferenceObjectImpl
+     * @see org.xtext.example.mydsl.voice.impl.VoicePackageImpl#getReferenceObject()
      * @generated
      */
-    EClass ENTITY = eINSTANCE.getEntity();
-
-    /**
-     * The meta object literal for the '<em><b>Example</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference ENTITY__EXAMPLE = eINSTANCE.getEntity_Example();
+    EClass REFERENCE_OBJECT = eINSTANCE.getReferenceObject();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.voice.impl.QuestionImpl <em>Question</em>}' class.
@@ -981,6 +1040,14 @@ public interface VoicePackage extends EPackage
      * @generated
      */
     EClass QUESTION = eINSTANCE.getQuestion();
+
+    /**
+     * The meta object literal for the '<em><b>Extended Question</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference QUESTION__EXTENDED_QUESTION = eINSTANCE.getQuestion_ExtendedQuestion();
 
     /**
      * The meta object literal for the '<em><b>Question Entity</b></em>' containment reference feature.
@@ -1015,6 +1082,32 @@ public interface VoicePackage extends EPackage
      * @generated
      */
     EReference QUESTION_ENTITY__WITH_ENTITY = eINSTANCE.getQuestionEntity_WithEntity();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.example.mydsl.voice.impl.ReferenceImpl <em>Reference</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.mydsl.voice.impl.ReferenceImpl
+     * @see org.xtext.example.mydsl.voice.impl.VoicePackageImpl#getReference()
+     * @generated
+     */
+    EClass REFERENCE = eINSTANCE.getReference();
+
+    /**
+     * The meta object literal for the '<em><b>Entity</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference REFERENCE__ENTITY = eINSTANCE.getReference_Entity();
+
+    /**
+     * The meta object literal for the '<em><b>Sysvar</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference REFERENCE__SYSVAR = eINSTANCE.getReference_Sysvar();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.voice.impl.TrainingImpl <em>Training</em>}' class.
@@ -1123,6 +1216,24 @@ public interface VoicePackage extends EPackage
     EReference IS_FOLLOWUP__INTENT = eINSTANCE.getIsFollowup_Intent();
 
     /**
+     * The meta object literal for the '{@link org.xtext.example.mydsl.voice.impl.EntityImpl <em>Entity</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.mydsl.voice.impl.EntityImpl
+     * @see org.xtext.example.mydsl.voice.impl.VoicePackageImpl#getEntity()
+     * @generated
+     */
+    EClass ENTITY = eINSTANCE.getEntity();
+
+    /**
+     * The meta object literal for the '<em><b>Example</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ENTITY__EXAMPLE = eINSTANCE.getEntity_Example();
+
+    /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.voice.impl.SysvariableImpl <em>Sysvariable</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1133,38 +1244,12 @@ public interface VoicePackage extends EPackage
     EClass SYSVARIABLE = eINSTANCE.getSysvariable();
 
     /**
-     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Default Value</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute SYSVARIABLE__VALUE = eINSTANCE.getSysvariable_Value();
-
-    /**
-     * The meta object literal for the '{@link org.xtext.example.mydsl.voice.impl.ReferenceImpl <em>Reference</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.xtext.example.mydsl.voice.impl.ReferenceImpl
-     * @see org.xtext.example.mydsl.voice.impl.VoicePackageImpl#getReference()
-     * @generated
-     */
-    EClass REFERENCE = eINSTANCE.getReference();
-
-    /**
-     * The meta object literal for the '<em><b>Entity</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference REFERENCE__ENTITY = eINSTANCE.getReference_Entity();
-
-    /**
-     * The meta object literal for the '<em><b>Sysvar</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference REFERENCE__SYSVAR = eINSTANCE.getReference_Sysvar();
+    EAttribute SYSVARIABLE__DEFAULT_VALUE = eINSTANCE.getSysvariable_DefaultValue();
 
   }
 

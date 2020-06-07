@@ -202,19 +202,10 @@ public class VoiceSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Question returns Question
 	 *
 	 * Constraint:
-	 *     (questionEntity=QuestionEntity prompt=STRING)
+	 *     (extendedQuestion=[ReferenceObject|ID] | (questionEntity=QuestionEntity prompt=STRING))
 	 */
 	protected void sequence_Question(ISerializationContext context, Question semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, VoicePackage.Literals.QUESTION__QUESTION_ENTITY) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, VoicePackage.Literals.QUESTION__QUESTION_ENTITY));
-			if (transientValues.isValueTransient(semanticObject, VoicePackage.Literals.QUESTION__PROMPT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, VoicePackage.Literals.QUESTION__PROMPT));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getQuestionAccess().getQuestionEntityQuestionEntityParserRuleCall_0_0(), semanticObject.getQuestionEntity());
-		feeder.accept(grammarAccess.getQuestionAccess().getPromptSTRINGTerminalRuleCall_2_0(), semanticObject.getPrompt());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -235,21 +226,7 @@ public class VoiceSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Sysvariable returns Sysvariable
 	 *
 	 * Constraint:
-	 *     (
-	 *         value='number' | 
-	 *         value='date-time' | 
-	 *         value='date' | 
-	 *         value='duration' | 
-	 *         value='address' | 
-	 *         value='email' | 
-	 *         value='phone-number' | 
-	 *         value='date-period' | 
-	 *         value='time-period' | 
-	 *         value='url' | 
-	 *         value='any' | 
-	 *         value='color' | 
-	 *         value='language'
-	 *     )
+	 *     (name=ID? defaultValue=DefaultValues)
 	 */
 	protected void sequence_Sysvariable(ISerializationContext context, Sysvariable semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

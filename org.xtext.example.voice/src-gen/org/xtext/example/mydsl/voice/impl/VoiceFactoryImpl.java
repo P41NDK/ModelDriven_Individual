@@ -68,16 +68,17 @@ public class VoiceFactoryImpl extends EFactoryImpl implements VoiceFactory
       case VoicePackage.MODEL: return createModel();
       case VoicePackage.AGENT: return createAgent();
       case VoicePackage.INTENT: return createIntent();
-      case VoicePackage.ENTITY: return createEntity();
+      case VoicePackage.REFERENCE_OBJECT: return createReferenceObject();
       case VoicePackage.QUESTION: return createQuestion();
       case VoicePackage.QUESTION_ENTITY: return createQuestionEntity();
+      case VoicePackage.REFERENCE: return createReference();
       case VoicePackage.TRAINING: return createTraining();
       case VoicePackage.TRAINING_REF: return createTrainingRef();
       case VoicePackage.DECLARATION: return createDeclaration();
       case VoicePackage.ENTITY_EXAMPLE: return createEntityExample();
       case VoicePackage.IS_FOLLOWUP: return createIsFollowup();
+      case VoicePackage.ENTITY: return createEntity();
       case VoicePackage.SYSVARIABLE: return createSysvariable();
-      case VoicePackage.REFERENCE: return createReference();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -125,10 +126,10 @@ public class VoiceFactoryImpl extends EFactoryImpl implements VoiceFactory
    * @generated
    */
   @Override
-  public Entity createEntity()
+  public ReferenceObject createReferenceObject()
   {
-    EntityImpl entity = new EntityImpl();
-    return entity;
+    ReferenceObjectImpl referenceObject = new ReferenceObjectImpl();
+    return referenceObject;
   }
 
   /**
@@ -153,6 +154,18 @@ public class VoiceFactoryImpl extends EFactoryImpl implements VoiceFactory
   {
     QuestionEntityImpl questionEntity = new QuestionEntityImpl();
     return questionEntity;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Reference createReference()
+  {
+    ReferenceImpl reference = new ReferenceImpl();
+    return reference;
   }
 
   /**
@@ -221,10 +234,10 @@ public class VoiceFactoryImpl extends EFactoryImpl implements VoiceFactory
    * @generated
    */
   @Override
-  public Sysvariable createSysvariable()
+  public Entity createEntity()
   {
-    SysvariableImpl sysvariable = new SysvariableImpl();
-    return sysvariable;
+    EntityImpl entity = new EntityImpl();
+    return entity;
   }
 
   /**
@@ -233,10 +246,10 @@ public class VoiceFactoryImpl extends EFactoryImpl implements VoiceFactory
    * @generated
    */
   @Override
-  public Reference createReference()
+  public Sysvariable createSysvariable()
   {
-    ReferenceImpl reference = new ReferenceImpl();
-    return reference;
+    SysvariableImpl sysvariable = new SysvariableImpl();
+    return sysvariable;
   }
 
   /**

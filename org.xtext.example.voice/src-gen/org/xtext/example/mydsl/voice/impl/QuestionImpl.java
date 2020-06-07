@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.xtext.example.mydsl.voice.Question;
 import org.xtext.example.mydsl.voice.QuestionEntity;
+import org.xtext.example.mydsl.voice.ReferenceObject;
 import org.xtext.example.mydsl.voice.VoicePackage;
 
 /**
@@ -24,6 +25,7 @@ import org.xtext.example.mydsl.voice.VoicePackage;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.xtext.example.mydsl.voice.impl.QuestionImpl#getExtendedQuestion <em>Extended Question</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.voice.impl.QuestionImpl#getQuestionEntity <em>Question Entity</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.voice.impl.QuestionImpl#getPrompt <em>Prompt</em>}</li>
  * </ul>
@@ -32,6 +34,16 @@ import org.xtext.example.mydsl.voice.VoicePackage;
  */
 public class QuestionImpl extends MinimalEObjectImpl.Container implements Question
 {
+  /**
+   * The cached value of the '{@link #getExtendedQuestion() <em>Extended Question</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getExtendedQuestion()
+   * @generated
+   * @ordered
+   */
+  protected ReferenceObject extendedQuestion;
+
   /**
    * The cached value of the '{@link #getQuestionEntity() <em>Question Entity</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -81,6 +93,51 @@ public class QuestionImpl extends MinimalEObjectImpl.Container implements Questi
   protected EClass eStaticClass()
   {
     return VoicePackage.Literals.QUESTION;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ReferenceObject getExtendedQuestion()
+  {
+    if (extendedQuestion != null && extendedQuestion.eIsProxy())
+    {
+      InternalEObject oldExtendedQuestion = (InternalEObject)extendedQuestion;
+      extendedQuestion = (ReferenceObject)eResolveProxy(oldExtendedQuestion);
+      if (extendedQuestion != oldExtendedQuestion)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, VoicePackage.QUESTION__EXTENDED_QUESTION, oldExtendedQuestion, extendedQuestion));
+      }
+    }
+    return extendedQuestion;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ReferenceObject basicGetExtendedQuestion()
+  {
+    return extendedQuestion;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setExtendedQuestion(ReferenceObject newExtendedQuestion)
+  {
+    ReferenceObject oldExtendedQuestion = extendedQuestion;
+    extendedQuestion = newExtendedQuestion;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, VoicePackage.QUESTION__EXTENDED_QUESTION, oldExtendedQuestion, extendedQuestion));
   }
 
   /**
@@ -184,6 +241,9 @@ public class QuestionImpl extends MinimalEObjectImpl.Container implements Questi
   {
     switch (featureID)
     {
+      case VoicePackage.QUESTION__EXTENDED_QUESTION:
+        if (resolve) return getExtendedQuestion();
+        return basicGetExtendedQuestion();
       case VoicePackage.QUESTION__QUESTION_ENTITY:
         return getQuestionEntity();
       case VoicePackage.QUESTION__PROMPT:
@@ -202,6 +262,9 @@ public class QuestionImpl extends MinimalEObjectImpl.Container implements Questi
   {
     switch (featureID)
     {
+      case VoicePackage.QUESTION__EXTENDED_QUESTION:
+        setExtendedQuestion((ReferenceObject)newValue);
+        return;
       case VoicePackage.QUESTION__QUESTION_ENTITY:
         setQuestionEntity((QuestionEntity)newValue);
         return;
@@ -222,6 +285,9 @@ public class QuestionImpl extends MinimalEObjectImpl.Container implements Questi
   {
     switch (featureID)
     {
+      case VoicePackage.QUESTION__EXTENDED_QUESTION:
+        setExtendedQuestion((ReferenceObject)null);
+        return;
       case VoicePackage.QUESTION__QUESTION_ENTITY:
         setQuestionEntity((QuestionEntity)null);
         return;
@@ -242,6 +308,8 @@ public class QuestionImpl extends MinimalEObjectImpl.Container implements Questi
   {
     switch (featureID)
     {
+      case VoicePackage.QUESTION__EXTENDED_QUESTION:
+        return extendedQuestion != null;
       case VoicePackage.QUESTION__QUESTION_ENTITY:
         return questionEntity != null;
       case VoicePackage.QUESTION__PROMPT:

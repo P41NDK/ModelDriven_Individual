@@ -17,17 +17,20 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="training" eType="#//Training"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Entity" eSuperTypes="#//Agent">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="example" upperBound="-1"
-        eType="#//EntityExample" containment="true"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReferenceObject" eSuperTypes="#//Agent"/>
   <eClassifiers xsi:type="ecore:EClass" name="Question">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="extendedQuestion" eType="#//ReferenceObject"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="questionEntity" eType="#//QuestionEntity"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="prompt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="QuestionEntity">
     <eStructuralFeatures xsi:type="ecore:EReference" name="withEntity" eType="#//Reference"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Reference">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entity" eType="#//Entity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sysvar" eType="#//ReferenceObject"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Training">
@@ -50,12 +53,11 @@
   <eClassifiers xsi:type="ecore:EClass" name="IsFollowup">
     <eStructuralFeatures xsi:type="ecore:EReference" name="intent" eType="#//Intent"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Sysvariable">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Entity" eSuperTypes="#//ReferenceObject">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="example" upperBound="-1"
+        eType="#//EntityExample" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Reference">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="entity" eType="#//Entity"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="sysvar" eType="#//Sysvariable"
-        containment="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Sysvariable" eSuperTypes="#//ReferenceObject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

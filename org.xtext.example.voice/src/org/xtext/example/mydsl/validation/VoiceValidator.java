@@ -11,6 +11,9 @@ import org.xtext.example.mydsl.voice.Declaration;
 import org.xtext.example.mydsl.voice.Intent;
 import org.xtext.example.mydsl.voice.Model;
 import org.xtext.example.mydsl.voice.Question;
+import org.xtext.example.mydsl.voice.Reference;
+import org.xtext.example.mydsl.voice.Sysvariable;
+import org.xtext.example.mydsl.voice.Training;
 import org.xtext.example.mydsl.voice.TrainingRef;
 import org.xtext.example.mydsl.voice.VoicePackage;
 
@@ -75,13 +78,14 @@ public class VoiceValidator extends AbstractVoiceValidator {
 	public void checkForTraining(Question question){
 		Intent intent = ((Intent) question.eContainer());
 		Boolean exists = false;
-		Object questionTest = question.getQuestionEntity().getWithEntity().getSysvar() != null? question.getQuestionEntity().getWithEntity().getSysvar() : question.getQuestionEntity().getWithEntity().getEntity();
+		Reference questionTest = question.getQuestionEntity().getWithEntity();
 		for(TrainingRef trainingRef : intent.getTraining().getTrainingref()) {
-			if(trainingRef.getDeclarations().getReference().getSysvar().equals(questionTest)) {
+			Reference testRef = trainingRef.getDeclarations().getReference();
+			if(testRef.getEntity()!=null?testRef.getEntity().equals(questionTest.getEntity()): false) {
 				exists = true;
 				break;
 			}
-			else if(trainingRef.getDeclarations().getReference().getEntity().equals(questionTest)){
+			else if(testRef.getSysvar()!=null?((Sysvariable)testRef.getSysvar()).getDefaultValue().equals(((Sysvariable)questionTest.getSysvar()).getDefaultValue()): false) {
 				exists = true;
 				break;
 			}
@@ -90,7 +94,6 @@ public class VoiceValidator extends AbstractVoiceValidator {
 			error("You need to write training for this", VoicePackage.Literals.QUESTION__QUESTION_ENTITY);
 		}
 	}
-	
 	
 }
 	

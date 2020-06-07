@@ -20,6 +20,7 @@ import org.xtext.example.mydsl.voice.Model;
 import org.xtext.example.mydsl.voice.Question;
 import org.xtext.example.mydsl.voice.QuestionEntity;
 import org.xtext.example.mydsl.voice.Reference;
+import org.xtext.example.mydsl.voice.ReferenceObject;
 import org.xtext.example.mydsl.voice.Sysvariable;
 import org.xtext.example.mydsl.voice.Training;
 import org.xtext.example.mydsl.voice.TrainingRef;
@@ -60,7 +61,7 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass entityEClass = null;
+  private EClass referenceObjectEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -75,6 +76,13 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
    * @generated
    */
   private EClass questionEntityEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass referenceEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -116,14 +124,14 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass sysvariableEClass = null;
+  private EClass entityEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass referenceEClass = null;
+  private EClass sysvariableEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -293,20 +301,9 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
    * @generated
    */
   @Override
-  public EClass getEntity()
+  public EClass getReferenceObject()
   {
-    return entityEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getEntity_Example()
-  {
-    return (EReference)entityEClass.getEStructuralFeatures().get(0);
+    return referenceObjectEClass;
   }
 
   /**
@@ -326,7 +323,7 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
    * @generated
    */
   @Override
-  public EReference getQuestion_QuestionEntity()
+  public EReference getQuestion_ExtendedQuestion()
   {
     return (EReference)questionEClass.getEStructuralFeatures().get(0);
   }
@@ -337,9 +334,20 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
    * @generated
    */
   @Override
+  public EReference getQuestion_QuestionEntity()
+  {
+    return (EReference)questionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EAttribute getQuestion_Prompt()
   {
-    return (EAttribute)questionEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)questionEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -362,6 +370,39 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
   public EReference getQuestionEntity_WithEntity()
   {
     return (EReference)questionEntityEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getReference()
+  {
+    return referenceEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getReference_Entity()
+  {
+    return (EReference)referenceEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getReference_Sysvar()
+  {
+    return (EReference)referenceEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -502,6 +543,28 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
    * @generated
    */
   @Override
+  public EClass getEntity()
+  {
+    return entityEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getEntity_Example()
+  {
+    return (EReference)entityEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getSysvariable()
   {
     return sysvariableEClass;
@@ -513,42 +576,9 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
    * @generated
    */
   @Override
-  public EAttribute getSysvariable_Value()
+  public EAttribute getSysvariable_DefaultValue()
   {
     return (EAttribute)sysvariableEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getReference()
-  {
-    return referenceEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getReference_Entity()
-  {
-    return (EReference)referenceEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getReference_Sysvar()
-  {
-    return (EReference)referenceEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -594,15 +624,19 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
     createEReference(intentEClass, INTENT__QUESTION);
     createEReference(intentEClass, INTENT__TRAINING);
 
-    entityEClass = createEClass(ENTITY);
-    createEReference(entityEClass, ENTITY__EXAMPLE);
+    referenceObjectEClass = createEClass(REFERENCE_OBJECT);
 
     questionEClass = createEClass(QUESTION);
+    createEReference(questionEClass, QUESTION__EXTENDED_QUESTION);
     createEReference(questionEClass, QUESTION__QUESTION_ENTITY);
     createEAttribute(questionEClass, QUESTION__PROMPT);
 
     questionEntityEClass = createEClass(QUESTION_ENTITY);
     createEReference(questionEntityEClass, QUESTION_ENTITY__WITH_ENTITY);
+
+    referenceEClass = createEClass(REFERENCE);
+    createEReference(referenceEClass, REFERENCE__ENTITY);
+    createEReference(referenceEClass, REFERENCE__SYSVAR);
 
     trainingEClass = createEClass(TRAINING);
     createEReference(trainingEClass, TRAINING__TRAININGREF);
@@ -621,12 +655,11 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
     isFollowupEClass = createEClass(IS_FOLLOWUP);
     createEReference(isFollowupEClass, IS_FOLLOWUP__INTENT);
 
-    sysvariableEClass = createEClass(SYSVARIABLE);
-    createEAttribute(sysvariableEClass, SYSVARIABLE__VALUE);
+    entityEClass = createEClass(ENTITY);
+    createEReference(entityEClass, ENTITY__EXAMPLE);
 
-    referenceEClass = createEClass(REFERENCE);
-    createEReference(referenceEClass, REFERENCE__ENTITY);
-    createEReference(referenceEClass, REFERENCE__SYSVAR);
+    sysvariableEClass = createEClass(SYSVARIABLE);
+    createEAttribute(sysvariableEClass, SYSVARIABLE__DEFAULT_VALUE);
   }
 
   /**
@@ -659,7 +692,9 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
 
     // Add supertypes to classes
     intentEClass.getESuperTypes().add(this.getAgent());
-    entityEClass.getESuperTypes().add(this.getAgent());
+    referenceObjectEClass.getESuperTypes().add(this.getAgent());
+    entityEClass.getESuperTypes().add(this.getReferenceObject());
+    sysvariableEClass.getESuperTypes().add(this.getReferenceObject());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -674,15 +709,19 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
     initEReference(getIntent_Question(), this.getQuestion(), null, "question", null, 0, -1, Intent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getIntent_Training(), this.getTraining(), null, "training", null, 0, 1, Intent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(entityEClass, Entity.class, "Entity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getEntity_Example(), this.getEntityExample(), null, "example", null, 0, -1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(referenceObjectEClass, ReferenceObject.class, "ReferenceObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(questionEClass, Question.class, "Question", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getQuestion_ExtendedQuestion(), this.getReferenceObject(), null, "extendedQuestion", null, 0, 1, Question.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getQuestion_QuestionEntity(), this.getQuestionEntity(), null, "questionEntity", null, 0, 1, Question.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getQuestion_Prompt(), ecorePackage.getEString(), "prompt", null, 0, 1, Question.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(questionEntityEClass, QuestionEntity.class, "QuestionEntity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getQuestionEntity_WithEntity(), this.getReference(), null, "withEntity", null, 0, 1, QuestionEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(referenceEClass, Reference.class, "Reference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getReference_Entity(), this.getEntity(), null, "entity", null, 0, 1, Reference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getReference_Sysvar(), this.getReferenceObject(), null, "sysvar", null, 0, 1, Reference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(trainingEClass, Training.class, "Training", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getTraining_Trainingref(), this.getTrainingRef(), null, "trainingref", null, 0, -1, Training.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -701,12 +740,11 @@ public class VoicePackageImpl extends EPackageImpl implements VoicePackage
     initEClass(isFollowupEClass, IsFollowup.class, "IsFollowup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getIsFollowup_Intent(), this.getIntent(), null, "intent", null, 0, 1, IsFollowup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(sysvariableEClass, Sysvariable.class, "Sysvariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getSysvariable_Value(), ecorePackage.getEString(), "value", null, 0, 1, Sysvariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(entityEClass, Entity.class, "Entity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getEntity_Example(), this.getEntityExample(), null, "example", null, 0, -1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(referenceEClass, Reference.class, "Reference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getReference_Entity(), this.getEntity(), null, "entity", null, 0, 1, Reference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getReference_Sysvar(), this.getSysvariable(), null, "sysvar", null, 0, 1, Reference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(sysvariableEClass, Sysvariable.class, "Sysvariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getSysvariable_DefaultValue(), ecorePackage.getEString(), "defaultValue", null, 0, 1, Sysvariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

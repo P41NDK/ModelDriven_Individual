@@ -32,7 +32,7 @@ import org.xtext.example.mydsl.voice.VoicePackage;
  *
  * @generated
  */
-public class EntityImpl extends AgentImpl implements Entity
+public class EntityImpl extends ReferenceObjectImpl implements Entity
 {
   /**
    * The cached value of the '{@link #getExample() <em>Example</em>}' containment reference list.
