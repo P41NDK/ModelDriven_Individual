@@ -4,21 +4,18 @@
 package org.xtext.example.mydsl.scoping;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
 import org.eclipse.xtext.scoping.impl.FilteringScope;
+import org.xtext.example.mydsl.voice.Agent;
 import org.xtext.example.mydsl.voice.Intent;
+import org.xtext.example.mydsl.voice.Model;
 import org.xtext.example.mydsl.voice.Question;
-import org.xtext.example.mydsl.voice.QuestionEntity;
 import org.xtext.example.mydsl.voice.QuestionReference;
-import org.xtext.example.mydsl.voice.ReferenceObject;
-import org.xtext.example.mydsl.voice.Sysvariable;
 import org.xtext.example.mydsl.voice.VoicePackage;
 
 /**
@@ -32,8 +29,15 @@ public class VoiceScopeProvider extends AbstractVoiceScopeProvider {
     public IScope getScope(EObject context, EReference reference) {
         if (context instanceof Intent
                 && reference == VoicePackage.Literals.INTENT__ZUPER) {
-            EObject rootElement = EcoreUtil2.getRootContainer(context);
-            List<Intent> candidates = EcoreUtil2.getAllContentsOfType(rootElement, Intent.class);
+            Model model = (Model) context.eContainer();
+            ArrayList<Intent> candidates = new ArrayList<Intent>();
+            for(Agent agent : model.getAgent()) {
+            	if(agent instanceof Intent) {
+            		if(((Intent) agent) != ((Intent)context) ) {
+            			candidates.add(((Intent)agent));
+            		}
+            	}
+            }
             IScope existingScope = Scopes.scopeFor(candidates);
 
             return new FilteringScope(existingScope, (e) -> !Objects.equals(e.getEObjectOrProxy(), context));
