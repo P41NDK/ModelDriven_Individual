@@ -34,7 +34,7 @@ public class VoiceValidator extends AbstractVoiceValidator {
 			if(agent instanceof Intent) {
 				Intent intent = (Intent) agent;
 				if (intent.getZuper() == null) {
-					return ; // nothing to check
+					return ;
 				}
 				visitedIntents.add(intent);
 				Intent current = intent.getZuper();

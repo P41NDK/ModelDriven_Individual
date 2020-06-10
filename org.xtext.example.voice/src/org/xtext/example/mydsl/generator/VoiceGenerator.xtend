@@ -135,7 +135,6 @@ class VoiceGenerator extends AbstractGenerator {
 			if(qr.questionReference !== null){
 				referenceList.add(qr.questionReference.questionEntity.withEntity.entity?:qr.questionReference.questionEntity.withEntity.sysvar)
 			}
-			
 			}
 			if(item.zuper !== null){
 				for(TrainingRef training: item.zuper.training.trainingref){

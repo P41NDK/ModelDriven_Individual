@@ -4,13 +4,11 @@
 package org.xtext.example.mydsl.scoping;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
-import org.eclipse.xtext.scoping.impl.FilteringScope;
 import org.xtext.example.mydsl.voice.Agent;
 import org.xtext.example.mydsl.voice.Intent;
 import org.xtext.example.mydsl.voice.Model;
@@ -38,9 +36,8 @@ public class VoiceScopeProvider extends AbstractVoiceScopeProvider {
             		}
             	}
             }
-            IScope existingScope = Scopes.scopeFor(candidates);
 
-            return new FilteringScope(existingScope, (e) -> !Objects.equals(e.getEObjectOrProxy(), context));
+            return Scopes.scopeFor(candidates);
         }
         
        else if (context instanceof QuestionReference
